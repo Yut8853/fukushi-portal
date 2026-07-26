@@ -440,5 +440,70 @@
     "contentHash": "ecfa41f51547ed2bfd138cacc5551fa1e09ab29f8b459797d63f033e7d287d16",
     "previousHash": "",
     "error": ""
+  },
+  {
+    "sourceId": "source-yamanashi-housing-benefit",
+    "url": "https://www.pref.yamanashi.jp/shigaku-kgk/korona/korona.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:07:38.378Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 25372,
+    "contentHash": "cd29d87b0bd6bf255452b41a5ccdb736f3b0349675609b79e67427dfb94b4308",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamanashi-municipal-contacts-r6",
+    "url": "https://www.pref.yamanashi.jp/documents/63300/s060507syozaitikodo.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:07:32.296Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 35451,
+    "contentHash": "4be44f4fca72aee457efd4beef70eeb3f41b0bea1898a4ae29a94d7f967c697f",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamanashi-municipal-links",
+    "url": "https://www.pref.yamanashi.jp/link/link_city.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:07:34.403Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 16531,
+    "contentHash": "adffdbd813eab003c976846cd8de78fcae5d5bbb7da5f2b1b007b22dc52d1ddc",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamanashi-public-assistance",
+    "url": "https://www.pref.yamanashi.jp/hokensom/40_030.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:07:40.386Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 25895,
+    "contentHash": "c630c6b0b2325ed3185345d0557588d62921db012d8f95e7a943790d995c4b2e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamanashi-self-reliance",
+    "url": "https://www.pref.yamanashi.jp/hokensom/jiritsusoudanshien.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:07:36.380Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 19935,
+    "contentHash": "7ddfe0eff7202c44ec0ea84533455d27c2778e31a0e81c34fe8241961117ee04",
+    "previousHash": "",
+    "error": ""
   }
 ]
