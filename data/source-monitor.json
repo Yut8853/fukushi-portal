@@ -273,6 +273,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-hyogo-pref-municipal-offices",
+    "url": "https://web.pref.hyogo.lg.jp/kk25/pa05_000000002.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T14:38:13.258Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 15805,
+    "contentHash": "f9a22ed7e9096666c7d9d5b0dbf22f4822c469275ce3d08768deaf4db4637483",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hyogo-pref-public-assistance",
+    "url": "https://web.pref.hyogo.lg.jp/kf03/hw16_000000042.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T14:38:17.400Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 25636,
+    "contentHash": "8105e7325e77f98bc31a9cb0408ed6b68d8b2a785a3b58f5d7715636cda948d4",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hyogo-pref-self-reliance-2026",
+    "url": "https://web.pref.hyogo.lg.jp/kf03/seikatsukonkyu.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T14:38:15.325Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 20138,
+    "contentHash": "d33af0787c0a1830dee570bf23911d118426e91eefff8ec9d0f0f23eb6c83283",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-ibaraki-municipalities",
     "url": "https://www.pref.ibaraki.jp/towns/",
     "status": "ok",
