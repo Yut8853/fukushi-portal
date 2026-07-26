@@ -159,3 +159,6 @@ source-capital-jp-45201-city,宮崎市の市区町村コード・所在地・電
 source-capital-jp-45201-public,宮崎市 生活保護の相談・申請窓口,https://www.city.miyazaki.miyazaki.jp/health/welfare/protection/1169.html,宮崎市,official,published,2026-07-26
 source-capital-jp-46201-city,鹿児島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16714187.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-46201-public,鹿児島市 生活保護の相談・申請窓口,https://www.city.kagoshima.lg.jp/kenkofukushi/fukushi/hogo1/index.html,鹿児島市,official,published,2026-07-26
+source-ibaraki-municipalities,茨城県内の市町村,https://www.pref.ibaraki.jp/towns/,茨城県,official,published,2026-07-26
+source-ibaraki-self-reliance-list,茨城県内の自立相談支援窓口のご案内,https://www.pref.ibaraki.jp/hokenfukushi/fukushi/hogo/konkyuusya/documents/jiritsusoudanshienkikan.pdf,茨城県,official,published,2026-07-26
+source-ibaraki-welfare-offices,生活保護 申請・相談の窓口,https://www.pref.ibaraki.jp/soshiki/hokenfukushi/fukujin/documents/hukushizimusixyo.pdf,茨城県,official,published,2026-07-26

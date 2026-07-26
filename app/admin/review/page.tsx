@@ -1,5 +1,6 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
+import { headers } from "next/headers";
 import { publishCandidate } from "@/crawler/publisher";
 import {
   readAllResults,
@@ -65,14 +66,20 @@ function reviewUpdate(formData: FormData): CandidateReviewUpdate {
 
 async function reviewAction(formData: FormData) {
   "use server";
+  const requestHeaders = await headers();
   const code = value(formData, "code");
   const id = value(formData, "id");
   const action = value(formData, "action");
-  const actor = value(formData, "actor");
+  const actor = requestHeaders.get("x-admin-user")?.trim() ?? "";
+  const role = requestHeaders.get("x-admin-role") ?? "";
   let message = "";
   let errorMessage = "";
   try {
+    if (!actor || !["admin", "reviewer"].includes(role)) {
+      throw new Error("認証済み管理者を確認できません。再ログインしてください。");
+    }
     if (action === "publish") {
+      if (role !== "admin") throw new Error("CSV公開はadmin権限の管理者だけが実行できます。");
       const result = await publishCandidate(code, id, actor);
       message = `CSVへ公開しました: ${result.preview.entityId}`;
     } else {
@@ -115,11 +122,14 @@ type ReviewPageProps = {
 };
 
 export default async function ReviewPage({ searchParams }: ReviewPageProps) {
-  const [results, portalData, params] = await Promise.all([
+  const [results, portalData, params, requestHeaders] = await Promise.all([
     readAllResults(),
     getPortalData(),
     searchParams,
+    headers(),
   ]);
+  const authenticatedUser = requestHeaders.get("x-admin-user") ?? "不明";
+  const authenticatedRole = requestHeaders.get("x-admin-role") ?? "不明";
   const candidates = results.flatMap((result) =>
     result.candidates.map((candidate) => ({
       ...candidate,
@@ -141,6 +151,7 @@ export default async function ReviewPage({ searchParams }: ReviewPageProps) {
     <main id="main" className="page-shell admin-shell">
       <p className="eyebrow">管理確認用</p>
       <h1>クロール結果レビュー</h1>
+      <p>ログイン中: <strong>{authenticatedUser}</strong>（{authenticatedRole}）</p>
       <p>
         {candidates.length}件の候補。確認済みへの変更とCSV公開は別操作です。
         公式ページの原文と入力内容を照合してから確認済みにしてください。
@@ -284,9 +295,6 @@ export default async function ReviewPage({ searchParams }: ReviewPageProps) {
                       </label>
                     </div>
                   </details>
-                  <label className="review-note">確認者名
-                    <input name="actor" defaultValue={item.reviewer} required />
-                  </label>
                   <label className="review-note">確認メモ
                     <textarea name="reviewNote" defaultValue={item.reviewNote} rows={3} />
                   </label>
@@ -303,11 +311,9 @@ export default async function ReviewPage({ searchParams }: ReviewPageProps) {
                 <form action={reviewAction} className="publish-candidate">
                   <input type="hidden" name="code" value={item.code} />
                   <input type="hidden" name="id" value={item.id} />
-                  <label>公開担当者名
-                    <input name="actor" defaultValue={item.reviewer} required />
-                  </label>
                   <p>この操作はCSVへ追記し、一般画面へ公開します。公開前に上の内容を再確認してください。</p>
-                  <button name="action" value="publish">CSVへ公開する</button>
+                  <button name="action" value="publish" disabled={authenticatedRole !== "admin"}>CSVへ公開する</button>
+                  {authenticatedRole !== "admin" ? <p>公開にはadmin権限が必要です。</p> : null}
                 </form>
               ) : null}
             </article>

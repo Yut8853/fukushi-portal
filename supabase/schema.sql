@@ -1,119 +1,255 @@
 create extension if not exists "pgcrypto";
 
-create type verification_status as enum (
-  'draft',
-  'official_source_checked',
-  'expert_checked',
-  'published',
-  'needs_review',
-  'archived'
+create type public.content_status as enum (
+  'draft', 'researching', 'review_required', 'verified', 'published',
+  'expired', 'suspended'
+);
+create type public.municipality_type as enum ('special_ward', 'city', 'town', 'village');
+create type public.support_level as enum ('basic', 'standard', 'detailed');
+create type public.program_scope as enum ('national', 'prefecture', 'municipality', 'private');
+create type public.support_type as enum (
+  'benefit', 'loan', 'reduction', 'deferment', 'goods', 'housing',
+  'consultation', 'medical', 'employment', 'other'
+);
+create type public.admin_role as enum ('admin', 'reviewer');
+
+create table public.prefectures (
+  code text primary key check (code ~ '^[0-9]{2}$'),
+  name text unique not null,
+  name_kana text not null default ''
 );
 
-create table prefectures (
-  id uuid primary key default gen_random_uuid(),
-  code text unique not null,
-  name text unique not null
-);
-
-create table municipalities (
-  id uuid primary key default gen_random_uuid(),
-  prefecture_id uuid not null references prefectures(id),
-  code text unique,
-  name text not null,
-  detail_level integer not null default 0 check (detail_level between 0 and 3),
-  is_published boolean not null default false,
-  unique(prefecture_id, name)
-);
-
-create table needs (
+create table public.categories (
   id text primary key,
   label text not null,
-  description text,
-  sort_order integer not null default 0
+  description text not null default '',
+  sort_order integer not null default 0 check (sort_order >= 0)
 );
 
-create table programs (
-  id uuid primary key default gen_random_uuid(),
-  need_id text not null references needs(id),
-  national_title text not null,
-  summary text not null,
-  support_type text,
-  repayment_required boolean,
-  base_action text,
-  base_script text,
-  status verification_status not null default 'draft',
-  published_at timestamptz
-);
-
-create table offices (
-  id uuid primary key default gen_random_uuid(),
-  municipality_id uuid references municipalities(id),
+create table public.municipalities (
+  id text primary key,
+  prefecture_code text not null references public.prefectures(code),
+  municipality_code text unique not null,
   name text not null,
-  office_type text not null,
-  address text,
-  phone text,
-  email text,
-  website_url text,
-  opening_hours text,
+  name_kana text not null default '',
+  municipality_type public.municipality_type not null,
+  official_url text not null default '',
+  representative_phone text not null default '',
+  support_level public.support_level not null default 'basic',
+  status public.content_status not null default 'draft',
+  last_verified_at date,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (prefecture_code, name)
+);
+
+create table public.sources (
+  id text primary key,
+  title text not null,
+  url text not null,
+  publisher text not null default '',
+  source_type text not null default 'official' check (source_type in ('official', 'law', 'other')),
+  status public.content_status not null default 'draft',
+  last_verified_at date,
+  content_hash text not null default '',
+  last_checked_at timestamptz,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
+);
+
+create table public.offices (
+  id text primary key,
+  municipality_id text not null references public.municipalities(id) on delete cascade,
+  category_id text not null references public.categories(id),
+  name text not null,
+  plain_name text not null default '',
+  department text not null default '',
+  description text not null default '',
+  postal_code text not null default '',
+  address text not null default '',
+  phone text not null default '',
+  fax text not null default '',
+  email text not null default '',
+  contact_form_url text not null default '',
+  official_url text not null default '',
+  opening_hours text not null default '',
+  closed_days text not null default '',
   reservation_required boolean,
-  accessibility_notes text,
-  emergency_alternative text,
-  status verification_status not null default 'draft',
-  verified_at timestamptz,
-  review_due_at timestamptz
+  available_methods text not null default '',
+  accessibility text not null default '',
+  languages text not null default '',
+  emergency_alternative text not null default '',
+  source_id text references public.sources(id),
+  status public.content_status not null default 'draft',
+  last_verified_at date,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
 
-create table office_jurisdictions (
-  office_id uuid not null references offices(id) on delete cascade,
-  municipality_id uuid not null references municipalities(id) on delete cascade,
-  primary key(office_id, municipality_id)
+create table public.programs (
+  id text primary key,
+  name text not null,
+  plain_name text not null,
+  category_id text not null references public.categories(id),
+  scope public.program_scope not null,
+  description text not null,
+  target_people text not null default '',
+  support_type public.support_type not null,
+  repayment_required boolean not null default false,
+  amount_description text not null default '',
+  application_deadline text not null default '',
+  required_documents text not null default '',
+  documents_optional_note text not null default '',
+  application_flow text not null default '',
+  office_id text references public.offices(id),
+  municipality_id text references public.municipalities(id),
+  source_id text references public.sources(id),
+  status public.content_status not null default 'draft',
+  last_verified_at date,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  check (scope <> 'municipality' or municipality_id is not null)
 );
 
-create table regional_programs (
-  id uuid primary key default gen_random_uuid(),
-  program_id uuid not null references programs(id),
-  municipality_id uuid not null references municipalities(id),
-  office_id uuid references offices(id),
-  local_title text,
-  local_summary text,
-  eligibility_notes text,
-  amount_notes text,
-  deadline_notes text,
-  action_text text,
-  script_text text,
-  documents jsonb not null default '[]'::jsonb,
-  missing_documents_note text,
-  status verification_status not null default 'draft',
-  verified_at timestamptz,
-  review_due_at timestamptz,
-  unique(program_id, municipality_id)
+create table public.municipality_programs (
+  id text primary key,
+  municipality_id text not null references public.municipalities(id) on delete cascade,
+  program_id text not null references public.programs(id) on delete cascade,
+  local_name text not null default '',
+  local_description text not null default '',
+  office_id text references public.offices(id),
+  source_id text references public.sources(id),
+  status public.content_status not null default 'draft',
+  last_verified_at date,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now(),
+  unique (municipality_id, program_id)
 );
 
-create table sources (
-  id uuid primary key default gen_random_uuid(),
-  regional_program_id uuid references regional_programs(id) on delete cascade,
-  office_id uuid references offices(id) on delete cascade,
-  source_title text not null,
-  source_url text not null,
-  source_type text not null default 'official',
-  checked_at timestamptz not null default now(),
-  content_hash text,
-  is_active boolean not null default true
+create table public.admin_profiles (
+  user_id uuid primary key references auth.users(id) on delete cascade,
+  display_name text not null,
+  role public.admin_role not null default 'reviewer',
+  active boolean not null default true,
+  created_at timestamptz not null default now(),
+  updated_at timestamptz not null default now()
 );
 
-create table verification_logs (
+create table public.verification_logs (
   id uuid primary key default gen_random_uuid(),
   entity_type text not null,
-  entity_id uuid not null,
-  previous_status verification_status,
-  new_status verification_status not null,
-  verifier_name text,
-  note text,
+  entity_id text not null,
+  action text not null,
+  previous_status public.content_status,
+  new_status public.content_status,
+  actor_user_id uuid references auth.users(id),
+  actor_name text not null,
+  note text not null default '',
   created_at timestamptz not null default now()
 );
 
-create index municipalities_prefecture_idx on municipalities(prefecture_id);
-create index offices_municipality_idx on offices(municipality_id);
-create index regional_programs_municipality_idx on regional_programs(municipality_id);
-create index regional_programs_status_idx on regional_programs(status);
-create index sources_checked_at_idx on sources(checked_at);
+create table public.source_monitor_logs (
+  id uuid primary key default gen_random_uuid(),
+  source_id text not null references public.sources(id) on delete cascade,
+  status text not null check (status in ('ok', 'changed', 'blocked_by_robots', 'failed')),
+  checked_at timestamptz not null,
+  content_hash text not null default '',
+  previous_hash text not null default '',
+  http_status integer,
+  content_type text not null default '',
+  content_length bigint not null default 0,
+  error text not null default ''
+);
+
+create index municipalities_prefecture_idx on public.municipalities(prefecture_code);
+create index municipalities_public_idx on public.municipalities(status, support_level);
+create index offices_municipality_idx on public.offices(municipality_id);
+create index offices_public_idx on public.offices(status, category_id);
+create index programs_public_idx on public.programs(status, category_id);
+create index municipality_programs_municipality_idx on public.municipality_programs(municipality_id);
+create index sources_status_idx on public.sources(status);
+create index verification_logs_entity_idx on public.verification_logs(entity_type, entity_id, created_at desc);
+create index source_monitor_logs_source_idx on public.source_monitor_logs(source_id, checked_at desc);
+
+create or replace function public.set_updated_at()
+returns trigger language plpgsql as $$
+begin
+  new.updated_at = now();
+  return new;
+end;
+$$;
+
+create trigger municipalities_updated_at before update on public.municipalities
+for each row execute function public.set_updated_at();
+create trigger sources_updated_at before update on public.sources
+for each row execute function public.set_updated_at();
+create trigger offices_updated_at before update on public.offices
+for each row execute function public.set_updated_at();
+create trigger programs_updated_at before update on public.programs
+for each row execute function public.set_updated_at();
+create trigger municipality_programs_updated_at before update on public.municipality_programs
+for each row execute function public.set_updated_at();
+create trigger admin_profiles_updated_at before update on public.admin_profiles
+for each row execute function public.set_updated_at();
+
+create or replace function public.current_admin_role()
+returns public.admin_role language sql stable security definer set search_path = public as $$
+  select role from public.admin_profiles
+  where user_id = auth.uid() and active = true
+  limit 1;
+$$;
+
+alter table public.prefectures enable row level security;
+alter table public.categories enable row level security;
+alter table public.municipalities enable row level security;
+alter table public.sources enable row level security;
+alter table public.offices enable row level security;
+alter table public.programs enable row level security;
+alter table public.municipality_programs enable row level security;
+alter table public.admin_profiles enable row level security;
+alter table public.verification_logs enable row level security;
+alter table public.source_monitor_logs enable row level security;
+
+create policy "public read prefectures" on public.prefectures for select using (true);
+create policy "public read categories" on public.categories for select using (true);
+create policy "public read published municipalities" on public.municipalities for select using (status = 'published');
+create policy "public read published sources" on public.sources for select using (status = 'published');
+create policy "public read published offices" on public.offices for select using (status = 'published');
+create policy "public read published programs" on public.programs for select using (status = 'published');
+create policy "public read published municipality programs" on public.municipality_programs for select using (status = 'published');
+
+create policy "staff manage prefectures" on public.prefectures for all
+using (public.current_admin_role() in ('admin', 'reviewer'))
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff manage categories" on public.categories for all
+using (public.current_admin_role() in ('admin', 'reviewer'))
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff manage municipalities" on public.municipalities for all
+using (public.current_admin_role() in ('admin', 'reviewer'))
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff manage sources" on public.sources for all
+using (public.current_admin_role() in ('admin', 'reviewer'))
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff manage offices" on public.offices for all
+using (public.current_admin_role() in ('admin', 'reviewer'))
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff manage programs" on public.programs for all
+using (public.current_admin_role() in ('admin', 'reviewer'))
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff manage municipality programs" on public.municipality_programs for all
+using (public.current_admin_role() in ('admin', 'reviewer'))
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+
+create policy "users read own admin profile" on public.admin_profiles for select
+using (user_id = auth.uid() or public.current_admin_role() = 'admin');
+create policy "admins manage profiles" on public.admin_profiles for all
+using (public.current_admin_role() = 'admin')
+with check (public.current_admin_role() = 'admin');
+create policy "staff read verification logs" on public.verification_logs for select
+using (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff insert verification logs" on public.verification_logs for insert
+with check (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff read source monitor logs" on public.source_monitor_logs for select
+using (public.current_admin_role() in ('admin', 'reviewer'));
+create policy "staff insert source monitor logs" on public.source_monitor_logs for insert
+with check (public.current_admin_role() in ('admin', 'reviewer'));

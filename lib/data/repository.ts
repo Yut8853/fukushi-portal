@@ -30,7 +30,7 @@ async function load<T>(dataDirectory: string, filename: string, schema: ZodType<
   });
 }
 
-export async function getPortalData(
+export async function getCsvPortalData(
   dataDirectory = path.join(process.cwd(), "data"),
 ): Promise<PortalData> {
   const [prefectures, categories, municipalities, offices, programs, municipalityPrograms, sources] =
@@ -44,6 +44,16 @@ export async function getPortalData(
       load(dataDirectory, "sources.csv", sourceSchema),
     ]);
   return { prefectures, categories, municipalities, offices, programs, municipalityPrograms, sources };
+}
+
+export async function getPortalData(
+  dataDirectory = path.join(process.cwd(), "data"),
+): Promise<PortalData> {
+  if (process.env.DATA_BACKEND === "supabase") {
+    const { getSupabasePortalData } = await import("./supabase-repository");
+    return getSupabasePortalData();
+  }
+  return getCsvPortalData(dataDirectory);
 }
 
 export async function getPublicPortalData(): Promise<PortalData> {

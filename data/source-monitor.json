@@ -1,0 +1,41 @@
+[
+  {
+    "sourceId": "source-ibaraki-municipalities",
+    "url": "https://www.pref.ibaraki.jp/towns/",
+    "status": "ok",
+    "checkedAt": "2026-07-26T11:15:51.904Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 36576,
+    "contentHash": "d0d032bbd58378a85aa0db7ba93a41069b20bd391c526afcf5ce7d0f7762487b",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ibaraki-self-reliance-list",
+    "url": "https://www.pref.ibaraki.jp/hokenfukushi/fukushi/hogo/konkyuusya/documents/jiritsusoudanshienkikan.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T11:15:53.980Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 204122,
+    "contentHash": "e886fa6db07c94973ec160af6403061a0ed1ce83739dd7358f03b75049d543b9",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ibaraki-welfare-offices",
+    "url": "https://www.pref.ibaraki.jp/soshiki/hokenfukushi/fukujin/documents/hukushizimusixyo.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T11:15:55.978Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 300302,
+    "contentHash": "2df4f9bc0c0e7cd8872fd3c45ccf154c97444ca18db5660e4395a2f44cff8940",
+    "previousHash": "",
+    "error": ""
+  }
+]

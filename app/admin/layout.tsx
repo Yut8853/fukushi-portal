@@ -1,6 +1,10 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 
-export default function AdminLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default async function AdminLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const requestHeaders = await headers();
+  const user = requestHeaders.get("x-admin-user") ?? "";
+  const role = requestHeaders.get("x-admin-role") ?? "";
   return (
     <>
       <nav className="admin-nav" aria-label="管理メニュー">
@@ -11,6 +15,7 @@ export default function AdminLayout({ children }: Readonly<{ children: React.Rea
             <Link href="/admin/review">候補レビュー</Link>
             <Link href="/admin/crawl-jobs">クロール状況</Link>
             <Link href="/admin/sources">出典</Link>
+            {user ? <span aria-label="ログイン中の管理者">{user}（{role}）</span> : null}
           </div>
         </div>
       </nav>

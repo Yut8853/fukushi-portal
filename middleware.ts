@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from "next/server";
 
+type AdminRole = "admin" | "reviewer";
+type AdminCredential = { username: string; password: string; role: AdminRole };
+
 async function digest(value: string): Promise<string> {
   const data = new TextEncoder().encode(value);
   const hash = await crypto.subtle.digest("SHA-256", data);
@@ -22,10 +25,33 @@ function response(status: number, message: string, authenticate = false): NextRe
   });
 }
 
+function configuredCredentials(): AdminCredential[] {
+  const raw = process.env.ADMIN_BASIC_USERS_JSON?.trim() ?? "";
+  if (raw) {
+    let parsed: unknown;
+    try {
+      parsed = JSON.parse(raw);
+    } catch {
+      return [];
+    }
+    if (!Array.isArray(parsed)) return [];
+    return parsed.flatMap((item): AdminCredential[] => {
+      if (!item || typeof item !== "object") return [];
+      const record = item as Record<string, unknown>;
+      const username = typeof record.username === "string" ? record.username.trim() : "";
+      const password = typeof record.password === "string" ? record.password : "";
+      const role = record.role === "reviewer" ? "reviewer" : record.role === "admin" ? "admin" : "";
+      return username && password && role ? [{ username, password, role }] : [];
+    });
+  }
+  const username = process.env.ADMIN_BASIC_USER?.trim() ?? "";
+  const password = process.env.ADMIN_BASIC_PASSWORD ?? "";
+  return username && password ? [{ username, password, role: "admin" }] : [];
+}
+
 export async function middleware(request: NextRequest) {
-  const expectedUser = process.env.ADMIN_BASIC_USER?.trim() ?? "";
-  const expectedPassword = process.env.ADMIN_BASIC_PASSWORD ?? "";
-  if (!expectedUser || !expectedPassword) {
+  const configured = configuredCredentials();
+  if (!configured.length) {
     return response(503, "管理画面は無効です。管理者認証を設定してください。");
   }
 
@@ -45,13 +71,20 @@ export async function middleware(request: NextRequest) {
   const user = credentials.slice(0, separator);
   const password = credentials.slice(separator + 1);
 
-  const [validUser, validPassword] = await Promise.all([
-    credentialsMatch(user, expectedUser),
-    credentialsMatch(password, expectedPassword),
-  ]);
-  if (!validUser || !validPassword) return response(401, "認証情報が正しくありません。", true);
+  let authenticated: AdminCredential | undefined;
+  for (const candidate of configured) {
+    const [validUser, validPassword] = await Promise.all([
+      credentialsMatch(user, candidate.username),
+      credentialsMatch(password, candidate.password),
+    ]);
+    if (validUser && validPassword) authenticated = candidate;
+  }
+  if (!authenticated) return response(401, "認証情報が正しくありません。", true);
 
-  return NextResponse.next();
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-admin-user", authenticated.username);
+  requestHeaders.set("x-admin-role", authenticated.role);
+  return NextResponse.next({ request: { headers: requestHeaders } });
 }
 
 export const config = {

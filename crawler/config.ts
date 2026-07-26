@@ -1,3 +1,7 @@
+import { loadEnvConfig } from "@next/env";
+
+loadEnvConfig(process.cwd());
+
 export type CrawlerConfig = {
   contact: string;
   concurrency: number;

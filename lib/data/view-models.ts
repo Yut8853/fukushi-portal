@@ -1,4 +1,5 @@
 import type { PortalData } from "./repository";
+import { isVerificationExpired, municipalityMissingCount } from "./quality";
 
 export type FinderMunicipality = {
   id: string;
@@ -113,16 +114,6 @@ export function toAdminMunicipalities(data: PortalData): AdminMunicipality[] {
     const offices = data.offices.filter((item) => item.municipalityId === municipality.id);
     const directPrograms = data.programs.filter((item) => item.municipalityId === municipality.id);
     const linkedPrograms = data.municipalityPrograms.filter((item) => item.municipalityId === municipality.id);
-    const missing = [
-      !municipality.nameKana,
-      !municipality.officialUrl,
-      !municipality.representativePhone,
-      !municipality.lastVerifiedAt,
-      ...offices.flatMap((office) => [!office.sourceId, !office.lastVerifiedAt, !office.phone && !office.officialUrl && !office.contactFormUrl && !office.email]),
-    ].filter(Boolean).length;
-    const lastVerified = municipality.lastVerifiedAt
-      ? new Date(`${municipality.lastVerifiedAt}T00:00:00Z`).getTime()
-      : 0;
     return {
       id: municipality.id,
       prefectureCode: municipality.prefectureCode,
@@ -133,8 +124,8 @@ export function toAdminMunicipalities(data: PortalData): AdminMunicipality[] {
       officeCount: offices.length,
       programCount: directPrograms.length + linkedPrograms.length,
       lastVerifiedAt: municipality.lastVerifiedAt,
-      missingCount: missing,
-      verificationExpired: !lastVerified || Date.now() - lastVerified > 365 * 86_400_000,
+      missingCount: municipalityMissingCount(municipality, offices),
+      verificationExpired: isVerificationExpired(municipality.lastVerifiedAt),
     };
   });
 }

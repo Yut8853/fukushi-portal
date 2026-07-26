@@ -12,6 +12,10 @@ function emptyJob(item: Awaited<ReturnType<typeof loadCrawlMunicipalities>>[numb
   };
 }
 
+function municipalityCodeKey(code: string): string {
+  return code.replace(/\D/g, "").slice(0, 5);
+}
+
 async function main() {
   const args = process.argv.slice(2);
   const all = args.includes("--all");
@@ -33,13 +37,28 @@ async function main() {
   const missingUrls = selected.filter((item) => !item.officialUrl);
   selected = selected.filter((item) => item.officialUrl);
   const existing = await readQueue();
-  const byId = new Map(existing.map((job) => [job.municipalityId, job]));
+  const byCode = new Map(existing.map((job) => [municipalityCodeKey(job.municipalityCode), job]));
+  const duplicatesRemoved = existing.length - byCode.size;
   let added = 0;
   for (const item of selected) {
-    if (!byId.has(item.id)) { byId.set(item.id, emptyJob(item)); added += 1; }
+    const key = municipalityCodeKey(item.municipalityCode);
+    const current = byCode.get(key);
+    if (!current) {
+      byCode.set(key, emptyJob(item));
+      added += 1;
+      continue;
+    }
+    byCode.set(key, {
+      ...current,
+      municipalityId: item.id,
+      municipalityCode: item.municipalityCode,
+      municipalityName: item.name,
+      prefectureCode: item.prefectureCode,
+      officialUrl: item.officialUrl,
+    });
   }
-  await writeQueue([...byId.values()]);
-  console.log(`キュー追加: ${added}件 / URL未登録で除外: ${missingUrls.length}件 / キュー総数: ${byId.size}件`);
+  await writeQueue([...byCode.values()]);
+  console.log(`キュー追加: ${added}件 / 重複統合: ${duplicatesRemoved}件 / URL未登録で除外: ${missingUrls.length}件 / キュー総数: ${byCode.size}件`);
   if (missingUrls.length) console.log(`URL未登録例: ${missingUrls.slice(0, 10).map((item) => `${item.municipalityCode}:${item.name}`).join(", ")}`);
 }
 main().catch((error: unknown) => { console.error(`エラー: ${error instanceof Error ? error.message : String(error)}`); process.exitCode = 1; });
