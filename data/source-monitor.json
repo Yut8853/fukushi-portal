@@ -1,5 +1,44 @@
 [
   {
+    "sourceId": "source-chiba-municipalities",
+    "url": "https://www.pref.chiba.lg.jp/kouhou/ichiran.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:15:59.554Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 43175,
+    "contentHash": "fe999f8388d8370dc7ac8bac4c32a7c7edb9215a8bcfed073c18f2f35b14b9f8",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-chiba-public-assistance",
+    "url": "https://www.pref.chiba.lg.jp/kenshidou/seikatsuhogo/seihosoudan.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:16:03.701Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 36725,
+    "contentHash": "f17b8f913b484c9cd411d6732cebe69c7d181f21f021fbec16b1b7f3ea14ca61",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-chiba-self-reliance",
+    "url": "https://www.pref.chiba.lg.jp/kenshidou/seikatukonkyuu.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:16:01.666Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 44589,
+    "contentHash": "908c17b0889410d27d68b4873ff34332482264d343b6b4fa046c087467bbadfd",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-gunma-municipalities",
     "url": "https://www.pref.gunma.jp/page/14524.html",
     "status": "ok",
