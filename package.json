@@ -9,13 +9,17 @@
     "lint": "eslint . --ext .js,.jsx,.ts,.tsx",
     "data:validate": "tsx scripts/data-validate.ts",
     "municipality:add": "tsx scripts/municipality-add.ts",
+    "municipalities:promote": "tsx scripts/municipalities-promote.ts",
     "municipalities:sync": "tsx scripts/municipalities-sync.ts",
     "municipality-urls:resolve": "tsx scripts/municipality-urls-resolve.ts",
     "crawl:queue": "tsx scripts/crawl-queue.ts",
     "crawl:worker": "tsx scripts/crawl-worker.ts",
     "crawl:retry-failed": "tsx scripts/crawl-retry-failed.ts",
     "crawl:status": "tsx scripts/crawl-status.ts",
-    "crawl:report": "tsx scripts/crawl-report.ts"
+    "crawl:report": "tsx scripts/crawl-report.ts",
+    "crawl:diff": "tsx scripts/crawl-diff.ts",
+    "crawl:publish": "tsx scripts/crawl-publish.ts",
+    "crawl:publish:test": "tsx scripts/crawl-publish-test.ts"
   },
   "dependencies": {
     "cheerio": "^1.2.0",

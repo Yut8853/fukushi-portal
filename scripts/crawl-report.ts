@@ -1,10 +1,10 @@
-import { crawlCategories } from "../crawler/categories";
 import { readAllResults, readQueue } from "../crawler/store";
+import { getPortalData } from "../lib/data/repository";
 
 async function main() {
-const [jobs, results] = await Promise.all([readQueue(), readAllResults()]);
+const [jobs, results, portalData] = await Promise.all([readQueue(), readAllResults(), getPortalData()]);
 const candidates = results.flatMap((result) => result.candidates);
-const categories = new Map<string, number>(crawlCategories.map(([id]) => [id, 0]));
+const categories = new Map<string, number>(portalData.categories.map(({ id }) => [id, 0]));
 candidates.forEach((item) => categories.set(item.categoryId, (categories.get(item.categoryId) ?? 0) + 1));
 console.log(JSON.stringify({
   generatedAt: new Date().toISOString(), jobs: jobs.length,

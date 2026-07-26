@@ -1,3 +1,5 @@
 id,municipalityId,programId,localName,localDescription,officeId,sourceId,status,lastVerifiedAt
 mito-public-assistance-link,ibaraki-mito,public-assistance,生活保護,水戸市生活福祉課保護係で相談・申請を受け付けます。,mito-public-assistance,source-mito-public-assistance,published,2026-07-26
 mito-self-reliance-link,ibaraki-mito,self-reliance,水戸市自立相談支援事業,水戸市自立相談支援室で仕事・生活・住まいの相談を受け付けます。,mito-self-reliance,source-mito-self-reliance,published,2026-07-26
+tsukuba-public-assistance-link,ibaraki-tsukuba,public-assistance,生活保護,つくば市生活支援課（福祉事務所）2階41番窓口で相談・申請を受け付けます。,tsukuba-public-assistance,source-tsukuba-public-assistance,published,2026-07-26
+tsukuba-self-reliance-link,ibaraki-tsukuba,self-reliance,つくば市生活困窮者自立相談支援,つくば市生活支援課で仕事・生活・住まいの相談を受け付けます。,tsukuba-self-reliance,source-tsukuba-self-reliance,published,2026-07-26

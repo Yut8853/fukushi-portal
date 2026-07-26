@@ -7,11 +7,26 @@ export default async function HomePage() {
   return (
     <main id="main" className="page-shell">
       <header className="hero">
-        <p className="eyebrow">制度名が分からなくても大丈夫です</p>
-        <h1>生活に困ったとき、<br />今日できることを探す</h1>
-        <p className="lead">
-          今いる地域と困りごとを選ぶと、相談先、伝える言葉、必要なものをまとめて表示します。
-        </p>
+        <div className="hero-copy">
+          <p className="eyebrow">制度名を知らなくても大丈夫です</p>
+          <h1 className="hero-title">
+            <span>いまの困りごとから、</span>
+            <span>相談先を探せます。</span>
+          </h1>
+          <p className="lead">
+            状況をひとつ選ぶだけで、今日できることと公的な相談先を分かりやすく案内します。
+            名前や住所の入力は不要です。
+          </p>
+          <a className="hero-button" href="#support-finder">相談先を探す</a>
+        </div>
+        <aside className="hero-guide" aria-label="このサイトでできること">
+          <p>このサイトで分かること</p>
+          <ol>
+            <li><span>1</span>まず、どこへ相談するか</li>
+            <li><span>2</span>電話で何と伝えるか</li>
+            <li><span>3</span>手元にあるとよいもの</li>
+          </ol>
+        </aside>
       </header>
 
       <SupportFinder data={data} />

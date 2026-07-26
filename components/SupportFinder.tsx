@@ -41,62 +41,108 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     );
   }, [categoryId, municipalityId, data.offices]);
   const canSearch = Boolean(categoryId);
+  const selectedCategory = data.categories.find((item) => item.id === categoryId);
+  const showResults = () => {
+    setSearched(true);
+    window.setTimeout(() => {
+      document.getElementById("support-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
 
   return (
-    <section className="finder" aria-labelledby="finder-title">
-      <h2 id="finder-title">あなたの状況を教えてください</h2>
-      <p className="finder-help">
-        制度名を知っている必要はありません。いまの状況に近いものを1つ選んでください。
-        地域は分かる範囲で選べます。
-      </p>
-      <fieldset>
-        <legend>1. いま、一番困っていること</legend>
+    <section id="support-finder" className="finder" aria-labelledby="finder-title">
+      <div className="finder-heading">
+        <p className="section-kicker">相談先を探す</p>
+        <h2 id="finder-title">いまの状況に近いものを選んでください</h2>
+        <p className="finder-help">
+          制度名は分からなくて大丈夫です。入力内容が送信・保存されることはありません。
+        </p>
+      </div>
+
+      <div className="finder-progress" aria-label="検索の流れ">
+        <span className={categoryId ? "is-complete" : "is-current"}><b>1</b>困りごと</span>
+        <span className={categoryId ? "is-current" : ""}><b>2</b>地域</span>
+        <span><b>3</b>案内を見る</span>
+      </div>
+
+      <fieldset className="need-fieldset">
+        <legend className="visually-hidden">いま、一番困っていること</legend>
+        <div className="step-heading" aria-hidden="true">
+          <span className="step-number">1</span>
+          <span>いま、一番困っていること</span>
+        </div>
+        <p className="field-help">完全に同じでなくても、いちばん近いものを1つ選べば大丈夫です。</p>
         <div className="need-grid">
           {data.categories.map((category) => (
             <label key={category.id} className={`need-card ${categoryId === category.id ? "is-selected" : ""}`}>
               <input type="radio" name="need" value={category.id} checked={categoryId === category.id}
                 onChange={() => { setCategoryId(category.id); setSearched(false); }} />
-              <strong>{category.label}</strong>
-              <span>{category.description}</span>
+              <span className="need-radio" aria-hidden="true" />
+              <span className="need-copy">
+                <strong>{category.label}</strong>
+                <small>{category.description}</small>
+              </span>
             </label>
           ))}
         </div>
       </fieldset>
 
-      <div className="location-grid">
-        <label><span>2. 都道府県（あとでも選べます）</span>
-          <select value={prefectureCode} onChange={(event) => {
-            setPrefectureCode(event.target.value); setMunicipalityId(""); setSearched(false);
-          }}>
-            <option value="">選択してください</option>
-            {data.prefectures.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
-          </select>
-        </label>
-        <label><span>3. 市区町村（あとでも選べます）</span>
-          <select value={municipalityId} disabled={!prefectureCode} onChange={(event) => {
-            setMunicipalityId(event.target.value); setSearched(false);
-          }}>
-            <option value="">{municipalityOptions.length ? "選択してください" : "公開済み自治体はありません"}</option>
-            {municipalityOptions.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
-          </select>
-        </label>
+      <fieldset className="location-fieldset">
+        <legend className="visually-hidden">住んでいる地域</legend>
+        <div className="step-heading" aria-hidden="true">
+          <span className="step-number">2</span>
+          <span>住んでいる地域</span>
+        </div>
+        <p className="field-help">
+          地域を選ばなくても、全国共通の支援を確認できます。
+          郵便番号や詳しい住所は入力しません。
+        </p>
+        <div className="location-grid">
+          <label><span>都道府県 <em>任意</em></span>
+            <select value={prefectureCode} onChange={(event) => {
+              setPrefectureCode(event.target.value); setMunicipalityId(""); setSearched(false);
+            }}>
+              <option value="">選択しない</option>
+              {data.prefectures.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
+            </select>
+          </label>
+          <label><span>市区町村 <em>任意</em></span>
+            <select value={municipalityId} disabled={!prefectureCode} onChange={(event) => {
+              setMunicipalityId(event.target.value); setSearched(false);
+            }}>
+              <option value="">{prefectureCode
+                ? municipalityOptions.length ? "選択しない" : "公開済み自治体はありません"
+                : "先に都道府県を選択"}</option>
+              {municipalityOptions.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
+            </select>
+          </label>
+        </div>
+
+        {prefectureCode && !municipalityOptions.length && (
+          <p className="preparing-message">
+            この都道府県の自治体別情報は現在整備中です。全国共通の支援情報は確認できます。
+          </p>
+        )}
+      </fieldset>
+
+      <div className="search-action">
+        {selectedCategory
+          ? <p><strong>選んだ状況：</strong>{selectedCategory.label}</p>
+          : <p>最初に困りごとを1つ選んでください</p>}
+        <button className="primary-button" disabled={!canSearch} onClick={showResults}>
+          {municipality ? `${municipality.name}の相談先を見る` : "相談先と支援を見る"}
+        </button>
       </div>
 
-      {prefectureCode && !municipalityOptions.length && (
-        <p className="preparing-message">
-          この都道府県の自治体別情報は現在整備中です。全国共通の支援情報は確認できます。
-        </p>
-      )}
-
-      <button className="primary-button" disabled={!canSearch} onClick={() => setSearched(true)}>
-        {municipality ? `${municipality.name}の相談先を見る` : "全国共通の支援を先に見る"}
-      </button>
-
       {searched && (
-        <div className="results" aria-live="polite">
+        <div id="support-results" className="results" aria-live="polite">
           <div className="results-head">
-            <p className="eyebrow">{municipality?.name ?? "全国共通"}</p>
-            <h2>今日できること</h2>
+            <p className="section-kicker">{municipality?.name ?? "全国共通"}の案内</p>
+            <h2>まず、ここから相談できます</h2>
+            <p>
+              「{selectedCategory?.label}」について、
+              {offices.length + results.length}件の公開情報があります。
+            </p>
             {!municipality && (
               <p className="preparing-message">
                 全国共通の制度を表示しています。自治体を選ぶと、登録済みの地域窓口も表示します。
@@ -108,7 +154,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 全国共通の相談先と自治体公式サイトをご案内します。
               </p>
             )}
-            {municipality?.officialUrl && <a href={municipality.officialUrl} target="_blank" rel="noreferrer">自治体公式サイトを開く</a>}
+            {municipality?.officialUrl && <a className="official-link" href={municipality.officialUrl} target="_blank" rel="noreferrer">
+              {municipality.name}公式サイトを開く
+            </a>}
           </div>
           {offices.length > 0 && (
             <section className="office-results" aria-labelledby="office-results-title">

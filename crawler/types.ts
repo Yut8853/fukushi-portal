@@ -3,6 +3,8 @@ export const crawlStatuses = [
   "review_required", "skipped", "blocked_by_robots",
 ] as const;
 export type CrawlStatus = (typeof crawlStatuses)[number];
+export type PublicationTarget = "office" | "program" | "";
+export type CandidateStatus = "review_required" | "verified" | "rejected" | "on_hold" | "published";
 
 export type CrawlJob = {
   municipalityId: string;
@@ -37,6 +39,7 @@ export type CrawlCandidate = {
   requiredDocuments: string;
   documentsOptionalNote: string;
   applicationFlow: string;
+  postalCode: string;
   address: string;
   phone: string;
   phoneOriginal: string;
@@ -50,6 +53,7 @@ export type CrawlCandidate = {
   availableMethods: string;
   accessibility: string;
   languages: string;
+  emergencyAlternative: string;
   officialUrl: string;
   sourceUrl: string;
   sourceType: "html" | "pdf" | "excel" | "csv";
@@ -58,16 +62,43 @@ export type CrawlCandidate = {
   originalText: string;
   extractionMethod: "static_html" | "pdf_text" | "structured_document";
   confidence: number;
-  status: "review_required" | "verified" | "rejected" | "on_hold";
+  status: CandidateStatus;
   warnings: string[];
+  publicationTarget: PublicationTarget;
+  reviewer: string;
+  reviewNote: string;
+  reviewedAt: string;
+  publishedEntityId: string;
+  publishedAt: string;
 };
 
 export type CrawlResult = {
-  schemaVersion: 1;
+  schemaVersion: 1 | 2;
   municipalityId: string;
   municipalityCode: string;
   municipalityName: string;
   officialUrl: string;
   job: CrawlJob;
   candidates: CrawlCandidate[];
+};
+
+export type VerificationAction =
+  | "edit"
+  | "verify"
+  | "reject"
+  | "hold"
+  | "research"
+  | "publish";
+
+export type VerificationLog = {
+  id: string;
+  municipalityCode: string;
+  candidateId: string;
+  action: VerificationAction;
+  actor: string;
+  note: string;
+  previousStatus: CandidateStatus;
+  newStatus: CandidateStatus;
+  createdAt: string;
+  publishedEntityId: string;
 };

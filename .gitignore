@@ -22,3 +22,9 @@ coverage/
 .DS_Store
 .idea/
 .vscode/
+
+# Runtime crawl data and recoverable publication snapshots
+data/crawl/queue.json
+data/crawl/results/
+data/crawl/backups/
+data/crawl/verification-log.json

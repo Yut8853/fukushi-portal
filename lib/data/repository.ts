@@ -18,8 +18,8 @@ export type PortalData = {
   sources: Source[];
 };
 
-async function load<T>(filename: string, schema: ZodType<T>): Promise<T[]> {
-  const rows = await readCsvFile(path.join(process.cwd(), "data", filename));
+async function load<T>(dataDirectory: string, filename: string, schema: ZodType<T>): Promise<T[]> {
+  const rows = await readCsvFile(path.join(dataDirectory, filename));
   return rows.map((row, index) => {
     const result = schema.safeParse(row);
     if (!result.success) {
@@ -30,16 +30,18 @@ async function load<T>(filename: string, schema: ZodType<T>): Promise<T[]> {
   });
 }
 
-export async function getPortalData(): Promise<PortalData> {
+export async function getPortalData(
+  dataDirectory = path.join(process.cwd(), "data"),
+): Promise<PortalData> {
   const [prefectures, categories, municipalities, offices, programs, municipalityPrograms, sources] =
     await Promise.all([
-      load("prefectures.csv", prefectureSchema),
-      load("categories.csv", categorySchema),
-      load("municipalities.csv", municipalitySchema),
-      load("offices.csv", officeSchema),
-      load("programs.csv", programSchema),
-      load("municipality-programs.csv", municipalityProgramSchema),
-      load("sources.csv", sourceSchema),
+      load(dataDirectory, "prefectures.csv", prefectureSchema),
+      load(dataDirectory, "categories.csv", categorySchema),
+      load(dataDirectory, "municipalities.csv", municipalitySchema),
+      load(dataDirectory, "offices.csv", officeSchema),
+      load(dataDirectory, "programs.csv", programSchema),
+      load(dataDirectory, "municipality-programs.csv", municipalityProgramSchema),
+      load(dataDirectory, "sources.csv", sourceSchema),
     ]);
   return { prefectures, categories, municipalities, offices, programs, municipalityPrograms, sources };
 }

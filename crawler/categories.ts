@@ -20,7 +20,35 @@ export const crawlCategories = [
   ["disaster_recovery", ["生活再建支援", "被災者支援"]],
 ] as const;
 
-export function classify(text: string): { id: string; score: number }[] {
+export type CrawlCategoryId = (typeof crawlCategories)[number][0];
+
+const portalCategoryMap: Record<CrawlCategoryId, string> = {
+  public_assistance: "money",
+  self_reliance: "housing",
+  housing_benefit: "rent",
+  welfare_office: "money",
+  social_welfare_council: "unknown",
+  food_support: "food",
+  emergency_housing: "housing",
+  disability: "disability",
+  mental_health: "mental",
+  children: "children",
+  single_parent: "children",
+  elderly_care: "care",
+  violence: "violence",
+  child_abuse: "violence",
+  debt_legal: "debt",
+  foreign_residents: "unknown",
+  reductions: "money",
+  local_benefit: "money",
+  disaster_recovery: "housing",
+};
+
+export function toPortalCategory(id: CrawlCategoryId): string {
+  return portalCategoryMap[id];
+}
+
+export function classify(text: string): { id: CrawlCategoryId; score: number }[] {
   return crawlCategories.map(([id, keywords]) => ({
     id,
     score: keywords.reduce((score, keyword) => score + (text.includes(keyword) ? 1 : 0), 0),

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import EmergencyBanner from "@/components/EmergencyBanner";
 import SiteFooter from "@/components/SiteFooter";
+import SiteHeader from "@/components/SiteHeader";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -14,6 +15,7 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       <body>
         <a className="skip-link" href="#main">本文へ移動</a>
         <EmergencyBanner />
+        <SiteHeader />
         {children}
         <SiteFooter />
       </body>
