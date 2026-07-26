@@ -182,6 +182,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-niigata-municipalities",
+    "url": "https://www.pref.niigata.lg.jp/uploaded/attachment/493935.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:34:33.999Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 212865,
+    "contentHash": "0ce8cdcaca6b31aa14164a7956d8217729bc5541bf02d19a0fccaf700ea9f534",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-niigata-public-assistance",
+    "url": "https://www.pref.niigata.lg.jp/sec/fukushihoken/1296763262577.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:34:38.094Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 41296,
+    "contentHash": "985facef1fa1d513927d7d080ef626685253f5dc2da4d869a918cbd174a5e3f5",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-niigata-self-reliance",
+    "url": "https://www.pref.niigata.lg.jp/uploaded/attachment/324739.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:34:36.102Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 86652,
+    "contentHash": "406c3d30074c543183475d5f2195c3e03e1ae13cac8dc51a7cf2b64e928aa530",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-saitama-official-links",
     "url": "https://www.pref.saitama.lg.jp/a0301/wwwlink.html",
     "status": "ok",
