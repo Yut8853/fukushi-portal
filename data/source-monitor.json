@@ -297,5 +297,44 @@
     "contentHash": "34696e063fdd5f401cfd8d25482af4c8cf250e70094b83d6e7fe94dd77fa7bda",
     "previousHash": "",
     "error": ""
+  },
+  {
+    "sourceId": "source-toyama-municipalities",
+    "url": "https://www.pref.toyama.jp/documents/18401/shichosonrenrakusaki.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:42:58.571Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 73370,
+    "contentHash": "8cdc1e25805e5c834e98425912c88fb4f16b4a7984d2a074159d0295574e879d",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-toyama-public-assistance",
+    "url": "https://www.pref.toyama.jp/1200/kurashi/kenkou/fukushi/kj00000033.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:43:02.643Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 21011,
+    "contentHash": "57a4a48a55b3eb44c0bdf3394010981992925329793727142009ccdec8c57ef3",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-toyama-self-reliance",
+    "url": "https://www.pref.toyama.jp/documents/2207/jiritsusien.xlsx",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:43:00.687Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    "contentLength": 15988,
+    "contentHash": "ecfa41f51547ed2bfd138cacc5551fa1e09ab29f8b459797d63f033e7d287d16",
+    "previousHash": "",
+    "error": ""
   }
 ]
