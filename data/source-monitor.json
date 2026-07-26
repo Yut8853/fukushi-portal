@@ -117,6 +117,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-ishikawa-municipalities",
+    "url": "https://www.pref.ishikawa.lg.jp/sichousien/kennaiichiran2.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:53:39.436Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 31934,
+    "contentHash": "1cdbf93f028851ca8db876497402666771ced4e12a2e3f4938c339e1395bc980",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ishikawa-public-assistance",
+    "url": "https://www.pref.ishikawa.lg.jp/kousei/hogo/seikatuhogo.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:53:45.503Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 37093,
+    "contentHash": "d09f09b18ae2c24558a03891956992aed9b710200daa04a3e84a9a17507c3079",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ishikawa-self-reliance-r8",
+    "url": "https://www.pref.ishikawa.lg.jp/kousei/safetynet/documents/r8madoguchi.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:53:41.529Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 60901,
+    "contentHash": "4ae29dcfe3d21f2aaa5fddd54d223c866cb97b465385d51bb7fb5cc8111f1e53",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ishikawa-welfare-offices",
+    "url": "https://www.pref.ishikawa.lg.jp/kousei/hogo/fukusijimusyoitiran.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:53:43.592Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 36420,
+    "contentHash": "baccef87d320140214457b9f576167e2dcc7e238e213a59e4bae94ddc40eae5a",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-kanagawa-housing-benefit",
     "url": "https://www.pref.kanagawa.jp/docs/r6w/konkyu/jukyokakuhokyufukin.html",
     "status": "ok",
