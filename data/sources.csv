@@ -71,3 +71,91 @@ source-fukuoka-city-hall,福岡市役所各庁舎の案内,https://www.city.fuku
 source-fukuoka-life-support,福岡市生活自立支援センターアクセス,https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/life/documents/accessmap.pdf,福岡市,official,published,2026-07-26
 source-fukuoka-housing-benefit,住居確保給付金,https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/health/jyukyokakuhokyuhukin_3_2.html,福岡市,official,published,2026-07-26
 source-fukuoka-public-assistance,相談窓口ガイド（福祉）,https://www.city.fukuoka.lg.jp/soudan/hukushi.html,福岡市,official,published,2026-07-26
+source-mhlw-housing-counter,住居確保給付金 相談窓口一覧,https://corona-support.mhlw.go.jp/jukyokakuhokyufukin/counter.html,厚生労働省,official,published,2026-07-26
+source-capital-jp-02201-city,青森市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12314180.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-02201-public,青森市 生活保護の相談・申請窓口,https://www.city.aomori.aomori.jp/hukushi_kenkou/hukushi/1002937/1007947/1002938.html,青森市,official,published,2026-07-26
+source-capital-jp-03201-city,盛岡市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12414180.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-03201-public,盛岡市 生活保護の相談・申請窓口,https://www.city.morioka.iwate.jp/kenkou/seikatsufukushi/seikatsuhogo/1006442.html,盛岡市,official,published,2026-07-26
+source-capital-jp-05201-city,秋田市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12614180.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-05201-public,秋田市 生活保護の相談・申請窓口,https://www.city.akita.lg.jp/kurashi/okomarinokata/1025668/1025664.html,秋田市,official,published,2026-07-26
+source-capital-jp-06201-city,山形市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12714180.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-06201-public,山形市 生活保護の相談・申請窓口,https://www.city.yamagata-yamagata.lg.jp/kenkofukushi/fukushi/1006661/1004829.html,山形市,official,published,2026-07-26
+source-capital-jp-07201-city,福島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12814180.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-07201-public,福島市 生活保護の相談・申請窓口,https://www.city.fukushima.fukushima.jp/soshiki/9/1042/3/1830.html,福島市,official,published,2026-07-26
+source-capital-jp-09201-city,宇都宮市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13014181.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-09201-self,宇都宮市 生活困窮者自立相談・住居確保給付金,https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/1026386.html,宇都宮市,official,published,2026-07-26
+source-capital-jp-09201-public,宇都宮市 生活保護の相談・申請窓口,https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/hogo/1004811.html,宇都宮市,official,published,2026-07-26
+source-capital-jp-10201-city,前橋市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13114181.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-10201-public,前橋市 生活保護の相談・申請窓口,https://www.city.maebashi.gunma.jp/kenko_fukushi/5/2/2/11873.html,前橋市,official,published,2026-07-26
+source-capital-jp-11100-city,さいたま市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13214181.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-11100-self,さいたま市 生活困窮者自立相談・住居確保給付金,https://www.city.saitama.lg.jp/002/003/002/p088576.html,さいたま市,official,published,2026-07-26
+source-capital-jp-11100-public,さいたま市 生活保護の相談・申請窓口,https://www.city.saitama.lg.jp/002/003/002/p032098.html,さいたま市,official,published,2026-07-26
+source-capital-jp-12100-city,千葉市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13314181.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-12100-public,千葉市 生活保護の相談・申請窓口,https://www.city.chiba.jp/hokenfukushi/hogo/kakukusoudanmadoguti.html,千葉市,official,published,2026-07-26
+source-capital-tokyo-shinjuku-city,新宿区の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13414181.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-tokyo-shinjuku-public,新宿区 生活保護の相談・申請窓口,https://www.city.shinjuku.lg.jp/fukushi/file04_01_00002.html,新宿区,official,published,2026-07-26
+source-capital-jp-15100-city,新潟市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_13614182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-15100-public,新潟市 生活保護の相談・申請窓口,https://www.city.niigata.lg.jp/iryo/kenfuku/seikatsuhogo/sodan.html,新潟市,official,published,2026-07-26
+source-capital-jp-16201-city,富山市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_13714182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-16201-public,富山市 生活保護の相談・申請窓口,https://www.city.toyama.lg.jp/shisei/soshiki/1010709/1004452.html,富山市,official,published,2026-07-26
+source-capital-jp-17201-city,金沢市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_13814182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-17201-public,金沢市 生活保護の相談・申請窓口,https://www4.city.kanazawa.lg.jp/kenko_fukushi/seikatsufukushi/seikatsuhogo/10648.html,金沢市,official,published,2026-07-26
+source-capital-jp-18201-city,福井市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_13914182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-18201-public,福井市 生活保護の相談・申請窓口,https://www.city.fukui.lg.jp/fukusi/tifukusi/seikatu/p020650.html,福井市,official,published,2026-07-26
+source-capital-jp-19201-city,甲府市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_14014182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-19201-public,甲府市 生活保護の相談・申請窓口,https://www.city.kofu.yamanashi.jp/sekatsufukushi/index.html,甲府市,official,published,2026-07-26
+source-capital-jp-20201-city,長野市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_14114182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-20201-public,長野市 生活保護の相談・申請窓口,https://www.city.nagano.nagano.jp/n100800/contents/p002540.html,長野市,official,published,2026-07-26
+source-capital-jp-21201-city,岐阜市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_14214182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-21201-public,岐阜市 生活保護の相談・申請窓口,https://www.city.gifu.lg.jp/kenko/seikathushien/1005021/1005022.html,岐阜市,official,published,2026-07-26
+source-capital-jp-22100-city,静岡市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_14314182.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-22100-public,静岡市 生活保護の相談・申請窓口,https://www.city.shizuoka.lg.jp/s3865/s003044.html,静岡市,official,published,2026-07-26
+source-capital-jp-24201-city,津市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14514183.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-24201-public,津市 生活保護の相談・申請窓口,https://www.info.city.tsu.mie.jp/shisei/shiyakusho_annai/1009884/1004879/1008382/1008393.html,津市,official,published,2026-07-26
+source-capital-jp-25201-city,大津市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14614183.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-25201-public,大津市 生活保護の相談・申請窓口,https://www.city.otsu.lg.jp/soshiki/020/1424/g/76880.html,大津市,official,published,2026-07-26
+source-capital-jp-26100-city,京都市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14714183.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-26100-self,京都市 生活困窮者自立相談・住居確保給付金,https://www.city.kyoto.lg.jp/hokenfukushi/page/0000282954.html,京都市,official,published,2026-07-26
+source-capital-jp-26100-public,京都市 生活保護の相談・申請窓口,https://www.call3755.city.kyoto.lg.jp/faq_p/P200.aspx?FAQID=0101287,京都市,official,published,2026-07-26
+source-capital-osaka-osaka-city,大阪市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14814183.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-osaka-osaka-self,大阪市 生活困窮者自立相談・住居確保給付金,https://www.city.osaka.lg.jp/fukushi/page/0000303608.html,大阪市,official,published,2026-07-26
+source-capital-osaka-osaka-public,大阪市 生活保護の相談・申請窓口,https://www.city.osaka.lg.jp/fukushi/cmsfiles/contents/0000615/615306/kankseikikan.pdf,大阪市,official,published,2026-07-26
+source-capital-jp-29201-city,奈良市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_15014183.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-29201-public,奈良市 生活保護の相談・申請窓口,https://www.city.nara.lg.jp/soshiki/35/index-2.html,奈良市,official,published,2026-07-26
+source-capital-jp-30201-city,和歌山市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_15114183.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-30201-self,和歌山市 生活困窮者自立相談・住居確保給付金,https://www.city.wakayama.wakayama.jp/shisei/1009417/soshiki/1002616/1002640/1002702.html,和歌山市,official,published,2026-07-26
+source-capital-jp-30201-public,和歌山市 生活保護の相談・申請窓口,https://www.city.wakayama.wakayama.jp/shisei/1009417/soshiki/1002616/1002640/1002702.html,和歌山市,official,published,2026-07-26
+source-capital-jp-31201-city,鳥取市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15214184.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-31201-public,鳥取市 生活保護の相談・申請窓口,https://www.city.tottori.lg.jp/page/4620.html,鳥取市,official,published,2026-07-26
+source-capital-jp-32201-city,松江市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15314184.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-32201-self,松江市 生活困窮者自立相談・住居確保給付金,https://www.city.matsue.lg.jp/kenko_fukushi/seikatuhukushi/7407.html,松江市,official,published,2026-07-26
+source-capital-jp-32201-public,松江市 生活保護の相談・申請窓口,https://www.city.matsue.lg.jp/kenko_fukushi/seikatuhukushi/7407.html,松江市,official,published,2026-07-26
+source-capital-jp-33100-city,岡山市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15414184.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-33100-self,岡山市 生活困窮者自立相談・住居確保給付金,https://www.city.okayama.jp/kurashi/0000082213.html,岡山市,official,published,2026-07-26
+source-capital-jp-33100-public,岡山市 生活保護の相談・申請窓口,https://www.city.okayama.jp/kurashi/0000036538.html,岡山市,official,published,2026-07-26
+source-capital-jp-34100-city,広島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15514184.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-34100-self,広島市 生活困窮者自立相談・住居確保給付金,https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021956.html,広島市,official,published,2026-07-26
+source-capital-jp-34100-public,広島市 生活保護の相談・申請窓口,https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021949.html,広島市,official,published,2026-07-26
+source-capital-jp-35203-city,山口市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15614184.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-35203-public,山口市 生活保護の相談・申請窓口,https://www.city.yamaguchi.lg.jp/site/kokorohot/24047.html,山口市,official,published,2026-07-26
+source-capital-jp-36201-city,徳島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/shikoku/cms_15714186.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-36201-public,徳島市 生活保護の相談・申請窓口,https://www.city.tokushima.tokushima.jp/kenko_fukushi/chiiki_fukushi/seikatsuhogo.html,徳島市,official,published,2026-07-26
+source-capital-jp-37201-city,高松市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/shikoku/cms_15814186.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-37201-public,高松市 生活保護の相談・申請窓口,https://www.city.takamatsu.kagawa.jp/smph/kurashi/shinotorikumi/soshikihyo/seikatsu.html,高松市,official,published,2026-07-26
+source-capital-jp-38201-city,松山市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/shikoku/cms_15914186.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-38201-public,松山市 生活保護の相談・申請窓口,https://www.city.matsuyama.ehime.jp/kurashi/fukushi/shakai/hogo/tetsuduki/hogonotetuduki.html,松山市,official,published,2026-07-26
+source-capital-jp-39201-city,高知市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/shikoku/cms_16014186.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-39201-public,高知市 生活保護の相談・申請窓口,https://www.city.kochi.kochi.jp/soshiki/189/soudanmadoguchi.html,高知市,official,published,2026-07-26
+source-capital-jp-41201-city,佐賀市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16214187.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-41201-self,佐賀市 生活困窮者自立相談・住居確保給付金,https://www.city.saga.lg.jp/shisei/sagashioshiru/8/9/3012.html,佐賀市,official,published,2026-07-26
+source-capital-jp-41201-public,佐賀市 生活保護の相談・申請窓口,https://www.city.saga.lg.jp/shisei/sagashioshiru/8/9/3012.html,佐賀市,official,published,2026-07-26
+source-capital-jp-42201-city,長崎市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16314187.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-42201-public,長崎市 生活保護の相談・申請窓口,https://www.city.nagasaki.lg.jp/page/1442.html,長崎市,official,published,2026-07-26
+source-capital-jp-43100-city,熊本市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16414187.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-43100-public,熊本市 生活保護の相談・申請窓口,https://www.city.kumamoto.jp/kiji0031003/index.html,熊本市,official,published,2026-07-26
+source-capital-jp-44201-city,大分市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16514187.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-44201-public,大分市 生活保護の相談・申請窓口,https://www.city.oita.oita.jp/o090/kenko/fukushi/1014363789439.html,大分市,official,published,2026-07-26
+source-capital-jp-45201-city,宮崎市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16614187.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-45201-public,宮崎市 生活保護の相談・申請窓口,https://www.city.miyazaki.miyazaki.jp/health/welfare/protection/1169.html,宮崎市,official,published,2026-07-26
+source-capital-jp-46201-city,鹿児島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16714187.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-jp-46201-public,鹿児島市 生活保護の相談・申請窓口,https://www.city.kagoshima.lg.jp/kenkofukushi/fukushi/hogo1/index.html,鹿児島市,official,published,2026-07-26
