@@ -1,5 +1,44 @@
 [
   {
+    "sourceId": "source-gunma-municipalities",
+    "url": "https://www.pref.gunma.jp/page/14524.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:01:33.979Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 49797,
+    "contentHash": "32fa1d18574f0995406a6da830f3c76f32fc0a42848964b3fc2b539458b37e50",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-gunma-public-assistance",
+    "url": "https://www.pref.gunma.jp/page/1820.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:01:38.060Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 31208,
+    "contentHash": "555a6f259ea68aef94b227c219a7265d91228aa5af8e6b33fe4a60b1ed9f63cc",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-gunma-self-reliance",
+    "url": "https://www.pref.gunma.jp/page/1672.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:01:36.020Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 23940,
+    "contentHash": "103c49fc5641ec6d749ba8d2e3527c905e6879c7f3cabc84c5d01bc05b260cb6",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-ibaraki-municipalities",
     "url": "https://www.pref.ibaraki.jp/towns/",
     "status": "ok",
