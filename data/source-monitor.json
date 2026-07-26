@@ -37,5 +37,44 @@
     "contentHash": "2df4f9bc0c0e7cd8872fd3c45ccf154c97444ca18db5660e4395a2f44cff8940",
     "previousHash": "",
     "error": ""
+  },
+  {
+    "sourceId": "source-tochigi-housing-benefit",
+    "url": "https://www.pref.tochigi.lg.jp/e12/documents/documents/20250424094059.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T11:49:13.597Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 296302,
+    "contentHash": "f2d373953c1cb4ae1a89c0bc3e93cb438b459c3aa0bba142bf446a3d715ed36b",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tochigi-public-assistance",
+    "url": "https://www.pref.tochigi.lg.jp/e12/welfare/chiikifukushi/seikatuhogo/seiho.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T11:49:15.590Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 44133,
+    "contentHash": "aef717ad7819af7dea0191304d2b132de3712440719897a9b4de73c3d10d69e7",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tochigi-self-reliance",
+    "url": "https://www.pref.tochigi.lg.jp/e12/seikatusienn.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T11:49:11.463Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 25660,
+    "contentHash": "34696e063fdd5f401cfd8d25482af4c8cf250e70094b83d6e7fe94dd77fa7bda",
+    "previousHash": "",
+    "error": ""
   }
 ]
