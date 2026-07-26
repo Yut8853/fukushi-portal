@@ -78,6 +78,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-saitama-official-links",
+    "url": "https://www.pref.saitama.lg.jp/a0301/wwwlink.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:09:43.907Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 29449,
+    "contentHash": "3e1cdf4cd81ecde2bd0a690b8bbb1c28da39e979a4d8220f9a15f03a24e46d0a",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-saitama-public-assistance",
+    "url": "https://www.pref.saitama.lg.jp/a0602/seihozenpan/910-20091208-75.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:09:47.980Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 36304,
+    "contentHash": "cc7111384eece722ab282390468cce8bf64d7e736a42075c1f123928a0e4fbcb",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-saitama-self-reliance",
+    "url": "https://www.pref.saitama.lg.jp/a0602/jiritsushien/madoguchi.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T12:09:45.989Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 38273,
+    "contentHash": "61cc468cf52dd9322dbf7f334df6781009c724f075a7a5a2f2548e69d5680cd5",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-tochigi-housing-benefit",
     "url": "https://www.pref.tochigi.lg.jp/e12/documents/documents/20250424094059.pdf",
     "status": "ok",
