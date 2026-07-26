@@ -1255,7 +1255,7 @@ jp-27202,27,272027,岸和田市,きしわだし,city,municipality,,current,https
 jp-27203,27,272035,豊中市,とよなかし,city,municipality,,current,https://www.city.toyonaka.osaka.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=63
 jp-27204,27,272043,池田市,いけだし,city,municipality,,current,https://www.city.ikeda.osaka.jp/,https://www.city.ikeda.osaka.jp/
 jp-27205,27,272051,吹田市,すいたし,city,municipality,,current,https://www.city.suita.osaka.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=63
-jp-27206,27,272060,泉大津市,いずみおおつし,city,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=63
+jp-27206,27,272060,泉大津市,いずみおおつし,city,municipality,,current,https://www.city.izumiotsu.lg.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=63
 jp-27207,27,272078,高槻市,たかつきし,city,municipality,,current,https://www.city.takatsuki.osaka.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=63
 jp-27208,27,272086,貝塚市,かいづかし,city,municipality,,current,https://www.city.kaizuka.lg.jp/,https://www.city.kaizuka.lg.jp/
 jp-27209,27,272094,守口市,もりぐちし,city,municipality,,current,https://www.city.moriguchi.osaka.jp/,https://www.city.moriguchi.osaka.jp/
@@ -1267,9 +1267,9 @@ jp-27214,27,272140,富田林市,とんだばやしし,city,municipality,,current
 jp-27215,27,272159,寝屋川市,ねやがわし,city,municipality,,current,https://www.city.neyagawa.osaka.jp/,https://www.city.neyagawa.osaka.jp/
 jp-27216,27,272167,河内長野市,かわちながのし,city,municipality,,current,https://www.city.kawachinagano.lg.jp/,https://www.city.kawachinagano.lg.jp/
 jp-27217,27,272175,松原市,まつばらし,city,municipality,,current,https://www.city.matsubara.lg.jp/,https://www.city.matsubara.lg.jp/
-jp-27218,27,272183,大東市,だいとうし,city,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
-jp-27219,27,272191,和泉市,いずみし,city,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
-jp-27220,27,272205,箕面市,みのおし,city,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
+jp-27218,27,272183,大東市,だいとうし,city,municipality,,current,https://www.city.daito.lg.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
+jp-27219,27,272191,和泉市,いずみし,city,municipality,,current,https://www.city.osaka-izumi.lg.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
+jp-27220,27,272205,箕面市,みのおし,city,municipality,,current,https://www.city.minoh.lg.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
 jp-27221,27,272213,柏原市,かしわらし,city,municipality,,current,https://www.city.kashiwara.lg.jp/,https://www.city.kashiwara.lg.jp/
 jp-27222,27,272221,羽曳野市,はびきのし,city,municipality,,current,https://www.city.habikino.lg.jp/,https://www.city.habikino.lg.jp/
 jp-27223,27,272230,門真市,かどまし,city,municipality,,current,https://www.city.kadoma.osaka.jp/,https://www.city.kadoma.osaka.jp/
@@ -1278,9 +1278,9 @@ jp-27225,27,272256,高石市,たかいしし,city,municipality,,current,https://
 jp-27226,27,272264,藤井寺市,ふじいでらし,city,municipality,,current,https://www.city.fujiidera.lg.jp/,https://www.city.fujiidera.lg.jp/
 jp-27227,27,272272,東大阪市,ひがしおおさかし,city,municipality,,current,https://www.city.higashiosaka.lg.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
 jp-27228,27,272280,泉南市,せんなんし,city,municipality,,current,https://www.city.sennan.lg.jp/,https://www.city.sennan.lg.jp/
-jp-27229,27,272299,四條畷市,しじょうなわてし,city,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
+jp-27229,27,272299,四條畷市,しじょうなわてし,city,municipality,,current,https://www.city.shijonawate.lg.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=64
 jp-27230,27,272302,交野市,かたのし,city,municipality,,current,https://www.city.katano.osaka.jp/,https://www.city.katano.osaka.jp/
-jp-27231,27,272310,大阪狭山市,おおさかさやまし,city,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=65
+jp-27231,27,272310,大阪狭山市,おおさかさやまし,city,municipality,,current,https://www.city.osakasayama.osaka.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=65
 jp-27232,27,272329,阪南市,はんなんし,city,municipality,,current,https://www.city.hannan.lg.jp/,https://www.city.hannan.lg.jp/
 jp-27301,27,273015,島本町,しまもとちょう,town,municipality,,current,https://www.town.shimamoto.lg.jp/,https://www.town.shimamoto.lg.jp/
 jp-27321,27,273210,豊能町,とよのちょう,town,municipality,,current,https://www.town.toyono.osaka.jp/,https://www.town.toyono.osaka.jp/
@@ -1290,7 +1290,7 @@ jp-27361,27,273619,熊取町,くまとりちょう,town,municipality,,current,ht
 jp-27362,27,273627,田尻町,たじりちょう,town,municipality,,current,https://www.town.tajiri.osaka.jp/,https://www.town.tajiri.osaka.jp/
 jp-27366,27,273660,岬町,みさきちょう,town,municipality,,current,https://www.town.misaki.osaka.jp/,https://www.town.misaki.osaka.jp/
 jp-27381,27,273813,太子町,たいしちょう,town,municipality,,current,https://www.town.taishi.osaka.jp/,https://www.town.taishi.osaka.jp/
-jp-27382,27,273821,河南町,かなんちょう,town,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=65
+jp-27382,27,273821,河南町,かなんちょう,town,municipality,,current,https://www.town.kanan.osaka.jp/,https://www.e-stat.go.jp/municipalities/cities/areacode?page=65
 jp-27383,27,273830,千早赤阪村,ちはやあかさかむら,village,municipality,,current,https://www.vill.chihayaakasaka.osaka.jp/,https://www.vill.chihayaakasaka.osaka.jp/
 jp-28100,28,281000,神戸市,こうべし,city,municipality,,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=65
 jp-28101,28,281018,東灘区,ひがしなだく,administrative_ward,administrative_ward,神戸市,current,,https://www.e-stat.go.jp/municipalities/cities/areacode?page=65

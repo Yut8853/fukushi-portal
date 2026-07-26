@@ -702,6 +702,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-osaka-pref-municipality-representatives",
+    "url": "https://www.pref.osaka.lg.jp/o120070/kankyohozen/kaitai-chek/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T14:26:19.072Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 40526,
+    "contentHash": "7f865146b2879b5f6062cf8824d560e07853f0380d42bd1c81a8615e8062ede5",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-osaka-pref-self-reliance-2026",
+    "url": "https://www.pref.osaka.lg.jp/o090020/shakaiengo/seikon_gaiyou/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T14:26:21.375Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 23146,
+    "contentHash": "ddf980825833eb9b7ca34bd01ffcd6198c381a952cd10abf9f48f9978d33d83e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-osaka-pref-welfare-offices-2026",
+    "url": "https://www.pref.osaka.lg.jp/o090030/shakaiengo/hukushijimusho/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T14:26:23.429Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 14456,
+    "contentHash": "31cf6a060e2fb7252aa0252d23643ebaec56abf048540be7c0a5fab539ac1368",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-saitama-official-links",
     "url": "https://www.pref.saitama.lg.jp/a0301/wwwlink.html",
     "status": "ok",
