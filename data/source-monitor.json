@@ -39,6 +39,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-fukui-municipal-contacts-r7",
+    "url": "https://www.pref.fukui.lg.jp/doc/sityousinkou/renrakusaki_d/fil/001.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:00:28.136Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 73652,
+    "contentHash": "f1aa4b1b1d3130afa8b1aa5d497711b2df6f3c9ab49c1510665abf618b8e7078",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukui-municipal-links",
+    "url": "https://www.pref.fukui.lg.jp/doc/dx-suishin/shimachi_list.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:00:30.323Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 26164,
+    "contentHash": "ee2052a9e1f9a6418a1a9bd4d5dce77934df6bb338ecc5773254cdbd73eb38a0",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukui-public-assistance",
+    "url": "https://www.pref.fukui.lg.jp/doc/tihuku/fukuiseiho.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:00:34.299Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 26430,
+    "contentHash": "4ca4f1c593d0d1999df8c4b227efd18decbe44080ed0796cd7b94b22dfdd84b7",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukui-self-reliance",
+    "url": "https://www.pref.fukui.lg.jp/doc/tihuku/seikatukonkyu.html",
+    "status": "ok",
+    "checkedAt": "2026-07-26T13:00:32.224Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 29919,
+    "contentHash": "5326f7ce92a749b9a36186ab600d679fc0f7966869e0d69815350d1f72501d4c",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-gunma-municipalities",
     "url": "https://www.pref.gunma.jp/page/14524.html",
     "status": "ok",
