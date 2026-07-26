@@ -1,0 +1,2 @@
+municipality_code,need_id,national_program_key,local_title,eligibility_notes,amount_notes,deadline_notes,action_text,script_text,documents,missing_documents_note,status,verified_at,review_due_at,source_title,source_url
+08201,money,public-assistance,生活保護相談,,,,生活保護を申請したいと伝える,生活費がなく生活できません。生活保護を申請したいです。,"[""身分証（あれば）"",""通帳（あれば）""]",書類が揃っていなくてもまず相談できます,draft,,,自治体公式ページ,

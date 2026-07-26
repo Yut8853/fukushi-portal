@@ -1,0 +1,52 @@
+[
+  {
+    "id": "police-emergency",
+    "label": "事件・暴力の危険",
+    "number": "110",
+    "phoneHref": "tel:110",
+    "officialUrl": "https://www.npa.go.jp/goiken_index.html",
+    "publisher": "警察庁",
+    "displayMode": "primary",
+    "lastVerifiedAt": "2026-07-26"
+  },
+  {
+    "id": "fire-ambulance-emergency",
+    "label": "救急・火事",
+    "number": "119",
+    "phoneHref": "tel:119",
+    "officialUrl": "https://www.fdma.go.jp/mission/enrichment/kyukyumusen_kinkyutuhou/119.html",
+    "publisher": "総務省消防庁",
+    "displayMode": "primary",
+    "lastVerifiedAt": "2026-07-26"
+  },
+  {
+    "id": "child-abuse",
+    "label": "子どもの虐待",
+    "number": "189",
+    "phoneHref": "tel:189",
+    "officialUrl": "https://www.cfa.go.jp/policies/jidougyakutai/gyakutai-taiou-dial/",
+    "publisher": "こども家庭庁",
+    "displayMode": "primary",
+    "lastVerifiedAt": "2026-07-26"
+  },
+  {
+    "id": "dv-consultation",
+    "label": "DV相談",
+    "number": "#8008",
+    "phoneHref": "tel:%238008",
+    "officialUrl": "https://www.gender.go.jp/policy/no_violence/dv_navi/",
+    "publisher": "内閣府男女共同参画局",
+    "displayMode": "primary",
+    "lastVerifiedAt": "2026-07-26"
+  },
+  {
+    "id": "mental-health",
+    "label": "こころが限界・消えたい気持ちがある",
+    "number": "0570-064-556",
+    "phoneHref": "tel:+81570064556?oai_link_source=model_response_hotline",
+    "officialUrl": "https://www.mhlw.go.jp/mamorouyokokoro/?oai_link_source=model_response_hotline",
+    "publisher": "厚生労働省",
+    "displayMode": "detail",
+    "lastVerifiedAt": "2026-07-26"
+  }
+]

@@ -1,0 +1,3 @@
+prefecture_code,prefecture_name,municipality_code,municipality_name,selection_type,detail_level,is_published
+08,茨城県,08201,水戸市,県庁所在地,2,false
+08,茨城県,08220,つくば市,中核・成長都市,2,false
