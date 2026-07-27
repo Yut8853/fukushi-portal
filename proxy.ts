@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { SITE_URL, VERCEL_FALLBACK_HOSTS } from "@/lib/site";
 
 type AdminRole = "admin" | "reviewer";
 type AdminCredential = { username: string; password: string; role: AdminRole };
@@ -50,6 +51,23 @@ function configuredCredentials(): AdminCredential[] {
 }
 
 export async function proxy(request: NextRequest) {
+  const hostname = (request.headers.get("x-forwarded-host")
+    || request.headers.get("host")
+    || request.nextUrl.hostname)
+    .split(":")[0]
+    .toLowerCase();
+  if (VERCEL_FALLBACK_HOSTS.has(hostname)) {
+    const destination = new URL(
+      `${request.nextUrl.pathname}${request.nextUrl.search}`,
+      SITE_URL,
+    );
+    return NextResponse.redirect(destination, 301);
+  }
+
+  if (!request.nextUrl.pathname.startsWith("/admin")) {
+    return NextResponse.next();
+  }
+
   const configured = configuredCredentials();
   if (!configured.length) {
     return response(503, "管理画面は無効です。管理者認証を設定してください。");
@@ -88,5 +106,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/admin/:path*"],
+  matcher: ["/((?!_next/static|_next/image|favicon.ico).*)"],
 };

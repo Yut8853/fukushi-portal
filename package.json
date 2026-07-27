@@ -6,7 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint .",
+    "lint": "eslint app components crawler lib scripts proxy.ts",
     "data:validate": "tsx scripts/data-validate.ts",
     "data:quality": "tsx scripts/data-quality.ts",
     "data:audit": "tsx scripts/nationwide-completion-audit.ts",

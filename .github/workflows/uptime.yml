@@ -1,0 +1,40 @@
+name: Uptime
+
+on:
+  schedule:
+    - cron: "*/5 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uptime-production
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check public endpoints
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in / /support /sitemap.xml; do
+            curl --fail --silent --show-error \
+              --location --max-time 20 --retry 2 \
+              "https://fukushi.junkbranding.com${path}" > /dev/null
+          done
+
+      - name: Check canonical domain redirect
+        shell: bash
+        run: |
+          set -euo pipefail
+          headers="$(mktemp)"
+          curl --fail --silent --show-error \
+            --head --max-time 20 \
+            --dump-header "$headers" \
+            "https://fukushi-portal-gold.vercel.app/support?uptime=1" > /dev/null
+          grep -Eq '^HTTP/[^ ]+ 301([[:space:]]|$)' "$headers"
+          grep -Eiq '^location: https://fukushi\.junkbranding\.com/support\?uptime=1' "$headers"

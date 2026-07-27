@@ -3,17 +3,17 @@ import EmergencyBanner from "@/components/EmergencyBanner";
 import QuickExit from "@/components/QuickExit";
 import SiteFooter from "@/components/SiteFooter";
 import SiteHeader from "@/components/SiteHeader";
+import { SITE_URL } from "@/lib/site";
 import "./globals.css";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com";
-
 export const metadata: Metadata = {
-  metadataBase: new URL(siteUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "くらし支援ナビ",
     template: "%s | くらし支援ナビ",
   },
   description: "生活に困ったとき、今いる地域から相談先と次の行動を探せる福祉ポータル",
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "ja_JP",
@@ -36,8 +36,8 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "@id": `${siteUrl}/#website`,
-          url: siteUrl,
+          "@id": `${SITE_URL}/#website`,
+          url: SITE_URL,
           name: "くらし支援ナビ",
           description: "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
           inLanguage: "ja",

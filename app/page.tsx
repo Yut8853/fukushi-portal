@@ -1,7 +1,12 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import SupportFinder from "@/components/SupportFinder";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { toFinderViewModel } from "@/lib/data/view-models";
+
+export const metadata: Metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function HomePage() {
   const data = toFinderViewModel(await getPublicPortalData());

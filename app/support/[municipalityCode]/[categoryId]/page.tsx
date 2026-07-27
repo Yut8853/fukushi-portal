@@ -6,6 +6,7 @@ import AfterHoursGuide from "@/components/AfterHoursGuide";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { seoCategoryContent } from "@/lib/seo-content";
+import { SITE_URL } from "@/lib/site";
 
 export const revalidate = 86_400;
 
@@ -65,7 +66,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
   if (!page) notFound();
   const { data, municipality, prefecture, category, offices, programs, sources, nearbyMunicipalities } = page;
   const seo = seoCategoryContent(category.id);
-  const pageUrl = `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/support/${municipality.id}/${category.id}`;
+  const pageUrl = `${SITE_URL}/support/${municipality.id}/${category.id}`;
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -77,14 +78,14 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         description: seo.summary,
         inLanguage: "ja",
         dateModified: municipality.lastVerifiedAt,
-        isPartOf: { "@id": `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/#website` },
+        isPartOf: { "@id": `${SITE_URL}/#website` },
       },
       {
         "@type": "BreadcrumbList",
         itemListElement: [
-          { "@type": "ListItem", position: 1, name: "トップ", item: process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com" },
-          { "@type": "ListItem", position: 2, name: "相談先一覧", item: `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/support` },
-          { "@type": "ListItem", position: 3, name: prefecture.name, item: `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/support/${prefecture.code}` },
+          { "@type": "ListItem", position: 1, name: "トップ", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "相談先一覧", item: `${SITE_URL}/support` },
+          { "@type": "ListItem", position: 3, name: prefecture.name, item: `${SITE_URL}/support/${prefecture.code}` },
           { "@type": "ListItem", position: 4, name: municipality.name },
         ],
       },

@@ -1,6 +1,12 @@
 # くらし支援ナビ
 
-生活費、家賃、食料、仕事、DV、子育て、介護などで困っている人が、地域の公的な相談先を探すための情報案内サイトです。
+[![CI](https://github.com/Yut8853/fukushi-portal/actions/workflows/ci.yml/badge.svg)](https://github.com/Yut8853/fukushi-portal/actions/workflows/ci.yml)
+[![Code: MIT](https://img.shields.io/badge/code-MIT-blue.svg)](LICENSE)
+[![Data: CC BY 4.0](https://img.shields.io/badge/data-CC%20BY%204.0-lightgrey.svg)](DATA_LICENSE.md)
+
+制度名を知らなくても、全国1,741自治体の相談窓口にたどり着ける案内サイトです。生活費、家賃、食料、仕事、DV、子育て、介護など、いまの困りごとから地域の公的な相談先を探せます。
+
+![くらし支援ナビのトップ画面](docs/images/site-preview.png)
 
 運営者は **JUNKBRANDING** です。行政機関・支援団体ではなく、支援の提供、仲介、受給可否の判断、個別相談への回答は行いません。掲載情報は公式一次情報を基に確認しますが、利用時には各窓口の公式ページでも最新情報を確認してください。
 
@@ -128,7 +134,6 @@ npm run start
 `.env.local` の例:
 
 ```dotenv
-NEXT_PUBLIC_SITE_URL=
 NEXT_PUBLIC_SITE_OPERATOR=
 NEXT_PUBLIC_CORRECTION_EMAIL=
 GOOGLE_SITE_VERIFICATION=
@@ -156,6 +161,7 @@ SUPABASE_SERVICE_ROLE_KEY=
 
 注意:
 
+- canonical、sitemap、構造化データの本番URLは `https://fukushi.junkbranding.com` に固定
 - `SUPABASE_SERVICE_ROLE_KEY` に `NEXT_PUBLIC_` を付けない
 - `.env.local` をGitへ追加しない
 - 管理画面を公開する場合はBasic認証を必ず設定する
@@ -406,7 +412,7 @@ npm run crawl:hours:audit
 
 ### 自動チェック
 
-変更後は最低限、次を実行します。
+pushとpull requestのたびに [GitHub Actions](.github/workflows/ci.yml) が次を実行します。ローカルでも変更後に同じ検証を行います。
 
 ```bash
 npm run data:validate
@@ -530,4 +536,16 @@ npm run supabase:seed -- --apply
 
 ## ライセンスと再利用
 
-ソースコードおよび収録データの再利用条件は、正式なライセンスファイルが追加されるまで未設定です。行政機関の公開情報にも各発行元の利用条件が適用されます。無断で「自由に再利用可能」と判断しないでください。
+- ソースコード: [MIT License](LICENSE)
+- データベースの構成、独自の説明文、整理・編集部分: [CC BY 4.0](DATA_LICENSE.md)
+
+国、地方公共団体、支援機関など第三者の原資料・文章・画像・ロゴには、このリポジトリのライセンスは適用されません。行政情報を再利用するときは、`sourceId`・`officialUrl` が示す各発行元の利用条件も確認してください。
+
+## 公開・運用チェック
+
+- 正規ドメイン: <https://fukushi.junkbranding.com/>
+- `fukushi-portal-gold.vercel.app` へのアクセスは、同じパスとクエリを保って正規ドメインへ301転送
+- canonical、sitemap、robots.txt、構造化データは正規ドメインへ固定
+- Search Consoleで `https://fukushi.junkbranding.com/sitemap.xml` を送信
+- [Uptime workflow](.github/workflows/uptime.yml) がトップ、`/support`、`/sitemap.xml` と301転送を5分間隔で監視
+- 予期しない画面エラーは個人情報を含めずVercel Runtime Logsへ記録。GitHub ActionsとVercelの失敗通知を有効にする

@@ -1,9 +1,9 @@
 import type { MetadataRoute } from "next";
 import { getPublicPortalData } from "@/lib/data/repository";
+import { SITE_URL } from "@/lib/site";
 import { officeContactType } from "@/lib/support-routing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const siteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com";
   const data = await getPublicPortalData();
   const latestVerifiedAt = [
     ...data.municipalities, ...data.offices, ...data.programs, ...data.sources,
@@ -16,12 +16,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     officesByMunicipality.set(office.municipalityId, current);
   }
   return [
-    { url: siteUrl, lastModified: updated, changeFrequency: "weekly", priority: 1 },
-    { url: `${siteUrl}/support`, lastModified: updated, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${siteUrl}/about`, lastModified: updated, changeFrequency: "monthly", priority: 0.4 },
-    { url: `${siteUrl}/corrections`, lastModified: updated, changeFrequency: "monthly", priority: 0.3 },
+    { url: SITE_URL, lastModified: updated, changeFrequency: "weekly", priority: 1 },
+    { url: `${SITE_URL}/support`, lastModified: updated, changeFrequency: "weekly", priority: 0.9 },
+    { url: `${SITE_URL}/about`, lastModified: updated, changeFrequency: "monthly", priority: 0.4 },
+    { url: `${SITE_URL}/corrections`, lastModified: updated, changeFrequency: "monthly", priority: 0.3 },
     ...data.prefectures.map((prefecture) => ({
-      url: `${siteUrl}/support/${prefecture.code}`,
+      url: `${SITE_URL}/support/${prefecture.code}`,
       lastModified: updated,
       changeFrequency: "monthly" as const,
       priority: 0.8,
@@ -35,7 +35,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             office.categoryId === "violence" && officeContactType(office) !== "representative");
         })
         .map((category) => ({
-        url: `${siteUrl}/support/${municipality.id}/${category.id}`,
+        url: `${SITE_URL}/support/${municipality.id}/${category.id}`,
         lastModified: municipality.lastVerifiedAt ? new Date(municipality.lastVerifiedAt) : updated,
         changeFrequency: "monthly" as const,
         priority: 0.7,

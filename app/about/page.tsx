@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "このサイトについて",
+  description: "くらし支援ナビの目的、免責事項、個人情報の取り扱い、運営者について説明します。",
+  alternates: { canonical: "/about" },
+};
 
 export default function AboutPage() {
   const operator = process.env.NEXT_PUBLIC_SITE_OPERATOR?.trim();

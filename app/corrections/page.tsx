@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "掲載情報の訂正・お問い合わせ",
+  description: "くらし支援ナビに掲載された電話番号、受付時間、制度内容、リンク切れなどの訂正窓口です。",
+  alternates: { canonical: "/corrections" },
+};
 
 export default function CorrectionsPage() {
   const email = process.env.NEXT_PUBLIC_CORRECTION_EMAIL?.trim();

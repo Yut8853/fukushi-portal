@@ -1,0 +1,16 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "host",
+          "value": "fukushi-portal-gold.vercel.app"
+        }
+      ],
+      "destination": "https://fukushi.junkbranding.com/:path*",
+      "statusCode": 301
+    }
+  ]
+}
