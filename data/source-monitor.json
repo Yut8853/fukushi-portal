@@ -1183,6 +1183,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-tokushima-housing-benefit",
+    "url": "https://www.pref.tokushima.lg.jp/ippannokata/kenko/chiikifukushi/7215727/",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:26:55.097Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 61723,
+    "contentHash": "347009207a6ca999f7d9c3b1e625d6d22fd83f41d9b0c63c99ccede37ee5f340",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tokushima-municipal-offices",
+    "url": "https://www.pref.tokushima.lg.jp/kenseijoho/kanrennochiiki/shichouson/",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:26:50.610Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 35045,
+    "contentHash": "2ff7ae908ce5f49ddb8721238e312315686b28ff433e737eeaaf9b25b05067cc",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tokushima-public-assistance",
+    "url": "https://www.pref.tokushima.lg.jp/file/attachment/1048521.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:26:57.238Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 42829,
+    "contentHash": "d3a2db611edbdee4b7bb357913e0c0e6d29c9169e125d2c6f03dd2ac70f84834",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tokushima-self-reliance",
+    "url": "https://www.pref.tokushima.lg.jp/file/attachment/1061629.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:26:53.220Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 72559,
+    "contentHash": "e13ec26b80adf7d5cde67a73470091be59841d2d3b927eead2a3c0f48d51dc8c",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-tottori-municipal-offices",
     "url": "https://www.pref.tottori.lg.jp/12510.htm",
     "status": "ok",
