@@ -23,7 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+    google: process.env.GOOGLE_SITE_VERIFICATION?.trim()
+      || "LEkZOcAeq4rXooCOsOS3EisHeiHwDTe9Zl7Rka0F0gQ",
   },
   category: "福祉・生活相談",
 };
