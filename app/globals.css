@@ -284,6 +284,58 @@ p {
   border-block: 1px solid rgba(255, 255, 255, 0.18);
   padding: 12px 0;
 }
+.mental-crisis-support {
+  margin: 16px 0 24px;
+  border: 3px solid #a52b24;
+  border-radius: 18px;
+  padding: 20px;
+  color: #3b1717;
+  background: #fff7f4;
+}
+.mental-crisis-support > h2 {
+  margin: 0 0 8px;
+  font-size: 1.35rem;
+}
+.mental-crisis-support > p {
+  margin: 0 0 16px;
+  font-weight: 700;
+}
+.mental-crisis-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+.mental-crisis-options section {
+  border: 1px solid #e5b8b3;
+  border-radius: 12px;
+  padding: 14px;
+  background: #fff;
+}
+.mental-crisis-options h3 {
+  margin: 0 0 7px;
+  color: #7d201b;
+  font-size: 0.95rem;
+}
+.mental-crisis-options a {
+  display: block;
+  min-height: 48px;
+  padding: 10px 12px;
+  border-radius: 9px;
+  color: #fff;
+  background: #8e2822;
+  font-weight: 800;
+  text-decoration: none;
+}
+.mental-crisis-options p {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin: 0;
+}
+.mental-crisis-options small {
+  display: block;
+  margin-top: 6px;
+}
 
 .coverage-proof {
   width: fit-content;
@@ -552,6 +604,69 @@ p {
 }
 .municipality-link-group li + li {
   margin-top: 7px;
+}
+.municipality-picker {
+  margin-top: 28px;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 24px;
+  background: #fff;
+}
+.municipality-picker > h2 {
+  margin-top: 0;
+}
+.municipality-picker-controls {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 16px;
+}
+.municipality-picker-controls label {
+  display: grid;
+  gap: 6px;
+}
+.municipality-picker-controls span {
+  font-weight: 800;
+}
+.municipality-picker-controls input,
+.municipality-picker-controls select {
+  width: 100%;
+  min-height: 52px;
+  border: 2px solid var(--border-strong);
+  border-radius: 10px;
+  padding: 10px 12px;
+  color: var(--text);
+  background: #fff;
+}
+.selected-municipality {
+  margin-top: 22px;
+  border-top: 1px solid var(--border);
+  padding-top: 18px;
+}
+.selected-municipality h3 {
+  margin-top: 0;
+}
+.selected-municipality ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  padding: 0;
+  list-style: none;
+}
+.selected-municipality a {
+  display: block;
+  min-height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 12px;
+  text-decoration: none;
+  background: var(--surface-soft);
+}
+.municipality-picker-empty {
+  margin: 22px 0 0;
+  border-radius: 10px;
+  padding: 14px;
+  color: var(--muted);
+  background: var(--surface-soft);
 }
 .first-action {
   margin: 24px 0;
@@ -1597,24 +1712,29 @@ thead th {
   }
   .emergency-actions {
     grid-column: 1 / -1;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 4px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 6px;
   }
   .emergency-contact > a {
-    min-height: 43px;
+    min-height: 54px;
+    padding: 7px 8px;
   }
   .emergency-contact strong {
-    font-size: 0.98rem;
+    font-size: 1.05rem;
   }
   .emergency-contact span {
-    font-size: 0.64rem;
+    font-size: 0.875rem;
+  }
+  .emergency-contact span small {
+    font-size: 0.75rem;
   }
   .emergency-more {
     grid-column: 1 / -1;
   }
   .emergency-more summary {
-    padding: 2px 4px;
-    font-size: 0.68rem;
+    min-height: 48px;
+    padding: 10px 8px;
+    font-size: 0.875rem;
   }
   .emergency-detail {
     position: fixed;
@@ -1627,6 +1747,15 @@ thead th {
   }
   .site-header-inner {
     min-height: 64px;
+  }
+  .mental-crisis-options,
+  .municipality-picker-controls,
+  .selected-municipality ul {
+    grid-template-columns: 1fr;
+  }
+  .mental-crisis-support,
+  .municipality-picker {
+    padding: 16px;
   }
   .site-brand-mark {
     width: 36px;

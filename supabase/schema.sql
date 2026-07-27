@@ -23,6 +23,7 @@ create table public.categories (
   id text primary key,
   label text not null,
   description text not null default '',
+  consultation_script text not null,
   sort_order integer not null default 0 check (sort_order >= 0)
 );
 
@@ -163,6 +164,14 @@ create table public.source_monitor_logs (
   error text not null default ''
 );
 
+create table public.feedback_events (
+  id uuid primary key default gen_random_uuid(),
+  page_id text not null check (char_length(page_id) between 1 and 120),
+  category_id text not null check (char_length(category_id) between 1 and 40),
+  helpful boolean not null,
+  created_at timestamptz not null default now()
+);
+
 create index municipalities_prefecture_idx on public.municipalities(prefecture_code);
 create index municipalities_public_idx on public.municipalities(status, support_level);
 create index offices_municipality_idx on public.offices(municipality_id);
@@ -172,6 +181,9 @@ create index municipality_programs_municipality_idx on public.municipality_progr
 create index sources_status_idx on public.sources(status);
 create index verification_logs_entity_idx on public.verification_logs(entity_type, entity_id, created_at desc);
 create index source_monitor_logs_source_idx on public.source_monitor_logs(source_id, checked_at desc);
+create index feedback_events_created_at_idx on public.feedback_events(created_at desc);
+create index feedback_events_page_category_idx
+on public.feedback_events(page_id, category_id, created_at desc);
 
 create or replace function public.set_updated_at()
 returns trigger language plpgsql as $$
@@ -211,6 +223,7 @@ alter table public.municipality_programs enable row level security;
 alter table public.admin_profiles enable row level security;
 alter table public.verification_logs enable row level security;
 alter table public.source_monitor_logs enable row level security;
+alter table public.feedback_events enable row level security;
 
 create policy "public read prefectures" on public.prefectures for select using (true);
 create policy "public read categories" on public.categories for select using (true);

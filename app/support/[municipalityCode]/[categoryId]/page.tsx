@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import AfterHoursGuide from "@/components/AfterHoursGuide";
+import MentalCrisisSupport from "@/components/MentalCrisisSupport";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { seoCategoryContent } from "@/lib/seo-content";
@@ -153,6 +154,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         {seo.searchTitle}とき
       </h1>
       <p className="lead">{seo.summary}</p>
+      {category.id === "mental" && <MentalCrisisSupport />}
       <aside className="first-action">
         <h2>急いでいるとき、最初にすること</h2>
         <p>{seo.firstAction}</p>
@@ -243,12 +245,12 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                   <h4>「どのような用件ですか」と聞かれたら</h4>
                   <p>「生活のことで相談したいです」</p>
                   <h4>担当につながったら</h4>
-                  <p>「{category.label}ことで困っています。使える制度や相談先を教えてください」</p>
+                  <p>「{category.consultationScript}」</p>
                 </div>
               ) : (
                 <div className="direct-script">
                   <h4>電話で、こう伝えて大丈夫です</h4>
-                  <p>「{category.label}ことで困っています。使える制度や相談先を教えてください」</p>
+                  <p>「{category.consultationScript}」</p>
                 </div>
               )}
               {source && (
@@ -354,7 +356,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
           検索画面でこの案内を見る・共有する
         </Link>
       </p>
-      <FeedbackPrompt context={`${municipality.id}:${category.id}`} />
+      <FeedbackPrompt pageId={municipality.id} categoryId={category.id} />
       <p className="note">
         情報確認日：{municipality.lastVerifiedAt || "未確認"}
         。制度や受付時間は変わることがあります。

@@ -16,17 +16,18 @@
 
 ## READMEの使い方
 
-| 読みたい内容 | 参照先 |
-| --- | --- |
-| サイトの目的・掲載方針 | [サイトの基本方針](#サイトの基本方針) |
-| ローカルで起動する | [セットアップ](#セットアップ) |
+| 読みたい内容                   | 参照先                                                                                           |
+| ------------------------------ | ------------------------------------------------------------------------------------------------ |
+| サイトの目的・掲載方針         | [サイトの基本方針](#サイトの基本方針)                                                            |
+| ローカルで起動する             | [セットアップ](#セットアップ)                                                                    |
 | 使用技術・ライブラリ・外部連携 | [技術構成](#技術構成)、[プラグイン・ライブラリ・外部サービス](#プラグインライブラリ外部サービス) |
-| データを追加・更新する | [データ生成・追加手順](#データ生成追加手順) |
-| クロール候補を審査する | [クロールと候補生成](#クロールと候補生成) |
-| 公開前に検証する | [品質チェック体制](#品質チェック体制) |
-| 日常運用・障害対応を行う | [運用ルール](#運用ルール) |
-| SEO・監視・公開状態を確認する | [公開・運用チェック](#公開運用チェック) |
-| 再利用条件を確認する | [ライセンスと再利用](#ライセンスと再利用) |
+| データを追加・更新する         | [データ生成・追加手順](#データ生成追加手順)                                                      |
+| 2万ページの生成方法を確認する  | [2万ページをどう作っているか](#2万ページをどう作っているか)                                      |
+| クロール候補を審査する         | [クロールと候補生成](#クロールと候補生成)                                                        |
+| 公開前に検証する               | [品質チェック体制](#品質チェック体制)                                                            |
+| 日常運用・障害対応を行う       | [運用ルール](#運用ルール)                                                                        |
+| SEO・監視・公開状態を確認する  | [公開・運用チェック](#公開運用チェック)                                                          |
+| 再利用条件を確認する           | [ライセンスと再利用](#ライセンスと再利用)                                                        |
 
 ## 運営を始める人が最初にすること
 
@@ -42,19 +43,57 @@
 
 ## 現在の規模
 
-| 項目 | 件数・状態 |
-| --- | ---: |
-| 都道府県 | 47 |
-| 対象自治体 | 1,741 |
-| 公開窓口 | 7,211 |
-| 支援制度 | 25 |
-| 主要4導線の不足 | 0自治体 |
-| 受付時間確認済み | 1,342窓口 |
-| データ検証 | エラー0・警告0 |
+| 項目                   |     件数・状態 |
+| ---------------------- | -------------: |
+| 都道府県               |             47 |
+| 対象自治体             |          1,741 |
+| 公開窓口               |          7,211 |
+| 支援制度               |             25 |
+| インデックス対象ページ |         22,634 |
+| 主要4導線の不足        |        0自治体 |
+| 受付時間確認済み       |      1,342窓口 |
+| データ検証             | エラー0・警告0 |
 
 主要4導線は、自治体代表、生活困窮者自立相談支援機関、住居確保給付金、生活保護相談・申請窓口です。
 
 受付時間の監査結果は [`reports/office-hours-audit.json`](reports/office-hours-audit.json) に保存しています。「受付時間が空欄」であることは未作業とは限りません。公式ページから窓口固有の時間を安全に特定できなかった場合は、推測せず空欄にしています。
+
+## 2万ページをどう作っているか
+
+22,634ページを1ページずつ手作業で作成したわけではありません。Next.jsの動的ルートを使い、自治体データと困りごとカテゴリを組み合わせて、アクセス時に共通テンプレートからページを生成します。
+
+```text
+1,741自治体 × 14カテゴリ
+  = 最大24,374通りのURL
+
+公開済み自治体・確認済み窓口・安全上の掲載条件で絞り込み
+  = 現在のインデックス対象22,634ページ
+```
+
+URLは次の形式です。
+
+```text
+/support/{自治体ID}/{カテゴリID}
+```
+
+例えば、水戸市の「今日食べるものがない」ページへアクセスすると、[`app/support/[municipalityCode]/[categoryId]/page.tsx`](app/support/[municipalityCode]/[categoryId]/page.tsx) が次のデータを組み合わせます。
+
+- `data/municipalities.csv`：自治体名、自治体コード、公式URL
+- `data/categories.csv`：困りごとの表示名、人が確認した電話台本
+- `data/offices.csv`：電話番号、受付時間、所在地、担当カテゴリ
+- `data/programs.csv`：全国・自治体の支援制度
+- `data/sources.csv`：情報の根拠となる公式ページ
+- `lib/seo-content.ts`：カテゴリ別のタイトル、要約、最初の行動
+
+ページ本文、タイトル、description、構造化データは、この共通テンプレートと登録データから生成します。生成済みページは最大1日キャッシュし、その後のアクセス時に再検証します。
+
+すべての組み合わせを検索エンジンへ無条件に公開しているわけではありません。存在しない自治体・カテゴリは404にし、公開窓口がないページは`noindex`にします。`sitemap.xml`にも掲載条件を満たすURLだけを出力します。現在の対象件数は次のコマンドで再計算できます。
+
+```bash
+npm run seo:audit
+```
+
+この仕組みで保証しているのは、ページ構造とデータ参照の一貫性です。「2万ページすべてを人が個別に執筆・目視確認した」という意味ではありません。電話番号や受付時間などの正データは公式一次情報を基に管理し、自動抽出結果は審査前の候補として扱います。
 
 ## サイトの基本方針
 
@@ -92,19 +131,19 @@
 
 ## 技術構成
 
-| 分類 | 技術 |
-| --- | --- |
-| フレームワーク | Next.js 16.2.12（App Router / Turbopack） |
-| UI | React 19.2.8 |
-| 言語 | TypeScript 5.9.3 |
-| 実行環境 | Node.js 24 |
-| データ検証 | Zod 4 |
-| HTML解析 | Cheerio |
-| PDF解析 | pdf-parse |
-| クロール制御 | robots-parser、独自のリトライ・間隔制御 |
-| 主データ | CSV / JSON |
-| 任意バックエンド | Supabase |
-| 静的検査 | ESLint 9 |
+| 分類             | 技術                                      |
+| ---------------- | ----------------------------------------- |
+| フレームワーク   | Next.js 16.2.12（App Router / Turbopack） |
+| UI               | React 19.2.8                              |
+| 言語             | TypeScript 5.9.3                          |
+| 実行環境         | Node.js 24                                |
+| データ検証       | Zod 4                                     |
+| HTML解析         | Cheerio                                   |
+| PDF解析          | pdf-parse                                 |
+| クロール制御     | robots-parser、独自のリトライ・間隔制御   |
+| 主データ         | CSV / JSON                                |
+| 任意バックエンド | Supabase                                  |
+| 静的検査         | ESLint 9                                  |
 
 通常はCSVを正データとして動作します。`DATA_BACKEND=supabase` を設定した場合だけ、サーバー側でSupabaseから読み込みます。UIコンポーネントへ自治体や窓口データを直接記述しません。
 
@@ -118,28 +157,28 @@
 
 `package.json` の基本設定:
 
-| 項目 | 意味 |
-| --- | --- |
-| `private: true` | 誤ってnpmレジストリへ公開しない |
-| `dependencies` | 本番実行・ビルド・データ処理で必要なパッケージ |
-| `devDependencies` | 型定義、TypeScript実行、lintなど開発時のパッケージ |
-| `overrides` | `postcss` と `sharp` の間接依存も、直接指定した安全なバージョンへ揃える |
-| `package-lock.json` | 実際に導入する依存関係全体を固定する。手で編集しない |
+| 項目                | 意味                                                                    |
+| ------------------- | ----------------------------------------------------------------------- |
+| `private: true`     | 誤ってnpmレジストリへ公開しない                                         |
+| `dependencies`      | 本番実行・ビルド・データ処理で必要なパッケージ                          |
+| `devDependencies`   | 型定義、TypeScript実行、lintなど開発時のパッケージ                      |
+| `overrides`         | `postcss` と `sharp` の間接依存も、直接指定した安全なバージョンへ揃える |
+| `package-lock.json` | 実際に導入する依存関係全体を固定する。手で編集しない                    |
 
-| パッケージ | 用途 | 主に使う場所 |
-| --- | --- | --- |
-| `next` / `react` / `react-dom` | Web画面、ルーティング、SEOメタデータ、API | `app/`、`components/` |
-| `postcss` | Next.jsのCSS処理 | ビルド時 |
-| `zod` | CSV・JSONの型と必須項目の検証 | `lib/data/`、検証スクリプト |
-| `cheerio` | 公式ページのHTML解析 | `crawler/` |
-| `pdf-parse` | 行政PDFのテキスト抽出 | `crawler/` |
-| `robots-parser` | 取得先のrobots.txt確認 | `crawler/` |
-| `sanitize-html` | HTMLサニタイズ用として導入済み | 現行コードから直接参照なし。利用目的を再確認し、不要なら別PRで削除 |
-| `wanakana` | 自治体名などの読みの正規化 | データ処理 |
-| `sharp` | Next.jsの画像生成・最適化依存 | ビルド、OGP画像。アプリからの直接参照なし |
-| `tsx` | TypeScript製の運用スクリプト実行 | `npm run data:*`、`crawl:*` |
-| `typescript` / `@types/*` | TypeScriptコンパイルとNode・React等の型情報 | 開発、CI、ビルド |
-| `eslint` / `eslint-config-next` | React・Next.jsの静的検査 | `npm run lint` |
+| パッケージ                      | 用途                                        | 主に使う場所                                                       |
+| ------------------------------- | ------------------------------------------- | ------------------------------------------------------------------ |
+| `next` / `react` / `react-dom`  | Web画面、ルーティング、SEOメタデータ、API   | `app/`、`components/`                                              |
+| `postcss`                       | Next.jsのCSS処理                            | ビルド時                                                           |
+| `zod`                           | CSV・JSONの型と必須項目の検証               | `lib/data/`、検証スクリプト                                        |
+| `cheerio`                       | 公式ページのHTML解析                        | `crawler/`                                                         |
+| `pdf-parse`                     | 行政PDFのテキスト抽出                       | `crawler/`                                                         |
+| `robots-parser`                 | 取得先のrobots.txt確認                      | `crawler/`                                                         |
+| `sanitize-html`                 | HTMLサニタイズ用として導入済み              | 現行コードから直接参照なし。利用目的を再確認し、不要なら別PRで削除 |
+| `wanakana`                      | 自治体名などの読みの正規化                  | データ処理                                                         |
+| `sharp`                         | Next.jsの画像生成・最適化依存               | ビルド、OGP画像。アプリからの直接参照なし                          |
+| `tsx`                           | TypeScript製の運用スクリプト実行            | `npm run data:*`、`crawl:*`                                        |
+| `typescript` / `@types/*`       | TypeScriptコンパイルとNode・React等の型情報 | 開発、CI、ビルド                                                   |
+| `eslint` / `eslint-config-next` | React・Next.jsの静的検査                    | `npm run lint`                                                     |
 
 依存関係を更新するときは、個別パッケージだけでなく `npm run lint` と `npm run build` まで確認し、`package-lock.json` も同じコミットへ含めます。メジャーバージョン更新はデータ更新と分けてください。
 
@@ -147,80 +186,80 @@
 
 #### 開発・検証
 
-| コマンド | 用途 | ファイル変更 |
-| --- | --- | --- |
-| `npm run dev` | 開発サーバーを起動 | なし |
-| `npm run build` | 本番コンパイル、型検査、ルート生成 | `.next/` のみ |
-| `npm run start` | `build` 済みの本番サーバーを起動 | なし |
-| `npm run lint` | `app`、`components`、`crawler`、`lib`、`scripts`、`proxy.ts` を静的検査 | なし |
-| `npm run data:validate` | CSV/JSON形式、Zod、参照関係、必須値を検査 | なし |
-| `npm run data:quality` | 主要導線、欠落項目、確認期限を集計 | なし |
-| `npm run data:audit` | 全国1,741自治体と主要4導線の完成状態を監査 | なし |
-| `npm run seo:audit` | カテゴリ文面とインデックス対象ページを監査 | なし |
-| `npm run sources:monitor -- --limit=20` | 公式出典の到達性・変更を限定確認 | `data/source-monitor.json` を更新する場合あり |
+| コマンド                                | 用途                                                                    | ファイル変更                                  |
+| --------------------------------------- | ----------------------------------------------------------------------- | --------------------------------------------- |
+| `npm run dev`                           | 開発サーバーを起動                                                      | なし                                          |
+| `npm run build`                         | 本番コンパイル、型検査、ルート生成                                      | `.next/` のみ                                 |
+| `npm run start`                         | `build` 済みの本番サーバーを起動                                        | なし                                          |
+| `npm run lint`                          | `app`、`components`、`crawler`、`lib`、`scripts`、`proxy.ts` を静的検査 | なし                                          |
+| `npm run data:validate`                 | CSV/JSON形式、Zod、参照関係、必須値を検査                               | なし                                          |
+| `npm run data:quality`                  | 主要導線、欠落項目、確認期限を集計                                      | なし                                          |
+| `npm run data:audit`                    | 全国1,741自治体と主要4導線の完成状態を監査                              | なし                                          |
+| `npm run seo:audit`                     | カテゴリ文面とインデックス対象ページを監査                              | なし                                          |
+| `npm run sources:monitor -- --limit=20` | 公式出典の到達性・変更を限定確認                                        | `data/source-monitor.json` を更新する場合あり |
 
 #### 自治体・バックエンド
 
-| コマンド | 用途 | 注意 |
-| --- | --- | --- |
-| `npm run municipality:add` | 自治体を対話形式でdraft追加 | 実行後にCSV差分を確認 |
-| `npm run municipalities:sync` | e-Statから全国自治体マスターを同期 | 大量変更になり得る |
-| `npm run municipalities:promote -- --count=10 --verified-at=YYYY-MM-DD` | 確認済み自治体を公開側へ昇格 | 日付と対象件数を必ず確認 |
-| `npm run municipality-urls:resolve` | 自治体公式URLの候補を解決 | 自動発見をそのまま正データにしない |
-| `npm run supabase:seed` | CSVとSupabaseの投入予定をドライラン | 通常は書き込まない |
-| `npm run supabase:seed -- --apply` | Supabaseへ実際に投入 | 本番接続先とバックアップを確認 |
+| コマンド                                                                | 用途                                | 注意                               |
+| ----------------------------------------------------------------------- | ----------------------------------- | ---------------------------------- |
+| `npm run municipality:add`                                              | 自治体を対話形式でdraft追加         | 実行後にCSV差分を確認              |
+| `npm run municipalities:sync`                                           | e-Statから全国自治体マスターを同期  | 大量変更になり得る                 |
+| `npm run municipalities:promote -- --count=10 --verified-at=YYYY-MM-DD` | 確認済み自治体を公開側へ昇格        | 日付と対象件数を必ず確認           |
+| `npm run municipality-urls:resolve`                                     | 自治体公式URLの候補を解決           | 自動発見をそのまま正データにしない |
+| `npm run supabase:seed`                                                 | CSVとSupabaseの投入予定をドライラン | 通常は書き込まない                 |
+| `npm run supabase:seed -- --apply`                                      | Supabaseへ実際に投入                | 本番接続先とバックアップを確認     |
 
 #### クロール
 
-| コマンド | 用途 | 注意 |
-| --- | --- | --- |
-| `npm run crawl:queue -- --municipalities=...` | 対象自治体の取得キューを作成 | 最初は少数自治体に限定 |
-| `npm run crawl:worker -- --municipalities=... --limit=N` | キューを取得・解析 | robots.txt、間隔、連絡先設定を維持 |
-| `npm run crawl:retry-failed` | 失敗した取得を再キュー化 | キューを書き換える。恒久的な403等を無限再試行しない |
-| `npm run crawl:status` | キューの状態を表示 | 読み取りのみ |
-| `npm run crawl:report` | クロール結果を集計 | 読み取りのみ |
-| `npm run crawl:diff -- --municipality=... --candidate=...` | 指定候補と公開データの差を表示 | 読み取りのみ |
-| `npm run crawl:publish -- --municipality=... --candidate=...` | 指定候補の公開予定をドライラン | 差分確認前に確定しない |
-| `npm run crawl:publish -- --municipality=... --candidate=... --actor=確認者名 --confirm` | 審査済み候補を正データへ反映 | バックアップと対象IDを確認 |
-| `npm run crawl:publish:test` | 公開処理の安全条件をテスト | 読み取り・テスト |
+| コマンド                                                                                 | 用途                           | 注意                                                |
+| ---------------------------------------------------------------------------------------- | ------------------------------ | --------------------------------------------------- |
+| `npm run crawl:queue -- --municipalities=...`                                            | 対象自治体の取得キューを作成   | 最初は少数自治体に限定                              |
+| `npm run crawl:worker -- --municipalities=... --limit=N`                                 | キューを取得・解析             | robots.txt、間隔、連絡先設定を維持                  |
+| `npm run crawl:retry-failed`                                                             | 失敗した取得を再キュー化       | キューを書き換える。恒久的な403等を無限再試行しない |
+| `npm run crawl:status`                                                                   | キューの状態を表示             | 読み取りのみ                                        |
+| `npm run crawl:report`                                                                   | クロール結果を集計             | 読み取りのみ                                        |
+| `npm run crawl:diff -- --municipality=... --candidate=...`                               | 指定候補と公開データの差を表示 | 読み取りのみ                                        |
+| `npm run crawl:publish -- --municipality=... --candidate=...`                            | 指定候補の公開予定をドライラン | 差分確認前に確定しない                              |
+| `npm run crawl:publish -- --municipality=... --candidate=... --actor=確認者名 --confirm` | 審査済み候補を正データへ反映   | バックアップと対象IDを確認                          |
+| `npm run crawl:publish:test`                                                             | 公開処理の安全条件をテスト     | 読み取り・テスト                                    |
 
 #### 受付時間
 
-| コマンド | 用途 | 注意 |
-| --- | --- | --- |
-| `npm run crawl:hours:test` | 受付時間抽出器のテスト | 抽出ロジック変更時に必須 |
-| `npm run crawl:hours:inventory` | 登録済み・未登録件数を集計 | 読み取りのみ |
-| `npm run crawl:hours:scan` | 公式ページから候補を生成 | 候補であり未確認 |
-| `npm run crawl:hours:reprocess` | 既存取得結果を新しい抽出規則で再解析 | 候補の増減を確認 |
-| `npm run crawl:hours:audit` | 全件監査レポートを生成 | `reports/office-hours-audit.json` を更新 |
-| `npm run crawl:hours:apply` | 審査済み候補の反映予定を表示 | ドライラン |
-| `npm run crawl:hours:apply -- --apply` | 受付時間を正データへ反映 | 窓口固有の時間か目視確認 |
-| `npm run crawl:hours:propagate` | 同一電話番号・住所への伝播予定を表示 | ドライラン |
-| `npm run crawl:hours:propagate -- --apply` | 矛盾のない同一窓口へ伝播 | 別部署への誤伝播に注意 |
-| `npm run crawl:hours:closed-days` | 明示情報から休業日補完予定を表示 | ドライラン |
-| `npm run crawl:hours:closed-days -- --apply` | 確認可能な休業日を反映 | 祝日等を推測しない |
+| コマンド                                     | 用途                                 | 注意                                     |
+| -------------------------------------------- | ------------------------------------ | ---------------------------------------- |
+| `npm run crawl:hours:test`                   | 受付時間抽出器のテスト               | 抽出ロジック変更時に必須                 |
+| `npm run crawl:hours:inventory`              | 登録済み・未登録件数を集計           | 読み取りのみ                             |
+| `npm run crawl:hours:scan`                   | 公式ページから候補を生成             | 候補であり未確認                         |
+| `npm run crawl:hours:reprocess`              | 既存取得結果を新しい抽出規則で再解析 | 候補の増減を確認                         |
+| `npm run crawl:hours:audit`                  | 全件監査レポートを生成               | `reports/office-hours-audit.json` を更新 |
+| `npm run crawl:hours:apply`                  | 審査済み候補の反映予定を表示         | ドライラン                               |
+| `npm run crawl:hours:apply -- --apply`       | 受付時間を正データへ反映             | 窓口固有の時間か目視確認                 |
+| `npm run crawl:hours:propagate`              | 同一電話番号・住所への伝播予定を表示 | ドライラン                               |
+| `npm run crawl:hours:propagate -- --apply`   | 矛盾のない同一窓口へ伝播             | 別部署への誤伝播に注意                   |
+| `npm run crawl:hours:closed-days`            | 明示情報から休業日補完予定を表示     | ドライラン                               |
+| `npm run crawl:hours:closed-days -- --apply` | 確認可能な休業日を反映               | 祝日等を推測しない                       |
 
 `--apply` があるコマンドは、付けない状態が原則です。ドライラン、Git差分、対象件数を確認した後だけ適用します。スクリプトの引数や挙動を変更した場合は、この表も同じコミットで更新してください。
 
 ### GitHub Actions
 
-| Action・ワークフロー | 用途 | 使い方 |
-| --- | --- | --- |
-| `actions/checkout@v4` | CI環境へソースを取得 | ワークフロー内で自動実行 |
-| `actions/setup-node@v4` | Node.js 24とnpmキャッシュを準備 | ワークフロー内で自動実行 |
-| [CI](.github/workflows/ci.yml) | push・PRごとの全品質検査 | GitHubの「Actions」から結果とログを確認 |
-| [Uptime](.github/workflows/uptime.yml) | 本番URL、sitemap、301転送の監視 | 5分間隔。Actionsから手動実行も可能 |
+| Action・ワークフロー                   | 用途                            | 使い方                                  |
+| -------------------------------------- | ------------------------------- | --------------------------------------- |
+| `actions/checkout@v4`                  | CI環境へソースを取得            | ワークフロー内で自動実行                |
+| `actions/setup-node@v4`                | Node.js 24とnpmキャッシュを準備 | ワークフロー内で自動実行                |
+| [CI](.github/workflows/ci.yml)         | push・PRごとの全品質検査        | GitHubの「Actions」から結果とログを確認 |
+| [Uptime](.github/workflows/uptime.yml) | 本番URL、sitemap、301転送の監視 | 5分間隔。Actionsから手動実行も可能      |
 
 ワークフローが赤い状態では公開完了としません。失敗したステップ名を確認し、ローカルで同じコマンドを再現してから修正します。
 
 ### 外部サービス
 
-| サービス | 用途 | このリポジトリとの接点 |
-| --- | --- | --- |
-| Vercel | 本番ホスティング、Runtime Logs | push後のデプロイ、`vercel.json` |
-| GitHub | ソース管理、レビュー、CI、稼働監視 | `.github/workflows/` |
-| Google Search Console | インデックス・検索状態の確認 | `GOOGLE_SITE_VERIFICATION`、`sitemap.xml` |
-| Supabase（任意） | CSVの代替データバックエンド | `DATA_BACKEND=supabase` の場合のみ |
+| サービス              | 用途                               | このリポジトリとの接点                    |
+| --------------------- | ---------------------------------- | ----------------------------------------- |
+| Vercel                | 本番ホスティング、Runtime Logs     | push後のデプロイ、`vercel.json`           |
+| GitHub                | ソース管理、レビュー、CI、稼働監視 | `.github/workflows/`                      |
+| Google Search Console | インデックス・検索状態の確認       | `GOOGLE_SITE_VERIFICATION`、`sitemap.xml` |
+| Supabase（任意）      | CSVの代替データバックエンド        | `DATA_BACKEND=supabase` の場合のみ        |
 
 外部サービスのアカウント、通知先、課金、ドメイン所有権はリポジトリだけでは引き継がれません。運営者交代時は、各サービスの管理者権限と復旧手段を別途引き継いでください。
 
@@ -285,18 +324,18 @@ HTML、metadata、JSON-LD、sitemap.xml
 
 ### ルートごとの生成方法
 
-| ルート | 生成内容 | 実行方式・更新規則 |
-| --- | --- | --- |
-| `/` | 3STEP検索、全国データのクライアント用表示モデル | ビルド時に静的生成。公開データ全体から生成 |
-| `/support` | 47都道府県の一覧 | ビルド時に静的生成。公開自治体を都道府県別に集計 |
-| `/support/[prefectureCode]` | 都道府県内の自治体とカテゴリリンク | リクエスト時にサーバー生成。都道府県コードがなければ404 |
-| `/support/[municipalityId]/[categoryId]` | 自治体×困りごとの相談案内 | リクエスト時に生成・キャッシュし、最大1日単位で再検証。IDがなければ404 |
-| `/about` | 運営者、免責、個人情報 | ビルド時に静的生成 |
-| `/corrections` | 訂正窓口 | ビルド時に静的生成 |
-| `/admin/*` | クロール・候補審査 | リクエスト時に生成。Basic認証必須、未設定時は503 |
-| `/api/support` | 公開データAPI | リクエスト時に生成。管理用データやdraftを返さない |
-| `/sitemap.xml` | 正規URL一覧 | ビルド時に公開データとインデックス条件から生成 |
-| `/robots.txt` | クローラー規則 | ビルド時に生成。`/admin/` を拒否し、正規sitemapを指定 |
+| ルート                                   | 生成内容                                        | 実行方式・更新規則                                                     |
+| ---------------------------------------- | ----------------------------------------------- | ---------------------------------------------------------------------- |
+| `/`                                      | 3STEP検索、全国データのクライアント用表示モデル | ビルド時に静的生成。公開データ全体から生成                             |
+| `/support`                               | 47都道府県の一覧                                | ビルド時に静的生成。公開自治体を都道府県別に集計                       |
+| `/support/[prefectureCode]`              | 都道府県内の自治体とカテゴリリンク              | リクエスト時にサーバー生成。都道府県コードがなければ404                |
+| `/support/[municipalityId]/[categoryId]` | 自治体×困りごとの相談案内                       | リクエスト時に生成・キャッシュし、最大1日単位で再検証。IDがなければ404 |
+| `/about`                                 | 運営者、免責、個人情報                          | ビルド時に静的生成                                                     |
+| `/corrections`                           | 訂正窓口                                        | ビルド時に静的生成                                                     |
+| `/admin/*`                               | クロール・候補審査                              | リクエスト時に生成。Basic認証必須、未設定時は503                       |
+| `/api/support`                           | 公開データAPI                                   | リクエスト時に生成。管理用データやdraftを返さない                      |
+| `/sitemap.xml`                           | 正規URL一覧                                     | ビルド時に公開データとインデックス条件から生成                         |
+| `/robots.txt`                            | クローラー規則                                  | ビルド時に生成。`/admin/` を拒否し、正規sitemapを指定                  |
 
 自治体×カテゴリページは `revalidate = 86_400` のため、生成済みページを最大1日単位で再検証します。URLの基準は自治体IDとカテゴリIDで、名称を変更してもURLを変えません。
 
@@ -673,14 +712,14 @@ npm run build
 
 それぞれの役割:
 
-| コマンド | 確認内容 |
-| --- | --- |
+| コマンド        | 確認内容                                   |
+| --------------- | ------------------------------------------ |
 | `data:validate` | CSV形式、Zodスキーマ、参照整合性、必須項目 |
-| `data:quality` | 未登録項目、確認期限、主要項目の品質 |
-| `data:audit` | 1,741自治体の主要4導線と全国整備状況 |
-| `seo:audit` | SEOページ、タイトル、説明、URL生成 |
-| `lint` | TypeScript・React・Next.jsの静的検査 |
-| `build` | 本番コンパイル、型検査、ルート生成 |
+| `data:quality`  | 未登録項目、確認期限、主要項目の品質       |
+| `data:audit`    | 1,741自治体の主要4導線と全国整備状況       |
+| `seo:audit`     | SEOページ、タイトル、説明、URL生成         |
+| `lint`          | TypeScript・React・Next.jsの静的検査       |
+| `build`         | 本番コンパイル、型検査、ルート生成         |
 
 出典の到達性・変更確認:
 
@@ -812,13 +851,13 @@ git diff --check
 
 ### 定期確認
 
-| 頻度 | 確認内容 |
-| --- | --- |
-| 随時 | GitHub ActionsとVercelの失敗通知、訂正メール、重大なリンク切れ |
-| 週次 | Uptimeの履歴、Vercel Runtime Logs、緊急情報の公式告知 |
-| 月次 | Search Consoleのインデックス・サイトマップ・404、出典監視、期限切れ情報 |
-| 大規模更新時 | READMEの件数、全データ監査、SEO監査、実機・スクリーンリーダー確認 |
-| 運営者交代時 | GitHub、Vercel、ドメイン、Search Console、メールの権限と通知先 |
+| 頻度         | 確認内容                                                                |
+| ------------ | ----------------------------------------------------------------------- |
+| 随時         | GitHub ActionsとVercelの失敗通知、訂正メール、重大なリンク切れ          |
+| 週次         | Uptimeの履歴、Vercel Runtime Logs、緊急情報の公式告知                   |
+| 月次         | Search Consoleのインデックス・サイトマップ・404、出典監視、期限切れ情報 |
+| 大規模更新時 | READMEの件数、全データ監査、SEO監査、実機・スクリーンリーダー確認       |
+| 運営者交代時 | GitHub、Vercel、ドメイン、Search Console、メールの権限と通知先          |
 
 確認しただけでデータを変更しなかった場合も、重大な問題や判断保留があればIssueまたは運用記録へ残してください。
 

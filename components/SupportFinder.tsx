@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from "react";
 import AfterHoursGuide from "@/components/AfterHoursGuide";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
+import MentalCrisisSupport from "@/components/MentalCrisisSupport";
 import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/view-models";
 
 function displayDate(value: string): string {
@@ -327,6 +328,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
           >
             ← 地域を選び直す
           </button>
+          {categoryId === "mental" && <MentalCrisisSupport />}
           {searching && <p role="status">相談先を読み込んでいます…</p>}
           {searchError && (
             <p className="stale-data-warning" role="alert">
@@ -439,18 +441,12 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                       <h5>「どのような用件ですか」と聞かれたら</h5>
                       <p>「生活のことで相談したいです」</p>
                       <h5>担当につながったら</h5>
-                      <p>
-                        「{selectedCategory?.label}
-                        ことで困っています。使える制度や相談先を教えてください」
-                      </p>
+                      <p>「{selectedCategory?.consultationScript}」</p>
                     </div>
                   ) : (
                     <div className="direct-script">
                       <h5>電話で、こう伝えて大丈夫です</h5>
-                      <p>
-                        「{selectedCategory?.label}
-                        ことで困っています。使える制度や相談先を教えてください」
-                      </p>
+                      <p>「{selectedCategory?.consultationScript}」</p>
                     </div>
                   )}
                   <dl className="office-details">
@@ -579,7 +575,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               })}
             </div>
           </nav>
-          <FeedbackPrompt context={`${municipalityId || "national"}:${categoryId}`} />
+          <FeedbackPrompt pageId={municipalityId || "national"} categoryId={categoryId} />
         </div>
       )}
     </section>

@@ -49,7 +49,12 @@ export type FinderOffice = {
 
 export type FinderViewModel = {
   prefectures: { code: string; name: string }[];
-  categories: { id: string; label: string; description: string }[];
+  categories: {
+    id: string;
+    label: string;
+    description: string;
+    consultationScript: string;
+  }[];
   municipalities: FinderMunicipality[];
   latestVerifiedAt: string;
 };
@@ -59,7 +64,12 @@ export function toFinderViewModel(data: PortalData): FinderViewModel {
     prefectures: data.prefectures.map(({ code, name }) => ({ code, name })),
     categories: [...data.categories]
       .sort((a, b) => a.sortOrder - b.sortOrder)
-      .map(({ id, label, description }) => ({ id, label, description })),
+      .map(({ id, label, description, consultationScript }) => ({
+        id,
+        label,
+        description,
+        consultationScript,
+      })),
     municipalities: data.municipalities.map(({ id, prefectureCode, name, officialUrl, supportLevel }) => ({
       id, prefectureCode, name, officialUrl, supportLevel,
     })),

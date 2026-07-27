@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import MunicipalityDirectoryPicker from "@/components/MunicipalityDirectoryPicker";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { seoCategoryContent } from "@/lib/seo-content";
 
@@ -41,24 +42,19 @@ export default async function PrefectureSupportPage({ params }: PageProps) {
       <p className="eyebrow">{page.prefecture.name}</p>
       <h1>{page.prefecture.name}の生活・福祉相談窓口</h1>
       <p className="lead">
-        {page.municipalities.length}自治体の相談先を、困りごと別に確認できます。
+        {page.municipalities.length}自治体から市区町村を選び、困りごと別の相談先を確認できます。
       </p>
-      <div className="municipality-directory">
-        {page.municipalities.map((municipality) => (
-          <section className="municipality-link-group" key={municipality.id}>
-            <h2>{municipality.name}</h2>
-            <ul>
-              {page.data.categories.map((category) => (
-                <li key={category.id}>
-                  <Link href={`/support/${municipality.id}/${category.id}`}>
-                    {seoCategoryContent(category.id).searchTitle}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </section>
-        ))}
-      </div>
+      <MunicipalityDirectoryPicker
+        municipalities={page.municipalities.map(({ id, name, nameKana }) => ({
+          id,
+          name,
+          nameKana,
+        }))}
+        categories={page.data.categories.map((category) => ({
+          id: category.id,
+          searchTitle: seoCategoryContent(category.id).searchTitle,
+        }))}
+      />
     </main>
   );
 }
