@@ -1079,6 +1079,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-wakayama-pref-municipal-offices",
+    "url": "https://www.pref.wakayama.lg.jp/prefg/010500/shichousonzei/yakubaichiran.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:01:16.198Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 18634,
+    "contentHash": "040ec8493cf17ee49b6f36e11dd1efab173f9a944ea7f6a22aad39d77502e308",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-wakayama-pref-public-assistance",
+    "url": "https://www.pref.wakayama.lg.jp/prefg/040100/seikatuhogo/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:01:20.711Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 28894,
+    "contentHash": "d66a532f066d329bfeb5222f816b65878e8c771ec66723a2e5dc901f113c3030",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-wakayama-pref-self-reliance",
+    "url": "https://www.first-step.pref.wakayama.lg.jp/help-center/",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:01:18.517Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 101259,
+    "contentHash": "8df73357dd0e6f80c9d86ee38a46d18d85dceb3a0d404496d5d5ff078a3e1c05",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-yamanashi-housing-benefit",
     "url": "https://www.pref.yamanashi.jp/shigaku-kgk/korona/korona.html",
     "status": "ok",
