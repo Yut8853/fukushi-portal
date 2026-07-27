@@ -7,7 +7,7 @@ import { canCrawl, fetchWithRetry } from "../crawler/fetcher";
 import { findClosedDays, findOpeningHours } from "../crawler/extractor";
 import { assertSafeUrl } from "../crawler/security";
 import { getPublicPortalData } from "../lib/data/repository";
-import { officeContactType } from "../lib/support-routing";
+import { officeContactType, type OfficeContactType } from "../lib/support-routing";
 
 type HoursCandidate = {
   officeId: string;
@@ -59,9 +59,19 @@ async function responseText(response: Response, url: URL): Promise<string> {
 async function main() {
   const config = getCrawlerConfig();
   const data = await getPublicPortalData();
+  const typeArgument = process.argv.find((argument) => argument.startsWith("--type="))?.split("=")[1] ?? "all";
+  const requestedType = typeArgument === "all" ? null : typeArgument as OfficeContactType;
+  const limitArgument = process.argv.find((argument) => argument.startsWith("--limit="))?.split("=")[1];
+  const sourceLimit = limitArgument ? Number.parseInt(limitArgument, 10) : Number.POSITIVE_INFINITY;
+  const offsetArgument = process.argv.find((argument) => argument.startsWith("--offset="))?.split("=")[1];
+  const sourceOffset = offsetArgument ? Number.parseInt(offsetArgument, 10) : 0;
   const sources = new Map(data.sources.map((source) => [source.id, source.url]));
   const targets = data.offices
-    .filter((office) => officeContactType(office) === "self-reliance" && !office.openingHours && office.phone)
+    .filter((office) =>
+      !office.openingHours
+      && office.phone
+      && (!requestedType || officeContactType(office) === requestedType)
+    )
     .map((office) => ({ office, sourceUrl: office.officialUrl || sources.get(office.sourceId) || "" }))
     .filter((item) => item.sourceUrl);
   const groups = new Map<string, typeof targets>();
@@ -73,7 +83,8 @@ async function main() {
   const candidates: HoursCandidate[] = [];
   const errors: { sourceUrl: string; message: string }[] = [];
   let processed = 0;
-  for (const [sourceUrl, offices] of groups) {
+  const selectedGroups = [...groups].slice(sourceOffset, sourceOffset + sourceLimit);
+  for (const [sourceUrl, offices] of selectedGroups) {
     try {
       const url = await assertSafeUrl(sourceUrl);
       if (!await canCrawl(url.href, config)) {
@@ -108,12 +119,15 @@ async function main() {
       errors.push({ sourceUrl, message: error instanceof Error ? error.message : String(error) });
     }
     processed += 1;
-    console.log(`進捗 ${processed}/${groups.size} / 候補 ${candidates.length}件 / 取得失敗 ${errors.length}件`);
+    console.log(`進捗 ${processed}/${selectedGroups.length} / 候補 ${candidates.length}件 / 取得失敗 ${errors.length}件`);
   }
   const report = {
     generatedAt: new Date().toISOString(),
     targetOffices: targets.length,
     sourceCount: groups.size,
+    scannedSourceCount: processed,
+    sourceOffset,
+    requestedType: requestedType ?? "all",
     candidates,
     errors,
   };

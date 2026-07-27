@@ -26,6 +26,8 @@
     "crawl:publish": "tsx scripts/crawl-publish.ts",
     "crawl:publish:test": "tsx scripts/crawl-publish-test.ts",
     "crawl:hours:test": "tsx scripts/extractor-hours-test.ts",
+    "crawl:hours:inventory": "tsx scripts/office-hours-inventory.ts",
+    "crawl:hours:apply": "tsx scripts/office-hours-apply.ts",
     "crawl:hours:reprocess": "tsx scripts/crawl-hours-reprocess.ts",
     "crawl:hours:scan": "tsx scripts/office-hours-scan.ts"
   },
