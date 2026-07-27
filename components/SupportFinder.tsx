@@ -23,6 +23,12 @@ function telephoneAriaLabel(value: string): string {
     .join(" の ")}へ電話`;
 }
 
+function officeDisplayName(office: FinderOffice, offices: FinderOffice[]): string {
+  if (!office.plainName) return office.name;
+  const samePlainName = offices.filter((item) => item.plainName === office.plainName);
+  return samePlainName.length > 1 ? office.name : office.plainName;
+}
+
 function verificationExpired(value: string): boolean {
   if (!value) return true;
   return Date.now() - new Date(`${value}T00:00:00Z`).getTime() > 180 * 86_400_000;
@@ -104,7 +110,11 @@ function selectFinderOffices(
     (item) => item.categoryId === categoryId && item.contactType !== "representative",
   );
   const selfReliance = local.filter((item) => item.contactType === "self-reliance");
-  const representatives = local.filter((item) => item.contactType === "representative");
+  const representatives = local.filter(
+    (item) =>
+      item.contactType === "representative" &&
+      (item.categoryId === "unknown" || item.categoryId === categoryId),
+  );
   if (categoryId === "violence") return direct;
   const selfRelianceFirst = new Set([
     "food",
@@ -542,7 +552,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                         ? "総合相談の直通・このまま話せます"
                         : "専用窓口の直通・このまま話せます"}
                   </p>
-                  <h4>{office.plainName || office.name}</h4>
+                  <h4>{officeDisplayName(office, offices)}</h4>
                   {office.description && <p>{office.description}</p>}
                   {office.phone && (
                     <a

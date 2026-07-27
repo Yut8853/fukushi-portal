@@ -125,9 +125,15 @@ offices.forEach((item, index) => {
 
 const publishedDirectOfficeGroups = new Map<string, typeof offices>();
 offices
-  .filter((item) => item.status === "published" && item.contactType === "direct")
+  .filter(
+    (item) =>
+      item.status === "published"
+      && (item.contactType === "direct" || item.contactType === "self-reliance"),
+  )
   .forEach((item) => {
-    const key = `${item.municipalityId}:${item.categoryId}`;
+    const key = item.contactType === "self-reliance"
+      ? `${item.municipalityId}:self-reliance`
+      : `${item.municipalityId}:direct:${item.categoryId}`;
     const group = publishedDirectOfficeGroups.get(key) ?? [];
     group.push(item);
     publishedDirectOfficeGroups.set(key, group);
@@ -137,7 +143,7 @@ publishedDirectOfficeGroups.forEach((group, key) => {
     errors.push({
       file: "offices.csv",
       row: 1,
-      message: `${key}: 同一自治体・カテゴリに複数の直通窓口がありますが、管轄地域が未入力です。`,
+      message: `${key}: 同一自治体・役割に複数の実窓口がありますが、管轄地域が未入力です。`,
     });
   }
 });

@@ -22,6 +22,16 @@ function telephoneAriaLabel(value: string): string {
     .join(" の ")}へ電話`;
 }
 
+function officeDisplayName(
+  office: { name: string; plainName: string },
+  offices: { name: string; plainName: string }[],
+): string {
+  if (!office.plainName) return office.name;
+  return offices.filter((item) => item.plainName === office.plainName).length > 1
+    ? office.name
+    : office.plainName;
+}
+
 async function getPageData(params: PageProps["params"]) {
   const { municipalityCode, categoryId } = await params;
   const data = await getPublicPortalData();
@@ -66,7 +76,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!page) return {};
   const seo = seoCategoryContent(page.category.id);
   const title = `${page.municipality.name}で${seo.searchTitle}ときの相談先`;
-  const firstOffice = page.offices[0]?.plainName || page.offices[0]?.name;
+  const firstOffice = page.offices[0]
+    ? officeDisplayName(page.offices[0], page.offices)
+    : undefined;
   const description = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの公的な相談先${firstOffice ? `「${firstOffice}」` : ""}と、電話での伝え方を案内します。`;
   return {
     title,
@@ -137,7 +149,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
               itemListElement: offices.map((office, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
-                name: office.plainName || office.name,
+                name: officeDisplayName(office, offices),
                 url: sources.get(office.sourceId)?.url || office.officialUrl || pageUrl,
               })),
             },
@@ -231,7 +243,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                     ? "総合相談の直通・このまま話せます"
                     : "専用窓口の直通・このまま話せます"}
               </p>
-              <h3>{office.plainName || office.name}</h3>
+              <h3>{officeDisplayName(office, offices)}</h3>
               {office.phone && (
                 <p>
                   <a

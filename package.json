@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "npm run verify && next build",
+    "verify": "npm run data:validate && npm run data:quality && npm run data:audit && npm run seo:audit && npm test && npm run lint && npm run format:check",
     "start": "next start",
     "lint": "eslint app components crawler lib scripts proxy.ts",
     "format": "prettier --write \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx,css}\"",
@@ -15,6 +16,8 @@
     "data:audit": "tsx scripts/nationwide-completion-audit.ts",
     "data:office-metadata": "tsx scripts/office-metadata-migrate.ts",
     "data:quarantine-ambiguous": "tsx scripts/quarantine-ambiguous-offices.ts",
+    "data:add-quarantine-fallbacks": "tsx scripts/add-quarantine-fallbacks.ts",
+    "data:fix-verified-cities": "tsx scripts/fix-verified-city-offices.ts",
     "seo:audit": "tsx scripts/seo-audit.ts",
     "sources:monitor": "tsx scripts/sources-monitor.ts",
     "supabase:seed": "tsx scripts/supabase-seed.ts",

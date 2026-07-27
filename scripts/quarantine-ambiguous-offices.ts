@@ -4,15 +4,25 @@ import { escapeCsv, readCsvFile } from "../lib/csv";
 
 const officesPath = path.join(process.cwd(), "data", "offices.csv");
 
+function ambiguityKey(office: Record<string, string>): string | null {
+  if (office.contactType === "self-reliance") {
+    return `${office.municipalityId}:self-reliance`;
+  }
+  if (office.contactType === "direct") {
+    return `${office.municipalityId}:direct:${office.categoryId}`;
+  }
+  return null;
+}
+
 async function main() {
   const offices = await readCsvFile(officesPath);
   const headers = Object.keys(offices[0] ?? {});
   const groups = new Map<string, typeof offices>();
 
   offices
-    .filter((office) => office.status === "published" && office.contactType === "direct")
+    .filter((office) => office.status === "published" && ambiguityKey(office))
     .forEach((office) => {
-      const key = `${office.municipalityId}:${office.categoryId}`;
+      const key = ambiguityKey(office)!;
       const group = groups.get(key) ?? [];
       group.push(office);
       groups.set(key, group);
@@ -25,10 +35,10 @@ async function main() {
   );
   let quarantined = 0;
   const lines = offices.map((office) => {
-    const key = `${office.municipalityId}:${office.categoryId}`;
+    const key = ambiguityKey(office);
     const shouldQuarantine =
       office.status === "published" &&
-      office.contactType === "direct" &&
+      key !== null &&
       ambiguousKeys.has(key) &&
       !office.serviceArea;
     if (shouldQuarantine) quarantined += 1;

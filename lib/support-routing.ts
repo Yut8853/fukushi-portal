@@ -62,7 +62,9 @@ export function selectOffices(
     (item) => officeContactType(item, representativePhone) === "self-reliance",
   );
   const representatives = local.filter(
-    (item) => officeContactType(item, representativePhone) === "representative",
+    (item) =>
+      officeContactType(item, representativePhone) === "representative" &&
+      (item.categoryId === "unknown" || item.categoryId === categoryId),
   );
 
   if (categoryId === "violence") return direct;
