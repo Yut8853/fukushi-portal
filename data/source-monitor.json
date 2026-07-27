@@ -78,6 +78,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-akita-housing-benefit",
+    "url": "https://www.pref.akita.lg.jp/pages/archive/9336",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:45:23.569Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 230504,
+    "contentHash": "00e01e8c503d05e2ca28f51b08da7a7fe78417da30868c8907c596492df21a98",
+    "previousHash": "00e01e8c503d05e2ca28f51b08da7a7fe78417da30868c8907c596492df21a98",
+    "error": ""
+  },
+  {
+    "sourceId": "source-akita-municipalities",
+    "url": "https://www.pref.akita.lg.jp/pages/archive/46079",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:45:19.507Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 219311,
+    "contentHash": "df0d2adaef75a010d1f12159daec3b350269b3f1fb3e564182ff1292ba8caff6",
+    "previousHash": "df0d2adaef75a010d1f12159daec3b350269b3f1fb3e564182ff1292ba8caff6",
+    "error": ""
+  },
+  {
+    "sourceId": "source-akita-public-assistance",
+    "url": "https://www.pref.akita.lg.jp/uploads/public/archive_0000059286_00/R7%E7%A6%8F%E7%A5%89%E4%BA%8B%E5%8B%99%E6%89%80%E4%B8%80%E8%A6%A7_%E4%BF%AE%E6%AD%A3.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:45:25.555Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 207718,
+    "contentHash": "aa092c009fcec518513916d3e36414a397ce3ce5b25ac8c6ba067f52355aa3b7",
+    "previousHash": "aa092c009fcec518513916d3e36414a397ce3ce5b25ac8c6ba067f52355aa3b7",
+    "error": ""
+  },
+  {
+    "sourceId": "source-akita-self-reliance",
+    "url": "https://www.pref.akita.lg.jp/uploads/public/archive_0000009336_00/%E7%94%9F%E6%B4%BB%E5%9B%B0%E7%AA%AE%E8%80%85%E8%87%AA%E7%AB%8B%E7%9B%B8%E8%AB%87%E6%94%AF%E6%8F%B4%E7%AA%93%E5%8F%A3.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:45:21.660Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 83639,
+    "contentHash": "67086bcba076f2900991e7b08ec7a7cea24ace3c9624fa649844b05e129e324e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-aomori-housing-benefit",
     "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/kkenkofu/jukyokakuho.html",
     "status": "ok",
