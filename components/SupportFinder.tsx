@@ -39,6 +39,7 @@ const RELATED_CATEGORIES: Record<string, string[]> = {
 
 export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [categoryId, setCategoryId] = useState("");
+  const [activeStep, setActiveStep] = useState<1 | 2 | 3>(1);
   const [prefectureCode, setPrefectureCode] = useState("");
   const [municipalityId, setMunicipalityId] = useState("");
   const [searched, setSearched] = useState(false);
@@ -61,6 +62,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       setPrefectureCode(validMunicipality?.prefectureCode ?? "");
       setSearched(Boolean(validCategory));
       setSearching(Boolean(validCategory));
+      setActiveStep(validCategory ? 3 : 1);
       setUrlReady(true);
     }, 0);
     return () => window.clearTimeout(timer);
@@ -108,12 +110,14 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     setSearching(true);
     setSearchError("");
     setSearched(true);
+    setActiveStep(3);
   };
   const moveToCategory = (nextCategoryId: string) => {
     setCategoryId(nextCategoryId);
     setSearching(true);
     setSearchError("");
     setSearched(true);
+    setActiveStep(3);
   };
   const shareResults = async () => {
     const shareData = {
@@ -151,12 +155,12 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       </div>
 
       <div className="finder-progress" aria-label="検索の流れ">
-        <span className={categoryId ? "is-complete" : "is-current"}><b>1</b>困りごと</span>
-        <span className={searched ? "is-complete" : categoryId ? "is-current" : ""}><b>2</b>地域</span>
-        <span className={searched ? "is-current" : ""}><b>3</b>案内を見る</span>
+        <span className={activeStep > 1 ? "is-complete" : "is-current"}><b>1</b>困りごと</span>
+        <span className={activeStep > 2 ? "is-complete" : activeStep === 2 ? "is-current" : ""}><b>2</b>地域</span>
+        <span className={activeStep === 3 ? "is-current" : ""}><b>3</b>案内を見る</span>
       </div>
 
-      <fieldset className="need-fieldset">
+      {activeStep === 1 && <fieldset className="need-fieldset">
         <legend className="visually-hidden">いま、一番困っていること</legend>
         <div className="step-heading" aria-hidden="true">
           <span className="step-number">1</span>
@@ -167,7 +171,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
           {data.categories.map((category) => (
             <label key={category.id} className={`need-card ${categoryId === category.id ? "is-selected" : ""}`}>
               <input type="radio" name="need" value={category.id} checked={categoryId === category.id}
-                onChange={() => { setCategoryId(category.id); setSearched(false); }} />
+                onChange={() => {
+                  setCategoryId(category.id);
+                  setSearched(false);
+                  setActiveStep(2);
+                }} />
               <span className="need-radio" aria-hidden="true" />
               <span className="need-copy">
                 <strong>{category.label}</strong>
@@ -176,9 +184,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
             </label>
           ))}
         </div>
-      </fieldset>
+      </fieldset>}
 
-      {categoryId === "unknown" && (
+      {activeStep === 2 && categoryId === "unknown" && (
         <aside className="urgent-check">
           <h3>まず、今日・明日の生活は大丈夫ですか？</h3>
           <p>近いものがあれば、ここから選び直せます。</p>
@@ -191,7 +199,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         </aside>
       )}
 
-      <fieldset className="location-fieldset">
+      {activeStep === 2 && <fieldset className="location-fieldset">
         <legend className="visually-hidden">住んでいる地域</legend>
         <div className="step-heading" aria-hidden="true">
           <span className="step-number">2</span>
@@ -227,19 +235,28 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
             この都道府県の自治体別情報は現在整備中です。全国共通の支援情報は確認できます。
           </p>
         )}
-      </fieldset>
+      </fieldset>}
 
-      <div className="search-action">
+      {activeStep === 2 && <div className="search-action">
         {selectedCategory
-          ? <p><strong>選んだ状況：</strong>{selectedCategory.label}</p>
+          ? <p>
+              <strong>選んだ状況：</strong>{selectedCategory.label}
+              <button type="button" className="text-button" onClick={() => setActiveStep(1)}>選び直す</button>
+            </p>
           : <p>最初に困りごとを1つ選んでください</p>}
         <button className="primary-button" disabled={!canSearch} onClick={showResults}>
           {searching ? "読み込み中…" : municipality ? `${municipality.name}の相談先を見る` : "相談先と支援を見る"}
         </button>
-      </div>
+      </div>}
 
-      {searched && (
+      {activeStep === 3 && searched && (
         <div id="support-results" className="results" aria-live="polite">
+          <button type="button" className="step-back-button" onClick={() => {
+            setActiveStep(2);
+            setSearched(false);
+          }}>
+            ← 地域を選び直す
+          </button>
           {searching && <p role="status">相談先を読み込んでいます…</p>}
           {searchError && <p className="stale-data-warning" role="alert">{searchError}</p>}
           <div className="results-head">
