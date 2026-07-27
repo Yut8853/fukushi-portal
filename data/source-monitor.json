@@ -1118,6 +1118,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-oita-housing-benefit",
+    "url": "https://www.pref.oita.jp/soshiki/12000/covid19-consultation-desk-002.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:04:51.605Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 21966,
+    "contentHash": "fb425a19c0a587862f7a63d9585eea5fd1be65630b07114aa61acb2d3ce1b703",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-oita-municipalities",
+    "url": "https://www.pref.oita.jp/soshiki/75008/kennai-sityoson.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:04:53.728Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 22375,
+    "contentHash": "1f1866d857cf42611877e58fe62b5fe8149d9c336b0e40bcc4b7dc236ea4a58c",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-oita-public-assistance",
+    "url": "https://www.pref.oita.jp/soshiki/12090/seikatuhogo1.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:04:55.735Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 32459,
+    "contentHash": "a4b03131c5e8ab1b744d9f5b790926c03b6cd5ef2e5b45aeb510dc1a2232e127",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-oita-self-reliance",
+    "url": "https://www.pref.oita.jp/soshiki/13000/ooitakenhikikomorisien.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:04:57.840Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 54606,
+    "contentHash": "2da160250896637c3ea444e1bd3a530b95bfe589d383707cd01eab4e91a60fcd",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-okayama-housing-benefit",
     "url": "https://www.pref.okayama.jp/page/detail-54694.html",
     "status": "ok",
