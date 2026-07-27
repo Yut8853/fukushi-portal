@@ -1105,6 +1105,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-saga-housing-benefit",
+    "url": "https://www.pref.saga.lg.jp/kiji00310113/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:50:24.532Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 149401,
+    "contentHash": "45ec0e9663033505ed82ca1f95b532b10d69ae80cfc65e088bceb63fd79c4f37",
+    "previousHash": "45ec0e9663033505ed82ca1f95b532b10d69ae80cfc65e088bceb63fd79c4f37",
+    "error": ""
+  },
+  {
+    "sourceId": "source-saga-municipal-links",
+    "url": "https://www.pref.saga.lg.jp/kiji0034844/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:50:26.648Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 124351,
+    "contentHash": "61ae1a26f837c9ff0579d79fc2115859d4cf65e546b90e84f7fca47596e97d94",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-saga-public-assistance",
+    "url": "https://www.pref.saga.lg.jp/kiji00377415/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:50:28.632Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 128275,
+    "contentHash": "ca5fca9f64eb99f4385fcc96aa2e2e711a5f2c299a8b931b3a809dafe00abb1c",
+    "previousHash": "ca5fca9f64eb99f4385fcc96aa2e2e711a5f2c299a8b931b3a809dafe00abb1c",
+    "error": ""
+  },
+  {
+    "sourceId": "source-saga-self-reliance",
+    "url": "https://www.pref.saga.lg.jp/kiji00310113/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:50:30.743Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 149401,
+    "contentHash": "45ec0e9663033505ed82ca1f95b532b10d69ae80cfc65e088bceb63fd79c4f37",
+    "previousHash": "45ec0e9663033505ed82ca1f95b532b10d69ae80cfc65e088bceb63fd79c4f37",
+    "error": ""
+  },
+  {
     "sourceId": "source-saitama-official-links",
     "url": "https://www.pref.saitama.lg.jp/a0301/wwwlink.html",
     "status": "ok",
