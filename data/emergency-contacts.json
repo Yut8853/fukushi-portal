@@ -6,6 +6,8 @@
     "phoneHref": "tel:110",
     "officialUrl": "https://www.npa.go.jp/goiken_index.html",
     "publisher": "警察庁",
+    "cost": "無料",
+    "availability": "24時間・緊急時",
     "displayMode": "primary",
     "lastVerifiedAt": "2026-07-26"
   },
@@ -16,6 +18,8 @@
     "phoneHref": "tel:119",
     "officialUrl": "https://www.fdma.go.jp/mission/enrichment/kyukyumusen_kinkyutuhou/119.html",
     "publisher": "総務省消防庁",
+    "cost": "無料",
+    "availability": "24時間・緊急時",
     "displayMode": "primary",
     "lastVerifiedAt": "2026-07-26"
   },
@@ -26,6 +30,8 @@
     "phoneHref": "tel:189",
     "officialUrl": "https://www.cfa.go.jp/policies/jidougyakutai/gyakutai-taiou-dial/",
     "publisher": "こども家庭庁",
+    "cost": "無料",
+    "availability": "24時間",
     "displayMode": "primary",
     "lastVerifiedAt": "2026-07-26"
   },
@@ -36,6 +42,8 @@
     "phoneHref": "tel:%238008",
     "officialUrl": "https://www.gender.go.jp/policy/no_violence/dv_navi/",
     "publisher": "内閣府男女共同参画局",
+    "cost": "通話料あり",
+    "availability": "地域の受付時間内",
     "displayMode": "primary",
     "lastVerifiedAt": "2026-07-26"
   },
@@ -43,10 +51,36 @@
     "id": "mental-health",
     "label": "こころが限界・消えたい気持ちがある",
     "number": "0570-064-556",
-    "phoneHref": "tel:+81570064556?oai_link_source=model_response_hotline",
-    "officialUrl": "https://www.mhlw.go.jp/mamorouyokokoro/?oai_link_source=model_response_hotline",
+    "phoneHref": "tel:0570064556",
+    "officialUrl": "https://www.mhlw.go.jp/mamorouyokokoro/",
     "publisher": "厚生労働省",
+    "cost": "通話料あり",
+    "availability": "地域により異なる",
     "displayMode": "detail",
-    "lastVerifiedAt": "2026-07-26"
+    "lastVerifiedAt": "2026-07-27"
+  },
+  {
+    "id": "dv-consultation-plus",
+    "label": "DV相談＋",
+    "number": "0120-279-889",
+    "phoneHref": "tel:0120279889",
+    "officialUrl": "https://www.gender.go.jp/policy/sokushin/ouen/safe/dv/",
+    "publisher": "内閣府男女共同参画局",
+    "cost": "無料",
+    "availability": "電話24時間",
+    "displayMode": "detail",
+    "lastVerifiedAt": "2026-07-27"
+  },
+  {
+    "id": "yorisoi-hotline",
+    "label": "よりそいホットライン",
+    "number": "0120-279-338",
+    "phoneHref": "tel:0120279338",
+    "officialUrl": "https://www.mhlw.go.jp/mamorouyokokoro/soudan/tel/",
+    "publisher": "厚生労働省",
+    "cost": "無料",
+    "availability": "24時間",
+    "displayMode": "detail",
+    "lastVerifiedAt": "2026-07-27"
   }
 ]

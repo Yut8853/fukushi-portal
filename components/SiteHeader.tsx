@@ -4,7 +4,7 @@ export default function SiteHeader() {
   return (
     <header className="site-header">
       <div className="site-header-inner">
-        <Link className="site-brand" href="/" aria-label="くらし支援ナビ トップページ">
+        <Link className="site-brand" href="/">
           <span className="site-brand-mark" aria-hidden="true">く</span>
           <span>
             <strong>くらし支援ナビ</strong>

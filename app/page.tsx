@@ -17,6 +17,14 @@ export default async function HomePage() {
             状況をひとつ選ぶだけで、今日できることと公的な相談先を分かりやすく案内します。
             名前や住所の入力は不要です。
           </p>
+          <p className="coverage-proof">
+            全国1,741自治体・7,221窓口を収録（公開7,211件）。公式情報をもとに確認しています。
+          </p>
+          <p className="multilingual-link">
+            <a href="https://www.moj.go.jp/isa/support/fresc/fresc01.html" target="_blank" rel="noreferrer">
+              English / 中文 / Tiếng Việt → 外国人向け相談窓口（FRESC）
+            </a>
+          </p>
           <a className="hero-button" href="#support-finder">相談先を探す</a>
         </div>
         <aside className="hero-guide" aria-label="このサイトでできること">

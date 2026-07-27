@@ -8,6 +8,8 @@ const emergencyContactSchema = z.object({
   phoneHref: z.string().startsWith("tel:"),
   officialUrl: z.url(),
   publisher: z.string().min(1),
+  cost: z.string().min(1),
+  availability: z.string().min(1),
   displayMode: z.enum(["primary", "detail"]),
   lastVerifiedAt: z.iso.date(),
 });

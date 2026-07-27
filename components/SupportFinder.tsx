@@ -1,7 +1,8 @@
 "use client";
 
-import { useMemo, useState } from "react";
-import type { FinderViewModel } from "@/lib/data/view-models";
+import { useEffect, useMemo, useState } from "react";
+import FeedbackPrompt from "@/components/FeedbackPrompt";
+import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/view-models";
 
 function displayDate(value: string): string {
   if (!value) return "未確認";
@@ -23,28 +24,64 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [prefectureCode, setPrefectureCode] = useState("");
   const [municipalityId, setMunicipalityId] = useState("");
   const [searched, setSearched] = useState(false);
+  const [urlReady, setUrlReady] = useState(false);
+  const [shareStatus, setShareStatus] = useState("");
+  const [results, setResults] = useState<FinderProgram[]>([]);
+  const [offices, setOffices] = useState<FinderOffice[]>([]);
+  const [searching, setSearching] = useState(false);
+  const [searchError, setSearchError] = useState("");
+
+  useEffect(() => {
+    const query = new URLSearchParams(window.location.search);
+    const need = query.get("need") ?? "";
+    const municipalityQuery = query.get("municipality") ?? "";
+    const validCategory = data.categories.some((item) => item.id === need) ? need : "";
+    const validMunicipality = data.municipalities.find((item) => item.id === municipalityQuery);
+    setCategoryId(validCategory);
+    setMunicipalityId(validMunicipality?.id ?? "");
+    setPrefectureCode(validMunicipality?.prefectureCode ?? "");
+    setSearched(Boolean(validCategory));
+    setUrlReady(true);
+  }, [data.categories, data.municipalities]);
+
+  useEffect(() => {
+    if (!searched || !categoryId) return;
+    const controller = new AbortController();
+    const query = new URLSearchParams({ need: categoryId });
+    if (municipalityId) query.set("municipality", municipalityId);
+    setSearching(true);
+    setSearchError("");
+    fetch(`/api/support?${query}`, { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("相談先を読み込めませんでした。");
+        return response.json() as Promise<{ programs: FinderProgram[]; offices: FinderOffice[] }>;
+      })
+      .then((response) => {
+        setResults(response.programs);
+        setOffices(response.offices);
+      })
+      .catch((error) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setSearchError("相談先を読み込めませんでした。少し待ってから、もう一度お試しください。");
+      })
+      .finally(() => setSearching(false));
+    return () => controller.abort();
+  }, [categoryId, municipalityId, searched]);
+
+  useEffect(() => {
+    if (!urlReady) return;
+    const query = new URLSearchParams();
+    if (categoryId) query.set("need", categoryId);
+    if (municipalityId) query.set("municipality", municipalityId);
+    const nextUrl = `${window.location.pathname}${query.size ? `?${query}` : ""}${searched ? "#support-results" : ""}`;
+    window.history.replaceState(null, "", nextUrl);
+  }, [categoryId, municipalityId, searched, urlReady]);
 
   const municipalityOptions = useMemo(
     () => data.municipalities.filter((item) => item.prefectureCode === prefectureCode),
     [data.municipalities, prefectureCode],
   );
   const municipality = data.municipalities.find((item) => item.id === municipalityId);
-  const results = useMemo(() => {
-    const available = data.programs.filter((item) =>
-      item.scope === "national" || Boolean(municipalityId && item.municipalityId === municipalityId),
-    );
-    const direct = available.filter((item) => item.categoryId === categoryId);
-    return direct.length ? direct : available.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
-  }, [categoryId, municipalityId, data.programs]);
-  const offices = useMemo(() => {
-    if (!municipalityId) return [];
-    const direct = data.offices.filter((item) =>
-      item.municipalityId === municipalityId && item.categoryId === categoryId,
-    );
-    return direct.length ? direct : data.offices.filter((item) =>
-      item.municipalityId === municipalityId && item.categoryId === "unknown",
-    );
-  }, [categoryId, municipalityId, data.offices]);
   const canSearch = Boolean(categoryId);
   const selectedCategory = data.categories.find((item) => item.id === categoryId);
   const showResults = () => {
@@ -52,6 +89,25 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     window.setTimeout(() => {
       document.getElementById("support-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
     }, 0);
+  };
+  const shareResults = async () => {
+    const shareData = {
+      title: `${municipality?.name ?? "全国共通"}の「${selectedCategory?.label ?? "生活の困りごと"}」相談先`,
+      text: "くらし支援ナビの相談先案内",
+      url: window.location.href,
+    };
+    try {
+      if (navigator.share) {
+        await navigator.share(shareData);
+        setShareStatus("共有画面を開きました。");
+      } else {
+        await navigator.clipboard.writeText(shareData.url);
+        setShareStatus("この案内のURLをコピーしました。");
+      }
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
+      setShareStatus("共有できませんでした。ブラウザのアドレスをコピーしてください。");
+    }
   };
 
   return (
@@ -140,12 +196,14 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
           ? <p><strong>選んだ状況：</strong>{selectedCategory.label}</p>
           : <p>最初に困りごとを1つ選んでください</p>}
         <button className="primary-button" disabled={!canSearch} onClick={showResults}>
-          {municipality ? `${municipality.name}の相談先を見る` : "相談先と支援を見る"}
+          {searching ? "読み込み中…" : municipality ? `${municipality.name}の相談先を見る` : "相談先と支援を見る"}
         </button>
       </div>
 
       {searched && (
         <div id="support-results" className="results" aria-live="polite">
+          {searching && <p role="status">相談先を読み込んでいます…</p>}
+          {searchError && <p className="stale-data-warning" role="alert">{searchError}</p>}
           <div className="results-head">
             <p className="section-kicker">{municipality?.name ?? "全国共通"}の案内</p>
             <h2>まず、ここから相談できます</h2>
@@ -167,6 +225,17 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
             {municipality?.officialUrl && <a className="official-link" href={municipality.officialUrl} target="_blank" rel="noreferrer">
               {municipality.name}公式サイトを開く
             </a>}
+            <div className="result-actions">
+              <button type="button" className="secondary-button" onClick={shareResults}>この案内を共有</button>
+              {shareStatus && <span role="status">{shareStatus}</span>}
+            </div>
+            <div className="result-block call-script">
+              <h3>電話や窓口で、こう伝えて大丈夫です</h3>
+              <p>
+                「{selectedCategory?.label}ことで困っています。
+                使える制度や相談先を教えてください」
+              </p>
+            </div>
           </div>
           {offices.length > 0 && (
             <section className="office-results" aria-labelledby="office-results-title">
@@ -228,6 +297,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
           {!results.length && (
             <p className="no-results">この状況に対応する公開済み情報は、まだ登録されていません。</p>
           )}
+          <FeedbackPrompt context={`${municipalityId || "national"}:${categoryId}`} />
         </div>
       )}
     </section>

@@ -48,13 +48,10 @@ export type FinderViewModel = {
   prefectures: { code: string; name: string }[];
   categories: { id: string; label: string; description: string }[];
   municipalities: FinderMunicipality[];
-  programs: FinderProgram[];
-  offices: FinderOffice[];
   latestVerifiedAt: string;
 };
 
 export function toFinderViewModel(data: PortalData): FinderViewModel {
-  const sources = new Map(data.sources.map((source) => [source.id, source]));
   return {
     prefectures: data.prefectures.map(({ code, name }) => ({ code, name })),
     categories: [...data.categories]
@@ -62,39 +59,6 @@ export function toFinderViewModel(data: PortalData): FinderViewModel {
       .map(({ id, label, description }) => ({ id, label, description })),
     municipalities: data.municipalities.map(({ id, prefectureCode, name, officialUrl, supportLevel }) => ({
       id, prefectureCode, name, officialUrl, supportLevel,
-    })),
-    programs: data.programs.map((program) => ({
-      id: program.id,
-      categoryId: program.categoryId,
-      scope: program.scope,
-      municipalityId: program.municipalityId,
-      name: program.name,
-      plainName: program.plainName,
-      description: program.description,
-      applicationFlow: program.applicationFlow,
-      requiredDocuments: program.requiredDocuments.split("・").filter(Boolean),
-      documentsOptionalNote: program.documentsOptionalNote,
-      sourceTitle: sources.get(program.sourceId)?.title ?? "",
-      sourceUrl: sources.get(program.sourceId)?.url ?? "",
-      lastVerifiedAt: program.lastVerifiedAt,
-    })),
-    offices: data.offices.map((office) => ({
-      id: office.id,
-      municipalityId: office.municipalityId,
-      categoryId: office.categoryId,
-      name: office.name,
-      plainName: office.plainName,
-      description: office.description,
-      phone: office.phone,
-      officialUrl: office.officialUrl,
-      openingHours: office.openingHours,
-      closedDays: office.closedDays,
-      address: office.address,
-      serviceArea: office.serviceArea,
-      eligibilityConditions: office.eligibilityConditions,
-      lastVerifiedAt: office.lastVerifiedAt,
-      sourceTitle: sources.get(office.sourceId)?.title ?? "",
-      sourceUrl: sources.get(office.sourceId)?.url ?? "",
     })),
     latestVerifiedAt: [
       ...data.municipalities, ...data.offices, ...data.programs, ...data.sources,
