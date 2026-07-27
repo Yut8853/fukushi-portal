@@ -78,6 +78,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-aomori-housing-benefit",
+    "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/kkenkofu/jukyokakuho.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:32:25.713Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 19925,
+    "contentHash": "264b129c8b77da41cfc9da8f6e8984bee226891f7f724e69a308692f2690bf2c",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-aomori-municipalities",
+    "url": "https://www.pref.aomori.lg.jp/soshiki/zaimu/shichoson/shichoson.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:32:21.596Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 19598,
+    "contentHash": "f17e5e9d43b9029de7136158a9f78018b4479a46c6eed29d2b4878bafa658e95",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-aomori-public-assistance",
+    "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/ch-fukushi/seiho.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:32:27.708Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 11517,
+    "contentHash": "f502cbf4c7c11cd18f8a9169dcaa5c7f23f1bd49f490657bba26f68ac335b6c5",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-aomori-self-reliance",
+    "url": "https://www.pref.aomori.lg.jp/soshiki/kenko/kkenkofu/jiritsu-soudan.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:32:23.738Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 17414,
+    "contentHash": "699ee25ef2b80e73ba0ab668e579ff5e62a69c5fa6d2f3e31cce0baad50c2e00",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-chiba-municipalities",
     "url": "https://www.pref.chiba.lg.jp/kouhou/ichiran.html",
     "status": "ok",
