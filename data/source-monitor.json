@@ -455,6 +455,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-kagawa-municipal-offices",
+    "url": "https://www.pref.kagawa.lg.jp/shogaifukushi/sogo/sonota/link.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:29:56.243Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 16047,
+    "contentHash": "cbd994ff42b6d53fa3e8f54c548d22d0cd55ea2a1b7940e4923ff63c36f755d2",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kagawa-public-assistance",
+    "url": "https://www.pref.kagawa.lg.jp/hokenhukushi/livelihood/livelihood.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:30:00.412Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 22701,
+    "contentHash": "28b4d4d1afb26cd611ee0ffecd780a965cdf7ecaa2b0bfe2b4883ebf8fde299d",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kagawa-self-reliance",
+    "url": "https://www.pref.kagawa.lg.jp/hokenhukushi/livelihood/wrwhr6200323091634.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:29:58.436Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 22842,
+    "contentHash": "3fe472582a247b4505b14e3202ed0126ec1bfe4932cd79aac027df93ed558237",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-kanagawa-housing-benefit",
     "url": "https://www.pref.kanagawa.jp/docs/r6w/konkyu/jukyokakuhokyufukin.html",
     "status": "ok",
