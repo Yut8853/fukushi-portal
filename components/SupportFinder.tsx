@@ -114,12 +114,27 @@ function selectFinderOffices(
     (item) => item.categoryId === categoryId && item.contactType !== "representative",
   );
   const selfReliance = local.filter((item) => item.contactType === "self-reliance");
-  const representatives = local.filter(
-    (item) =>
-      item.contactType === "representative" &&
-      (item.categoryId === "unknown" || item.categoryId === categoryId),
+  const categoryRepresentatives = local.filter(
+    (item) => item.contactType === "representative" && item.categoryId === categoryId,
   );
-  if (categoryId === "violence") return direct;
+  const generalRepresentatives = local.filter(
+    (item) => item.contactType === "representative" && item.categoryId === "unknown",
+  );
+  const representatives = [...categoryRepresentatives, ...generalRepresentatives];
+  if (categoryId === "violence") {
+    const seenPhones = new Set<string>();
+    return [...direct]
+      .sort(
+        (a, b) => Number(/(?:^|-)dv(?:-|$)/i.test(b.id)) - Number(/(?:^|-)dv(?:-|$)/i.test(a.id)),
+      )
+      .filter((item) => {
+        const phone = item.phone.replace(/\D/g, "");
+        if (!phone) return true;
+        if (seenPhones.has(phone)) return false;
+        seenPhones.add(phone);
+        return true;
+      });
+  }
   const supplementarySelfReliance = direct.some((item) => item.phone) ? [] : selfReliance;
   const selfRelianceFirst = new Set([
     "food",
@@ -132,10 +147,19 @@ function selectFinderOffices(
   const ordered = selfRelianceFirst
     ? [...supplementarySelfReliance, ...direct, ...representatives]
     : [...direct, ...supplementarySelfReliance, ...representatives];
-  return [...new Map(ordered.map((item) => [item.id, item])).values()].map((item) => ({
-    ...item,
-    transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,
-  }));
+  const seenPhones = new Set<string>();
+  return ordered
+    .filter((item) => {
+      const phone = item.phone.replace(/\D/g, "");
+      if (!phone) return true;
+      if (seenPhones.has(phone)) return false;
+      seenPhones.add(phone);
+      return true;
+    })
+    .map((item) => ({
+      ...item,
+      transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,
+    }));
 }
 
 export default function SupportFinder({ data }: { data: FinderViewModel }) {

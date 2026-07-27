@@ -50,6 +50,15 @@ test("DV検索では代表電話を返さない", () => {
   );
 });
 
+test("DV検索で同じ番号ならDV相談カードを児童虐待カードより優先する", () => {
+  const childAbuse = office({ id: "city-child-abuse" });
+  const dv = office({ id: "city-dv" });
+  assert.deepEqual(
+    selectOffices([childAbuse, dv], "city", "violence").map((item) => item.id),
+    ["city-dv"],
+  );
+});
+
 test("カテゴリ直通窓口がある場合は同じ自立相談窓口を重ねない", () => {
   const direct = office({ id: "rent-direct", categoryId: "rent" });
   const selfReliance = office({
@@ -60,6 +69,23 @@ test("カテゴリ直通窓口がある場合は同じ自立相談窓口を重�
   assert.deepEqual(
     selectOffices([direct, selfReliance], "city", "rent").map((item) => item.id),
     ["rent-direct"],
+  );
+});
+
+test("同じ電話番号ではカテゴリ別のつなぎ依頼を一般代表より優先する", () => {
+  const categoryFallback = office({
+    id: "public-assistance-fallback",
+    categoryId: "money",
+    contactType: "representative",
+  });
+  const general = office({
+    id: "city-general",
+    categoryId: "unknown",
+    contactType: "representative",
+  });
+  assert.deepEqual(
+    selectOffices([general, categoryFallback], "city", "money").map((item) => item.id),
+    ["public-assistance-fallback"],
   );
 });
 

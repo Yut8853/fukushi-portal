@@ -20,7 +20,12 @@ const TRANSFER_TARGETS: Record<string, string> = {
 };
 
 export const SELF_RELIANCE_FIRST_CATEGORIES = new Set([
-  "food", "housing", "utilities", "work", "debt", "unknown",
+  "food",
+  "housing",
+  "utilities",
+  "work",
+  "debt",
+  "unknown",
 ]);
 
 export function officeContactType(
@@ -47,6 +52,17 @@ export function transferTarget(categoryId: string): string {
   return TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown;
 }
 
+function deduplicateByPhone(offices: Office[]): Office[] {
+  const seenPhones = new Set<string>();
+  return offices.filter((item) => {
+    const phone = item.phone.replace(/\D/g, "");
+    if (!phone) return true;
+    if (seenPhones.has(phone)) return false;
+    seenPhones.add(phone);
+    return true;
+  });
+}
+
 export function selectOffices(
   offices: Office[],
   municipalityId: string,
@@ -55,22 +71,35 @@ export function selectOffices(
 ): Office[] {
   if (!municipalityId) return [];
   const local = offices.filter((item) => item.municipalityId === municipalityId);
-  const direct = local.filter((item) =>
-    item.categoryId === categoryId &&
-    officeContactType(item, representativePhone) !== "representative");
+  const direct = local.filter(
+    (item) =>
+      item.categoryId === categoryId &&
+      officeContactType(item, representativePhone) !== "representative",
+  );
   const selfReliance = local.filter(
     (item) => officeContactType(item, representativePhone) === "self-reliance",
   );
-  const representatives = local.filter(
+  const categoryRepresentatives = local.filter(
     (item) =>
       officeContactType(item, representativePhone) === "representative" &&
-      (item.categoryId === "unknown" || item.categoryId === categoryId),
+      item.categoryId === categoryId,
   );
+  const generalRepresentatives = local.filter(
+    (item) =>
+      officeContactType(item, representativePhone) === "representative" &&
+      item.categoryId === "unknown",
+  );
+  const representatives = [...categoryRepresentatives, ...generalRepresentatives];
 
-  if (categoryId === "violence") return direct;
+  if (categoryId === "violence") {
+    const violenceSpecificFirst = [...direct].sort(
+      (a, b) => Number(/(?:^|-)dv(?:-|$)/i.test(b.id)) - Number(/(?:^|-)dv(?:-|$)/i.test(a.id)),
+    );
+    return deduplicateByPhone(violenceSpecificFirst);
+  }
   const supplementarySelfReliance = direct.some((item) => item.phone) ? [] : selfReliance;
   const ordered = SELF_RELIANCE_FIRST_CATEGORIES.has(categoryId)
     ? [...supplementarySelfReliance, ...direct, ...representatives]
     : [...direct, ...supplementarySelfReliance, ...representatives];
-  return [...new Map(ordered.map((item) => [item.id, item])).values()];
+  return deduplicateByPhone(ordered);
 }
