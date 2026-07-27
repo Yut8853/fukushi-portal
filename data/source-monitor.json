@@ -221,6 +221,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-fukuoka-housing-benefit",
+    "url": "https://www.pref.fukuoka.lg.jp/contents/jyukyokakuho.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:45:46.293Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 79414,
+    "contentHash": "e36d415501be5af82c56b386377f973e978630796a5497f2f808bd2aec537ab1",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukuoka-municipal-links",
+    "url": "https://www.pref.fukuoka.lg.jp/contents/shichoson01.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:45:48.418Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 74818,
+    "contentHash": "edac114c74a0f5bed11f614d6c23320cee2d04af6d874af278366802b98ab523",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukuoka-public-assistance",
+    "url": "https://www.pref.fukuoka.lg.jp/contents/itiranhyou.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:45:50.433Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 88866,
+    "contentHash": "7b4c23c7c7f8f5673b7fa03da71b67353b434eb4bfa0128d9b7257ccfc37b422",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukuoka-self-reliance",
+    "url": "https://www.pref.fukuoka.lg.jp/contents/seikatukonkyuusyajiritusiennseido.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:45:52.462Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 66395,
+    "contentHash": "d6bc28ced0565bfee8ce318acbd1e5f1fad3a47fe5e2da4c003f8afb6a830cbc",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-gifu-housing-benefit",
     "url": "https://www.pref.gifu.lg.jp/page/13214.html",
     "status": "ok",

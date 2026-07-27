@@ -1,77 +1,11 @@
 id,title,url,publisher,sourceType,status,lastVerifiedAt
-source-mhlw-public-assistance,生活保護制度,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/,厚生労働省,official,published,2026-07-01
-source-mhlw-self-reliance,生活困窮者自立支援制度,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000059425.html,厚生労働省,official,published,2026-07-01
-source-mito-official,水戸市公式ホームページ,https://www.city.mito.lg.jp/,水戸市,official,published,2026-07-26
-source-mito-welfare-department,水戸市福祉部,https://www.city.mito.lg.jp/soshiki/8.html,水戸市,official,published,2026-07-26
-source-mito-self-reliance,自立相談支援事業では仕事・生活・住まいにお困りの方の相談を受け付けています,https://www.city.mito.lg.jp/page/3455.html,水戸市,official,published,2026-07-26
-source-mito-public-assistance,生活保護の相談を受け付けています,https://www.city.mito.lg.jp/page/4503.html,水戸市,official,published,2026-07-26
-source-mito-syakyo,水戸市社会福祉協議会公式ホームページ,https://www.mito-syakyo.or.jp/,水戸市社会福祉協議会,official,published,2026-07-26
-source-mito-childcare,子育て相談窓口（利用者支援事業）について,https://www.city.mito.lg.jp/site/kosodate/120024.html,水戸市,official,published,2026-07-26
-source-mito-single-parent,ひとり親家庭への支援について,https://www.city.mito.lg.jp/site/kosodate/120859.html,水戸市,official,published,2026-07-26
-source-mito-disability,障害のある方やそのご家族・専門機関などの相談窓口,https://www.city.mito.lg.jp/page/3691.html,水戸市,official,published,2026-07-26
-source-mito-mental-health,こころの健康相談（保健師等）,https://www.city.mito.lg.jp/site/kosodate/1772.html,水戸市,official,published,2026-07-26
-source-mito-elderly,高齢福祉課地域支援センター,https://www.city.mito.lg.jp/soshiki/44/index.html,水戸市,official,published,2026-07-26
-source-mito-dv,DV相談窓口の御案内,https://www.city.mito.lg.jp/site/shinsei/1623.html,水戸市,official,published,2026-07-26
-source-mito-child-abuse,虐待からこどもを守ろう,https://www.city.mito.lg.jp/site/kosodate/2587.html,水戸市,official,published,2026-07-26
-source-mito-consultations,医療安全相談窓口・その他の相談窓口,https://www.city.mito.lg.jp/page/2121.html,水戸市,official,published,2026-07-26
-source-mhlw-housing-benefit,住居確保給付金 制度概要,https://corona-support.mhlw.go.jp/jukyokakuhokyufukin/index.html,厚生労働省,official,published,2026-07-26
-source-mhlw-welfare-loan,生活福祉資金貸付制度,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatsu-fukushi-shikin1/index.html,厚生労働省,official,published,2026-07-26
-source-mhlw-job-seeker-support,求職者支援制度のご案内,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html,厚生労働省,official,published,2026-07-26
-source-mhlw-high-cost-medical,高額療養費制度を利用される皆さまへ,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html,厚生労働省,official,published,2026-07-26
-source-mhlw-medical-independence,自立支援医療,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/index.html,厚生労働省,official,published,2026-07-26
-source-jps-disability-pension,病気やけがで障害が残ったとき,https://www.nenkin.go.jp/service/scenebetsu/shougai.html,日本年金機構,official,published,2026-07-26
-source-mhlw-care-leave-benefit,Q&A 介護休業給付,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158665.html,厚生労働省,official,published,2026-07-26
-source-kyoukaikenpo-sickness-allowance,傷病手当金について,https://www.kyoukaikenpo.or.jp/g6/cat620/r307,全国健康保険協会,official,published,2026-07-26
-source-cfa-single-parent-allowance,児童扶養手当について,https://www.cfa.go.jp/policies/hitori-oya/fuyou-teate,こども家庭庁,official,published,2026-07-26
-source-mext-school-assistance,就学援助制度について,https://www.mext.go.jp/a_menu/shotou/career/05010502/017.htm,文部科学省,official,published,2026-07-26
-source-jps-pension-support,年金生活者支援給付金,https://www.nenkin.go.jp/service/jukyu/seido/sonota-kyufu/shienkyufukin/20190805.html,日本年金機構,official,published,2026-07-26
+source-aichi-housing-benefit,住居確保給付金について,https://www.pref.aichi.jp/soshiki/chiikifukushi/0000083363.html,愛知県,official,published,2026-07-26
+source-aichi-municipalities,市役所・町村役場一覧,https://www.pref.aichi.jp/soshiki/shichoson/0000000276.html,愛知県,official,published,2026-07-26
+source-aichi-public-assistance,生活保護制度,https://www.pref.aichi.jp/soshiki/chiikifukushi/seikatuhogoseido.html,愛知県,official,published,2026-07-26
+source-aichi-self-reliance,生活困窮者自立支援制度について,https://www.pref.aichi.jp/soshiki/chiikifukushi/seikatsukonkyu.html,愛知県,official,published,2026-07-26
+source-aichi-self-reliance-pdf,愛知県内の自立相談支援機関 相談窓口一覧（2026年4月1日現在）,https://www.pref.aichi.jp/uploaded/attachment/612430.pdf,愛知県,official,published,2026-07-26
+source-aichi-welfare-contacts,県内市町村の福祉サービスに関する相談窓口について,https://www.pref.aichi.jp/soshiki/fukushi-kikaku/fukushi-soudan.html,愛知県,official,published,2026-07-26
 source-cao-dv-navi,DV相談について,https://www.gender.go.jp/policy/no_violence/dv_navi/,内閣府男女共同参画局,official,published,2026-07-26
-source-cfa-child-abuse-dial,児童相談所虐待対応ダイヤル189について,https://www.cfa.go.jp/policies/jidougyakutai/gyakutai-taiou-dial/,こども家庭庁,official,published,2026-07-26
-source-mhlw-mental-health-line,まもろうよ こころ,https://www.mhlw.go.jp/mamorouyokokoro/?oai_link_source=model_response_hotline,厚生労働省,official,published,2026-07-26
-source-houterasu-civil-legal-aid,無料法律相談・弁護士等費用の立替,https://www.houterasu.or.jp/site/soudan-tatekae/index.html,日本司法支援センター法テラス,official,published,2026-07-26
-source-tsukuba-city-hall,つくば市役所,https://www.city.tsukuba.lg.jp/shisetsu/shoshashuchojo/chosha/1002756.html,つくば市,official,published,2026-07-26
-source-tsukuba-self-reliance,生活困窮者自立支援制度,https://www.city.tsukuba.lg.jp/kenko_iryo_fukushi/chiiki/seikasuhogo/1001395.html,つくば市,official,published,2026-07-26
-source-tsukuba-public-assistance,生活保護,https://www.city.tsukuba.lg.jp/kenko_iryo_fukushi/chiiki/seikasuhogo/1001393.html,つくば市,official,published,2026-07-26
-source-tsukuba-social-welfare-council,障害者福祉ガイドブック 相談の窓口,https://www.city.tsukuba.lg.jp/material/files/group/59/syogaisyaguidebook2026-12.pdf,つくば市,official,published,2026-07-26
-source-tsukuba-parenting-coordinator,子育てコーディネーターによる子育て相談,https://www.city.tsukuba.lg.jp/kosodateportal/mokutekidesagasu_/kosodate_kosodatenikansurusoudan/28824.html,つくば市,official,published,2026-07-26
-source-tsukuba-child-family,こども家庭相談,https://www.city.tsukuba.lg.jp/kosodatenavi/1005675/1005867.html,つくば市,official,published,2026-07-26
-source-tsukuba-child-abuse,子育てに関する悩みや児童虐待に関する相談窓口,https://www.city.tsukuba.lg.jp/soshikikarasagasu/kodomobukodomomiraicenter/gyomuannai/3/1/1011987.html,つくば市,official,published,2026-07-26
-source-tsukuba-single-parent,こども政策課,https://www.city.tsukuba.lg.jp/shisei/joho/soshiki/kodomo_hoken/1003495.html,つくば市,official,published,2026-07-26
-source-tsukuba-disability,各種相談機関,https://www.city.tsukuba.lg.jp/soshikikarasagasu/fukushibushogaishachiikishienshitsu/gyomuannai/3/4/1001356.html,つくば市,official,published,2026-07-26
-source-tsukuba-mental-health,こころの健康相談,https://www.city.tsukuba.lg.jp/kenko_iryo_fukushi/kenkoiryo/kokoro/1001308.html,つくば市,official,published,2026-07-26
-source-tsukuba-community-support,地域包括支援センターについて,https://www.city.tsukuba.lg.jp/soshikikarasagasu/fukushibuchiikihokatsushienka/gyomuannai/2/1/1001335.html,つくば市,official,published,2026-07-26
-source-tsukuba-dv,令和8年4月からの相談窓口について,https://www.city.tsukuba.lg.jp/shisei/torikumi/danjo/27767.html,つくば市,official,published,2026-07-26
-source-tsukuba-multiple-debt,多重債務相談,https://www.city.tsukuba.lg.jp/kurashi/oshirase/1003978.html,つくば市,official,published,2026-07-26
-source-tsukuba-single-parent-grant,つくば市ひとり親家庭等児童福祉金制度,https://www.city.tsukuba.lg.jp/soshikikarasagasu/kodomobukodomoseisakuka/gyomuannai/4/1/1001109.html,つくば市,official,published,2026-07-26
-source-sapporo-city-hall,市役所へのアクセス,https://www.city.sapporo.jp/city/map/,札幌市,official,published,2026-07-26
-source-sapporo-step,札幌市生活就労支援センター（ステップ）,https://www.city.sapporo.jp/fukushi-guide/step.html,札幌市,official,published,2026-07-26
-source-sapporo-public-assistance,生活保護制度,https://www.city.sapporo.jp/fukushi-guide/seikatuhogo.html,札幌市,official,published,2026-07-26
-source-yokohama-city-hall,市役所案内,https://www.city.yokohama.lg.jp/shichosha/iten.html,横浜市,official,published,2026-07-26
-source-yokohama-life-support-offices,各区の相談窓口,https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/madoguchi.html,横浜市,official,published,2026-07-26
-source-yokohama-self-reliance,生活困窮者自立支援制度,https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/jiritsu/konnan/seikatsukonkyu.html,横浜市,official,published,2026-07-26
-source-yokohama-housing-benefit,住居確保給付金（家賃補助）,https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/jiritsu/jukyokakuho.html,横浜市,official,published,2026-07-26
-source-yokohama-public-assistance,生活保護について知りたいのですが,https://www.city.yokohama.lg.jp/faq/kukyoku/kenko/kenko-seikatsu/20211022143404481.html,横浜市,official,published,2026-07-26
-source-naha-city-hall,ご意見・お問合わせ,https://www.city.naha.okinawa.jp/about/1005987.html,那覇市,official,published,2026-07-26
-source-naha-self-reliance,生活困窮者自立支援制度,https://www.city.naha.okinawa.jp/fukusi/shakaifukushi/1003447/1003475.html,那覇市,official,published,2026-07-26
-source-naha-housing-benefit,住居確保給付金（家賃補助分）の申請手続き,https://www.city.naha.okinawa.jp/fukusi/shakaifukushi/1003447/1003473.html,那覇市,official,published,2026-07-26
-source-naha-public-assistance,生活保護について教えてください。,https://www.info.city.naha.okinawa.jp/seikatsunoenjo/y000538.html,那覇市,official,published,2026-07-26
-source-sendai-city-hall,仙台市役所各庁舎,https://www.city.sendai.jp/sesakukoho/kurashi/shisetsu/kokyo/shiyakusho/public-office/1312.html,仙台市,official,published,2026-07-26
-source-sendai-one-step,仙台市生活自立・仕事相談センター「わんすてっぷ」,https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/shien.html,仙台市,official,published,2026-07-26
-source-sendai-housing-benefit,住居確保給付金支給事業（家賃補助）,https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/jukyokakuhokyufukin.html,仙台市,official,published,2026-07-26
-source-sendai-public-assistance,生活保護,https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/sekatsuhogo.html,仙台市,official,published,2026-07-26
-source-nagoya-city-hall,名古屋市役所 施設案内,https://www.city.nagoya.jp/shisei/gaiyou/1015754/1015760/1033895.html,名古屋市,official,published,2026-07-26
-source-nagoya-support-meieki,名古屋市仕事・暮らし自立サポートセンター,https://www.city.nagoya.jp/kenkofukushi/fukushi/1016735/1016739.html,名古屋市,official,published,2026-07-26
-source-nagoya-housing-benefit,住居確保給付金（家賃補助）のご案内,https://www.city.nagoya.jp/kenkofukushi/fukushi/1016735/1016738.html,名古屋市,official,published,2026-07-26
-source-nagoya-public-assistance,生活保護とは,https://www.city.nagoya.jp/kenkofukushi/fukushi/1051323/1016734.html,名古屋市,official,published,2026-07-26
-source-kobe-city-contact,神戸市お問い合わせ,https://www.city.kobe.lg.jp/contact/,神戸市,official,published,2026-07-26
-source-kobe-life-support,生活にお困りの方への相談窓口,https://www.city.kobe.lg.jp/a38463/kenko/chiikifukushi/sekatsukonkyusha/gaiyou.html,神戸市,official,published,2026-07-26
-source-kobe-housing-benefit,住居確保給付金のご案内,https://www.city.kobe.lg.jp/documents/4788/03_jyukakupanfu.pdf,神戸市,official,published,2026-07-26
-source-kobe-public-assistance,生活保護のあらまし,https://www.city.kobe.lg.jp/a49925/kenko/chiikifukushi/care/111.html,神戸市,official,published,2026-07-26
-source-fukuoka-city-hall,福岡市役所各庁舎の案内,https://www.city.fukuoka.lg.jp/shicho/koho/shisei/060.html,福岡市,official,published,2026-07-26
-source-fukuoka-life-support,福岡市生活自立支援センターアクセス,https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/life/documents/accessmap.pdf,福岡市,official,published,2026-07-26
-source-fukuoka-housing-benefit,住居確保給付金,https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/health/jyukyokakuhokyuhukin_3_2.html,福岡市,official,published,2026-07-26
-source-fukuoka-public-assistance,相談窓口ガイド（福祉）,https://www.city.fukuoka.lg.jp/soudan/hukushi.html,福岡市,official,published,2026-07-26
-source-mhlw-housing-counter,住居確保給付金 相談窓口一覧,https://corona-support.mhlw.go.jp/jukyokakuhokyufukin/counter.html,厚生労働省,official,published,2026-07-26
 source-capital-jp-02201-city,青森市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12314180.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-02201-public,青森市 生活保護の相談・申請窓口,https://www.city.aomori.aomori.jp/hukushi_kenkou/hukushi/1002937/1007947/1002938.html,青森市,official,published,2026-07-26
 source-capital-jp-03201-city,盛岡市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12414180.html,地方公共団体情報システム機構,official,published,2026-07-26
@@ -83,17 +17,15 @@ source-capital-jp-06201-public,山形市 生活保護の相談・申請窓口,ht
 source-capital-jp-07201-city,福島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/touhoku/cms_12814180.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-07201-public,福島市 生活保護の相談・申請窓口,https://www.city.fukushima.fukushima.jp/soshiki/9/1042/3/1830.html,福島市,official,published,2026-07-26
 source-capital-jp-09201-city,宇都宮市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13014181.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-09201-self,宇都宮市 生活困窮者自立相談・住居確保給付金,https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/1026386.html,宇都宮市,official,published,2026-07-26
 source-capital-jp-09201-public,宇都宮市 生活保護の相談・申請窓口,https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/hogo/1004811.html,宇都宮市,official,published,2026-07-26
+source-capital-jp-09201-self,宇都宮市 生活困窮者自立相談・住居確保給付金,https://www.city.utsunomiya.lg.jp/kenko/seikatsushien/1026386.html,宇都宮市,official,published,2026-07-26
 source-capital-jp-10201-city,前橋市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13114181.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-10201-public,前橋市 生活保護の相談・申請窓口,https://www.city.maebashi.gunma.jp/kenko_fukushi/5/2/2/11873.html,前橋市,official,published,2026-07-26
 source-capital-jp-11100-city,さいたま市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13214181.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-11100-self,さいたま市 生活困窮者自立相談・住居確保給付金,https://www.city.saitama.lg.jp/002/003/002/p088576.html,さいたま市,official,published,2026-07-26
 source-capital-jp-11100-public,さいたま市 生活保護の相談・申請窓口,https://www.city.saitama.lg.jp/002/003/002/p032098.html,さいたま市,official,published,2026-07-26
+source-capital-jp-11100-self,さいたま市 生活困窮者自立相談・住居確保給付金,https://www.city.saitama.lg.jp/002/003/002/p088576.html,さいたま市,official,published,2026-07-26
 source-capital-jp-12100-city,千葉市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13314181.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-12100-public,千葉市 生活保護の相談・申請窓口,https://www.city.chiba.jp/hokenfukushi/hogo/kakukusoudanmadoguti.html,千葉市,official,published,2026-07-26
-source-capital-tokyo-shinjuku-city,新宿区の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13414181.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-tokyo-shinjuku-public,新宿区 生活保護の相談・申請窓口,https://www.city.shinjuku.lg.jp/fukushi/file04_01_00002.html,新宿区,official,published,2026-07-26
 source-capital-jp-15100-city,新潟市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_13614182.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-15100-public,新潟市 生活保護の相談・申請窓口,https://www.city.niigata.lg.jp/iryo/kenfuku/seikatsuhogo/sodan.html,新潟市,official,published,2026-07-26
 source-capital-jp-16201-city,富山市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/tyuubu/cms_13714182.html,地方公共団体情報システム機構,official,published,2026-07-26
@@ -115,27 +47,24 @@ source-capital-jp-24201-public,津市 生活保護の相談・申請窓口,https
 source-capital-jp-25201-city,大津市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14614183.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-25201-public,大津市 生活保護の相談・申請窓口,https://www.city.otsu.lg.jp/soshiki/020/1424/g/76880.html,大津市,official,published,2026-07-26
 source-capital-jp-26100-city,京都市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14714183.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-26100-self,京都市 生活困窮者自立相談・住居確保給付金,https://www.city.kyoto.lg.jp/hokenfukushi/page/0000282954.html,京都市,official,published,2026-07-26
 source-capital-jp-26100-public,京都市 生活保護の相談・申請窓口,https://www.call3755.city.kyoto.lg.jp/faq_p/P200.aspx?FAQID=0101287,京都市,official,published,2026-07-26
-source-capital-osaka-osaka-city,大阪市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14814183.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-osaka-osaka-self,大阪市 生活困窮者自立相談・住居確保給付金,https://www.city.osaka.lg.jp/fukushi/page/0000303608.html,大阪市,official,published,2026-07-26
-source-capital-osaka-osaka-public,大阪市 生活保護の相談・申請窓口,https://www.city.osaka.lg.jp/fukushi/cmsfiles/contents/0000615/615306/kankseikikan.pdf,大阪市,official,published,2026-07-26
+source-capital-jp-26100-self,京都市 生活困窮者自立相談・住居確保給付金,https://www.city.kyoto.lg.jp/hokenfukushi/page/0000282954.html,京都市,official,published,2026-07-26
 source-capital-jp-29201-city,奈良市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_15014183.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-29201-public,奈良市 生活保護の相談・申請窓口,https://www.city.nara.lg.jp/soshiki/35/index-2.html,奈良市,official,published,2026-07-26
 source-capital-jp-30201-city,和歌山市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_15114183.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-30201-self,和歌山市 生活困窮者自立相談・住居確保給付金,https://www.city.wakayama.wakayama.jp/shisei/1009417/soshiki/1002616/1002640/1002702.html,和歌山市,official,published,2026-07-26
 source-capital-jp-30201-public,和歌山市 生活保護の相談・申請窓口,https://www.city.wakayama.wakayama.jp/shisei/1009417/soshiki/1002616/1002640/1002702.html,和歌山市,official,published,2026-07-26
+source-capital-jp-30201-self,和歌山市 生活困窮者自立相談・住居確保給付金,https://www.city.wakayama.wakayama.jp/shisei/1009417/soshiki/1002616/1002640/1002702.html,和歌山市,official,published,2026-07-26
 source-capital-jp-31201-city,鳥取市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15214184.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-31201-public,鳥取市 生活保護の相談・申請窓口,https://www.city.tottori.lg.jp/page/4620.html,鳥取市,official,published,2026-07-26
 source-capital-jp-32201-city,松江市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15314184.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-32201-self,松江市 生活困窮者自立相談・住居確保給付金,https://www.city.matsue.lg.jp/kenko_fukushi/seikatuhukushi/7407.html,松江市,official,published,2026-07-26
 source-capital-jp-32201-public,松江市 生活保護の相談・申請窓口,https://www.city.matsue.lg.jp/kenko_fukushi/seikatuhukushi/7407.html,松江市,official,published,2026-07-26
+source-capital-jp-32201-self,松江市 生活困窮者自立相談・住居確保給付金,https://www.city.matsue.lg.jp/kenko_fukushi/seikatuhukushi/7407.html,松江市,official,published,2026-07-26
 source-capital-jp-33100-city,岡山市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15414184.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-33100-self,岡山市 生活困窮者自立相談・住居確保給付金,https://www.city.okayama.jp/kurashi/0000082213.html,岡山市,official,published,2026-07-26
 source-capital-jp-33100-public,岡山市 生活保護の相談・申請窓口,https://www.city.okayama.jp/kurashi/0000036538.html,岡山市,official,published,2026-07-26
+source-capital-jp-33100-self,岡山市 生活困窮者自立相談・住居確保給付金,https://www.city.okayama.jp/kurashi/0000082213.html,岡山市,official,published,2026-07-26
 source-capital-jp-34100-city,広島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15514184.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-34100-self,広島市 生活困窮者自立相談・住居確保給付金,https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021956.html,広島市,official,published,2026-07-26
 source-capital-jp-34100-public,広島市 生活保護の相談・申請窓口,https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021949.html,広島市,official,published,2026-07-26
+source-capital-jp-34100-self,広島市 生活困窮者自立相談・住居確保給付金,https://www.city.hiroshima.lg.jp/living/fukushi-kaigo/1021239/1021956.html,広島市,official,published,2026-07-26
 source-capital-jp-35203-city,山口市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/chuugoku/cms_15614184.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-35203-public,山口市 生活保護の相談・申請窓口,https://www.city.yamaguchi.lg.jp/site/kokorohot/24047.html,山口市,official,published,2026-07-26
 source-capital-jp-36201-city,徳島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/shikoku/cms_15714186.html,地方公共団体情報システム機構,official,published,2026-07-26
@@ -147,8 +76,8 @@ source-capital-jp-38201-public,松山市 生活保護の相談・申請窓口,ht
 source-capital-jp-39201-city,高知市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/shikoku/cms_16014186.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-39201-public,高知市 生活保護の相談・申請窓口,https://www.city.kochi.kochi.jp/soshiki/189/soudanmadoguchi.html,高知市,official,published,2026-07-26
 source-capital-jp-41201-city,佐賀市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16214187.html,地方公共団体情報システム機構,official,published,2026-07-26
-source-capital-jp-41201-self,佐賀市 生活困窮者自立相談・住居確保給付金,https://www.city.saga.lg.jp/shisei/sagashioshiru/8/9/3012.html,佐賀市,official,published,2026-07-26
 source-capital-jp-41201-public,佐賀市 生活保護の相談・申請窓口,https://www.city.saga.lg.jp/shisei/sagashioshiru/8/9/3012.html,佐賀市,official,published,2026-07-26
+source-capital-jp-41201-self,佐賀市 生活困窮者自立相談・住居確保給付金,https://www.city.saga.lg.jp/shisei/sagashioshiru/8/9/3012.html,佐賀市,official,published,2026-07-26
 source-capital-jp-42201-city,長崎市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16314187.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-42201-public,長崎市 生活保護の相談・申請窓口,https://www.city.nagasaki.lg.jp/page/1442.html,長崎市,official,published,2026-07-26
 source-capital-jp-43100-city,熊本市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16414187.html,地方公共団体情報システム機構,official,published,2026-07-26
@@ -159,12 +88,53 @@ source-capital-jp-45201-city,宮崎市の市区町村コード・所在地・電
 source-capital-jp-45201-public,宮崎市 生活保護の相談・申請窓口,https://www.city.miyazaki.miyazaki.jp/health/welfare/protection/1169.html,宮崎市,official,published,2026-07-26
 source-capital-jp-46201-city,鹿児島市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kyuusyuu/cms_16714187.html,地方公共団体情報システム機構,official,published,2026-07-26
 source-capital-jp-46201-public,鹿児島市 生活保護の相談・申請窓口,https://www.city.kagoshima.lg.jp/kenkofukushi/fukushi/hogo1/index.html,鹿児島市,official,published,2026-07-26
+source-capital-osaka-osaka-city,大阪市の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kinki/cms_14814183.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-osaka-osaka-public,大阪市 生活保護の相談・申請窓口,https://www.city.osaka.lg.jp/fukushi/cmsfiles/contents/0000615/615306/kankseikikan.pdf,大阪市,official,published,2026-07-26
+source-capital-osaka-osaka-self,大阪市 生活困窮者自立相談・住居確保給付金,https://www.city.osaka.lg.jp/fukushi/page/0000303608.html,大阪市,official,published,2026-07-26
+source-capital-tokyo-shinjuku-city,新宿区の市区町村コード・所在地・電話番号,https://www.j-lis.go.jp/spd/code-address/kantou/cms_13414181.html,地方公共団体情報システム機構,official,published,2026-07-26
+source-capital-tokyo-shinjuku-public,新宿区 生活保護の相談・申請窓口,https://www.city.shinjuku.lg.jp/fukushi/file04_01_00002.html,新宿区,official,published,2026-07-26
+source-cfa-child-abuse-dial,児童相談所虐待対応ダイヤル189について,https://www.cfa.go.jp/policies/jidougyakutai/gyakutai-taiou-dial/,こども家庭庁,official,published,2026-07-26
+source-cfa-single-parent-allowance,児童扶養手当について,https://www.cfa.go.jp/policies/hitori-oya/fuyou-teate,こども家庭庁,official,published,2026-07-26
+source-chiba-municipalities,市町村一覧,https://www.pref.chiba.lg.jp/kouhou/ichiran.html,千葉県,official,published,2026-07-26
+source-chiba-public-assistance,生活保護の相談について,https://www.pref.chiba.lg.jp/kenshidou/seikatsuhogo/seihosoudan.html,千葉県,official,published,2026-07-26
+source-chiba-self-reliance,生活困窮者自立支援制度について,https://www.pref.chiba.lg.jp/kenshidou/seikatukonkyuu.html,千葉県,official,published,2026-07-26
+source-ehime-housing-benefit,愛媛県 住居確保給付金支給事業,https://www.pref.ehime.jp/page/14626.html,愛媛県,official,published,2026-07-27
+source-ehime-municipal-offices,愛媛県 市役所・町役場所在地一覧表,https://www.pref.ehime.jp/uploaded/attachment/77192.pdf,愛媛県,official,published,2026-07-27
+source-ehime-public-assistance,愛媛県 生活保護制度 県内相談窓口一覧,https://www.pref.ehime.jp/page/14917.html,愛媛県,official,published,2026-07-27
+source-ehime-self-reliance,愛媛県 生活困窮者自立支援制度 相談窓口,https://www.pref.ehime.jp/page/14914.html,愛媛県,official,published,2026-07-27
+source-fukui-municipal-contacts-r7,市役所・町役場連絡先（令和7年6月1日現在）,https://www.pref.fukui.lg.jp/doc/sityousinkou/renrakusaki_d/fil/001.pdf,福井県,official,published,2026-07-26
+source-fukui-municipal-links,福井県内市町リンク集,https://www.pref.fukui.lg.jp/doc/dx-suishin/shimachi_list.html,福井県,official,published,2026-07-26
+source-fukui-public-assistance,生活保護制度について,https://www.pref.fukui.lg.jp/doc/tihuku/fukuiseiho.html,福井県,official,published,2026-07-26
+source-fukui-self-reliance,生活困窮者自立支援制度について,https://www.pref.fukui.lg.jp/doc/tihuku/seikatukonkyu.html,福井県,official,published,2026-07-26
+source-fukuoka-city-hall,福岡市役所各庁舎の案内,https://www.city.fukuoka.lg.jp/shicho/koho/shisei/060.html,福岡市,official,published,2026-07-26
+source-fukuoka-housing-benefit,福岡県 住居確保給付金のご案内,https://www.pref.fukuoka.lg.jp/contents/jyukyokakuho.html,福岡県,official,published,2026-07-27
+source-fukuoka-life-support,福岡市生活自立支援センターアクセス,https://www.city.fukuoka.lg.jp/fukushi/seikatujiritu/life/documents/accessmap.pdf,福岡市,official,published,2026-07-26
+source-fukuoka-municipal-links,福岡県内市町村へのリンク集,https://www.pref.fukuoka.lg.jp/contents/shichoson01.html,福岡県,official,published,2026-07-27
+source-fukuoka-public-assistance,福岡県 福祉事務所・保健福祉（環境）事務所一覧,https://www.pref.fukuoka.lg.jp/contents/itiranhyou.html,福岡県,official,published,2026-07-27
+source-fukuoka-self-reliance,福岡県 生活困窮者自立相談支援機関相談窓口一覧,https://www.pref.fukuoka.lg.jp/contents/seikatukonkyuusyajiritusiennseido.html,福岡県,official,published,2026-07-27
+source-gifu-housing-benefit,住居確保給付金,https://www.pref.gifu.lg.jp/page/13214.html,岐阜県,official,published,2026-07-26
+source-gifu-municipalities,岐阜県の市町村一覧,https://www.pref.gifu.lg.jp/page/6058.html,岐阜県,official,published,2026-07-26
+source-gifu-public-assistance,生活保護について,https://www.pref.gifu.lg.jp/page/6503.html,岐阜県,official,published,2026-07-26
+source-gifu-self-reliance,生活困窮者自立相談支援の窓口について,https://www.pref.gifu.lg.jp/page/12848.html,岐阜県,official,published,2026-07-26
+source-gifu-self-reliance-pdf,生活困窮者自立相談支援窓口パンフレット,https://www.pref.gifu.lg.jp/uploaded/attachment/499313.pdf,岐阜県,official,published,2026-07-26
+source-gunma-municipalities,市町村役場等所在地一覧,https://www.pref.gunma.jp/page/14524.html,群馬県,official,published,2026-07-26
+source-gunma-public-assistance,生活保護制度について,https://www.pref.gunma.jp/page/1820.html,群馬県,official,published,2026-07-26
+source-gunma-self-reliance,生活に困窮している方を支援する相談窓口について,https://www.pref.gunma.jp/page/1672.html,群馬県,official,published,2026-07-26
+source-hiroshima-housing-benefit,広島県居住支援協議会 生活困窮者住居確保給付金,https://www.pref.hiroshima.lg.jp/site/jutaku-safety-net/kyojuusien.html,広島県,official,published,2026-07-27
+source-hiroshima-municipal-offices,広島県内市区町一覧（令和7年4月1日現在）,https://www.pref.hiroshima.lg.jp/uploaded/attachment/634047.pdf,広島県,official,published,2026-07-27
+source-hiroshima-public-assistance,広島県 市・町福祉事務所・保健所,https://www.pref.hiroshima.lg.jp/soshiki/50/hukusi-hokennsyo.html,広島県,official,published,2026-07-27
+source-hiroshima-self-reliance,広島県 生活困窮者自立支援制度 相談窓口,https://www.pref.hiroshima.lg.jp/soshiki/61/jirityu.html,広島県,official,published,2026-07-27
+source-houterasu-civil-legal-aid,無料法律相談・弁護士等費用の立替,https://www.houterasu.or.jp/site/soudan-tatekae/index.html,日本司法支援センター法テラス,official,published,2026-07-26
+source-hyogo-pref-municipal-offices,兵庫県 市町庁舎所在地一覧,https://web.pref.hyogo.lg.jp/kk25/pa05_000000002.html,兵庫県,official,published,2026-07-26
+source-hyogo-pref-public-assistance,兵庫県 生活保護担当窓口一覧,https://web.pref.hyogo.lg.jp/kf03/hw16_000000042.html,兵庫県,official,published,2026-07-26
+source-hyogo-pref-self-reliance-2026,兵庫県 自立相談支援機関相談窓口一覧（令和8年4月）,https://web.pref.hyogo.lg.jp/kf03/seikatsukonkyu.html,兵庫県,official,published,2026-07-26
 source-ibaraki-municipalities,茨城県内の市町村,https://www.pref.ibaraki.jp/towns/,茨城県,official,published,2026-07-26
 source-ibaraki-self-reliance-list,茨城県内の自立相談支援窓口のご案内,https://www.pref.ibaraki.jp/hokenfukushi/fukushi/hogo/konkyuusya/documents/jiritsusoudanshienkikan.pdf,茨城県,official,published,2026-07-26
 source-ibaraki-welfare-offices,生活保護 申請・相談の窓口,https://www.pref.ibaraki.jp/soshiki/hokenfukushi/fukujin/documents/hukushizimusixyo.pdf,茨城県,official,published,2026-07-26
-source-tochigi-self-reliance,生活困窮者自立支援制度 地域の相談窓口,https://www.pref.tochigi.lg.jp/e12/seikatusienn.html,栃木県,official,published,2026-07-26
-source-tochigi-housing-benefit,住居確保給付金 県内市町村相談窓口一覧,https://www.pref.tochigi.lg.jp/e12/documents/documents/20250424094059.pdf,栃木県,official,published,2026-07-26
-source-tochigi-public-assistance,生活保護制度 栃木県内の福祉事務所,https://www.pref.tochigi.lg.jp/e12/welfare/chiikifukushi/seikatuhogo/seiho.html,栃木県,official,published,2026-07-26
+source-ishikawa-municipalities,県内市役所・町役場連絡先一覧,https://www.pref.ishikawa.lg.jp/sichousien/kennaiichiran2.html,石川県,official,published,2026-07-26
+source-ishikawa-public-assistance,生活保護制度について,https://www.pref.ishikawa.lg.jp/kousei/hogo/seikatuhogo.html,石川県,official,published,2026-07-26
+source-ishikawa-self-reliance-r8,石川県内の自立相談支援機関 相談窓口一覧（R8.4.1）,https://www.pref.ishikawa.lg.jp/kousei/safetynet/documents/r8madoguchi.pdf,石川県,official,published,2026-07-26
+source-ishikawa-welfare-offices,福祉事務所一覧,https://www.pref.ishikawa.lg.jp/kousei/hogo/fukusijimusyoitiran.html,石川県,official,published,2026-07-26
 source-jp-09202-official,足利市公式ホームページ,https://www.city.ashikaga.tochigi.jp/,足利市,official,published,2026-07-26
 source-jp-09203-official,栃木市公式ホームページ,https://www.city.tochigi.lg.jp/,栃木市,official,published,2026-07-26
 source-jp-09204-official,佐野市公式ホームページ,https://www.city.sano.lg.jp/,佐野市,official,published,2026-07-26
@@ -189,120 +159,152 @@ source-jp-09384-official,塩谷町公式ホームページ,https://www.town.shio
 source-jp-09386-official,高根沢町公式ホームページ,https://www.town.takanezawa.tochigi.jp/,高根沢町,official,published,2026-07-26
 source-jp-09407-official,那須町公式ホームページ,https://www.town.nasu.lg.jp/,那須町,official,published,2026-07-26
 source-jp-09411-official,那珂川町公式ホームページ,https://www.town.tochigi-nakagawa.lg.jp/,那珂川町,official,published,2026-07-26
-source-gunma-municipalities,市町村役場等所在地一覧,https://www.pref.gunma.jp/page/14524.html,群馬県,official,published,2026-07-26
-source-gunma-self-reliance,生活に困窮している方を支援する相談窓口について,https://www.pref.gunma.jp/page/1672.html,群馬県,official,published,2026-07-26
-source-gunma-public-assistance,生活保護制度について,https://www.pref.gunma.jp/page/1820.html,群馬県,official,published,2026-07-26
-source-saitama-official-links,埼玉県内市町村へのリンク,https://www.pref.saitama.lg.jp/a0301/wwwlink.html,埼玉県,official,published,2026-07-26
-source-saitama-self-reliance,生活困窮者の総合相談窓口について,https://www.pref.saitama.lg.jp/a0602/jiritsushien/madoguchi.html,埼玉県,official,published,2026-07-26
-source-saitama-public-assistance,福祉事務所等一覧（生活保護法）,https://www.pref.saitama.lg.jp/a0602/seihozenpan/910-20091208-75.html,埼玉県,official,published,2026-07-26
-source-chiba-municipalities,市町村一覧,https://www.pref.chiba.lg.jp/kouhou/ichiran.html,千葉県,official,published,2026-07-26
-source-chiba-self-reliance,生活困窮者自立支援制度について,https://www.pref.chiba.lg.jp/kenshidou/seikatukonkyuu.html,千葉県,official,published,2026-07-26
-source-chiba-public-assistance,生活保護の相談について,https://www.pref.chiba.lg.jp/kenshidou/seikatsuhogo/seihosoudan.html,千葉県,official,published,2026-07-26
-source-kanagawa-municipalities,神奈川県内の市町村,https://www.pref.kanagawa.jp/docs/ie2/cnt/f530001/p780102,神奈川県,official,published,2026-07-26
-source-kanagawa-self-reliance,生活困窮者自立相談支援機関一覧,https://www.pref.kanagawa.jp/docs/r6w/cnt/f533087/index.html,神奈川県,official,published,2026-07-26
+source-jps-disability-pension,病気やけがで障害が残ったとき,https://www.nenkin.go.jp/service/scenebetsu/shougai.html,日本年金機構,official,published,2026-07-26
+source-jps-pension-support,年金生活者支援給付金,https://www.nenkin.go.jp/service/jukyu/seido/sonota-kyufu/shienkyufukin/20190805.html,日本年金機構,official,published,2026-07-26
+source-kagawa-municipal-offices,香川県内の市・町リンク集,https://www.pref.kagawa.lg.jp/shogaifukushi/sogo/sonota/link.html,香川県,official,published,2026-07-27
+source-kagawa-public-assistance,香川県 生活保護相談窓口,https://www.pref.kagawa.lg.jp/hokenhukushi/livelihood/livelihood.html,香川県,official,published,2026-07-27
+source-kagawa-self-reliance,香川県 生活困窮者自立支援制度・住居確保給付金相談窓口,https://www.pref.kagawa.lg.jp/hokenhukushi/livelihood/wrwhr6200323091634.html,香川県,official,published,2026-07-27
 source-kanagawa-housing-benefit,住居確保給付金について,https://www.pref.kanagawa.jp/docs/r6w/konkyu/jukyokakuhokyufukin.html,神奈川県,official,published,2026-07-26
-source-kanagawa-welfare-offices,神奈川県内福祉事務所一覧表,https://www.pref.kanagawa.jp/docs/r6w/cnt/f152/p2912.html,神奈川県,official,published,2026-07-26
+source-kanagawa-municipalities,神奈川県内の市町村,https://www.pref.kanagawa.jp/docs/ie2/cnt/f530001/p780102,神奈川県,official,published,2026-07-26
 source-kanagawa-public-assistance-towns,生活保護法の相談窓口,https://www.pref.kanagawa.jp/docs/r6w/cnt/f152/p2908.html,神奈川県,official,published,2026-07-26
-source-niigata-municipalities,市町村役場所在地等一覧,https://www.pref.niigata.lg.jp/uploaded/attachment/493935.pdf,新潟県,official,published,2026-07-26
-source-niigata-self-reliance,住居確保給付金申請窓口（自立相談支援機関一覧）,https://www.pref.niigata.lg.jp/uploaded/attachment/324739.pdf,新潟県,official,published,2026-07-26
-source-niigata-public-assistance,生活保護制度について,https://www.pref.niigata.lg.jp/sec/fukushihoken/1296763262577.html,新潟県,official,published,2026-07-26
-source-toyama-municipalities,市町村選挙管理委員会一覧（市町村所在地）,https://www.pref.toyama.jp/documents/18401/shichosonrenrakusaki.pdf,富山県,official,published,2026-07-26
-source-toyama-self-reliance,自立相談支援機関相談窓口一覧,https://www.pref.toyama.jp/documents/2207/jiritsusien.xlsx,富山県,official,published,2026-07-26
-source-toyama-public-assistance,生活保護制度,https://www.pref.toyama.jp/1200/kurashi/kenkou/fukushi/kj00000033.html,富山県,official,published,2026-07-26
-source-ishikawa-municipalities,県内市役所・町役場連絡先一覧,https://www.pref.ishikawa.lg.jp/sichousien/kennaiichiran2.html,石川県,official,published,2026-07-26
-source-ishikawa-self-reliance-r8,石川県内の自立相談支援機関 相談窓口一覧（R8.4.1）,https://www.pref.ishikawa.lg.jp/kousei/safetynet/documents/r8madoguchi.pdf,石川県,official,published,2026-07-26
-source-ishikawa-welfare-offices,福祉事務所一覧,https://www.pref.ishikawa.lg.jp/kousei/hogo/fukusijimusyoitiran.html,石川県,official,published,2026-07-26
-source-ishikawa-public-assistance,生活保護制度について,https://www.pref.ishikawa.lg.jp/kousei/hogo/seikatuhogo.html,石川県,official,published,2026-07-26
-source-fukui-municipal-contacts-r7,市役所・町役場連絡先（令和7年6月1日現在）,https://www.pref.fukui.lg.jp/doc/sityousinkou/renrakusaki_d/fil/001.pdf,福井県,official,published,2026-07-26
-source-fukui-municipal-links,福井県内市町リンク集,https://www.pref.fukui.lg.jp/doc/dx-suishin/shimachi_list.html,福井県,official,published,2026-07-26
-source-fukui-self-reliance,生活困窮者自立支援制度について,https://www.pref.fukui.lg.jp/doc/tihuku/seikatukonkyu.html,福井県,official,published,2026-07-26
-source-fukui-public-assistance,生活保護制度について,https://www.pref.fukui.lg.jp/doc/tihuku/fukuiseiho.html,福井県,official,published,2026-07-26
-source-yamanashi-municipal-contacts-r6,市町村コード及び所在地等一覧（令和6年5月7日現在）,https://www.pref.yamanashi.jp/documents/63300/s060507syozaitikodo.pdf,山梨県,official,published,2026-07-26
-source-yamanashi-municipal-links,山梨県市町村リンクページ,https://www.pref.yamanashi.jp/link/link_city.html,山梨県,official,published,2026-07-26
-source-yamanashi-self-reliance,生活困窮者自立支援,https://www.pref.yamanashi.jp/hokensom/jiritsusoudanshien.html,山梨県,official,published,2026-07-26
-source-yamanashi-housing-benefit,住居確保給付金の制度案内,https://www.pref.yamanashi.jp/shigaku-kgk/korona/korona.html,山梨県,official,published,2026-07-26
-source-yamanashi-public-assistance,生活保護相談について,https://www.pref.yamanashi.jp/hokensom/40_030.html,山梨県,official,published,2026-07-26
-source-nagano-municipalities,市町村一覧（役場所在地・電話番号等）,https://www.pref.nagano.lg.jp/shichoson/kensei/shichoson/gappei/gappei/mejiiko/ichiran/,長野県,official,published,2026-07-26
-source-nagano-self-reliance,ひきこもりに関連する相談窓口・支援機関一覧（まいさぽ一覧）,https://www.pref.nagano.lg.jp/chiiki-fukushi/happyou/documents/soudanmadoguchi.pdf,長野県,official,published,2026-07-26
-source-nagano-housing-benefit,生活困窮者自立支援制度（信州パーソナル・サポート事業）のご案内,https://www.pref.nagano.lg.jp/chiiki-fukushi/kenko/fukushi/konkyu/puropo.html,長野県,official,published,2026-07-26
-source-nagano-public-assistance,生活保護制度,https://www.pref.nagano.lg.jp/chiiki-fukushi/kenko/fukushi/konkyu/sekatsuhogo.html,長野県,official,published,2026-07-26
-source-nagano-welfare-offices-r7,福祉事務所一覧（令和7年1月現在）,https://www.pref.nagano.lg.jp/chiiki-fukushi/happyou/documents/ichiran.pdf,長野県,official,published,2026-07-26
-source-gifu-municipalities,岐阜県の市町村一覧,https://www.pref.gifu.lg.jp/page/6058.html,岐阜県,official,published,2026-07-26
-source-gifu-self-reliance,生活困窮者自立相談支援の窓口について,https://www.pref.gifu.lg.jp/page/12848.html,岐阜県,official,published,2026-07-26
-source-gifu-self-reliance-pdf,生活困窮者自立相談支援窓口パンフレット,https://www.pref.gifu.lg.jp/uploaded/attachment/499313.pdf,岐阜県,official,published,2026-07-26
-source-gifu-housing-benefit,住居確保給付金,https://www.pref.gifu.lg.jp/page/13214.html,岐阜県,official,published,2026-07-26
-source-gifu-public-assistance,生活保護について,https://www.pref.gifu.lg.jp/page/6503.html,岐阜県,official,published,2026-07-26
-source-shizuoka-municipal-locations,市町の所在地（市役所・町役場住所一覧）,https://www.pref.shizuoka.jp/kensei/shichozaisei/1044883/1012124.html,静岡県,official,published,2026-07-26
-source-shizuoka-municipal-links,県内市町（リンク集）,https://www.pref.shizuoka.jp/sangyoshigoto/kigyoshien/kigyoricchi/1000016/1028378.html,静岡県,official,published,2026-07-26
-source-shizuoka-support-open-data,自立相談支援事業、住居確保給付金、生活保護窓口一覧,https://opendata.pref.shizuoka.jp/dataset/11730/resource/97054/10-13_%E8%87%AA%E7%AB%8B%E7%9B%B8%E8%AB%87%E6%94%AF%E6%8F%B4%E4%BA%8B%E6%A5%AD%E3%80%81%E4%BD%8F%E5%B1%85%E7%A2%BA%E4%BF%9D%E7%B5%A6%E4%BB%98%E9%87%91%E3%80%81%E7%94%9F%E6%B4%BB%E4%BF%9D%E8%AD%B7%E7%AA%93%E5%8F%A3%E4%B8%80%E8%A6%A7.csv,静岡県,official,published,2026-07-26
-source-shizuoka-welfare-contacts,福祉事務所、町福祉課、社会福祉協議会連絡先一覧,https://www.pref.shizuoka.jp/kenkofukushi/shakaifukushi/seikatsuhogo/1022348.html,静岡県,official,published,2026-07-26
-source-shizuoka-public-assistance,生活保護制度,https://www.pref.shizuoka.jp/kenkofukushi/shakaifukushi/seikatsuhogo/1022341.html,静岡県,official,published,2026-07-26
-source-shizuoka-kakegawa-support,生活にお困りの方へ ～生活福祉資金のご案内～,https://www.city.kakegawa.shizuoka.jp/gyosei/docs/9173.html,掛川市,official,published,2026-07-26
-source-aichi-municipalities,市役所・町村役場一覧,https://www.pref.aichi.jp/soshiki/shichoson/0000000276.html,愛知県,official,published,2026-07-26
-source-aichi-self-reliance,生活困窮者自立支援制度について,https://www.pref.aichi.jp/soshiki/chiikifukushi/seikatsukonkyu.html,愛知県,official,published,2026-07-26
-source-aichi-self-reliance-pdf,愛知県内の自立相談支援機関 相談窓口一覧（2026年4月1日現在）,https://www.pref.aichi.jp/uploaded/attachment/612430.pdf,愛知県,official,published,2026-07-26
-source-aichi-welfare-contacts,県内市町村の福祉サービスに関する相談窓口について,https://www.pref.aichi.jp/soshiki/fukushi-kikaku/fukushi-soudan.html,愛知県,official,published,2026-07-26
-source-aichi-housing-benefit,住居確保給付金について,https://www.pref.aichi.jp/soshiki/chiikifukushi/0000083363.html,愛知県,official,published,2026-07-26
-source-aichi-public-assistance,生活保護制度,https://www.pref.aichi.jp/soshiki/chiikifukushi/seikatuhogoseido.html,愛知県,official,published,2026-07-26
-source-mie-municipalities,市役所・役場所在地等一覧,https://www.pref.mie.lg.jp/SHICHOS/HP/23057019610.htm,三重県,official,published,2026-07-26
-source-mie-official-links,県内市町（公式サイト）,https://www.pref.mie.lg.jp/link/link1.htm,三重県,official,published,2026-07-26
-source-mie-self-reliance,生活困窮者の相談窓口について,https://www.pref.mie.lg.jp/FUKUSHI/HP/88169000001.htm,三重県,official,published,2026-07-26
-source-mie-self-reliance-pdf,自立相談支援機関 相談窓口一覧,https://www.pref.mie.lg.jp/common/content/000372142.pdf,三重県,official,published,2026-07-26
-source-mie-housing-benefit,住居確保給付金について,https://www.pref.mie.lg.jp/FUKUSHI/HP/88169000001_00004.htm,三重県,official,published,2026-07-26
-source-mie-public-assistance,各種相談窓口（生活保護に関する相談など）,https://www.pref.mie.lg.jp/s_kencho/KENCHO/GYOUMU/D06.htm,三重県,official,published,2026-07-26
-source-shiga-municipalities,県内市町役場（所）の住所・電話番号一覧,https://www.pref.shiga.lg.jp/kensei/gaiyou/shicyou/320154.html,滋賀県,official,published,2026-07-26
-source-shiga-official-links,市町の採用情報（市町公式サイトへのリンク）,https://www.pref.shiga.lg.jp/kensei/gaiyou/shicyou/343101.html,滋賀県,official,published,2026-07-26
-source-shiga-self-reliance,生活困窮者自立支援制度について,https://www.pref.shiga.lg.jp/ippan/kenkouiryouhukushi/chiiki/311432.html,滋賀県,official,published,2026-07-26
-source-shiga-self-reliance-list,滋賀県 自立相談支援機関相談窓口一覧（令和8年4月時点）,https://minna-tunagaru.jp/ichiran/shiga/,厚生労働省委託事業 生活困窮者自立支援情報共有サイト,official,published,2026-07-26
-source-shiga-public-assistance,生活保護制度について（相談・申請窓口）,https://www.pref.shiga.lg.jp/ippan/kenkouiryouhukushi/chiiki/300783.html,滋賀県,official,published,2026-07-26
+source-kanagawa-self-reliance,生活困窮者自立相談支援機関一覧,https://www.pref.kanagawa.jp/docs/r6w/cnt/f533087/index.html,神奈川県,official,published,2026-07-26
+source-kanagawa-welfare-offices,神奈川県内福祉事務所一覧表,https://www.pref.kanagawa.jp/docs/r6w/cnt/f152/p2912.html,神奈川県,official,published,2026-07-26
+source-kobe-city-contact,神戸市お問い合わせ,https://www.city.kobe.lg.jp/contact/,神戸市,official,published,2026-07-26
+source-kobe-housing-benefit,住居確保給付金のご案内,https://www.city.kobe.lg.jp/documents/4788/03_jyukakupanfu.pdf,神戸市,official,published,2026-07-26
+source-kobe-life-support,生活にお困りの方への相談窓口,https://www.city.kobe.lg.jp/a38463/kenko/chiikifukushi/sekatsukonkyusha/gaiyou.html,神戸市,official,published,2026-07-26
+source-kobe-public-assistance,生活保護のあらまし,https://www.city.kobe.lg.jp/a49925/kenko/chiikifukushi/care/111.html,神戸市,official,published,2026-07-26
+source-kochi-municipal-offices,高知県 市町村便覧,https://www.pref.kochi.lg.jp/doc/2021080200157/,高知県,official,published,2026-07-27
+source-kochi-public-assistance,高知県 生活保護相談・申請窓口,https://www.pref.kochi.lg.jp/doc/seiho-gaiyou/,高知県,official,published,2026-07-27
+source-kochi-self-reliance,高知県 生活困窮者自立相談支援・住居確保給付金相談窓口,https://www.pref.kochi.lg.jp/doc/2020040900496/,高知県,official,published,2026-07-27
+source-kyoto-city-public-assistance,京都市 生活保護を申請したい方へ,https://www.city.kyoto.lg.jp/hokenfukushi/page/0000281356.html,京都市,official,published,2026-07-26
 source-kyoto-municipalities,市役所・町村役場（所在地・代表電話）,https://www.pref.kyoto.jp/kourei-engo/13900025.html,京都府,official,published,2026-07-26
 source-kyoto-official-links,府内市町村・官公庁・都道府県等へのリンク,https://www.pref.kyoto.jp/link.html,京都府,official,published,2026-07-26
-source-kyoto-self-reliance,生活困窮者自立支援制度（令和8年度）,https://www.pref.kyoto.jp/ss-shien/seikatukonkyusya1.html,京都府,official,published,2026-07-26
-source-kyoto-self-reliance-pdf,京都府内自立相談支援機関相談窓口（R8.5.1時点）,https://www.pref.kyoto.jp/ss-shien/documents/r8-ziritsusoudanmadoguchi.pdf,京都府,official,published,2026-07-26
 source-kyoto-public-assistance,生活保護に関すること,https://www.pref.kyoto.jp/seikatsuhogo/index.html,京都府,official,published,2026-07-26
 source-kyoto-public-assistance-pdf,福祉事務所一覧（令和8年4月1日現在）,https://www.pref.kyoto.jp/seikatsuhogo/documents/r8fukushijimushoichiran.pdf,京都府,official,published,2026-07-26
-source-kyoto-city-public-assistance,京都市 生活保護を申請したい方へ,https://www.city.kyoto.lg.jp/hokenfukushi/page/0000281356.html,京都市,official,published,2026-07-26
+source-kyoto-self-reliance,生活困窮者自立支援制度（令和8年度）,https://www.pref.kyoto.jp/ss-shien/seikatukonkyusya1.html,京都府,official,published,2026-07-26
+source-kyoto-self-reliance-pdf,京都府内自立相談支援機関相談窓口（R8.5.1時点）,https://www.pref.kyoto.jp/ss-shien/documents/r8-ziritsusoudanmadoguchi.pdf,京都府,official,published,2026-07-26
+source-kyoukaikenpo-sickness-allowance,傷病手当金について,https://www.kyoukaikenpo.or.jp/g6/cat620/r307,全国健康保険協会,official,published,2026-07-26
+source-mext-school-assistance,就学援助制度について,https://www.mext.go.jp/a_menu/shotou/career/05010502/017.htm,文部科学省,official,published,2026-07-26
+source-mhlw-care-leave-benefit,Q&A 介護休業給付,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000158665.html,厚生労働省,official,published,2026-07-26
+source-mhlw-high-cost-medical,高額療養費制度を利用される皆さまへ,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryouhoken/juuyou/kougakuiryou/index.html,厚生労働省,official,published,2026-07-26
+source-mhlw-housing-benefit,住居確保給付金 制度概要,https://corona-support.mhlw.go.jp/jukyokakuhokyufukin/index.html,厚生労働省,official,published,2026-07-26
+source-mhlw-housing-counter,住居確保給付金 相談窓口一覧,https://corona-support.mhlw.go.jp/jukyokakuhokyufukin/counter.html,厚生労働省,official,published,2026-07-26
+source-mhlw-job-seeker-support,求職者支援制度のご案内,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/koyou/kyushokusha_shien/index.html,厚生労働省,official,published,2026-07-26
+source-mhlw-medical-independence,自立支援医療,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/shougaishahukushi/jiritsu/index.html,厚生労働省,official,published,2026-07-26
+source-mhlw-mental-health-line,まもろうよ こころ,https://www.mhlw.go.jp/mamorouyokokoro/?oai_link_source=model_response_hotline,厚生労働省,official,published,2026-07-26
+source-mhlw-public-assistance,生活保護制度,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatuhogo/,厚生労働省,official,published,2026-07-01
+source-mhlw-self-reliance,生活困窮者自立支援制度,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/0000059425.html,厚生労働省,official,published,2026-07-01
+source-mhlw-welfare-loan,生活福祉資金貸付制度,https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatsu-fukushi-shikin1/index.html,厚生労働省,official,published,2026-07-26
+source-mie-housing-benefit,住居確保給付金について,https://www.pref.mie.lg.jp/FUKUSHI/HP/88169000001_00004.htm,三重県,official,published,2026-07-26
+source-mie-municipalities,市役所・役場所在地等一覧,https://www.pref.mie.lg.jp/SHICHOS/HP/23057019610.htm,三重県,official,published,2026-07-26
+source-mie-official-links,県内市町（公式サイト）,https://www.pref.mie.lg.jp/link/link1.htm,三重県,official,published,2026-07-26
+source-mie-public-assistance,各種相談窓口（生活保護に関する相談など）,https://www.pref.mie.lg.jp/s_kencho/KENCHO/GYOUMU/D06.htm,三重県,official,published,2026-07-26
+source-mie-self-reliance,生活困窮者の相談窓口について,https://www.pref.mie.lg.jp/FUKUSHI/HP/88169000001.htm,三重県,official,published,2026-07-26
+source-mie-self-reliance-pdf,自立相談支援機関 相談窓口一覧,https://www.pref.mie.lg.jp/common/content/000372142.pdf,三重県,official,published,2026-07-26
+source-mito-child-abuse,虐待からこどもを守ろう,https://www.city.mito.lg.jp/site/kosodate/2587.html,水戸市,official,published,2026-07-26
+source-mito-childcare,子育て相談窓口（利用者支援事業）について,https://www.city.mito.lg.jp/site/kosodate/120024.html,水戸市,official,published,2026-07-26
+source-mito-consultations,医療安全相談窓口・その他の相談窓口,https://www.city.mito.lg.jp/page/2121.html,水戸市,official,published,2026-07-26
+source-mito-disability,障害のある方やそのご家族・専門機関などの相談窓口,https://www.city.mito.lg.jp/page/3691.html,水戸市,official,published,2026-07-26
+source-mito-dv,DV相談窓口の御案内,https://www.city.mito.lg.jp/site/shinsei/1623.html,水戸市,official,published,2026-07-26
+source-mito-elderly,高齢福祉課地域支援センター,https://www.city.mito.lg.jp/soshiki/44/index.html,水戸市,official,published,2026-07-26
+source-mito-mental-health,こころの健康相談（保健師等）,https://www.city.mito.lg.jp/site/kosodate/1772.html,水戸市,official,published,2026-07-26
+source-mito-official,水戸市公式ホームページ,https://www.city.mito.lg.jp/,水戸市,official,published,2026-07-26
+source-mito-public-assistance,生活保護の相談を受け付けています,https://www.city.mito.lg.jp/page/4503.html,水戸市,official,published,2026-07-26
+source-mito-self-reliance,自立相談支援事業では仕事・生活・住まいにお困りの方の相談を受け付けています,https://www.city.mito.lg.jp/page/3455.html,水戸市,official,published,2026-07-26
+source-mito-single-parent,ひとり親家庭への支援について,https://www.city.mito.lg.jp/site/kosodate/120859.html,水戸市,official,published,2026-07-26
+source-mito-syakyo,水戸市社会福祉協議会公式ホームページ,https://www.mito-syakyo.or.jp/,水戸市社会福祉協議会,official,published,2026-07-26
+source-mito-welfare-department,水戸市福祉部,https://www.city.mito.lg.jp/soshiki/8.html,水戸市,official,published,2026-07-26
+source-nagano-housing-benefit,生活困窮者自立支援制度（信州パーソナル・サポート事業）のご案内,https://www.pref.nagano.lg.jp/chiiki-fukushi/kenko/fukushi/konkyu/puropo.html,長野県,official,published,2026-07-26
+source-nagano-municipalities,市町村一覧（役場所在地・電話番号等）,https://www.pref.nagano.lg.jp/shichoson/kensei/shichoson/gappei/gappei/mejiiko/ichiran/,長野県,official,published,2026-07-26
+source-nagano-public-assistance,生活保護制度,https://www.pref.nagano.lg.jp/chiiki-fukushi/kenko/fukushi/konkyu/sekatsuhogo.html,長野県,official,published,2026-07-26
+source-nagano-self-reliance,ひきこもりに関連する相談窓口・支援機関一覧（まいさぽ一覧）,https://www.pref.nagano.lg.jp/chiiki-fukushi/happyou/documents/soudanmadoguchi.pdf,長野県,official,published,2026-07-26
+source-nagano-welfare-offices-r7,福祉事務所一覧（令和7年1月現在）,https://www.pref.nagano.lg.jp/chiiki-fukushi/happyou/documents/ichiran.pdf,長野県,official,published,2026-07-26
+source-nagoya-city-hall,名古屋市役所 施設案内,https://www.city.nagoya.jp/shisei/gaiyou/1015754/1015760/1033895.html,名古屋市,official,published,2026-07-26
+source-nagoya-housing-benefit,住居確保給付金（家賃補助）のご案内,https://www.city.nagoya.jp/kenkofukushi/fukushi/1016735/1016738.html,名古屋市,official,published,2026-07-26
+source-nagoya-public-assistance,生活保護とは,https://www.city.nagoya.jp/kenkofukushi/fukushi/1051323/1016734.html,名古屋市,official,published,2026-07-26
+source-nagoya-support-meieki,名古屋市仕事・暮らし自立サポートセンター,https://www.city.nagoya.jp/kenkofukushi/fukushi/1016735/1016739.html,名古屋市,official,published,2026-07-26
+source-naha-city-hall,ご意見・お問合わせ,https://www.city.naha.okinawa.jp/about/1005987.html,那覇市,official,published,2026-07-26
+source-naha-housing-benefit,住居確保給付金（家賃補助分）の申請手続き,https://www.city.naha.okinawa.jp/fukusi/shakaifukushi/1003447/1003473.html,那覇市,official,published,2026-07-26
+source-naha-public-assistance,生活保護について教えてください。,https://www.info.city.naha.okinawa.jp/seikatsunoenjo/y000538.html,那覇市,official,published,2026-07-26
+source-naha-self-reliance,生活困窮者自立支援制度,https://www.city.naha.okinawa.jp/fukusi/shakaifukushi/1003447/1003475.html,那覇市,official,published,2026-07-26
+source-nara-pref-municipal-offices-2026,奈良県 市町村長・役場所在地一覧（令和8年5月14日現在）,https://www.pref.nara.lg.jp/n006/9686.html,奈良県,official,published,2026-07-27
+source-nara-pref-public-assistance-2025,奈良県 生活保護担当関係部局一覧（令和7年1月1日現在）,https://www.pref.nara.lg.jp/documents/5241/tantoitiran.pdf,奈良県,official,published,2026-07-27
+source-nara-pref-self-reliance-2026,奈良県 生活困窮者自立相談支援機関の窓口一覧,https://www.pref.nara.lg.jp/n063/39628.html,奈良県,official,published,2026-07-27
+source-niigata-municipalities,市町村役場所在地等一覧,https://www.pref.niigata.lg.jp/uploaded/attachment/493935.pdf,新潟県,official,published,2026-07-26
+source-niigata-public-assistance,生活保護制度について,https://www.pref.niigata.lg.jp/sec/fukushihoken/1296763262577.html,新潟県,official,published,2026-07-26
+source-niigata-self-reliance,住居確保給付金申請窓口（自立相談支援機関一覧）,https://www.pref.niigata.lg.jp/uploaded/attachment/324739.pdf,新潟県,official,published,2026-07-26
+source-okayama-housing-benefit,岡山県 住居確保給付金について,https://www.pref.okayama.jp/page/detail-54694.html,岡山県,official,published,2026-07-27
+source-okayama-municipal-offices,岡山県市町村一覧（令和7年8月31日現在）,https://www.pref.okayama.jp/uploaded/attachment/396315.pdf,岡山県,official,published,2026-07-27
+source-okayama-public-assistance,岡山県 生活保護相談窓口,https://www.pref.okayama.jp/page/418224.html,岡山県,official,published,2026-07-27
+source-okayama-self-reliance,岡山県 自立相談支援機関一覧（令和8年4月）,https://www.pref.okayama.jp/page/689589.html,岡山県,official,published,2026-07-27
 source-osaka-pref-municipality-representatives,大阪府内市町村一覧（代表電話）,https://www.pref.osaka.lg.jp/o120070/kankyohozen/kaitai-chek/index.html,大阪府,official,published,2026-07-26
 source-osaka-pref-self-reliance-2026,大阪府内の自立相談支援機関窓口一覧（令和8年4月1日時点）,https://www.pref.osaka.lg.jp/o090020/shakaiengo/seikon_gaiyou/index.html,大阪府,official,published,2026-07-26
 source-osaka-pref-welfare-offices-2026,大阪府内 福祉事務所等一覧（令和8年4月1日現在）,https://www.pref.osaka.lg.jp/o090030/shakaiengo/hukushijimusho/index.html,大阪府,official,published,2026-07-26
-source-hyogo-pref-municipal-offices,兵庫県 市町庁舎所在地一覧,https://web.pref.hyogo.lg.jp/kk25/pa05_000000002.html,兵庫県,official,published,2026-07-26
-source-hyogo-pref-self-reliance-2026,兵庫県 自立相談支援機関相談窓口一覧（令和8年4月）,https://web.pref.hyogo.lg.jp/kf03/seikatsukonkyu.html,兵庫県,official,published,2026-07-26
-source-hyogo-pref-public-assistance,兵庫県 生活保護担当窓口一覧,https://web.pref.hyogo.lg.jp/kf03/hw16_000000042.html,兵庫県,official,published,2026-07-26
-source-nara-pref-municipal-offices-2026,奈良県 市町村長・役場所在地一覧（令和8年5月14日現在）,https://www.pref.nara.lg.jp/n006/9686.html,奈良県,official,published,2026-07-27
-source-nara-pref-self-reliance-2026,奈良県 生活困窮者自立相談支援機関の窓口一覧,https://www.pref.nara.lg.jp/n063/39628.html,奈良県,official,published,2026-07-27
-source-nara-pref-public-assistance-2025,奈良県 生活保護担当関係部局一覧（令和7年1月1日現在）,https://www.pref.nara.lg.jp/documents/5241/tantoitiran.pdf,奈良県,official,published,2026-07-27
-source-wakayama-pref-municipal-offices,和歌山県 市役所・町村役場一覧,https://www.pref.wakayama.lg.jp/prefg/010500/shichousonzei/yakubaichiran.html,和歌山県,official,published,2026-07-27
-source-wakayama-pref-self-reliance,和歌山県 自立相談支援機関相談窓口,https://www.first-step.pref.wakayama.lg.jp/help-center/,和歌山県,official,published,2026-07-27
-source-wakayama-pref-public-assistance,和歌山県 福祉事務所一覧（生活保護法）,https://www.pref.wakayama.lg.jp/prefg/040100/seikatuhogo/index.html,和歌山県,official,published,2026-07-27
-source-tottori-municipal-offices,鳥取県市町村役場所在地録,https://www.pref.tottori.lg.jp/12510.htm,鳥取県,official,published,2026-07-27
-source-tottori-self-reliance,鳥取県 自立相談支援機関相談窓口一覧,https://www.pref.tottori.lg.jp/251575.htm,鳥取県,official,published,2026-07-27
-source-tottori-public-assistance,鳥取県 生活保護にかかる相談窓口,https://www.pref.tottori.lg.jp/255464.htm,鳥取県,official,published,2026-07-27
+source-saitama-official-links,埼玉県内市町村へのリンク,https://www.pref.saitama.lg.jp/a0301/wwwlink.html,埼玉県,official,published,2026-07-26
+source-saitama-public-assistance,福祉事務所等一覧（生活保護法）,https://www.pref.saitama.lg.jp/a0602/seihozenpan/910-20091208-75.html,埼玉県,official,published,2026-07-26
+source-saitama-self-reliance,生活困窮者の総合相談窓口について,https://www.pref.saitama.lg.jp/a0602/jiritsushien/madoguchi.html,埼玉県,official,published,2026-07-26
+source-sapporo-city-hall,市役所へのアクセス,https://www.city.sapporo.jp/city/map/,札幌市,official,published,2026-07-26
+source-sapporo-public-assistance,生活保護制度,https://www.city.sapporo.jp/fukushi-guide/seikatuhogo.html,札幌市,official,published,2026-07-26
+source-sapporo-step,札幌市生活就労支援センター（ステップ）,https://www.city.sapporo.jp/fukushi-guide/step.html,札幌市,official,published,2026-07-26
+source-sendai-city-hall,仙台市役所各庁舎,https://www.city.sendai.jp/sesakukoho/kurashi/shisetsu/kokyo/shiyakusho/public-office/1312.html,仙台市,official,published,2026-07-26
+source-sendai-housing-benefit,住居確保給付金支給事業（家賃補助）,https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/jukyokakuhokyufukin.html,仙台市,official,published,2026-07-26
+source-sendai-one-step,仙台市生活自立・仕事相談センター「わんすてっぷ」,https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/shien.html,仙台市,official,published,2026-07-26
+source-sendai-public-assistance,生活保護,https://www.city.sendai.jp/hogoshien/kurashi/tetsuzuki/sekatsu/sekatsu/sekatsuhogo.html,仙台市,official,published,2026-07-26
+source-shiga-municipalities,県内市町役場（所）の住所・電話番号一覧,https://www.pref.shiga.lg.jp/kensei/gaiyou/shicyou/320154.html,滋賀県,official,published,2026-07-26
+source-shiga-official-links,市町の採用情報（市町公式サイトへのリンク）,https://www.pref.shiga.lg.jp/kensei/gaiyou/shicyou/343101.html,滋賀県,official,published,2026-07-26
+source-shiga-public-assistance,生活保護制度について（相談・申請窓口）,https://www.pref.shiga.lg.jp/ippan/kenkouiryouhukushi/chiiki/300783.html,滋賀県,official,published,2026-07-26
+source-shiga-self-reliance,生活困窮者自立支援制度について,https://www.pref.shiga.lg.jp/ippan/kenkouiryouhukushi/chiiki/311432.html,滋賀県,official,published,2026-07-26
+source-shiga-self-reliance-list,滋賀県 自立相談支援機関相談窓口一覧（令和8年4月時点）,https://minna-tunagaru.jp/ichiran/shiga/,厚生労働省委託事業 生活困窮者自立支援情報共有サイト,official,published,2026-07-26
 source-shimane-municipal-offices,島根県市町村役場住所一覧,https://www.pref.shimane.lg.jp/admin/sichoson/sichoson_info/sanko/index.data/yakubajushoR3.7.26.pdf,島根県,official,published,2026-07-27
-source-shimane-self-reliance,島根県内の自立相談支援機関窓口一覧,https://www1.pref.shimane.lg.jp/medical/fukushi/chiiki/shien/index.data/seikonmadoguti.pdf,島根県,official,published,2026-07-27
 source-shimane-public-assistance,島根県内各福祉事務所一覧,https://www.pref.shimane.lg.jp/medical/fukushi/chiiki/hogo_seido/hogo_aramashi.html,島根県,official,published,2026-07-27
-source-okayama-municipal-offices,岡山県市町村一覧（令和7年8月31日現在）,https://www.pref.okayama.jp/uploaded/attachment/396315.pdf,岡山県,official,published,2026-07-27
-source-okayama-self-reliance,岡山県 自立相談支援機関一覧（令和8年4月）,https://www.pref.okayama.jp/page/689589.html,岡山県,official,published,2026-07-27
-source-okayama-housing-benefit,岡山県 住居確保給付金について,https://www.pref.okayama.jp/page/detail-54694.html,岡山県,official,published,2026-07-27
-source-okayama-public-assistance,岡山県 生活保護相談窓口,https://www.pref.okayama.jp/page/418224.html,岡山県,official,published,2026-07-27
-source-hiroshima-municipal-offices,広島県内市区町一覧（令和7年4月1日現在）,https://www.pref.hiroshima.lg.jp/uploaded/attachment/634047.pdf,広島県,official,published,2026-07-27
-source-hiroshima-self-reliance,広島県 生活困窮者自立支援制度 相談窓口,https://www.pref.hiroshima.lg.jp/soshiki/61/jirityu.html,広島県,official,published,2026-07-27
-source-hiroshima-housing-benefit,広島県居住支援協議会 生活困窮者住居確保給付金,https://www.pref.hiroshima.lg.jp/site/jutaku-safety-net/kyojuusien.html,広島県,official,published,2026-07-27
-source-hiroshima-public-assistance,広島県 市・町福祉事務所・保健所,https://www.pref.hiroshima.lg.jp/soshiki/50/hukusi-hokennsyo.html,広島県,official,published,2026-07-27
-source-yamaguchi-municipal-offices,山口県 市町庁舎及び総合支所・総合事務所の所在地・連絡先,https://www.pref.yamaguchi.lg.jp/soshiki/31/14948.html,山口県,official,published,2026-07-27
-source-yamaguchi-self-reliance,山口県 生活困窮者自立支援 相談窓口一覧,https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html,山口県,official,published,2026-07-27
-source-yamaguchi-housing-benefit,山口県 生活困窮者自立支援・住居確保給付金,https://www.pref.yamaguchi.lg.jp/soshiki/44/18183.html,山口県,official,published,2026-07-27
-source-yamaguchi-public-assistance,山口県 生活保護・福祉事務所一覧,https://www.pref.yamaguchi.lg.jp/soshiki/44/18180.html,山口県,official,published,2026-07-27
-source-tokushima-municipal-offices,徳島県の市町村一覧,https://www.pref.tokushima.lg.jp/kenseijoho/kanrennochiiki/shichouson/,徳島県,official,published,2026-07-27
-source-tokushima-self-reliance,徳島県 生活困窮者自立相談支援事業窓口一覧,https://www.pref.tokushima.lg.jp/file/attachment/1061629.pdf,徳島県,official,published,2026-07-27
+source-shimane-self-reliance,島根県内の自立相談支援機関窓口一覧,https://www1.pref.shimane.lg.jp/medical/fukushi/chiiki/shien/index.data/seikonmadoguti.pdf,島根県,official,published,2026-07-27
+source-shizuoka-kakegawa-support,生活にお困りの方へ ～生活福祉資金のご案内～,https://www.city.kakegawa.shizuoka.jp/gyosei/docs/9173.html,掛川市,official,published,2026-07-26
+source-shizuoka-municipal-links,県内市町（リンク集）,https://www.pref.shizuoka.jp/sangyoshigoto/kigyoshien/kigyoricchi/1000016/1028378.html,静岡県,official,published,2026-07-26
+source-shizuoka-municipal-locations,市町の所在地（市役所・町役場住所一覧）,https://www.pref.shizuoka.jp/kensei/shichozaisei/1044883/1012124.html,静岡県,official,published,2026-07-26
+source-shizuoka-public-assistance,生活保護制度,https://www.pref.shizuoka.jp/kenkofukushi/shakaifukushi/seikatsuhogo/1022341.html,静岡県,official,published,2026-07-26
+source-shizuoka-support-open-data,自立相談支援事業、住居確保給付金、生活保護窓口一覧,https://opendata.pref.shizuoka.jp/dataset/11730/resource/97054/10-13_%E8%87%AA%E7%AB%8B%E7%9B%B8%E8%AB%87%E6%94%AF%E6%8F%B4%E4%BA%8B%E6%A5%AD%E3%80%81%E4%BD%8F%E5%B1%85%E7%A2%BA%E4%BF%9D%E7%B5%A6%E4%BB%98%E9%87%91%E3%80%81%E7%94%9F%E6%B4%BB%E4%BF%9D%E8%AD%B7%E7%AA%93%E5%8F%A3%E4%B8%80%E8%A6%A7.csv,静岡県,official,published,2026-07-26
+source-shizuoka-welfare-contacts,福祉事務所、町福祉課、社会福祉協議会連絡先一覧,https://www.pref.shizuoka.jp/kenkofukushi/shakaifukushi/seikatsuhogo/1022348.html,静岡県,official,published,2026-07-26
+source-tochigi-housing-benefit,住居確保給付金 県内市町村相談窓口一覧,https://www.pref.tochigi.lg.jp/e12/documents/documents/20250424094059.pdf,栃木県,official,published,2026-07-26
+source-tochigi-public-assistance,生活保護制度 栃木県内の福祉事務所,https://www.pref.tochigi.lg.jp/e12/welfare/chiikifukushi/seikatuhogo/seiho.html,栃木県,official,published,2026-07-26
+source-tochigi-self-reliance,生活困窮者自立支援制度 地域の相談窓口,https://www.pref.tochigi.lg.jp/e12/seikatusienn.html,栃木県,official,published,2026-07-26
 source-tokushima-housing-benefit,徳島県 住居確保給付金（家賃補助・転居費用補助）,https://www.pref.tokushima.lg.jp/ippannokata/kenko/chiikifukushi/7215727/,徳島県,official,published,2026-07-27
+source-tokushima-municipal-offices,徳島県の市町村一覧,https://www.pref.tokushima.lg.jp/kenseijoho/kanrennochiiki/shichouson/,徳島県,official,published,2026-07-27
 source-tokushima-public-assistance,徳島県 福祉事務所一覧,https://www.pref.tokushima.lg.jp/file/attachment/1048521.pdf,徳島県,official,published,2026-07-27
-source-kagawa-municipal-offices,香川県内の市・町リンク集,https://www.pref.kagawa.lg.jp/shogaifukushi/sogo/sonota/link.html,香川県,official,published,2026-07-27
-source-kagawa-self-reliance,香川県 生活困窮者自立支援制度・住居確保給付金相談窓口,https://www.pref.kagawa.lg.jp/hokenhukushi/livelihood/wrwhr6200323091634.html,香川県,official,published,2026-07-27
-source-kagawa-public-assistance,香川県 生活保護相談窓口,https://www.pref.kagawa.lg.jp/hokenhukushi/livelihood/livelihood.html,香川県,official,published,2026-07-27
-source-ehime-municipal-offices,愛媛県 市役所・町役場所在地一覧表,https://www.pref.ehime.jp/uploaded/attachment/77192.pdf,愛媛県,official,published,2026-07-27
-source-ehime-self-reliance,愛媛県 生活困窮者自立支援制度 相談窓口,https://www.pref.ehime.jp/page/14914.html,愛媛県,official,published,2026-07-27
-source-ehime-housing-benefit,愛媛県 住居確保給付金支給事業,https://www.pref.ehime.jp/page/14626.html,愛媛県,official,published,2026-07-27
-source-ehime-public-assistance,愛媛県 生活保護制度 県内相談窓口一覧,https://www.pref.ehime.jp/page/14917.html,愛媛県,official,published,2026-07-27
-source-kochi-municipal-offices,高知県 市町村便覧,https://www.pref.kochi.lg.jp/doc/2021080200157/,高知県,official,published,2026-07-27
-source-kochi-self-reliance,高知県 生活困窮者自立相談支援・住居確保給付金相談窓口,https://www.pref.kochi.lg.jp/doc/2020040900496/,高知県,official,published,2026-07-27
-source-kochi-public-assistance,高知県 生活保護相談・申請窓口,https://www.pref.kochi.lg.jp/doc/seiho-gaiyou/,高知県,official,published,2026-07-27
+source-tokushima-self-reliance,徳島県 生活困窮者自立相談支援事業窓口一覧,https://www.pref.tokushima.lg.jp/file/attachment/1061629.pdf,徳島県,official,published,2026-07-27
+source-tottori-municipal-offices,鳥取県市町村役場所在地録,https://www.pref.tottori.lg.jp/12510.htm,鳥取県,official,published,2026-07-27
+source-tottori-public-assistance,鳥取県 生活保護にかかる相談窓口,https://www.pref.tottori.lg.jp/255464.htm,鳥取県,official,published,2026-07-27
+source-tottori-self-reliance,鳥取県 自立相談支援機関相談窓口一覧,https://www.pref.tottori.lg.jp/251575.htm,鳥取県,official,published,2026-07-27
+source-toyama-municipalities,市町村選挙管理委員会一覧（市町村所在地）,https://www.pref.toyama.jp/documents/18401/shichosonrenrakusaki.pdf,富山県,official,published,2026-07-26
+source-toyama-public-assistance,生活保護制度,https://www.pref.toyama.jp/1200/kurashi/kenkou/fukushi/kj00000033.html,富山県,official,published,2026-07-26
+source-toyama-self-reliance,自立相談支援機関相談窓口一覧,https://www.pref.toyama.jp/documents/2207/jiritsusien.xlsx,富山県,official,published,2026-07-26
+source-tsukuba-child-abuse,子育てに関する悩みや児童虐待に関する相談窓口,https://www.city.tsukuba.lg.jp/soshikikarasagasu/kodomobukodomomiraicenter/gyomuannai/3/1/1011987.html,つくば市,official,published,2026-07-26
+source-tsukuba-child-family,こども家庭相談,https://www.city.tsukuba.lg.jp/kosodatenavi/1005675/1005867.html,つくば市,official,published,2026-07-26
+source-tsukuba-city-hall,つくば市役所,https://www.city.tsukuba.lg.jp/shisetsu/shoshashuchojo/chosha/1002756.html,つくば市,official,published,2026-07-26
+source-tsukuba-community-support,地域包括支援センターについて,https://www.city.tsukuba.lg.jp/soshikikarasagasu/fukushibuchiikihokatsushienka/gyomuannai/2/1/1001335.html,つくば市,official,published,2026-07-26
+source-tsukuba-disability,各種相談機関,https://www.city.tsukuba.lg.jp/soshikikarasagasu/fukushibushogaishachiikishienshitsu/gyomuannai/3/4/1001356.html,つくば市,official,published,2026-07-26
+source-tsukuba-dv,令和8年4月からの相談窓口について,https://www.city.tsukuba.lg.jp/shisei/torikumi/danjo/27767.html,つくば市,official,published,2026-07-26
+source-tsukuba-mental-health,こころの健康相談,https://www.city.tsukuba.lg.jp/kenko_iryo_fukushi/kenkoiryo/kokoro/1001308.html,つくば市,official,published,2026-07-26
+source-tsukuba-multiple-debt,多重債務相談,https://www.city.tsukuba.lg.jp/kurashi/oshirase/1003978.html,つくば市,official,published,2026-07-26
+source-tsukuba-parenting-coordinator,子育てコーディネーターによる子育て相談,https://www.city.tsukuba.lg.jp/kosodateportal/mokutekidesagasu_/kosodate_kosodatenikansurusoudan/28824.html,つくば市,official,published,2026-07-26
+source-tsukuba-public-assistance,生活保護,https://www.city.tsukuba.lg.jp/kenko_iryo_fukushi/chiiki/seikasuhogo/1001393.html,つくば市,official,published,2026-07-26
+source-tsukuba-self-reliance,生活困窮者自立支援制度,https://www.city.tsukuba.lg.jp/kenko_iryo_fukushi/chiiki/seikasuhogo/1001395.html,つくば市,official,published,2026-07-26
+source-tsukuba-single-parent,こども政策課,https://www.city.tsukuba.lg.jp/shisei/joho/soshiki/kodomo_hoken/1003495.html,つくば市,official,published,2026-07-26
+source-tsukuba-single-parent-grant,つくば市ひとり親家庭等児童福祉金制度,https://www.city.tsukuba.lg.jp/soshikikarasagasu/kodomobukodomoseisakuka/gyomuannai/4/1/1001109.html,つくば市,official,published,2026-07-26
+source-tsukuba-social-welfare-council,障害者福祉ガイドブック 相談の窓口,https://www.city.tsukuba.lg.jp/material/files/group/59/syogaisyaguidebook2026-12.pdf,つくば市,official,published,2026-07-26
+source-wakayama-pref-municipal-offices,和歌山県 市役所・町村役場一覧,https://www.pref.wakayama.lg.jp/prefg/010500/shichousonzei/yakubaichiran.html,和歌山県,official,published,2026-07-27
+source-wakayama-pref-public-assistance,和歌山県 福祉事務所一覧（生活保護法）,https://www.pref.wakayama.lg.jp/prefg/040100/seikatuhogo/index.html,和歌山県,official,published,2026-07-27
+source-wakayama-pref-self-reliance,和歌山県 自立相談支援機関相談窓口,https://www.first-step.pref.wakayama.lg.jp/help-center/,和歌山県,official,published,2026-07-27
+source-yamaguchi-housing-benefit,山口県 生活困窮者自立支援・住居確保給付金,https://www.pref.yamaguchi.lg.jp/soshiki/44/18183.html,山口県,official,published,2026-07-27
+source-yamaguchi-municipal-offices,山口県 市町庁舎及び総合支所・総合事務所の所在地・連絡先,https://www.pref.yamaguchi.lg.jp/soshiki/31/14948.html,山口県,official,published,2026-07-27
+source-yamaguchi-public-assistance,山口県 生活保護・福祉事務所一覧,https://www.pref.yamaguchi.lg.jp/soshiki/44/18180.html,山口県,official,published,2026-07-27
+source-yamaguchi-self-reliance,山口県 生活困窮者自立支援 相談窓口一覧,https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html,山口県,official,published,2026-07-27
+source-yamanashi-housing-benefit,住居確保給付金の制度案内,https://www.pref.yamanashi.jp/shigaku-kgk/korona/korona.html,山梨県,official,published,2026-07-26
+source-yamanashi-municipal-contacts-r6,市町村コード及び所在地等一覧（令和6年5月7日現在）,https://www.pref.yamanashi.jp/documents/63300/s060507syozaitikodo.pdf,山梨県,official,published,2026-07-26
+source-yamanashi-municipal-links,山梨県市町村リンクページ,https://www.pref.yamanashi.jp/link/link_city.html,山梨県,official,published,2026-07-26
+source-yamanashi-public-assistance,生活保護相談について,https://www.pref.yamanashi.jp/hokensom/40_030.html,山梨県,official,published,2026-07-26
+source-yamanashi-self-reliance,生活困窮者自立支援,https://www.pref.yamanashi.jp/hokensom/jiritsusoudanshien.html,山梨県,official,published,2026-07-26
+source-yokohama-city-hall,市役所案内,https://www.city.yokohama.lg.jp/shichosha/iten.html,横浜市,official,published,2026-07-26
+source-yokohama-housing-benefit,住居確保給付金（家賃補助）,https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/jiritsu/jukyokakuho.html,横浜市,official,published,2026-07-26
+source-yokohama-life-support-offices,各区の相談窓口,https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/madoguchi.html,横浜市,official,published,2026-07-26
+source-yokohama-public-assistance,生活保護について知りたいのですが,https://www.city.yokohama.lg.jp/faq/kukyoku/kenko/kenko-seikatsu/20211022143404481.html,横浜市,official,published,2026-07-26
+source-yokohama-self-reliance,生活困窮者自立支援制度,https://www.city.yokohama.lg.jp/kenko-iryo-fukushi/fukushi-kaigo/seikatsu/jiritsu/konnan/seikatsukonkyu.html,横浜市,official,published,2026-07-26
