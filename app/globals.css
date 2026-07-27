@@ -592,19 +592,6 @@ legend { padding: 0; font-weight: 900; font-size: 1.25rem; }
 .location-grid { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); }
 .location-grid label { display: grid; gap: 7px; font-weight: 900; }
 .location-grid label span { font-size: .9rem; }
-.location-grid input[type="search"] {
-  width: 100%;
-  min-height: 48px;
-  border: 2px solid var(--border);
-  border-radius: 12px;
-  padding: 0 14px;
-  color: var(--text);
-  background: #fff;
-  font: inherit;
-}
-.location-grid input[type="search"]:focus { border-color: var(--primary); outline: 2px solid rgba(23, 107, 75, .14); }
-.location-grid input[type="search"]:disabled { color: #7c8780; background: #eff2ef; }
-.location-grid label > small { color: var(--muted); font-weight: 600; }
 .location-grid em {
   margin-left: 5px;
   border-radius: 999px;

@@ -48,7 +48,6 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [offices, setOffices] = useState<FinderOffice[]>([]);
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState("");
-  const [municipalitySearch, setMunicipalitySearch] = useState("");
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -102,12 +101,6 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     () => data.municipalities.filter((item) => item.prefectureCode === prefectureCode),
     [data.municipalities, prefectureCode],
   );
-  const filteredMunicipalityOptions = useMemo(() => {
-    const normalized = municipalitySearch.trim().toLocaleLowerCase("ja");
-    if (!normalized) return municipalityOptions;
-    return municipalityOptions.filter((item) =>
-      item.name.toLocaleLowerCase("ja").includes(normalized) || item.id === municipalityId);
-  }, [municipalityId, municipalityOptions, municipalitySearch]);
   const municipality = data.municipalities.find((item) => item.id === municipalityId);
   const canSearch = Boolean(categoryId);
   const selectedCategory = data.categories.find((item) => item.id === categoryId);
@@ -115,18 +108,12 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     setSearching(true);
     setSearchError("");
     setSearched(true);
-    window.setTimeout(() => {
-      document.getElementById("support-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 0);
   };
   const moveToCategory = (nextCategoryId: string) => {
     setCategoryId(nextCategoryId);
     setSearching(true);
     setSearchError("");
     setSearched(true);
-    window.setTimeout(() => {
-      document.getElementById("support-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
-    }, 0);
   };
   const shareResults = async () => {
     const shareData = {
@@ -165,8 +152,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
 
       <div className="finder-progress" aria-label="検索の流れ">
         <span className={categoryId ? "is-complete" : "is-current"}><b>1</b>困りごと</span>
-        <span className={categoryId ? "is-current" : ""}><b>2</b>地域</span>
-        <span><b>3</b>案内を見る</span>
+        <span className={searched ? "is-complete" : categoryId ? "is-current" : ""}><b>2</b>地域</span>
+        <span className={searched ? "is-current" : ""}><b>3</b>案内を見る</span>
       </div>
 
       <fieldset className="need-fieldset">
@@ -217,30 +204,21 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         <div className="location-grid">
           <label><span>都道府県 <em>任意</em></span>
             <select value={prefectureCode} onChange={(event) => {
-              setPrefectureCode(event.target.value); setMunicipalityId(""); setMunicipalitySearch(""); setSearched(false);
+              setPrefectureCode(event.target.value); setMunicipalityId(""); setSearched(false);
             }}>
               <option value="">選択しない</option>
               {data.prefectures.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
             </select>
           </label>
           <label><span>市区町村 <em>任意</em></span>
-            <input
-              type="search"
-              value={municipalitySearch}
-              disabled={!prefectureCode}
-              placeholder={prefectureCode ? "市区町村名を入力して絞り込む" : "先に都道府県を選択"}
-              aria-label="市区町村名で絞り込む"
-              onChange={(event) => setMunicipalitySearch(event.target.value)}
-            />
             <select value={municipalityId} disabled={!prefectureCode} onChange={(event) => {
               setMunicipalityId(event.target.value); setSearched(false);
             }}>
               <option value="">{prefectureCode
                 ? municipalityOptions.length ? "選択しない" : "公開済み自治体はありません"
                 : "先に都道府県を選択"}</option>
-              {filteredMunicipalityOptions.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
+              {municipalityOptions.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
-            {municipalitySearch && <small>{filteredMunicipalityOptions.length}件に絞り込みました</small>}
           </label>
         </div>
 
