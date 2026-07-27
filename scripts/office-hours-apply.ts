@@ -10,6 +10,25 @@ type Candidate = {
   sourceUrl: string;
 };
 
+// 2026-07-27に公式ページの電話番号周辺の文脈を目視確認した複数時間帯の代表窓口。
+// 自動正規化では「窓口」と「電話」の時間を取り違えるため、確認した表記を固定する。
+const reviewedOverrides = new Map<string, { hours: string; closedDays: string }>([
+  ["jp-09210-city-general", { hours: "電話受付：午前8時30分から午後5時15分まで", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-12215-city-general", { hours: "電話受付：午前8時30分から午後5時15分まで", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-14215-city-general", { hours: "月曜日から金曜日 8時30分から17時15分", closedDays: "日曜日・祝日・休日・年末年始" }],
+  ["jp-17463-city-general", { hours: "8時30分から17時15分", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-23205-city-general", { hours: "9時から16時（水曜日は19時まで）", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-23233-city-general", { hours: "月曜日から金曜日 午前9時から午後4時まで", closedDays: "土曜日・日曜日・祝日・休日・年末年始" }],
+  ["jp-23232-city-general", { hours: "午前8時30分から午後5時15分", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-23446-city-general", { hours: "電話受付：午前8時30分から午後5時15分まで", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-24341-city-general", { hours: "役場本庁：9時から16時30分まで", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-24461-city-general", { hours: "月・水・金 8時45分から16時30分／火・木 8時45分から19時", closedDays: "土曜日・日曜日・祝日" }],
+  ["jp-26100-city-general", { hours: "市役所本庁舎：午前8時45分から午後5時30分", closedDays: "土曜日・日曜日・祝日・年末年始" }],
+  ["jp-28481-city-general", { hours: "8時30分から17時15分", closedDays: "" }],
+  ["jp-47211-city-general", { hours: "午前8時30分から正午、午後1時から午後5時15分", closedDays: "土曜日・日曜日・祝日・慰霊の日・年末年始" }],
+  ["jp-01219-city-general", { hours: "月曜日から金曜日 8時45分から17時30分", closedDays: "土曜日・日曜日" }],
+]);
+
 const clockRange =
   /(?:午前|午後)?\s*\d{1,2}\s*(?:時(?:\d{1,2}分)?|[:：]\d{2})\s*(?:から|～|〜|－|-)\s*(?:午前|午後)?\s*\d{1,2}\s*(?:時(?:\d{1,2}分)?|[:：]\d{2})/g;
 
@@ -39,6 +58,11 @@ async function main() {
   const accepted = new Map<string, { hours: string; closedDays: string }>();
   for (const candidate of report.candidates) {
     if (!candidate.officeId.endsWith("-city-general") || candidate.evidenceDistance > 250) continue;
+    const reviewed = reviewedOverrides.get(candidate.officeId);
+    if (reviewed) {
+      accepted.set(candidate.officeId, reviewed);
+      continue;
+    }
     const hours = normalizedHours(candidate.openingHours);
     if (!hours) continue;
     accepted.set(candidate.officeId, {

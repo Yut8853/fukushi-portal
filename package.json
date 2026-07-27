@@ -27,6 +27,7 @@
     "crawl:publish:test": "tsx scripts/crawl-publish-test.ts",
     "crawl:hours:test": "tsx scripts/extractor-hours-test.ts",
     "crawl:hours:inventory": "tsx scripts/office-hours-inventory.ts",
+    "crawl:hours:audit": "tsx scripts/office-hours-audit.ts",
     "crawl:hours:apply": "tsx scripts/office-hours-apply.ts",
     "crawl:hours:propagate": "tsx scripts/office-hours-propagate.ts",
     "crawl:hours:closed-days": "tsx scripts/office-hours-closed-days.ts",
