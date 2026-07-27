@@ -29,6 +29,7 @@
     "crawl:hours:inventory": "tsx scripts/office-hours-inventory.ts",
     "crawl:hours:apply": "tsx scripts/office-hours-apply.ts",
     "crawl:hours:propagate": "tsx scripts/office-hours-propagate.ts",
+    "crawl:hours:closed-days": "tsx scripts/office-hours-closed-days.ts",
     "crawl:hours:reprocess": "tsx scripts/crawl-hours-reprocess.ts",
     "crawl:hours:scan": "tsx scripts/office-hours-scan.ts"
   },
