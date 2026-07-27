@@ -117,6 +117,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-ehime-housing-benefit",
+    "url": "https://www.pref.ehime.jp/page/14626.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:33:46.415Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 55203,
+    "contentHash": "044fa13ad25c5547947d9ccbce760d5cdc2c9054ed2e2a7c002610ee9eed5de5",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ehime-municipal-offices",
+    "url": "https://www.pref.ehime.jp/uploaded/attachment/77192.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:33:38.999Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 37393,
+    "contentHash": "6a9e349d4e4d6fd06255f769e99e8529cf45c15b76e5815d7199249fe1772b7f",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ehime-public-assistance",
+    "url": "https://www.pref.ehime.jp/page/14917.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:33:48.440Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 41720,
+    "contentHash": "5e1eb7bb4054f97c2c1506367114a60a36bcbfe699300d8d1775587eeaa9819e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-ehime-self-reliance",
+    "url": "https://www.pref.ehime.jp/page/14914.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:33:46.366Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 35540,
+    "contentHash": "56e4e39a6b4ce3f737181cd42033b7942c0f61fda81190905240f76a9bca7011",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-fukui-municipal-contacts-r7",
     "url": "https://www.pref.fukui.lg.jp/doc/sityousinkou/renrakusaki_d/fil/001.pdf",
     "status": "ok",
