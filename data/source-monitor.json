@@ -702,6 +702,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-kumamoto-housing-benefit",
+    "url": "https://www.pref.kumamoto.jp/soshiki/34/50796.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:58:36.509Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 48856,
+    "contentHash": "98e9b9653e19bd7bbd93a22e11b24512b90098142f61401e7afd0fc7783e77a1",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kumamoto-municipalities",
+    "url": "https://www.pref.kumamoto.jp/site/toukeinenkan/256175.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:58:38.670Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 60485,
+    "contentHash": "2021e0f60f19badad80d698264f6f34829e9495ee9d08936729ae317711db44f",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kumamoto-public-assistance",
+    "url": "https://www.pref.kumamoto.jp/soshiki/34/2469.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:58:40.668Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 35952,
+    "contentHash": "7c1e35c04727fc502666f5e7f1ac28fb63cd02ca10a557ac0b4ac76cbc1f65f0",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kumamoto-self-reliance",
+    "url": "https://www.pref.kumamoto.jp/soshiki/34/50796.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:58:42.637Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 48856,
+    "contentHash": "98e9b9653e19bd7bbd93a22e11b24512b90098142f61401e7afd0fc7783e77a1",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-kyoto-city-public-assistance",
     "url": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000281356.html",
     "status": "ok",
