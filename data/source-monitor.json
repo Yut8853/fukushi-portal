@@ -1131,6 +1131,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-miyagi-housing-benefit",
+    "url": "https://www.pref.miyagi.jp/soshiki/syahuku/jyukyokakuho.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:41:00.667Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 39532,
+    "contentHash": "2df2f23df31d8682ecf15968a2700a3b2c151807d70917c7e233d06616067204",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-miyagi-municipalities",
+    "url": "https://www.pref.miyagi.jp/soshiki/kohou/link01.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:40:56.420Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 32207,
+    "contentHash": "fb8b94e09aa2426f0c5d9eadec206ee73c8225130109e8c1560afc1c60a115de",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-miyagi-public-assistance",
+    "url": "https://www.pref.miyagi.jp/soshiki/syahuku/jyoho5-2.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:41:02.707Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 31809,
+    "contentHash": "3dbc394f516e0506dcdabf75619fdbc0dcfa474498049fbb86283bbb5b8ae642",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-miyagi-self-reliance",
+    "url": "https://www.pref.miyagi.jp/soshiki/syahuku/konkyusya1.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:40:58.669Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 33272,
+    "contentHash": "d72fdcf98dc71cc26f7219d1d88ac7e206a6c258054a473cec03f4e577730de1",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-miyazaki-housing-benefit",
     "url": "https://www.pref.miyazaki.lg.jp/mina-terasu/juukyokakuho.html",
     "status": "ok",
