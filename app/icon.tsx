@@ -5,8 +5,8 @@ export const contentType = "image/png";
 
 export default function Icon() {
   return new ImageResponse(
-    (
-      <div style={{
+    <div
+      style={{
         width: "100%",
         height: "100%",
         display: "flex",
@@ -17,10 +17,10 @@ export default function Icon() {
         background: "#176b55",
         fontSize: 42,
         fontWeight: 800,
-      }}>
-        く
-      </div>
-    ),
+      }}
+    >
+      く
+    </div>,
     size,
   );
 }

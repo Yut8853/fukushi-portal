@@ -7,7 +7,10 @@ export default function AfterHoursGuide({ categoryId }: { categoryId: string }) 
         地域窓口の受付時間は下の各案内で確認してください。時間が未掲載の場合、
         役所関係の窓口は平日の日中だけの場合が多いため、公式ページでも確認してください。
       </p>
-      {(categoryId === "food" || categoryId === "housing" || categoryId === "money" || categoryId === "unknown") && (
+      {(categoryId === "food" ||
+        categoryId === "housing" ||
+        categoryId === "money" ||
+        categoryId === "unknown") && (
         <p>
           今夜の食事・居場所・生活に困っている場合は、無料・24時間の
           <a href="tel:0120279338"> よりそいホットライン 0120-279-338</a>にも相談できます。

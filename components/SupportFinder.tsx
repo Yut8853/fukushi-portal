@@ -155,110 +155,184 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       </div>
 
       <div className="finder-progress" aria-label="検索の流れ">
-        <span className={activeStep > 1 ? "is-complete" : "is-current"}><b>1</b>困りごと</span>
-        <span className={activeStep > 2 ? "is-complete" : activeStep === 2 ? "is-current" : ""}><b>2</b>地域</span>
-        <span className={activeStep === 3 ? "is-current" : ""}><b>3</b>案内を見る</span>
+        <span className={activeStep > 1 ? "is-complete" : "is-current"}>
+          <b>1</b>困りごと
+        </span>
+        <span className={activeStep > 2 ? "is-complete" : activeStep === 2 ? "is-current" : ""}>
+          <b>2</b>地域
+        </span>
+        <span className={activeStep === 3 ? "is-current" : ""}>
+          <b>3</b>案内を見る
+        </span>
       </div>
 
-      {activeStep === 1 && <fieldset className="need-fieldset">
-        <legend className="visually-hidden">いま、一番困っていること</legend>
-        <div className="step-heading" aria-hidden="true">
-          <span className="step-number">1</span>
-          <span>いま、一番困っていること</span>
-        </div>
-        <p className="field-help">完全に同じでなくても、いちばん近いものを1つ選べば大丈夫です。</p>
-        <div className="need-grid">
-          {data.categories.map((category) => (
-            <label key={category.id} className={`need-card ${categoryId === category.id ? "is-selected" : ""}`}>
-              <input type="radio" name="need" value={category.id} checked={categoryId === category.id}
-                onChange={() => {
-                  setCategoryId(category.id);
-                  setSearched(false);
-                  setActiveStep(2);
-                }} />
-              <span className="need-radio" aria-hidden="true" />
-              <span className="need-copy">
-                <strong>{category.label}</strong>
-                <small>{category.description}</small>
-              </span>
-            </label>
-          ))}
-        </div>
-      </fieldset>}
+      {activeStep === 1 && (
+        <fieldset className="need-fieldset">
+          <legend className="visually-hidden">いま、一番困っていること</legend>
+          <div className="step-heading" aria-hidden="true">
+            <span className="step-number">1</span>
+            <span>いま、一番困っていること</span>
+          </div>
+          <p className="field-help">
+            完全に同じでなくても、いちばん近いものを1つ選べば大丈夫です。
+          </p>
+          <div className="need-grid">
+            {data.categories.map((category) => (
+              <label
+                key={category.id}
+                className={`need-card ${categoryId === category.id ? "is-selected" : ""}`}
+              >
+                <input
+                  type="radio"
+                  name="need"
+                  value={category.id}
+                  checked={categoryId === category.id}
+                  onChange={() => {
+                    setCategoryId(category.id);
+                    setSearched(false);
+                    setActiveStep(2);
+                  }}
+                />
+                <span className="need-radio" aria-hidden="true" />
+                <span className="need-copy">
+                  <strong>{category.label}</strong>
+                  <small>{category.description}</small>
+                </span>
+              </label>
+            ))}
+          </div>
+        </fieldset>
+      )}
 
       {activeStep === 2 && categoryId === "unknown" && (
         <aside className="urgent-check">
           <h3>まず、今日・明日の生活は大丈夫ですか？</h3>
           <p>近いものがあれば、ここから選び直せます。</p>
           <div>
-            <button type="button" onClick={() => setCategoryId("food")}>食べるものがない</button>
-            <button type="button" onClick={() => setCategoryId("housing")}>寝る場所がない</button>
-            <button type="button" onClick={() => setCategoryId("money")}>生活費がない</button>
+            <button type="button" onClick={() => setCategoryId("food")}>
+              食べるものがない
+            </button>
+            <button type="button" onClick={() => setCategoryId("housing")}>
+              寝る場所がない
+            </button>
+            <button type="button" onClick={() => setCategoryId("money")}>
+              生活費がない
+            </button>
           </div>
-          <small>どれにも当てはまらなければ、「何を選べばよいか分からない」のままで大丈夫です。</small>
+          <small>
+            どれにも当てはまらなければ、「何を選べばよいか分からない」のままで大丈夫です。
+          </small>
         </aside>
       )}
 
-      {activeStep === 2 && <fieldset className="location-fieldset">
-        <legend className="visually-hidden">住んでいる地域</legend>
-        <div className="step-heading" aria-hidden="true">
-          <span className="step-number">2</span>
-          <span>住んでいる地域</span>
-        </div>
-        <p className="field-help">
-          地域を選ばなくても、全国共通の支援を確認できます。
-          郵便番号や詳しい住所は入力しません。
-        </p>
-        <div className="location-grid">
-          <label><span>都道府県 <em>任意</em></span>
-            <select value={prefectureCode} onChange={(event) => {
-              setPrefectureCode(event.target.value); setMunicipalityId(""); setSearched(false);
-            }}>
-              <option value="">選択しない</option>
-              {data.prefectures.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
-            </select>
-          </label>
-          <label><span>市区町村 <em>任意</em></span>
-            <select value={municipalityId} disabled={!prefectureCode} onChange={(event) => {
-              setMunicipalityId(event.target.value); setSearched(false);
-            }}>
-              <option value="">{prefectureCode
-                ? municipalityOptions.length ? "選択しない" : "公開済み自治体はありません"
-                : "先に都道府県を選択"}</option>
-              {municipalityOptions.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
-            </select>
-          </label>
-        </div>
-
-        {prefectureCode && !municipalityOptions.length && (
-          <p className="preparing-message">
-            この都道府県の自治体別情報は現在整備中です。全国共通の支援情報は確認できます。
+      {activeStep === 2 && (
+        <fieldset className="location-fieldset">
+          <legend className="visually-hidden">住んでいる地域</legend>
+          <div className="step-heading" aria-hidden="true">
+            <span className="step-number">2</span>
+            <span>住んでいる地域</span>
+          </div>
+          <p className="field-help">
+            地域を選ばなくても、全国共通の支援を確認できます。 郵便番号や詳しい住所は入力しません。
           </p>
-        )}
-      </fieldset>}
+          <div className="location-grid">
+            <label>
+              <span>
+                都道府県 <em>任意</em>
+              </span>
+              <select
+                value={prefectureCode}
+                onChange={(event) => {
+                  setPrefectureCode(event.target.value);
+                  setMunicipalityId("");
+                  setSearched(false);
+                }}
+              >
+                <option value="">選択しない</option>
+                {data.prefectures.map((item) => (
+                  <option key={item.code} value={item.code}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+            <label>
+              <span>
+                市区町村 <em>任意</em>
+              </span>
+              <select
+                value={municipalityId}
+                disabled={!prefectureCode}
+                onChange={(event) => {
+                  setMunicipalityId(event.target.value);
+                  setSearched(false);
+                }}
+              >
+                <option value="">
+                  {prefectureCode
+                    ? municipalityOptions.length
+                      ? "選択しない"
+                      : "公開済み自治体はありません"
+                    : "先に都道府県を選択"}
+                </option>
+                {municipalityOptions.map((item) => (
+                  <option key={item.id} value={item.id}>
+                    {item.name}
+                  </option>
+                ))}
+              </select>
+            </label>
+          </div>
 
-      {activeStep === 2 && <div className="search-action">
-        {selectedCategory
-          ? <p>
-              <strong>選んだ状況：</strong>{selectedCategory.label}
-              <button type="button" className="text-button" onClick={() => setActiveStep(1)}>選び直す</button>
+          {prefectureCode && !municipalityOptions.length && (
+            <p className="preparing-message">
+              この都道府県の自治体別情報は現在整備中です。全国共通の支援情報は確認できます。
             </p>
-          : <p>最初に困りごとを1つ選んでください</p>}
-        <button className="primary-button" disabled={!canSearch} onClick={showResults}>
-          {searching ? "読み込み中…" : municipality ? `${municipality.name}の相談先を見る` : "相談先と支援を見る"}
-        </button>
-      </div>}
+          )}
+        </fieldset>
+      )}
+
+      {activeStep === 2 && (
+        <div className="search-action">
+          {selectedCategory ? (
+            <p>
+              <strong>選んだ状況：</strong>
+              {selectedCategory.label}
+              <button type="button" className="text-button" onClick={() => setActiveStep(1)}>
+                選び直す
+              </button>
+            </p>
+          ) : (
+            <p>最初に困りごとを1つ選んでください</p>
+          )}
+          <button className="primary-button" disabled={!canSearch} onClick={showResults}>
+            {searching
+              ? "読み込み中…"
+              : municipality
+                ? `${municipality.name}の相談先を見る`
+                : "相談先と支援を見る"}
+          </button>
+        </div>
+      )}
 
       {activeStep === 3 && searched && (
         <div id="support-results" className="results" aria-live="polite">
-          <button type="button" className="step-back-button" onClick={() => {
-            setActiveStep(2);
-            setSearched(false);
-          }}>
+          <button
+            type="button"
+            className="step-back-button"
+            onClick={() => {
+              setActiveStep(2);
+              setSearched(false);
+            }}
+          >
             ← 地域を選び直す
           </button>
           {searching && <p role="status">相談先を読み込んでいます…</p>}
-          {searchError && <p className="stale-data-warning" role="alert">{searchError}</p>}
+          {searchError && (
+            <p className="stale-data-warning" role="alert">
+              {searchError}
+            </p>
+          )}
           <div className="results-head">
             <p className="section-kicker">{municipality?.name ?? "全国共通"}の案内</p>
             <h2>まず、ここから相談できます</h2>
@@ -273,22 +347,36 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
             )}
             {municipality?.supportLevel === "basic" && (
               <p className="preparing-message">
-                この自治体の詳細な支援情報は現在整備中です。<br />
+                この自治体の詳細な支援情報は現在整備中です。
+                <br />
                 全国共通の相談先と自治体公式サイトをご案内します。
               </p>
             )}
-            {municipality?.officialUrl && <a className="official-link" href={municipality.officialUrl} target="_blank" rel="noreferrer">
-              {municipality.name}公式サイトを開く
-            </a>}
+            {municipality?.officialUrl && (
+              <a
+                className="official-link"
+                href={municipality.officialUrl}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {municipality.name}公式サイトを開く
+              </a>
+            )}
             <div className="result-actions">
-              <button type="button" className="secondary-button" onClick={shareResults}>この案内を共有</button>
+              <button type="button" className="secondary-button" onClick={shareResults}>
+                この案内を共有
+              </button>
               {shareStatus && <span role="status">{shareStatus}</span>}
             </div>
           </div>
           <AfterHoursGuide categoryId={categoryId} />
           {(categoryId === "food" || categoryId === "housing") && (
             <aside className="expectation-bridge">
-              <h3>{categoryId === "food" ? "食べ物につながるための相談窓口です" : "泊まる場所につながるための相談窓口です"}</h3>
+              <h3>
+                {categoryId === "food"
+                  ? "食べ物につながるための相談窓口です"
+                  : "泊まる場所につながるための相談窓口です"}
+              </h3>
               <p>
                 {categoryId === "food"
                   ? "下の窓口へ電話すると、利用できる食料支援、フードバンク、緊急の食料提供などを一緒に探してもらえます。"
@@ -296,7 +384,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 支援を必ず受けられるという意味ではありませんが、入口になる窓口です。
               </p>
               <p>
-                最初に「{categoryId === "food" ? "今日食べるものがなくて困っています" : "今夜泊まる場所がなくて困っています"}」と伝えてください。
+                最初に「
+                {categoryId === "food"
+                  ? "今日食べるものがなくて困っています"
+                  : "今夜泊まる場所がなくて困っています"}
+                」と伝えてください。
               </p>
             </aside>
           )}
@@ -308,7 +400,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 「支払いを待ってもらえないか相談したいです」と伝えてください。
               </p>
               <p>
-                <strong>水道：</strong>自治体や水道局の料金担当へ相談します。下の窓口から担当につないでもらえます。
+                <strong>水道：</strong>
+                自治体や水道局の料金担当へ相談します。下の窓口から担当につないでもらえます。
               </p>
             </aside>
           )}
@@ -346,28 +439,63 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                       <h5>「どのような用件ですか」と聞かれたら</h5>
                       <p>「生活のことで相談したいです」</p>
                       <h5>担当につながったら</h5>
-                      <p>「{selectedCategory?.label}ことで困っています。使える制度や相談先を教えてください」</p>
+                      <p>
+                        「{selectedCategory?.label}
+                        ことで困っています。使える制度や相談先を教えてください」
+                      </p>
                     </div>
                   ) : (
                     <div className="direct-script">
                       <h5>電話で、こう伝えて大丈夫です</h5>
-                      <p>「{selectedCategory?.label}ことで困っています。使える制度や相談先を教えてください」</p>
+                      <p>
+                        「{selectedCategory?.label}
+                        ことで困っています。使える制度や相談先を教えてください」
+                      </p>
                     </div>
                   )}
                   <dl className="office-details">
                     <dt>受付時間</dt>
-                    <dd>{office.openingHours || "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}</dd>
-                    {office.closedDays && <><dt>休み</dt><dd>{office.closedDays}</dd></>}
-                    {office.address && <><dt>場所</dt><dd>{office.address}</dd></>}
-                    {office.serviceArea && <><dt>管轄地域</dt><dd>{office.serviceArea}</dd></>}
-                    {office.eligibilityConditions && <><dt>対象条件</dt><dd>{office.eligibilityConditions}</dd></>}
+                    <dd>
+                      {office.openingHours ||
+                        "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}
+                    </dd>
+                    {office.closedDays && (
+                      <>
+                        <dt>休み</dt>
+                        <dd>{office.closedDays}</dd>
+                      </>
+                    )}
+                    {office.address && (
+                      <>
+                        <dt>場所</dt>
+                        <dd>{office.address}</dd>
+                      </>
+                    )}
+                    {office.serviceArea && (
+                      <>
+                        <dt>管轄地域</dt>
+                        <dd>{office.serviceArea}</dd>
+                      </>
+                    )}
+                    {office.eligibilityConditions && (
+                      <>
+                        <dt>対象条件</dt>
+                        <dd>{office.eligibilityConditions}</dd>
+                      </>
+                    )}
                   </dl>
                   <footer className="source-row">
-                    {office.sourceUrl
-                      ? <a href={office.sourceUrl} target="_blank" rel="noreferrer">{office.sourceTitle || "公式情報"}</a>
-                      : office.officialUrl
-                        ? <a href={office.officialUrl} target="_blank" rel="noreferrer">窓口の公式ページ</a>
-                        : <span>出典ページなし</span>}
+                    {office.sourceUrl ? (
+                      <a href={office.sourceUrl} target="_blank" rel="noreferrer">
+                        {office.sourceTitle || "公式情報"}
+                      </a>
+                    ) : office.officialUrl ? (
+                      <a href={office.officialUrl} target="_blank" rel="noreferrer">
+                        窓口の公式ページ
+                      </a>
+                    ) : (
+                      <span>出典ページなし</span>
+                    )}
                     <span>情報確認日：{displayDate(office.lastVerifiedAt)}</span>
                   </footer>
                 </article>
@@ -395,7 +523,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               <ol>
                 <li>つないでもらう前に「切れたときのために、直通番号を教えてください」</li>
                 <li>違う担当につながったら「どこにかければよいですか。番号も教えてください」</li>
-                <li>3回回されたら、電話を切って大丈夫です。上にある「総合相談の直通」へかけ直してください。</li>
+                <li>
+                  3回回されたら、電話を切って大丈夫です。上にある「総合相談の直通」へかけ直してください。
+                </li>
               </ol>
               <p>間違った担当につながっても、謝る必要はありません。</p>
             </aside>
@@ -405,16 +535,27 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               <p className="step-label">優先 {index + 1}</p>
               <h3>{result.plainName || result.name}</h3>
               <p>{result.description}</p>
-              <div className="result-block"><h4>まずすること</h4><p>{result.applicationFlow}</p></div>
+              <div className="result-block">
+                <h4>まずすること</h4>
+                <p>{result.applicationFlow}</p>
+              </div>
               {result.requiredDocuments.length > 0 && (
                 <div className="result-block">
                   <h4>手元にあれば用意するもの</h4>
-                  <ul>{result.requiredDocuments.map((document) => <li key={document}>{document}</li>)}</ul>
-                  {result.documentsOptionalNote && <p className="note">{result.documentsOptionalNote}</p>}
+                  <ul>
+                    {result.requiredDocuments.map((document) => (
+                      <li key={document}>{document}</li>
+                    ))}
+                  </ul>
+                  {result.documentsOptionalNote && (
+                    <p className="note">{result.documentsOptionalNote}</p>
+                  )}
                 </div>
               )}
               <footer className="source-row">
-                <a href={result.sourceUrl} target="_blank" rel="noreferrer">{result.sourceTitle}</a>
+                <a href={result.sourceUrl} target="_blank" rel="noreferrer">
+                  {result.sourceTitle}
+                </a>
                 <span>情報確認日：{displayDate(result.lastVerifiedAt)}</span>
               </footer>
             </article>
@@ -428,10 +569,12 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
             <div>
               {(RELATED_CATEGORIES[categoryId] ?? RELATED_CATEGORIES.unknown).map((relatedId) => {
                 const related = data.categories.find((item) => item.id === relatedId);
-                return related && (
-                  <button type="button" key={relatedId} onClick={() => moveToCategory(relatedId)}>
-                    {related.label}
-                  </button>
+                return (
+                  related && (
+                    <button type="button" key={relatedId} onClick={() => moveToCategory(relatedId)}>
+                      {related.label}
+                    </button>
+                  )
                 );
               })}
             </div>

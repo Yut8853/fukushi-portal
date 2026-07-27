@@ -23,16 +23,29 @@ async function getPageData(params: PageProps["params"]) {
   const prefecture = data.prefectures.find((item) => item.code === municipality.prefectureCode);
   if (!prefecture) return null;
   const offices = selectOffices(data.offices, municipality.id, category.id);
-  const availablePrograms = data.programs.filter((item) =>
-    item.scope === "national" || item.municipalityId === municipality.id);
+  const availablePrograms = data.programs.filter(
+    (item) => item.scope === "national" || item.municipalityId === municipality.id,
+  );
   const directPrograms = availablePrograms.filter((item) => item.categoryId === category.id);
-  const programs = directPrograms.length ? directPrograms : availablePrograms.filter((item) =>
-    ["public-assistance", "self-reliance"].includes(item.id));
+  const programs = directPrograms.length
+    ? directPrograms
+    : availablePrograms.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
   const sources = new Map(data.sources.map((item) => [item.id, item]));
   const nearbyMunicipalities = data.municipalities
-    .filter((item) => item.prefectureCode === municipality.prefectureCode && item.id !== municipality.id)
+    .filter(
+      (item) => item.prefectureCode === municipality.prefectureCode && item.id !== municipality.id,
+    )
     .slice(0, 8);
-  return { data, municipality, prefecture, category, offices, programs, sources, nearbyMunicipalities };
+  return {
+    data,
+    municipality,
+    prefecture,
+    category,
+    offices,
+    programs,
+    sources,
+    nearbyMunicipalities,
+  };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -64,7 +77,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 export default async function MunicipalitySupportPage({ params }: PageProps) {
   const page = await getPageData(params);
   if (!page) notFound();
-  const { data, municipality, prefecture, category, offices, programs, sources, nearbyMunicipalities } = page;
+  const {
+    data,
+    municipality,
+    prefecture,
+    category,
+    offices,
+    programs,
+    sources,
+    nearbyMunicipalities,
+  } = page;
   const seo = seoCategoryContent(category.id);
   const pageUrl = `${SITE_URL}/support/${municipality.id}/${category.id}`;
   const jsonLd = {
@@ -85,31 +107,51 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "トップ", item: SITE_URL },
           { "@type": "ListItem", position: 2, name: "相談先一覧", item: `${SITE_URL}/support` },
-          { "@type": "ListItem", position: 3, name: prefecture.name, item: `${SITE_URL}/support/${prefecture.code}` },
+          {
+            "@type": "ListItem",
+            position: 3,
+            name: prefecture.name,
+            item: `${SITE_URL}/support/${prefecture.code}`,
+          },
           { "@type": "ListItem", position: 4, name: municipality.name },
         ],
       },
-      ...(offices.length ? [{
-        "@type": "ItemList",
-        name: `${municipality.name}の相談窓口`,
-        itemListElement: offices.map((office, index) => ({
-          "@type": "ListItem",
-          position: index + 1,
-          name: office.plainName || office.name,
-          url: sources.get(office.sourceId)?.url || office.officialUrl || pageUrl,
-        })),
-      }] : []),
+      ...(offices.length
+        ? [
+            {
+              "@type": "ItemList",
+              name: `${municipality.name}の相談窓口`,
+              itemListElement: offices.map((office, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: office.plainName || office.name,
+                url: sources.get(office.sourceId)?.url || office.officialUrl || pageUrl,
+              })),
+            },
+          ]
+        : []),
     ],
   };
   return (
     <main id="main" className="page-shell content-page support-guide">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="breadcrumbs" aria-label="パンくず">
-        <Link href="/">トップ</Link><Link href="/support">相談先一覧</Link>
-        <Link href={`/support/${prefecture.code}`}>{prefecture.name}</Link><span>{municipality.name}</span>
+        <Link href="/">トップ</Link>
+        <Link href="/support">相談先一覧</Link>
+        <Link href={`/support/${prefecture.code}`}>{prefecture.name}</Link>
+        <span>{municipality.name}</span>
       </nav>
-      <p className="eyebrow">{prefecture.name}{municipality.name}の公的な相談先</p>
-      <h1>{municipality.name}で<br />{seo.searchTitle}とき</h1>
+      <p className="eyebrow">
+        {prefecture.name}
+        {municipality.name}の公的な相談先
+      </p>
+      <h1>
+        {municipality.name}で<br />
+        {seo.searchTitle}とき
+      </h1>
       <p className="lead">{seo.summary}</p>
       <aside className="first-action">
         <h2>急いでいるとき、最初にすること</h2>
@@ -120,7 +162,11 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
 
       {(category.id === "food" || category.id === "housing") && (
         <aside className="expectation-bridge">
-          <h2>{category.id === "food" ? "食べ物につながるための相談窓口です" : "泊まる場所につながるための相談窓口です"}</h2>
+          <h2>
+            {category.id === "food"
+              ? "食べ物につながるための相談窓口です"
+              : "泊まる場所につながるための相談窓口です"}
+          </h2>
           <p>
             {category.id === "food"
               ? "窓口へ電話すると、利用できる食料支援、フードバンク、緊急の食料提供などを一緒に探してもらえます。"
@@ -133,8 +179,13 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
       {category.id === "utilities" && (
         <aside className="utility-guidance">
           <h2>電気・ガスと水道では、連絡先が違います</h2>
-          <p><strong>電気・ガス：</strong>請求書や検針票に書かれた会社へ電話し、「支払いを待ってもらえないか相談したいです」と伝えてください。</p>
-          <p><strong>水道：</strong>自治体や水道局の料金担当へ相談します。</p>
+          <p>
+            <strong>電気・ガス：</strong>
+            請求書や検針票に書かれた会社へ電話し、「支払いを待ってもらえないか相談したいです」と伝えてください。
+          </p>
+          <p>
+            <strong>水道：</strong>自治体や水道局の料金担当へ相談します。
+          </p>
         </aside>
       )}
 
@@ -158,12 +209,31 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                     : "専用窓口の直通・このまま話せます"}
               </p>
               <h3>{office.plainName || office.name}</h3>
-              {office.phone && <p><a className="phone-button" href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}>電話する　<strong>{office.phone}</strong></a></p>}
+              {office.phone && (
+                <p>
+                  <a className="phone-button" href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}>
+                    電話する　<strong>{office.phone}</strong>
+                  </a>
+                </p>
+              )}
               <dl className="office-details">
                 <dt>受付時間</dt>
-                <dd>{office.openingHours || "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}</dd>
-                {office.closedDays && <><dt>休み</dt><dd>{office.closedDays}</dd></>}
-                {office.address && <><dt>場所</dt><dd>{office.address}</dd></>}
+                <dd>
+                  {office.openingHours ||
+                    "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}
+                </dd>
+                {office.closedDays && (
+                  <>
+                    <dt>休み</dt>
+                    <dd>{office.closedDays}</dd>
+                  </>
+                )}
+                {office.address && (
+                  <>
+                    <dt>場所</dt>
+                    <dd>{office.address}</dd>
+                  </>
+                )}
               </dl>
               {contactType === "representative" ? (
                 <div className="transfer-script">
@@ -181,7 +251,13 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                   <p>「{category.label}ことで困っています。使える制度や相談先を教えてください」</p>
                 </div>
               )}
-              {source && <p><a href={source.url} target="_blank" rel="noreferrer">公式情報を確認する</a></p>}
+              {source && (
+                <p>
+                  <a href={source.url} target="_blank" rel="noreferrer">
+                    公式情報を確認する
+                  </a>
+                </p>
+              )}
             </article>
           );
         })}
@@ -195,7 +271,9 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
             {offices.some((office) => office.availableMethods.includes("来所")) && (
               <li>安全に移動できる場合は、受付時間を確認して窓口へ直接行く</li>
             )}
-            {category.id !== "violence" && <li>急ぐ場合は自治体の代表電話から担当につないでもらう</li>}
+            {category.id !== "violence" && (
+              <li>急ぐ場合は自治体の代表電話から担当につないでもらう</li>
+            )}
           </ol>
           <p>つながらなかったことは、あなたの責任ではありません。</p>
         </aside>
@@ -223,7 +301,13 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                 <p>{program.description}</p>
                 <h4>まずすること</h4>
                 <p>{program.applicationFlow}</p>
-                {source && <p><a href={source.url} target="_blank" rel="noreferrer">{source.title}</a></p>}
+                {source && (
+                  <p>
+                    <a href={source.url} target="_blank" rel="noreferrer">
+                      {source.title}
+                    </a>
+                  </p>
+                )}
               </article>
             );
           })}
@@ -233,9 +317,15 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
       <section className="content-section related-guides">
         <h2>{municipality.name}のほかの困りごと</h2>
         <ul>
-          {data.categories.filter((item) => item.id !== category.id).map((item) => (
-            <li key={item.id}><Link href={`/support/${municipality.id}/${item.id}`}>{seoCategoryContent(item.id).searchTitle}</Link></li>
-          ))}
+          {data.categories
+            .filter((item) => item.id !== category.id)
+            .map((item) => (
+              <li key={item.id}>
+                <Link href={`/support/${municipality.id}/${item.id}`}>
+                  {seoCategoryContent(item.id).searchTitle}
+                </Link>
+              </li>
+            ))}
         </ul>
       </section>
 
@@ -244,17 +334,30 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
           <h2>{prefecture.name}の近隣自治体から探す</h2>
           <ul>
             {nearbyMunicipalities.map((item) => (
-              <li key={item.id}><Link href={`/support/${item.id}/${category.id}`}>{item.name}で{seo.searchTitle}とき</Link></li>
+              <li key={item.id}>
+                <Link href={`/support/${item.id}/${category.id}`}>
+                  {item.name}で{seo.searchTitle}とき
+                </Link>
+              </li>
             ))}
           </ul>
         </section>
       )}
 
-      <p><a href={municipality.officialUrl} target="_blank" rel="noreferrer">{municipality.name}公式サイトを開く</a></p>
-      <p><Link href={`/?need=${category.id}&municipality=${municipality.id}#support-results`}>検索画面でこの案内を見る・共有する</Link></p>
+      <p>
+        <a href={municipality.officialUrl} target="_blank" rel="noreferrer">
+          {municipality.name}公式サイトを開く
+        </a>
+      </p>
+      <p>
+        <Link href={`/?need=${category.id}&municipality=${municipality.id}#support-results`}>
+          検索画面でこの案内を見る・共有する
+        </Link>
+      </p>
       <FeedbackPrompt context={`${municipality.id}:${category.id}`} />
       <p className="note">
-        情報確認日：{municipality.lastVerifiedAt || "未確認"}。制度や受付時間は変わることがあります。
+        情報確認日：{municipality.lastVerifiedAt || "未確認"}
+        。制度や受付時間は変わることがあります。
         利用前に公式情報または窓口で最新内容を確認してください。
       </p>
     </main>

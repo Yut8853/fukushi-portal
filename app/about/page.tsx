@@ -8,7 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default function AboutPage() {
-  const operator = process.env.NEXT_PUBLIC_SITE_OPERATOR?.trim();
   return (
     <main id="main" className="page-shell content-page">
       <p className="eyebrow">サイト情報</p>
@@ -59,13 +58,19 @@ export default function AboutPage() {
 
       <section className="content-section">
         <h2>運営者</h2>
-        {operator
-          ? <p>{operator}</p>
-          : <p className="configuration-warning">運営者情報は未設定です。一般公開前に環境変数で設定する必要があります。</p>}
+        <p>
+          <a href="https://junkbranding.com" rel="noopener noreferrer">
+            運営: JUNKBRANDING
+          </a>
+        </p>
       </section>
 
-      <p>掲載情報の誤りは、<Link href="/corrections">訂正窓口</Link>からお知らせください。</p>
-      <p><Link href="/">トップページへ戻る</Link></p>
+      <p>
+        掲載情報の誤りは、<Link href="/corrections">訂正窓口</Link>からお知らせください。
+      </p>
+      <p>
+        <Link href="/">トップページへ戻る</Link>
+      </p>
     </main>
   );
 }

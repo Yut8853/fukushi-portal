@@ -14,8 +14,11 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ error: "自治体が見つかりません。" }, { status: 404 });
   }
   const sources = new Map(data.sources.map((source) => [source.id, source]));
-  const available = data.programs.filter((item) =>
-    item.scope === "national" || Boolean(municipalityId && item.municipalityId === municipalityId));
+  const available = data.programs.filter(
+    (item) =>
+      item.scope === "national" ||
+      Boolean(municipalityId && item.municipalityId === municipalityId),
+  );
   const directPrograms = available.filter((item) => item.categoryId === categoryId);
   const selectedPrograms = directPrograms.length
     ? directPrograms
@@ -23,9 +26,14 @@ export async function GET(request: NextRequest) {
   const selectedOffices = selectOffices(data.offices, municipalityId, categoryId);
 
   const programs: FinderProgram[] = selectedPrograms.map((program) => ({
-    id: program.id, categoryId: program.categoryId, scope: program.scope,
-    municipalityId: program.municipalityId, name: program.name, plainName: program.plainName,
-    description: program.description, applicationFlow: program.applicationFlow,
+    id: program.id,
+    categoryId: program.categoryId,
+    scope: program.scope,
+    municipalityId: program.municipalityId,
+    name: program.name,
+    plainName: program.plainName,
+    description: program.description,
+    applicationFlow: program.applicationFlow,
     requiredDocuments: program.requiredDocuments.split("・").filter(Boolean),
     documentsOptionalNote: program.documentsOptionalNote,
     sourceTitle: sources.get(program.sourceId)?.title ?? "",
@@ -33,18 +41,30 @@ export async function GET(request: NextRequest) {
     lastVerifiedAt: program.lastVerifiedAt,
   }));
   const offices: FinderOffice[] = selectedOffices.map((office) => ({
-    id: office.id, municipalityId: office.municipalityId, categoryId: office.categoryId,
-    name: office.name, plainName: office.plainName, description: office.description,
-    phone: office.phone, officialUrl: office.officialUrl, openingHours: office.openingHours,
-    closedDays: office.closedDays, availableMethods: office.availableMethods,
-    address: office.address, serviceArea: office.serviceArea,
-    eligibilityConditions: office.eligibilityConditions, lastVerifiedAt: office.lastVerifiedAt,
+    id: office.id,
+    municipalityId: office.municipalityId,
+    categoryId: office.categoryId,
+    name: office.name,
+    plainName: office.plainName,
+    description: office.description,
+    phone: office.phone,
+    officialUrl: office.officialUrl,
+    openingHours: office.openingHours,
+    closedDays: office.closedDays,
+    availableMethods: office.availableMethods,
+    address: office.address,
+    serviceArea: office.serviceArea,
+    eligibilityConditions: office.eligibilityConditions,
+    lastVerifiedAt: office.lastVerifiedAt,
     sourceTitle: sources.get(office.sourceId)?.title ?? "",
     sourceUrl: sources.get(office.sourceId)?.url ?? "",
     contactType: officeContactType(office),
     transferTarget: transferTarget(categoryId),
   }));
-  return NextResponse.json({ programs, offices }, {
-    headers: { "Cache-Control": "public, max-age=300, stale-while-revalidate=86400" },
-  });
+  return NextResponse.json(
+    { programs, offices },
+    {
+      headers: { "Cache-Control": "public, max-age=300, stale-while-revalidate=86400" },
+    },
+  );
 }

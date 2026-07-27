@@ -34,11 +34,15 @@ export default async function PrefectureSupportPage({ params }: PageProps) {
   return (
     <main id="main" className="page-shell content-page">
       <nav className="breadcrumbs" aria-label="パンくず">
-        <Link href="/">トップ</Link><Link href="/support">相談先一覧</Link><span>{page.prefecture.name}</span>
+        <Link href="/">トップ</Link>
+        <Link href="/support">相談先一覧</Link>
+        <span>{page.prefecture.name}</span>
       </nav>
       <p className="eyebrow">{page.prefecture.name}</p>
       <h1>{page.prefecture.name}の生活・福祉相談窓口</h1>
-      <p className="lead">{page.municipalities.length}自治体の相談先を、困りごと別に確認できます。</p>
+      <p className="lead">
+        {page.municipalities.length}自治体の相談先を、困りごと別に確認できます。
+      </p>
       <div className="municipality-directory">
         {page.municipalities.map((municipality) => (
           <section className="municipality-link-group" key={municipality.id}>

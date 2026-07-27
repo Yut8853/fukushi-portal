@@ -23,8 +23,8 @@ export const metadata: Metadata = {
   },
   twitter: { card: "summary_large_image" },
   verification: {
-    google: process.env.GOOGLE_SITE_VERIFICATION?.trim()
-      || "LEkZOcAeq4rXooCOsOS3EisHeiHwDTe9Zl7Rka0F0gQ",
+    google:
+      process.env.GOOGLE_SITE_VERIFICATION?.trim() || "LEkZOcAeq4rXooCOsOS3EisHeiHwDTe9Zl7Rka0F0gQ",
   },
   category: "福祉・生活相談",
 };
@@ -33,17 +33,24 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang="ja">
       <body>
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
-          "@context": "https://schema.org",
-          "@type": "WebSite",
-          "@id": `${SITE_URL}/#website`,
-          url: SITE_URL,
-          name: "くらし支援ナビ",
-          description: "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
-          inLanguage: "ja",
-          publisher: { "@type": "Organization", name: "JUNKBRANDING" },
-        }) }} />
-        <a className="skip-link" href="#main">本文へ移動</a>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              "@id": `${SITE_URL}/#website`,
+              url: SITE_URL,
+              name: "くらし支援ナビ",
+              description: "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
+              inLanguage: "ja",
+              publisher: { "@type": "Organization", name: "JUNKBRANDING" },
+            }),
+          }}
+        />
+        <a className="skip-link" href="#main">
+          本文へ移動
+        </a>
         <QuickExit />
         <EmergencyBanner />
         <SiteHeader />

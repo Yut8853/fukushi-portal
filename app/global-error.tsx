@@ -25,8 +25,12 @@ export default function GlobalError({
         <main className="page-shell content-page">
           <h1>ページを表示できませんでした</h1>
           <p>時間をおいて、もう一度お試しください。</p>
-          <button type="button" onClick={reset}>もう一度試す</button>
-          <p><Link href="/">トップページへ戻る</Link></p>
+          <button type="button" onClick={reset}>
+            もう一度試す
+          </button>
+          <p>
+            <Link href="/">トップページへ戻る</Link>
+          </p>
         </main>
       </body>
     </html>

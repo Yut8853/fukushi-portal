@@ -15,7 +15,11 @@ export default async function AdminLayout({ children }: Readonly<{ children: Rea
             <Link href="/admin/review">候補レビュー</Link>
             <Link href="/admin/crawl-jobs">クロール状況</Link>
             <Link href="/admin/sources">出典</Link>
-            {user ? <span aria-label="ログイン中の管理者">{user}（{role}）</span> : null}
+            {user ? (
+              <span aria-label="ログイン中の管理者">
+                {user}（{role}）
+              </span>
+            ) : null}
           </div>
         </div>
       </nav>

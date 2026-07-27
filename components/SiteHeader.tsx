@@ -5,7 +5,9 @@ export default function SiteHeader() {
     <header className="site-header">
       <div className="site-header-inner">
         <Link className="site-brand" href="/">
-          <span className="site-brand-mark" aria-hidden="true">く</span>
+          <span className="site-brand-mark" aria-hidden="true">
+            く
+          </span>
           <span>
             <strong>くらし支援ナビ</strong>
             <small>生活の困りごとから相談先を探す</small>
