@@ -598,6 +598,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-kagoshima-housing-benefit",
+    "url": "https://www.pref.kagoshima.jp/ae04/kenko-fukushi/syogai-syakai/seikatsukonkyu/torikumi.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:12:25.665Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 26683,
+    "contentHash": "4df2b6f5241f3d55639579c61e9b9ab79ebea6c05219b49c1df3b48694d7fdb1",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kagoshima-municipalities",
+    "url": "https://www.pref.kagoshima.jp/aa02/link/shichoson.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:12:27.791Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 27559,
+    "contentHash": "ae85cf3061bddda21c4341cc0548e1681b288a7c5ece4d19469b8f38b3c2b908",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kagoshima-public-assistance",
+    "url": "https://www.pref.kagoshima.jp/ae04/kenko-fukushi/syogai-syakai/seiho/04003003.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:12:29.750Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 29314,
+    "contentHash": "d3f353669528e4aa1a5277923038bc37dd7cc6a9ece1fb0ab948df86bc508deb",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kagoshima-self-reliance",
+    "url": "https://www.pref.kagoshima.jp/ae04/kenko-fukushi/syogai-syakai/seikatsukonkyu/torikumi.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:12:31.846Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 26683,
+    "contentHash": "567698be8c0615249089729139c0d56a740cb2c9e9c02999d66d0206d733f090",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-kanagawa-housing-benefit",
     "url": "https://www.pref.kanagawa.jp/docs/r6w/konkyu/jukyokakuhokyufukin.html",
     "status": "ok",
