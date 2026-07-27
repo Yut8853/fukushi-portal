@@ -444,12 +444,14 @@ Supabaseを使う場合だけ追加します。
 DATA_BACKEND=
 SUPABASE_URL=
 SUPABASE_SERVICE_ROLE_KEY=
+CRON_SECRET=
 ```
 
 注意:
 
 - canonical、sitemap、構造化データの本番URLは `https://fukushi.junkbranding.com` に固定
 - `SUPABASE_SERVICE_ROLE_KEY` に `NEXT_PUBLIC_` を付けない
+- `CRON_SECRET`はVercel Cronの定期削除エンドポイント認証に使用し、十分に長いランダム値にする
 - `.env.local` をGitへ追加しない
 - 管理画面を公開する場合はBasic認証を必ず設定する
 - `CRAWLER_CONTACT` 未設定ではクロールを開始しない
@@ -877,14 +879,15 @@ git diff --check
 
 - `.env.local`、APIキー、サービスロールキー、Basic認証情報をコミットしない
 - `SUPABASE_SERVICE_ROLE_KEY` をブラウザへ公開しない
-- 検索時は`/data/support/{municipality}.json`の静的データを取得し、カテゴリの絞り込みは
-  ブラウザ内で行う。アクセスログに自治体IDは含まれ得るが、困りごとのカテゴリは送信しない
+- 検索時は`/data/support/{prefectureCode}.json`の静的データを取得し、自治体・カテゴリの
+  絞り込みはブラウザ内で行う。アクセスログには都道府県コードだけが含まれ、
+  自治体IDや困りごとのカテゴリは送信しない
 - トップ検索でDV・こころのカテゴリを選んだ場合はURL・ブラウザ履歴へ検索条件を残さず、
   共有ボタンを表示しない
 - フィードバックAPIは、送信元IPを秘密鍵付き・1分単位の一方向ハッシュにして1分5回までに制限する。
   `feedback_rate_limits` の一時データは10分で失効し、その後のフィードバック送信時に削除する
 - `feedback_events` はページID、カテゴリ、回答だけを保持し、12か月を過ぎた回答は
-  その後のフィードバック送信時に削除する
+  毎日実行するVercel Cronと、その後のフィードバック送信時に削除する
 - 窓口の`lastVerifiedAt`はデータの掲載・更新日として扱う。個別に電話確認した日とは表現しない。
   多くの窓口は国・自治体の公式一覧や公式ページから転記・整理したデータである
 - `offices.contactType`と`offices.verificationLevel`を必ず明示する。Supabaseでは

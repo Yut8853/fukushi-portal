@@ -9,6 +9,7 @@
     "lint": "eslint app components crawler lib scripts proxy.ts",
     "format": "prettier --write \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx,css}\"",
+    "test": "tsx --test tests/*.test.ts",
     "data:validate": "tsx scripts/data-validate.ts",
     "data:quality": "tsx scripts/data-quality.ts",
     "data:audit": "tsx scripts/nationwide-completion-audit.ts",

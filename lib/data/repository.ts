@@ -1,4 +1,5 @@
 import path from "node:path";
+import { PHASE_PRODUCTION_BUILD } from "next/constants";
 import { readCsvFile } from "@/lib/csv";
 import {
   categorySchema, municipalityProgramSchema, municipalitySchema, officeSchema,
@@ -49,6 +50,9 @@ export async function getCsvPortalData(
 export async function getPortalData(
   dataDirectory = path.join(process.cwd(), "data"),
 ): Promise<PortalData> {
+  if (process.env.NEXT_PHASE === PHASE_PRODUCTION_BUILD) {
+    return getCsvPortalData(dataDirectory);
+  }
   if (process.env.DATA_BACKEND === "supabase") {
     const { getSupabasePortalData } = await import("./supabase-repository");
     return getSupabasePortalData();

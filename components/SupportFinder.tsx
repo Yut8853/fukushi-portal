@@ -80,19 +80,31 @@ const TRANSFER_TARGETS: Record<string, string> = {
   unknown: "生活困窮者自立相談支援の担当",
 };
 
-function selectPrograms(programs: FinderProgram[], categoryId: string): FinderProgram[] {
-  const direct = programs.filter((item) => item.categoryId === categoryId);
+function selectPrograms(
+  programs: FinderProgram[],
+  categoryId: string,
+  municipalityId: string,
+): FinderProgram[] {
+  const available = programs.filter(
+    (item) => item.scope === "national" || item.municipalityId === municipalityId,
+  );
+  const direct = available.filter((item) => item.categoryId === categoryId);
   return direct.length
     ? direct
-    : programs.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
+    : available.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
 }
 
-function selectFinderOffices(offices: FinderOffice[], categoryId: string): FinderOffice[] {
-  const direct = offices.filter(
+function selectFinderOffices(
+  offices: FinderOffice[],
+  categoryId: string,
+  municipalityId: string,
+): FinderOffice[] {
+  const local = offices.filter((item) => item.municipalityId === municipalityId);
+  const direct = local.filter(
     (item) => item.categoryId === categoryId && item.contactType !== "representative",
   );
-  const selfReliance = offices.filter((item) => item.contactType === "self-reliance");
-  const representatives = offices.filter((item) => item.contactType === "representative");
+  const selfReliance = local.filter((item) => item.contactType === "self-reliance");
+  const representatives = local.filter((item) => item.contactType === "representative");
   if (categoryId === "violence") return direct;
   const selfRelianceFirst = new Set([
     "food",
@@ -145,15 +157,16 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   useEffect(() => {
     if (!searched || !categoryId) return;
     const controller = new AbortController();
-    const dataFile = municipalityId || "national";
+    const selectedMunicipality = data.municipalities.find((item) => item.id === municipalityId);
+    const dataFile = selectedMunicipality?.prefectureCode || "national";
     fetch(`/data/support/${dataFile}.json`, { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error("相談先を読み込めませんでした。");
         return response.json() as Promise<{ programs: FinderProgram[]; offices: FinderOffice[] }>;
       })
       .then((response) => {
-        setResults(selectPrograms(response.programs, categoryId));
-        setOffices(selectFinderOffices(response.offices, categoryId));
+        setResults(selectPrograms(response.programs, categoryId, municipalityId));
+        setOffices(selectFinderOffices(response.offices, categoryId, municipalityId));
       })
       .catch((error) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
@@ -161,7 +174,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       })
       .finally(() => setSearching(false));
     return () => controller.abort();
-  }, [categoryId, municipalityId, searched]);
+  }, [categoryId, data.municipalities, municipalityId, searched]);
 
   useEffect(() => {
     if (!urlReady) return;

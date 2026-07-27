@@ -1,5 +1,11 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
+  "crons": [
+    {
+      "path": "/api/maintenance/feedback-retention",
+      "schedule": "17 3 * * *"
+    }
+  ],
   "redirects": [
     {
       "source": "/:path*",
