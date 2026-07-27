@@ -247,6 +247,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                     : "専用窓口の直通・このまま話せます"}
               </p>
               <h3>{officeDisplayName(office, offices)}</h3>
+              {office.description && <p>{office.description}</p>}
               {office.phone && (
                 <p>
                   <a
