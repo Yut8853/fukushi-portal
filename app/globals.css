@@ -43,7 +43,7 @@ body {
   color: var(--text);
   font-family:
     -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Yu Gothic", "Meiryo", sans-serif;
-  font-size: 16px;
+  font-size: 1rem;
   line-height: 1.72;
   -webkit-font-smoothing: antialiased;
 }
@@ -72,8 +72,9 @@ summary:focus-visible,
 input:focus-visible,
 select:focus-visible,
 textarea:focus-visible {
-  outline: 3px solid #f2bd2f;
+  outline: 3px solid #0e4d35;
   outline-offset: 3px;
+  box-shadow: 0 0 0 6px #f2bd2f;
 }
 h1,
 h2,
@@ -157,6 +158,9 @@ p {
 }
 .quick-exit p {
   margin: 6px 0;
+}
+.site-footer {
+  padding-bottom: 96px;
 }
 
 /* Emergency information stays visible without dominating the page. */
@@ -636,6 +640,25 @@ p {
   padding: 10px 12px;
   color: var(--text);
   background: #fff;
+}
+.municipality-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 8px;
+  max-height: 420px;
+  overflow: auto;
+  margin: 16px 0 0;
+  padding: 4px;
+  list-style: none;
+}
+.municipality-list a {
+  display: block;
+  min-height: 48px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  padding: 10px 12px;
+  text-decoration: none;
+  background: var(--surface-soft);
 }
 .selected-municipality {
   margin-top: 22px;
@@ -1941,4 +1964,26 @@ thead th {
     scroll-behavior: auto !important;
     transition: none !important;
   }
+}
+
+/* 説明・状態表示も高齢者や弱視者が拡大なしで読める最小サイズを保つ。 */
+.quick-exit button span,
+.quick-exit details,
+.emergency-heading span,
+.emergency-contact span,
+.emergency-contact span small,
+.emergency-more,
+.emergency-more summary,
+.site-brand small,
+.site-nav,
+.contact-rank,
+.need-copy small,
+.location-grid em,
+.step-label,
+.source-row,
+thead th,
+.status,
+.finder-progress span,
+.admin-nav a {
+  font-size: 0.85rem;
 }

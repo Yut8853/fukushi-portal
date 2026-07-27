@@ -58,6 +58,10 @@ const officeIds = new Set(offices.map((item) => item.id));
 const programIds = new Set(programs.map((item) => item.id));
 const sourceIds = new Set(sources.map((item) => item.id));
 const phonePattern = /^(?:\+81[- ]?|0)\d{1,4}[- ]?\d{1,4}[- ]?\d{3,4}$/;
+const normalizePhone = (value: string) => value.replace(/\D/g, "");
+const representativePhones = new Map(
+  municipalities.map((item) => [item.id, normalizePhone(item.representativePhone)]),
+);
 
 duplicate(municipalities.map((item, index) => ({ value: item.municipalityCode, row: index + 2 })), "自治体コード", "municipalities.csv");
 duplicate(municipalities.map((item, index) => ({ value: `${item.prefectureCode}:${item.name}`, row: index + 2 })), "都道府県内の自治体名", "municipalities.csv");
@@ -99,12 +103,42 @@ offices.forEach((item, index) => {
   for (const [label, value] of [["電話", item.phone], ["FAX", item.fax]] as const) {
     if (value && !phonePattern.test(value)) errors.push({ file: "offices.csv", row, message: `${label}「${value}」の形式が不正です。` });
   }
+  if (
+    item.categoryId === "violence" &&
+    item.phone &&
+    normalizePhone(item.phone) === representativePhones.get(item.municipalityId)
+  ) {
+    errors.push({
+      file: "offices.csv",
+      row,
+      message: "DV窓口に自治体代表電話を設定できません。",
+    });
+  }
   if (item.status === "published") {
     if (!item.sourceId) errors.push({ file: "offices.csv", row, message: "公開窓口には出典IDが必要です。" });
     if (!item.lastVerifiedAt) errors.push({ file: "offices.csv", row, message: "公開窓口には最終確認日が必要です。" });
     if (!item.phone && !item.officialUrl && !item.contactFormUrl && !item.email) {
       errors.push({ file: "offices.csv", row, message: "公開窓口には少なくとも1つの連絡手段が必要です。" });
     }
+  }
+});
+
+const publishedDirectOfficeGroups = new Map<string, typeof offices>();
+offices
+  .filter((item) => item.status === "published" && item.contactType === "direct")
+  .forEach((item) => {
+    const key = `${item.municipalityId}:${item.categoryId}`;
+    const group = publishedDirectOfficeGroups.get(key) ?? [];
+    group.push(item);
+    publishedDirectOfficeGroups.set(key, group);
+  });
+publishedDirectOfficeGroups.forEach((group, key) => {
+  if (group.length > 1 && group.some((item) => !item.serviceArea)) {
+    errors.push({
+      file: "offices.csv",
+      row: 1,
+      message: `${key}: 同一自治体・カテゴリに複数の直通窓口がありますが、管轄地域が未入力です。`,
+    });
   }
 });
 

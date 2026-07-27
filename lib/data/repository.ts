@@ -56,7 +56,15 @@ export async function getPortalData(
   return getCsvPortalData(dataDirectory);
 }
 
+let publicPortalDataCache: Promise<PortalData> | null = null;
+
 export async function getPublicPortalData(): Promise<PortalData> {
+  if (publicPortalDataCache) return publicPortalDataCache;
+  publicPortalDataCache = loadPublicPortalData();
+  return publicPortalDataCache;
+}
+
+async function loadPublicPortalData(): Promise<PortalData> {
   const data = await getPortalData();
   const sources = data.sources.filter((source) => source.status === "published");
   const sourceIds = new Set(sources.map((source) => source.id));

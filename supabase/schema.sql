@@ -82,6 +82,10 @@ create table public.offices (
   emergency_alternative text not null default '',
   service_area text not null default '',
   eligibility_conditions text not null default '',
+  contact_type text not null check (contact_type in ('direct', 'self-reliance', 'representative')),
+  verification_level text not null check (
+    verification_level in ('primary_source_import', 'human_verified', 'user_reported')
+  ),
   source_id text references public.sources(id),
   status public.content_status not null default 'draft',
   last_verified_at date,

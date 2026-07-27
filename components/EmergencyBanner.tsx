@@ -6,7 +6,7 @@ export default function EmergencyBanner() {
   const latestVerification = emergencyContacts
     .map((contact) => contact.lastVerifiedAt)
     .sort()
-    .at(0);
+    .at(-1);
   return (
     <aside className="emergency-banner" aria-label="緊急時の相談先">
       <div className="emergency-inner">

@@ -29,8 +29,11 @@ export const categorySchema = z.object({
   id: z.string().min(1),
   label: z.string().min(1),
   description: optionalString,
-  consultationScript: z.string().min(1),
-  sortOrder: z.coerce.number().int().nonnegative(),
+  consultationScript: z
+    .string()
+    .min(10)
+    .regex(/[ぁ-んァ-ヶ一-龠]/, "日本語の案内文を入力してください。"),
+  sortOrder: z.string().regex(/^\d+$/).transform(Number),
 });
 
 export const municipalitySchema = z.object({
@@ -71,6 +74,12 @@ export const officeSchema = z.object({
   emergencyAlternative: optionalString,
   serviceArea: optionalString,
   eligibilityConditions: optionalString,
+  contactType: z
+    .enum(["", "direct", "self-reliance", "representative"])
+    .default(""),
+  verificationLevel: z
+    .enum(["", "primary_source_import", "human_verified", "user_reported"])
+    .default(""),
   sourceId: optionalString,
   status: statusSchema,
   lastVerifiedAt: optionalDate,

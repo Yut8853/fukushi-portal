@@ -29,3 +29,4 @@ data/crawl/results/
 data/crawl/backups/
 data/crawl/verification-log.json
 data/crawl/office-hours-candidates.json
+.vercel

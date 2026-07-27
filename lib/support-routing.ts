@@ -23,9 +23,23 @@ export const SELF_RELIANCE_FIRST_CATEGORIES = new Set([
   "food", "housing", "utilities", "work", "debt", "unknown",
 ]);
 
-export function officeContactType(office: Pick<Office, "id" | "categoryId" | "plainName">): OfficeContactType {
-  if (office.id.includes("self-reliance") || office.plainName.includes("自立相談")) return "self-reliance";
-  if (office.categoryId === "unknown" || office.id.includes("city-general")) return "representative";
+export function officeContactType(
+  office: Pick<Office, "id" | "categoryId" | "plainName" | "phone" | "contactType">,
+  representativePhone = "",
+): OfficeContactType {
+  if (office.contactType) return office.contactType;
+  const phone = office.phone.replace(/\D/g, "");
+  const representative = representativePhone.replace(/\D/g, "");
+  if (
+    office.categoryId === "unknown" ||
+    office.id.includes("city-general") ||
+    (phone && representative && phone === representative)
+  ) {
+    return "representative";
+  }
+  if (office.id.includes("self-reliance") || office.plainName.includes("自立相談")) {
+    return "self-reliance";
+  }
   return "direct";
 }
 
@@ -33,13 +47,23 @@ export function transferTarget(categoryId: string): string {
   return TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown;
 }
 
-export function selectOffices(offices: Office[], municipalityId: string, categoryId: string): Office[] {
+export function selectOffices(
+  offices: Office[],
+  municipalityId: string,
+  categoryId: string,
+  representativePhone = "",
+): Office[] {
   if (!municipalityId) return [];
   const local = offices.filter((item) => item.municipalityId === municipalityId);
   const direct = local.filter((item) =>
-    item.categoryId === categoryId && officeContactType(item) !== "representative");
-  const selfReliance = local.filter((item) => officeContactType(item) === "self-reliance");
-  const representatives = local.filter((item) => officeContactType(item) === "representative");
+    item.categoryId === categoryId &&
+    officeContactType(item, representativePhone) !== "representative");
+  const selfReliance = local.filter(
+    (item) => officeContactType(item, representativePhone) === "self-reliance",
+  );
+  const representatives = local.filter(
+    (item) => officeContactType(item, representativePhone) === "representative",
+  );
 
   if (categoryId === "violence") return direct;
   const ordered = SELF_RELIANCE_FIRST_CATEGORIES.has(categoryId)

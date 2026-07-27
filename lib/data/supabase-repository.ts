@@ -29,21 +29,33 @@ async function fetchTable<T>(
   url: string,
   serviceRoleKey: string,
 ): Promise<T[]> {
-  const response = await fetch(`${url}/rest/v1/${table}?select=*`, {
-    headers: {
-      apikey: serviceRoleKey,
-      authorization: `Bearer ${serviceRoleKey}`,
-      accept: "application/json",
-    },
-    cache: "no-store",
-  });
-  if (!response.ok) {
-    const detail = await response.text();
-    throw new Error(`Supabase ${table} の取得に失敗しました: HTTP ${response.status} ${detail.slice(0, 300)}`);
+  const pageSize = 1_000;
+  const rows: unknown[] = [];
+  const orderColumn = table === "prefectures" ? "code" : "id";
+  for (let offset = 0; ; offset += pageSize) {
+    const response = await fetch(`${url}/rest/v1/${table}?select=*&order=${orderColumn}`, {
+      headers: {
+        apikey: serviceRoleKey,
+        authorization: `Bearer ${serviceRoleKey}`,
+        accept: "application/json",
+        range: `${offset}-${offset + pageSize - 1}`,
+      },
+      cache: "no-store",
+    });
+    if (!response.ok) {
+      const detail = await response.text();
+      throw new Error(
+        `Supabase ${table} の取得に失敗しました: HTTP ${response.status} ${detail.slice(0, 300)}`,
+      );
+    }
+    const payload: unknown = await response.json();
+    if (!Array.isArray(payload)) {
+      throw new Error(`Supabase ${table} の応答が配列ではありません。`);
+    }
+    rows.push(...payload);
+    if (payload.length < pageSize) break;
   }
-  const payload: unknown = await response.json();
-  if (!Array.isArray(payload)) throw new Error(`Supabase ${table} の応答が配列ではありません。`);
-  return payload.map((item, index) => {
+  return rows.map((item, index) => {
     if (!item || typeof item !== "object" || Array.isArray(item)) {
       throw new Error(`Supabase ${table} ${index + 1}行目がオブジェクトではありません。`);
     }

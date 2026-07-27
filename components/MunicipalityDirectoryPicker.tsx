@@ -79,6 +79,17 @@ export default function MunicipalityDirectoryPicker({
           </select>
         </label>
       </div>
+      <p role="status" aria-live="polite">
+        {filteredMunicipalities.length}自治体を表示しています。
+      </p>
+
+      <ul className="municipality-list">
+        {filteredMunicipalities.map((municipality) => (
+          <li key={municipality.id}>
+            <Link href={`/support/${municipality.id}/unknown`}>{municipality.name}</Link>
+          </li>
+        ))}
+      </ul>
 
       {selectedMunicipality ? (
         <div className="selected-municipality">

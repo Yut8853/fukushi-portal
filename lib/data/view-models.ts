@@ -6,6 +6,7 @@ export type FinderMunicipality = {
   prefectureCode: string;
   name: string;
   officialUrl: string;
+  representativePhone: string;
   supportLevel: "basic" | "standard" | "detailed";
 };
 
@@ -41,6 +42,7 @@ export type FinderOffice = {
   serviceArea: string;
   eligibilityConditions: string;
   lastVerifiedAt: string;
+  verificationLevel: "" | "primary_source_import" | "human_verified" | "user_reported";
   sourceTitle: string;
   sourceUrl: string;
   contactType: "direct" | "self-reliance" | "representative";
@@ -70,9 +72,16 @@ export function toFinderViewModel(data: PortalData): FinderViewModel {
         description,
         consultationScript,
       })),
-    municipalities: data.municipalities.map(({ id, prefectureCode, name, officialUrl, supportLevel }) => ({
-      id, prefectureCode, name, officialUrl, supportLevel,
-    })),
+    municipalities: data.municipalities.map(
+      ({ id, prefectureCode, name, officialUrl, representativePhone, supportLevel }) => ({
+        id,
+        prefectureCode,
+        name,
+        officialUrl,
+        representativePhone,
+        supportLevel,
+      }),
+    ),
     latestVerifiedAt: [
       ...data.municipalities, ...data.offices, ...data.programs, ...data.sources,
     ].map((item) => item.lastVerifiedAt).filter(Boolean).sort().at(-1) ?? "",

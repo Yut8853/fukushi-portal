@@ -56,7 +56,7 @@
     "publisher": "厚生労働省",
     "cost": "通話料あり",
     "availability": "地域により異なる",
-    "displayMode": "detail",
+    "displayMode": "primary",
     "lastVerifiedAt": "2026-07-27"
   },
   {
@@ -80,6 +80,30 @@
     "publisher": "厚生労働省",
     "cost": "無料",
     "availability": "24時間",
+    "displayMode": "primary",
+    "lastVerifiedAt": "2026-07-27"
+  },
+  {
+    "id": "sexual-violence-one-stop",
+    "label": "性犯罪・性暴力の相談",
+    "number": "#8891",
+    "phoneHref": "tel:%238891",
+    "officialUrl": "https://www.gender.go.jp/policy/no_violence/seibouryoku/consult.html",
+    "publisher": "内閣府男女共同参画局",
+    "cost": "無料",
+    "availability": "最寄りの支援センターへ接続",
+    "displayMode": "primary",
+    "lastVerifiedAt": "2026-07-27"
+  },
+  {
+    "id": "consumer-hotline",
+    "label": "契約・悪質請求の相談",
+    "number": "188",
+    "phoneHref": "tel:188",
+    "officialUrl": "https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/",
+    "publisher": "消費者庁",
+    "cost": "通話料あり",
+    "availability": "地域の消費生活相談窓口へ接続",
     "displayMode": "detail",
     "lastVerifiedAt": "2026-07-27"
   }

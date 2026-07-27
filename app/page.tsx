@@ -25,8 +25,9 @@ export default async function HomePage() {
             名前や住所の入力は不要です。
           </p>
           <p className="coverage-proof">
-            全国1,741自治体・7,221窓口を収録（公開7,211件）。公式情報から窓口・連絡先・出典を
-            確認して掲載しています。受付時間など、公式情報から安全に確認できない項目は表示していません。
+            全国1,741すべての市区町村で、生活困窮・生活保護・住まいの相談窓口を収録しています。
+            介護・障害・DVなど専門分野の地域窓口は、順次整備中です。掲載情報は国・自治体の
+            公式一覧や公式ページから転記・整理し、未確認の項目はその旨を表示しています。
             <small>
               サイト全体の最終更新：
               {updatedYear && updatedMonth && updatedDay
@@ -76,7 +77,7 @@ export default async function HomePage() {
       <section className="content-section" aria-labelledby="information-policy-title">
         <h2 id="information-policy-title">情報を利用するときに</h2>
         <p>
-          支援の条件や受付時間は変わることがあります。各案内に表示された情報確認日と公式出典を確認し、
+          支援の条件や受付時間は変わることがあります。各案内のデータ掲載・更新日と公式出典を確認し、
           申請前に窓口へ最新情報をお問い合わせください。
         </p>
       </section>

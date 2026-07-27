@@ -16,9 +16,23 @@ function telephoneHref(value: string): string {
   return `tel:${value.replace(/[^\d+]/g, "")}`;
 }
 
+function telephoneAriaLabel(value: string): string {
+  return `${value
+    .split(/[- ]/)
+    .map((part) => [...part].join(" "))
+    .join(" の ")}へ電話`;
+}
+
 function verificationExpired(value: string): boolean {
   if (!value) return true;
   return Date.now() - new Date(`${value}T00:00:00Z`).getTime() > 180 * 86_400_000;
+}
+
+function verificationLabel(level: FinderOffice["verificationLevel"], date: string): string {
+  const displayedDate = displayDate(date);
+  if (level === "human_verified") return `運営者が公式ページで個別確認：${displayedDate}`;
+  if (level === "user_reported") return `利用者からの報告により修正：${displayedDate}`;
+  return `公式一覧・公式ページから転記：${displayedDate}`;
 }
 
 const RELATED_CATEGORIES: Record<string, string[]> = {
@@ -37,6 +51,65 @@ const RELATED_CATEGORIES: Record<string, string[]> = {
   care: ["money", "work", "medical"],
   unknown: ["food", "housing", "money"],
 };
+
+const SENSITIVE_CATEGORIES = new Set(["violence", "mental"]);
+const SPECIALIST_CATEGORIES = new Set([
+  "medical",
+  "debt",
+  "violence",
+  "children",
+  "mental",
+  "disability",
+  "care",
+]);
+
+const TRANSFER_TARGETS: Record<string, string> = {
+  food: "生活困窮者自立相談支援の担当",
+  housing: "生活困窮者自立相談支援の担当",
+  rent: "住居確保給付金の担当",
+  utilities: "水道料金の相談担当",
+  money: "生活保護の担当",
+  medical: "医療費の相談担当",
+  work: "生活困窮者自立相談支援の担当",
+  debt: "生活困窮者自立相談支援の担当",
+  violence: "DV相談の担当",
+  children: "子育て・ひとり親支援の担当",
+  mental: "保健・こころの相談担当",
+  disability: "障害福祉の担当",
+  care: "介護保険の担当",
+  unknown: "生活困窮者自立相談支援の担当",
+};
+
+function selectPrograms(programs: FinderProgram[], categoryId: string): FinderProgram[] {
+  const direct = programs.filter((item) => item.categoryId === categoryId);
+  return direct.length
+    ? direct
+    : programs.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
+}
+
+function selectFinderOffices(offices: FinderOffice[], categoryId: string): FinderOffice[] {
+  const direct = offices.filter(
+    (item) => item.categoryId === categoryId && item.contactType !== "representative",
+  );
+  const selfReliance = offices.filter((item) => item.contactType === "self-reliance");
+  const representatives = offices.filter((item) => item.contactType === "representative");
+  if (categoryId === "violence") return direct;
+  const selfRelianceFirst = new Set([
+    "food",
+    "housing",
+    "utilities",
+    "work",
+    "debt",
+    "unknown",
+  ]).has(categoryId);
+  const ordered = selfRelianceFirst
+    ? [...selfReliance, ...direct, ...representatives]
+    : [...direct, ...selfReliance, ...representatives];
+  return [...new Map(ordered.map((item) => [item.id, item])).values()].map((item) => ({
+    ...item,
+    transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,
+  }));
+}
 
 export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [categoryId, setCategoryId] = useState("");
@@ -72,16 +145,15 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   useEffect(() => {
     if (!searched || !categoryId) return;
     const controller = new AbortController();
-    const query = new URLSearchParams({ need: categoryId });
-    if (municipalityId) query.set("municipality", municipalityId);
-    fetch(`/api/support?${query}`, { signal: controller.signal })
+    const dataFile = municipalityId || "national";
+    fetch(`/data/support/${dataFile}.json`, { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error("相談先を読み込めませんでした。");
         return response.json() as Promise<{ programs: FinderProgram[]; offices: FinderOffice[] }>;
       })
       .then((response) => {
-        setResults(response.programs);
-        setOffices(response.offices);
+        setResults(selectPrograms(response.programs, categoryId));
+        setOffices(selectFinderOffices(response.offices, categoryId));
       })
       .catch((error) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
@@ -93,12 +165,21 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
 
   useEffect(() => {
     if (!urlReady) return;
+    if (SENSITIVE_CATEGORIES.has(categoryId)) {
+      const nextUrl = `${window.location.pathname}${searched ? "#support-results" : ""}`;
+      window.history.replaceState(null, "", nextUrl);
+      return;
+    }
     const query = new URLSearchParams();
     if (categoryId) query.set("need", categoryId);
     if (municipalityId) query.set("municipality", municipalityId);
     const nextUrl = `${window.location.pathname}${query.size ? `?${query}` : ""}${searched ? "#support-results" : ""}`;
     window.history.replaceState(null, "", nextUrl);
   }, [categoryId, municipalityId, searched, urlReady]);
+
+  useEffect(() => {
+    window.dispatchEvent(new CustomEvent("support-category-change", { detail: { categoryId } }));
+  }, [categoryId]);
 
   const municipalityOptions = useMemo(
     () => data.municipalities.filter((item) => item.prefectureCode === prefectureCode),
@@ -146,7 +227,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         <p className="section-kicker">相談先を探す</p>
         <h2 id="finder-title">いまの状況に近いものを選んでください</h2>
         <p className="finder-help">
-          制度名は分からなくて大丈夫です。入力内容が送信・保存されることはありません。
+          制度名は分からなくて大丈夫です。選んだ困りごとと地域は案内の取得時にサーバーへ送信されますが、
+          検索条件として保存しません。DV・こころのカテゴリはブラウザのURLや履歴にも残しません。
         </p>
         {verificationExpired(data.latestVerifiedAt) && (
           <p className="stale-data-warning" role="alert">
@@ -317,7 +399,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       )}
 
       {activeStep === 3 && searched && (
-        <div id="support-results" className="results" aria-live="polite">
+        <div id="support-results" className="results">
           <button
             type="button"
             className="step-back-button"
@@ -354,6 +436,17 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 全国共通の相談先と自治体公式サイトをご案内します。
               </p>
             )}
+            {municipality &&
+              SPECIALIST_CATEGORIES.has(categoryId) &&
+              !offices.some(
+                (office) => office.categoryId === categoryId && office.contactType === "direct",
+              ) && (
+                <p className="preparing-message">
+                  {municipality.name}の{selectedCategory?.label}
+                  に関する専門窓口は、まだ登録されていません。下記の総合相談窓口または代表電話から、
+                  担当部署につないでもらえます。
+                </p>
+              )}
             {municipality?.officialUrl && (
               <a
                 className="official-link"
@@ -365,9 +458,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               </a>
             )}
             <div className="result-actions">
-              <button type="button" className="secondary-button" onClick={shareResults}>
-                この案内を共有
-              </button>
+              {!SENSITIVE_CATEGORIES.has(categoryId) && (
+                <button type="button" className="secondary-button" onClick={shareResults}>
+                  この案内を共有
+                </button>
+              )}
               {shareStatus && <span role="status">{shareStatus}</span>}
             </div>
           </div>
@@ -416,6 +511,15 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
           {offices.length > 0 && (
             <section className="office-results" aria-labelledby="office-results-title">
               <h3 id="office-results-title">電話や来所で相談できる窓口</h3>
+              {offices.filter((office) => office.categoryId === categoryId).length > 1 &&
+                offices
+                  .filter((office) => office.categoryId === categoryId)
+                  .some((office) => !office.serviceArea) && (
+                  <p className="preparing-message">
+                    複数の窓口があります。お住まいの区・地域によって担当が異なるため、
+                    公式ページで管轄を確認してください。
+                  </p>
+                )}
               {offices.map((office) => (
                 <article key={office.id} className="office-card">
                   <p className={`contact-rank ${office.contactType}`}>
@@ -428,11 +532,32 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                   <h4>{office.plainName || office.name}</h4>
                   {office.description && <p>{office.description}</p>}
                   {office.phone && (
-                    <a className="phone-button" href={telephoneHref(office.phone)}>
+                    <a
+                      className="phone-button"
+                      href={telephoneHref(office.phone)}
+                      aria-label={telephoneAriaLabel(office.phone)}
+                    >
                       <span>電話する</span>
                       <strong>{office.phone}</strong>
                     </a>
                   )}
+                  {!office.phone &&
+                    municipality?.representativePhone &&
+                    categoryId !== "violence" && (
+                      <div className="transfer-script">
+                        <p>
+                          この窓口の直通番号は未確認です。自治体の代表電話から担当につないでもらえます。
+                        </p>
+                        <a
+                          className="phone-button"
+                          href={telephoneHref(municipality.representativePhone)}
+                          aria-label={telephoneAriaLabel(municipality.representativePhone)}
+                        >
+                          <span>代表電話へ電話する</span>
+                          <strong>{municipality.representativePhone}</strong>
+                        </a>
+                      </div>
+                    )}
                   {office.contactType === "representative" ? (
                     <div className="transfer-script">
                       <h5>まず受付の人に</h5>
@@ -492,7 +617,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                     ) : (
                       <span>出典ページなし</span>
                     )}
-                    <span>情報確認日：{displayDate(office.lastVerifiedAt)}</span>
+                    <span>
+                      {verificationLabel(office.verificationLevel, office.lastVerifiedAt)}
+                    </span>
                   </footer>
                 </article>
               ))}
@@ -552,7 +679,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 <a href={result.sourceUrl} target="_blank" rel="noreferrer">
                   {result.sourceTitle}
                 </a>
-                <span>情報確認日：{displayDate(result.lastVerifiedAt)}</span>
+                <span>データ掲載・更新日：{displayDate(result.lastVerifiedAt)}</span>
               </footer>
             </article>
           ))}

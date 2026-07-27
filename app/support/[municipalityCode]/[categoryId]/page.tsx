@@ -15,6 +15,13 @@ type PageProps = {
   params: Promise<{ municipalityCode: string; categoryId: string }>;
 };
 
+function telephoneAriaLabel(value: string): string {
+  return `${value
+    .split(/[- ]/)
+    .map((part) => [...part].join(" "))
+    .join(" の ")}へ電話`;
+}
+
 async function getPageData(params: PageProps["params"]) {
   const { municipalityCode, categoryId } = await params;
   const data = await getPublicPortalData();
@@ -23,7 +30,12 @@ async function getPageData(params: PageProps["params"]) {
   if (!municipality || !category) return null;
   const prefecture = data.prefectures.find((item) => item.code === municipality.prefectureCode);
   if (!prefecture) return null;
-  const offices = selectOffices(data.offices, municipality.id, category.id);
+  const offices = selectOffices(
+    data.offices,
+    municipality.id,
+    category.id,
+    municipality.representativePhone,
+  );
   const availablePrograms = data.programs.filter(
     (item) => item.scope === "national" || item.municipalityId === municipality.id,
   );
@@ -198,9 +210,18 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
             安全のため自治体の代表電話は表示していません。ページ上部のDV相談＋の電話・チャット・メールを利用してください。
           </p>
         )}
+        {offices.filter((office) => office.categoryId === category.id).length > 1 &&
+          offices
+            .filter((office) => office.categoryId === category.id)
+            .some((office) => !office.serviceArea) && (
+            <p className="preparing-message">
+              複数の窓口があります。お住まいの区・地域によって担当が異なるため、
+              公式ページで管轄を確認してください。
+            </p>
+          )}
         {offices.map((office) => {
           const source = sources.get(office.sourceId);
-          const contactType = officeContactType(office);
+          const contactType = officeContactType(office, municipality.representativePhone);
           return (
             <article className="office-card" key={office.id}>
               <p className={`contact-rank ${contactType}`}>
@@ -213,10 +234,28 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
               <h3>{office.plainName || office.name}</h3>
               {office.phone && (
                 <p>
-                  <a className="phone-button" href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}>
+                  <a
+                    className="phone-button"
+                    href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}
+                    aria-label={telephoneAriaLabel(office.phone)}
+                  >
                     電話する　<strong>{office.phone}</strong>
                   </a>
                 </p>
+              )}
+              {!office.phone && municipality.representativePhone && category.id !== "violence" && (
+                <div className="transfer-script">
+                  <p>
+                    この窓口の直通番号は未確認です。自治体の代表電話から担当につないでもらえます。
+                  </p>
+                  <a
+                    className="phone-button"
+                    href={`tel:${municipality.representativePhone.replace(/[^\d+]/g, "")}`}
+                    aria-label={telephoneAriaLabel(municipality.representativePhone)}
+                  >
+                    代表電話へ電話する　<strong>{municipality.representativePhone}</strong>
+                  </a>
+                </div>
               )}
               <dl className="office-details">
                 <dt>受付時間</dt>
@@ -234,6 +273,12 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                   <>
                     <dt>場所</dt>
                     <dd>{office.address}</dd>
+                  </>
+                )}
+                {office.serviceArea && (
+                  <>
+                    <dt>管轄地域</dt>
+                    <dd>{office.serviceArea}</dd>
                   </>
                 )}
               </dl>
@@ -260,6 +305,14 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                   </a>
                 </p>
               )}
+              <p className="note">
+                {office.verificationLevel === "human_verified"
+                  ? "運営者が公式ページで個別確認"
+                  : office.verificationLevel === "user_reported"
+                    ? "利用者からの報告により修正"
+                    : "公式一覧・公式ページから転記"}
+                ：{office.lastVerifiedAt || "未確認"}
+              </p>
             </article>
           );
         })}
@@ -281,7 +334,10 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         </aside>
       )}
 
-      {offices.some((office) => officeContactType(office) === "representative") && (
+      {offices.some(
+        (office) =>
+          officeContactType(office, municipality.representativePhone) === "representative",
+      ) && (
         <aside className="transfer-tips">
           <h2>電話を何度も回されないために</h2>
           <ol>
@@ -333,7 +389,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
 
       {nearbyMunicipalities.length > 0 && (
         <section className="content-section related-guides">
-          <h2>{prefecture.name}の近隣自治体から探す</h2>
+          <h2>{prefecture.name}の他の自治体から探す</h2>
           <ul>
             {nearbyMunicipalities.map((item) => (
               <li key={item.id}>
@@ -351,14 +407,16 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
           {municipality.name}公式サイトを開く
         </a>
       </p>
-      <p>
-        <Link href={`/?need=${category.id}&municipality=${municipality.id}#support-results`}>
-          検索画面でこの案内を見る・共有する
-        </Link>
-      </p>
+      {!["violence", "mental"].includes(category.id) && (
+        <p>
+          <Link href={`/?need=${category.id}&municipality=${municipality.id}#support-results`}>
+            検索画面でこの案内を見る・共有する
+          </Link>
+        </p>
+      )}
       <FeedbackPrompt pageId={municipality.id} categoryId={category.id} />
       <p className="note">
-        情報確認日：{municipality.lastVerifiedAt || "未確認"}
+        データ掲載・更新日：{municipality.lastVerifiedAt || "未確認"}
         。制度や受付時間は変わることがあります。
         利用前に公式情報または窓口で最新内容を確認してください。
       </p>
