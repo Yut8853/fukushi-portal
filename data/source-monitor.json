@@ -377,6 +377,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-fukushima-housing-benefit",
+    "url": "https://www.pref.fukushima.lg.jp/sec/21025a/jyuutakushien2.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:55:49.760Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 22524,
+    "contentHash": "312a988eb79c36609d4453240c5be0f43c5c9699454914851d521a152505af87",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukushima-municipalities",
+    "url": "https://www.pref.fukushima.lg.jp/sec/01010d/koho-chizu.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:55:45.638Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 27798,
+    "contentHash": "4f81cf2cb7441df70e98c12d30f97bd2b20651277074fdf49d92af85a63f2c9c",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukushima-public-assistance",
+    "url": "https://www.pref.fukushima.lg.jp/sec/21025a/seikatsuhogo1.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:55:51.760Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 20196,
+    "contentHash": "64a916aedf47dbeff8445784406fb9c8667684e06a373677a7bbca122bc8521e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-fukushima-self-reliance",
+    "url": "https://www.pref.fukushima.lg.jp/sec/21025a/jiritsusokushinmoderu2.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:55:47.765Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 28958,
+    "contentHash": "c0e25ebc14ea00f04ad4d83c972f5ab386c707b869c009137f1c48443626d147",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-gifu-housing-benefit",
     "url": "https://www.pref.gifu.lg.jp/page/13214.html",
     "status": "ok",
