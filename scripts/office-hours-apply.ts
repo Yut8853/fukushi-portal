@@ -38,8 +38,7 @@ async function main() {
   const report = JSON.parse(await readFile(reportPath, "utf8")) as { candidates: Candidate[] };
   const accepted = new Map<string, { hours: string; closedDays: string }>();
   for (const candidate of report.candidates) {
-    if (!candidate.officeId.endsWith("-city-general") || candidate.evidenceDistance > 100) continue;
-    if (/Copyright|All rights reserved|サイトマップ|法人番号/.test(candidate.openingHours)) continue;
+    if (!candidate.officeId.endsWith("-city-general") || candidate.evidenceDistance > 250) continue;
     const hours = normalizedHours(candidate.openingHours);
     if (!hours) continue;
     accepted.set(candidate.officeId, {

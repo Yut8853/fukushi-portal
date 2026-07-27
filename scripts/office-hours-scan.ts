@@ -68,8 +68,7 @@ async function main() {
   const sources = new Map(data.sources.map((source) => [source.id, source.url]));
   const targets = data.offices
     .filter((office) =>
-      !office.openingHours
-      && office.phone
+      office.phone
       && (!requestedType || officeContactType(office) === requestedType)
     )
     .map((office) => ({ office, sourceUrl: office.officialUrl || sources.get(office.sourceId) || "" }))
@@ -83,47 +82,58 @@ async function main() {
   const candidates: HoursCandidate[] = [];
   const errors: { sourceUrl: string; message: string }[] = [];
   let processed = 0;
+  let nextGroup = 0;
   const selectedGroups = [...groups].slice(sourceOffset, sourceOffset + sourceLimit);
-  for (const [sourceUrl, offices] of selectedGroups) {
-    try {
-      const url = await assertSafeUrl(sourceUrl);
-      if (!await canCrawl(url.href, config)) {
-        errors.push({ sourceUrl, message: "robots.txtで取得不可" });
-        continue;
+  async function worker() {
+    while (nextGroup < selectedGroups.length) {
+      const [sourceUrl, offices] = selectedGroups[nextGroup];
+      nextGroup += 1;
+      try {
+        const url = await assertSafeUrl(sourceUrl);
+        if (!await canCrawl(url.href, config)) {
+          errors.push({ sourceUrl, message: "robots.txtで取得不可" });
+        } else {
+          const text = await responseText(await fetchWithRetry(url.href, config), url);
+          for (const { office } of offices) {
+            if (office.openingHours) continue;
+            const context = phoneContext(text, office.phone);
+            if (!context) continue;
+            const openingHours = findOpeningHours(context.text);
+            if (!openingHours) continue;
+            const hoursOffset = context.text.indexOf(openingHours);
+            const evidenceDistance = Math.abs(hoursOffset - context.phoneOffset);
+            if (evidenceDistance > 250) continue;
+            candidates.push({
+              officeId: office.id,
+              municipalityId: office.municipalityId,
+              officeName: office.plainName || office.name,
+              phone: office.phone,
+              openingHours,
+              closedDays: findClosedDays(context.text),
+              sourceUrl: url.href,
+              evidenceText: context.text.replace(/\s+/g, " ").trim(),
+              evidenceDistance,
+              confidence: "medium",
+              warnings: ["公式ページ内の近接情報です。窓口固有の受付時間か目視確認してください。"],
+              status: "review_required",
+            });
+          }
+        }
+      } catch (error) {
+        errors.push({ sourceUrl, message: error instanceof Error ? error.message : String(error) });
+      } finally {
+        processed += 1;
+        console.log(`進捗 ${processed}/${selectedGroups.length} / 候補 ${candidates.length}件 / 取得失敗 ${errors.length}件`);
       }
-      const text = await responseText(await fetchWithRetry(url.href, config), url);
-      for (const { office } of offices) {
-        const context = phoneContext(text, office.phone);
-        if (!context) continue;
-        const openingHours = findOpeningHours(context.text);
-        if (!openingHours) continue;
-        const hoursOffset = context.text.indexOf(openingHours);
-        const evidenceDistance = Math.abs(hoursOffset - context.phoneOffset);
-        if (evidenceDistance > 250) continue;
-        candidates.push({
-          officeId: office.id,
-          municipalityId: office.municipalityId,
-          officeName: office.plainName || office.name,
-          phone: office.phone,
-          openingHours,
-          closedDays: findClosedDays(context.text),
-          sourceUrl: url.href,
-          evidenceText: context.text.replace(/\s+/g, " ").trim(),
-          evidenceDistance,
-          confidence: "medium",
-          warnings: ["公式ページ内の近接情報です。窓口固有の受付時間か目視確認してください。"],
-          status: "review_required",
-        });
-      }
-    } catch (error) {
-      errors.push({ sourceUrl, message: error instanceof Error ? error.message : String(error) });
     }
-    processed += 1;
-    console.log(`進捗 ${processed}/${selectedGroups.length} / 候補 ${candidates.length}件 / 取得失敗 ${errors.length}件`);
   }
+  await Promise.all(Array.from(
+    { length: Math.min(config.concurrency, selectedGroups.length) },
+    () => worker(),
+  ));
   const report = {
     generatedAt: new Date().toISOString(),
-    targetOffices: targets.length,
+    targetOffices: targets.filter(({ office }) => !office.openingHours).length,
     sourceCount: groups.size,
     scannedSourceCount: processed,
     sourceOffset,
