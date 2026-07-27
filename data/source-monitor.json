@@ -936,6 +936,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-nagasaki-housing-benefit",
+    "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/fukushi/shakaifukushi/hogo-jiritsu/",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:54:04.213Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 71171,
+    "contentHash": "ddb2d62a3d9a9259e1642523c856fb0f19fc013236abc57bff19c9d5cf455214",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-nagasaki-municipal-links",
+    "url": "https://www.pref.nagasaki.jp/pages/page-31.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:54:06.324Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 57332,
+    "contentHash": "3952ed0e99aa619a37ab621cc582e2ca6e7de3670f42f686b97f85f49ac0c8de",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-nagasaki-public-assistance",
+    "url": "https://www.pref.nagasaki.jp/uploads/2025/02/1740617565.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:54:08.324Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 136472,
+    "contentHash": "a9c93944b9cade8aae8f3969223c467f105e874942683e7532135e9fe6e29c9e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-nagasaki-self-reliance",
+    "url": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/fukushi/shakaifukushi/hogo-jiritsu/",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:54:10.438Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 71171,
+    "contentHash": "ddb2d62a3d9a9259e1642523c856fb0f19fc013236abc57bff19c9d5cf455214",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-nara-pref-municipal-offices-2026",
     "url": "https://www.pref.nara.lg.jp/n006/9686.html",
     "status": "ok",
