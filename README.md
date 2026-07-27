@@ -223,20 +223,24 @@ CSVはUTF-8、ヘッダー名固定です。セルにカンマや改行を含む
 ### 2. 自治体を追加する
 
 ```bash
-npm run municipality:add -- --help
+npm run municipality:add
 ```
+
+対話形式で入力し、最初は `draft` 状態で追加されます。
 
 複数自治体の同期・昇格には次を使います。
 
 ```bash
 npm run municipalities:sync
-npm run municipalities:promote
+npm run municipalities:promote -- --count=10 --verified-at=2026-07-27
 ```
+
+`municipalities:sync` はe-Statから全国マスターを再生成し、`municipalities:promote` は到達確認できた自治体を公開側CSVへ追加します。どちらもファイルを書き換えるため、実行前後のGit差分を必ず確認してください。
 
 自治体公式URLの解決:
 
 ```bash
-npm run municipality-urls:resolve
+URL_RESOLVER_CODES=08201,08220 npm run municipality-urls:resolve
 ```
 
 URLを自動発見しても、自治体名、公式ドメイン、ページ内容を確認するまで正データにしません。
@@ -263,7 +267,7 @@ URLを自動発見しても、自治体名、公式ドメイン、ページ内�
 ### キュー作成と状態確認
 
 ```bash
-npm run crawl:queue
+npm run crawl:queue -- --municipalities=082015,082201
 npm run crawl:status
 npm run crawl:report
 ```
@@ -273,7 +277,7 @@ npm run crawl:report
 最初から全国一括で動かさず、自治体や件数を限定して挙動を確認します。
 
 ```bash
-npm run crawl:worker
+npm run crawl:worker -- --municipalities=082015,082201 --limit=2
 ```
 
 クロール処理は以下を守ります。
@@ -289,20 +293,21 @@ npm run crawl:worker
 失敗分の再試行:
 
 ```bash
-npm run crawl:retry-failed
+npm run crawl:retry-failed -- --municipalities=082015,082201
 ```
 
 差分確認:
 
 ```bash
-npm run crawl:diff
+npm run crawl:diff -- --municipality=082201 --candidate=候補ID
 ```
 
 ### 候補の公開
 
 ```bash
 npm run crawl:publish:test
-npm run crawl:publish
+npm run crawl:publish -- --municipality=082201 --candidate=候補ID
+npm run crawl:publish -- --municipality=082201 --candidate=候補ID --actor=確認者名 --confirm
 ```
 
 公開前に、窓口名、電話番号、対象自治体、カテゴリ、出典、重複を目視確認します。候補を無審査で `published` にしないでください。
@@ -426,7 +431,7 @@ npm run build
 出典の到達性・変更確認:
 
 ```bash
-npm run sources:monitor
+npm run sources:monitor -- --limit=20
 ```
 
 ### 人による確認
@@ -526,4 +531,3 @@ npm run supabase:seed -- --apply
 ## ライセンスと再利用
 
 ソースコードおよび収録データの再利用条件は、正式なライセンスファイルが追加されるまで未設定です。行政機関の公開情報にも各発行元の利用条件が適用されます。無断で「自由に再利用可能」と判断しないでください。
-
