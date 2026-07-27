@@ -25,7 +25,8 @@ TypeScriptへ自治体データを直接書かず、`data/` のCSVを追加・�
 | 窓口データ | 7,221件（`published` 7,211件、`review_required` 10件） |
 | 制度データ | 25件（全国共通17件、自治体独自8件） |
 | 出典データ | 371件（すべて`published`） |
-| `data:validate` | 成功。全国マスター公式URL未登録29件の警告1件 |
+| `data:validate` | 成功。エラー0件、警告0件 |
+| `data:audit` | 成功。現行1,741自治体・主要4導線・47都道府県の出典監視を確認 |
 | `lint` | 成功 |
 | `build` | 成功（Next.js 15.5.22） |
 | `npm audit --omit=dev` | 本番依存の脆弱性0件 |
@@ -688,6 +689,7 @@ CSV編集やコード変更後は、最低限次をすべて実行します。
 
 ```bash
 npm run data:validate
+npm run data:audit
 npm run lint
 npm run build
 ```
@@ -707,6 +709,13 @@ npm run build
 
 ```bash
 npm run data:quality
+```
+
+全国完成監査では、現行1,741自治体とポータルの一致、全自治体の`standard`化、
+主要4導線、公式出典参照、47都道府県の出典監視記録を横断確認します。
+
+```bash
+npm run data:audit
 ```
 
 確認期限は現在180日です。管理画面の「情報不足あり」には、電話番号、住所、受付時間、
