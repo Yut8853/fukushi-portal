@@ -61,7 +61,7 @@ test("DV検索で同じ番号ならDV相談カードを児童虐待カードよ�
   assert.match(selected[0].description, /児童虐待相談/);
 });
 
-test("カテゴリ直通窓口がある場合は同じ自立相談窓口を重ねない", () => {
+test("カテゴリ直通窓口と同じ番号の自立相談は説明へ統合する", () => {
   const direct = office({ id: "rent-direct", categoryId: "rent" });
   const selfReliance = office({
     id: "self-reliance",
@@ -75,6 +75,21 @@ test("カテゴリ直通窓口がある場合は同じ自立相談窓口を重�
     ["rent-direct"],
   );
   assert.match(selected[0].description, /生活困窮者自立相談/);
+});
+
+test("カテゴリ直通窓口と番号が違う自立相談は別の入口として残す", () => {
+  const direct = office({ id: "public-assistance", categoryId: "money", phone: "000-000-0001" });
+  const selfReliance = office({
+    id: "self-reliance",
+    categoryId: "housing",
+    plainName: "生活困窮者自立相談",
+    phone: "000-000-0002",
+    contactType: "self-reliance",
+  });
+  assert.deepEqual(
+    selectOffices([direct, selfReliance], "city", "money").map((item) => item.id),
+    ["public-assistance", "self-reliance"],
+  );
 });
 
 test("同じ電話番号ではカテゴリ別のつなぎ依頼を一般代表より優先する", () => {

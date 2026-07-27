@@ -110,12 +110,8 @@ export function selectOffices(
     );
     return mergeByPhone(violenceSpecificFirst);
   }
-  const directPhones = new Set(direct.map((item) => item.phone.replace(/\D/g, "")).filter(Boolean));
-  const supplementarySelfReliance = directPhones.size
-    ? selfReliance.filter((item) => directPhones.has(item.phone.replace(/\D/g, "")))
-    : selfReliance;
   const ordered = SELF_RELIANCE_FIRST_CATEGORIES.has(categoryId)
-    ? [...supplementarySelfReliance, ...direct, ...representatives]
-    : [...direct, ...supplementarySelfReliance, ...representatives];
+    ? [...selfReliance, ...direct, ...representatives]
+    : [...direct, ...selfReliance, ...representatives];
   return mergeByPhone(ordered);
 }

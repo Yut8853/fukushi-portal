@@ -152,10 +152,6 @@ function selectFinderOffices(
       ),
     );
   }
-  const directPhones = new Set(direct.map((item) => item.phone.replace(/\D/g, "")).filter(Boolean));
-  const supplementarySelfReliance = directPhones.size
-    ? selfReliance.filter((item) => directPhones.has(item.phone.replace(/\D/g, "")))
-    : selfReliance;
   const selfRelianceFirst = new Set([
     "food",
     "housing",
@@ -165,8 +161,8 @@ function selectFinderOffices(
     "unknown",
   ]).has(categoryId);
   const ordered = selfRelianceFirst
-    ? [...supplementarySelfReliance, ...direct, ...representatives]
-    : [...direct, ...supplementarySelfReliance, ...representatives];
+    ? [...selfReliance, ...direct, ...representatives]
+    : [...direct, ...selfReliance, ...representatives];
   return mergeFinderOfficesByPhone(ordered).map((item) => ({
     ...item,
     transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,
