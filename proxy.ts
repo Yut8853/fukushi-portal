@@ -49,7 +49,7 @@ function configuredCredentials(): AdminCredential[] {
   return username && password ? [{ username, password, role: "admin" }] : [];
 }
 
-export async function middleware(request: NextRequest) {
+export async function proxy(request: NextRequest) {
   const configured = configuredCredentials();
   if (!configured.length) {
     return response(503, "管理画面は無効です。管理者認証を設定してください。");

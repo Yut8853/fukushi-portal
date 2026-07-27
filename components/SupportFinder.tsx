@@ -37,11 +37,15 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     const municipalityQuery = query.get("municipality") ?? "";
     const validCategory = data.categories.some((item) => item.id === need) ? need : "";
     const validMunicipality = data.municipalities.find((item) => item.id === municipalityQuery);
-    setCategoryId(validCategory);
-    setMunicipalityId(validMunicipality?.id ?? "");
-    setPrefectureCode(validMunicipality?.prefectureCode ?? "");
-    setSearched(Boolean(validCategory));
-    setUrlReady(true);
+    const timer = window.setTimeout(() => {
+      setCategoryId(validCategory);
+      setMunicipalityId(validMunicipality?.id ?? "");
+      setPrefectureCode(validMunicipality?.prefectureCode ?? "");
+      setSearched(Boolean(validCategory));
+      setSearching(Boolean(validCategory));
+      setUrlReady(true);
+    }, 0);
+    return () => window.clearTimeout(timer);
   }, [data.categories, data.municipalities]);
 
   useEffect(() => {
@@ -49,8 +53,6 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     const controller = new AbortController();
     const query = new URLSearchParams({ need: categoryId });
     if (municipalityId) query.set("municipality", municipalityId);
-    setSearching(true);
-    setSearchError("");
     fetch(`/api/support?${query}`, { signal: controller.signal })
       .then(async (response) => {
         if (!response.ok) throw new Error("相談先を読み込めませんでした。");
@@ -85,6 +87,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const canSearch = Boolean(categoryId);
   const selectedCategory = data.categories.find((item) => item.id === categoryId);
   const showResults = () => {
+    setSearching(true);
+    setSearchError("");
     setSearched(true);
     window.setTimeout(() => {
       document.getElementById("support-results")?.scrollIntoView({ behavior: "smooth", block: "start" });

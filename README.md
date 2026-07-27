@@ -1,6 +1,6 @@
 # くらし支援ナビ（fukushi-portal-mvp）
 
-自治体・福祉相談窓口・支援制度をCSVで管理するNext.js 15のMVPです。Reactコンポーネントや
+自治体・福祉相談窓口・支援制度をCSVで管理するNext.js 16のMVPです。Reactコンポーネントや
 TypeScriptへ自治体データを直接書かず、`data/` のCSVを追加・更新すると画面へ反映される構成です。
 将来Supabaseへ移行できるよう、CSVの読み込み、Zod検証、表示用View Modelを分離しています。
 
@@ -28,7 +28,8 @@ TypeScriptへ自治体データを直接書かず、`data/` のCSVを追加・�
 | `data:validate` | 成功。エラー0件、警告0件 |
 | `data:audit` | 成功。現行1,741自治体・主要4導線・47都道府県の出典監視を確認 |
 | `lint` | 成功 |
-| `build` | 成功（Next.js 15.5.22） |
+| 技術スタック | Next.js 16.2.12 / React 19.2.8 / TypeScript 5.9.3 / Node.js 24 |
+| `build` | 成功（Next.js 16.2.12・Turbopack） |
 | `npm audit --omit=dev` | 本番依存の脆弱性0件 |
 
 重要事項:
@@ -340,7 +341,7 @@ TypeScriptへ自治体データを直接書かず、`data/` のCSVを追加・�
 
 ## セットアップ
 
-Node.jsとnpmを用意し、プロジェクト直下で実行します。
+Node.js 20.9以上（開発確認環境はNode.js 24）とnpmを用意し、プロジェクト直下で実行します。
 
 ```bash
 npm install
