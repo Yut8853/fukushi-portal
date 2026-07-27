@@ -51,12 +51,14 @@ test("DV検索では代表電話を返さない", () => {
 });
 
 test("DV検索で同じ番号ならDV相談カードを児童虐待カードより優先する", () => {
-  const childAbuse = office({ id: "city-child-abuse" });
-  const dv = office({ id: "city-dv" });
+  const childAbuse = office({ id: "city-child-abuse", plainName: "児童虐待相談" });
+  const dv = office({ id: "city-dv", plainName: "DV相談" });
+  const selected = selectOffices([childAbuse, dv], "city", "violence");
   assert.deepEqual(
-    selectOffices([childAbuse, dv], "city", "violence").map((item) => item.id),
+    selected.map((item) => item.id),
     ["city-dv"],
   );
+  assert.match(selected[0].description, /児童虐待相談/);
 });
 
 test("カテゴリ直通窓口がある場合は同じ自立相談窓口を重ねない", () => {
@@ -64,12 +66,15 @@ test("カテゴリ直通窓口がある場合は同じ自立相談窓口を重�
   const selfReliance = office({
     id: "self-reliance",
     categoryId: "housing",
+    plainName: "生活困窮者自立相談",
     contactType: "self-reliance",
   });
+  const selected = selectOffices([direct, selfReliance], "city", "rent");
   assert.deepEqual(
-    selectOffices([direct, selfReliance], "city", "rent").map((item) => item.id),
+    selected.map((item) => item.id),
     ["rent-direct"],
   );
+  assert.match(selected[0].description, /生活困窮者自立相談/);
 });
 
 test("同じ電話番号ではカテゴリ別のつなぎ依頼を一般代表より優先する", () => {
@@ -81,12 +86,15 @@ test("同じ電話番号ではカテゴリ別のつなぎ依頼を一般代表�
   const general = office({
     id: "city-general",
     categoryId: "unknown",
+    plainName: "市役所の代表窓口",
     contactType: "representative",
   });
+  const selected = selectOffices([general, categoryFallback], "city", "money");
   assert.deepEqual(
-    selectOffices([general, categoryFallback], "city", "money").map((item) => item.id),
+    selected.map((item) => item.id),
     ["public-assistance-fallback"],
   );
+  assert.match(selected[0].description, /市役所の代表窓口/);
 });
 
 test("検索クライアントはカテゴリをAPIへ送信しない", async () => {

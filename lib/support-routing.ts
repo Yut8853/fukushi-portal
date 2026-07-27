@@ -52,15 +52,28 @@ export function transferTarget(categoryId: string): string {
   return TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown;
 }
 
-function deduplicateByPhone(offices: Office[]): Office[] {
-  const seenPhones = new Set<string>();
-  return offices.filter((item) => {
+function mergeByPhone(offices: Office[]): Office[] {
+  const indexes = new Map<string, number>();
+  const merged: Office[] = [];
+  offices.forEach((item) => {
     const phone = item.phone.replace(/\D/g, "");
-    if (!phone) return true;
-    if (seenPhones.has(phone)) return false;
-    seenPhones.add(phone);
-    return true;
+    if (!phone || !indexes.has(phone)) {
+      if (phone) indexes.set(phone, merged.length);
+      merged.push({ ...item });
+      return;
+    }
+    const index = indexes.get(phone)!;
+    const preferred = merged[index];
+    const preferredLabel = preferred.plainName || preferred.name;
+    const alternateLabel = item.plainName || item.name;
+    if (alternateLabel === preferredLabel || preferred.description.includes(alternateLabel)) return;
+    const note = `同じ電話番号で「${alternateLabel}」の案内にも対応しています。`;
+    merged[index] = {
+      ...preferred,
+      description: preferred.description ? `${preferred.description} ${note}` : note,
+    };
   });
+  return merged;
 }
 
 export function selectOffices(
@@ -95,11 +108,14 @@ export function selectOffices(
     const violenceSpecificFirst = [...direct].sort(
       (a, b) => Number(/(?:^|-)dv(?:-|$)/i.test(b.id)) - Number(/(?:^|-)dv(?:-|$)/i.test(a.id)),
     );
-    return deduplicateByPhone(violenceSpecificFirst);
+    return mergeByPhone(violenceSpecificFirst);
   }
-  const supplementarySelfReliance = direct.some((item) => item.phone) ? [] : selfReliance;
+  const directPhones = new Set(direct.map((item) => item.phone.replace(/\D/g, "")).filter(Boolean));
+  const supplementarySelfReliance = directPhones.size
+    ? selfReliance.filter((item) => directPhones.has(item.phone.replace(/\D/g, "")))
+    : selfReliance;
   const ordered = SELF_RELIANCE_FIRST_CATEGORIES.has(categoryId)
     ? [...supplementarySelfReliance, ...direct, ...representatives]
     : [...direct, ...supplementarySelfReliance, ...representatives];
-  return deduplicateByPhone(ordered);
+  return mergeByPhone(ordered);
 }

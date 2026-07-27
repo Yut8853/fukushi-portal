@@ -1,0 +1,39 @@
+name: Sources Monitor
+
+on:
+  schedule:
+    # 毎週月曜日 00:15 JST（日曜日 15:15 UTC）
+    - cron: "15 15 * * 0"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sources-monitor-weekly
+  cancel-in-progress: false
+
+jobs:
+  monitor:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    env:
+      CRAWLER_CONTACT: hello@junkbranding.com
+      CRAWLER_CONCURRENCY: "2"
+      CRAWLER_DELAY_MS: "2000"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+      - run: npm ci
+      - name: Check all published official sources
+        run: npm run sources:monitor -- --all --fail-on-change
+      - name: Upload monitor results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: source-monitor-results
+          path: data/source-monitor.json
+          retention-days: 30

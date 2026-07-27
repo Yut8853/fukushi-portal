@@ -104,6 +104,30 @@ function selectPrograms(
     : available.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
 }
 
+function mergeFinderOfficesByPhone(offices: FinderOffice[]): FinderOffice[] {
+  const indexes = new Map<string, number>();
+  const merged: FinderOffice[] = [];
+  offices.forEach((item) => {
+    const phone = item.phone.replace(/\D/g, "");
+    if (!phone || !indexes.has(phone)) {
+      if (phone) indexes.set(phone, merged.length);
+      merged.push({ ...item });
+      return;
+    }
+    const index = indexes.get(phone)!;
+    const preferred = merged[index];
+    const preferredLabel = preferred.plainName || preferred.name;
+    const alternateLabel = item.plainName || item.name;
+    if (alternateLabel === preferredLabel || preferred.description.includes(alternateLabel)) return;
+    const note = `同じ電話番号で「${alternateLabel}」の案内にも対応しています。`;
+    merged[index] = {
+      ...preferred,
+      description: preferred.description ? `${preferred.description} ${note}` : note,
+    };
+  });
+  return merged;
+}
+
 function selectFinderOffices(
   offices: FinderOffice[],
   categoryId: string,
@@ -122,20 +146,16 @@ function selectFinderOffices(
   );
   const representatives = [...categoryRepresentatives, ...generalRepresentatives];
   if (categoryId === "violence") {
-    const seenPhones = new Set<string>();
-    return [...direct]
-      .sort(
+    return mergeFinderOfficesByPhone(
+      [...direct].sort(
         (a, b) => Number(/(?:^|-)dv(?:-|$)/i.test(b.id)) - Number(/(?:^|-)dv(?:-|$)/i.test(a.id)),
-      )
-      .filter((item) => {
-        const phone = item.phone.replace(/\D/g, "");
-        if (!phone) return true;
-        if (seenPhones.has(phone)) return false;
-        seenPhones.add(phone);
-        return true;
-      });
+      ),
+    );
   }
-  const supplementarySelfReliance = direct.some((item) => item.phone) ? [] : selfReliance;
+  const directPhones = new Set(direct.map((item) => item.phone.replace(/\D/g, "")).filter(Boolean));
+  const supplementarySelfReliance = directPhones.size
+    ? selfReliance.filter((item) => directPhones.has(item.phone.replace(/\D/g, "")))
+    : selfReliance;
   const selfRelianceFirst = new Set([
     "food",
     "housing",
@@ -147,19 +167,10 @@ function selectFinderOffices(
   const ordered = selfRelianceFirst
     ? [...supplementarySelfReliance, ...direct, ...representatives]
     : [...direct, ...supplementarySelfReliance, ...representatives];
-  const seenPhones = new Set<string>();
-  return ordered
-    .filter((item) => {
-      const phone = item.phone.replace(/\D/g, "");
-      if (!phone) return true;
-      if (seenPhones.has(phone)) return false;
-      seenPhones.add(phone);
-      return true;
-    })
-    .map((item) => ({
-      ...item,
-      transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,
-    }));
+  return mergeFinderOfficesByPhone(ordered).map((item) => ({
+    ...item,
+    transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,
+  }));
 }
 
 export default function SupportFinder({ data }: { data: FinderViewModel }) {
