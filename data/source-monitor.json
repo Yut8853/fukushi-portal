@@ -663,6 +663,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-iwate-housing-benefit",
+    "url": "https://www.pref.iwate.jp/kurashikankyou/kosodate/shien/1003405/1003418.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:36:39.581Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 46492,
+    "contentHash": "6c5908ca432401bd28c2a601e5520deba7e74ca41a1b1b054002648f0ec15be5",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-iwate-municipalities",
+    "url": "https://www.pref.iwate.jp/kensei/toukei/toukei/1012206.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:36:35.457Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 41749,
+    "contentHash": "d9c619e5a0bfd0b0f0243c50860d424a727ad7ba2aaeff070383f583793b913b",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-iwate-public-assistance",
+    "url": "https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/003/567/madoguchi0623.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:36:41.563Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 161013,
+    "contentHash": "563c4a71b5b24b4945a850eeadafb9e548255601b7eb3f3d94d291f5da3abcc1",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-iwate-self-reliance",
+    "url": "https://www.pref.iwate.jp/_res/projects/default_project/_page_/001/003/572/iwatejiritsu.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:36:37.566Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 136635,
+    "contentHash": "be687daffd43159d4a671ac6bbeaf3c11c9a752436ff073cc6080dab1977fad8",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-kagawa-municipal-offices",
     "url": "https://www.pref.kagawa.lg.jp/shogaifukushi/sogo/sonota/link.html",
     "status": "ok",
