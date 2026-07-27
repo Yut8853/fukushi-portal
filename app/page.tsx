@@ -25,7 +25,8 @@ export default async function HomePage() {
             名前や住所の入力は不要です。
           </p>
           <p className="coverage-proof">
-            全国1,741自治体・7,221窓口を収録（公開7,211件）。公式情報をもとに確認しています。
+            全国1,741自治体・7,221窓口を収録（公開7,211件）。公式情報から窓口・連絡先・出典を
+            確認して掲載しています。受付時間など、公式情報から安全に確認できない項目は表示していません。
             <small>
               サイト全体の最終更新：
               {updatedYear && updatedMonth && updatedDay

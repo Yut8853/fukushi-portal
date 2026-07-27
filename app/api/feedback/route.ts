@@ -1,11 +1,26 @@
+import { createHmac } from "node:crypto";
 import { NextResponse } from "next/server";
 import { z } from "zod";
+
+const RATE_LIMIT_MAX_REQUESTS = 5;
+const RATE_LIMIT_WINDOW_MS = 60_000;
 
 const feedbackSchema = z.object({
   pageId: z.string().regex(/^[a-z0-9-]{1,120}$/),
   categoryId: z.string().regex(/^[a-z0-9-]{1,40}$/),
   helpful: z.boolean(),
 });
+
+function getRateLimitToken(request: Request, secret: string) {
+  const forwardedFor = request.headers.get("x-forwarded-for");
+  const clientAddress =
+    request.headers.get("x-vercel-forwarded-for") ??
+    forwardedFor?.split(",")[0]?.trim() ??
+    "unknown";
+  const windowId = Math.floor(Date.now() / RATE_LIMIT_WINDOW_MS);
+
+  return createHmac("sha256", secret).update(`${windowId}:${clientAddress}`).digest("hex");
+}
 
 export async function POST(request: Request) {
   const contentLength = Number(request.headers.get("content-length") ?? "0");
@@ -29,6 +44,32 @@ export async function POST(request: Request) {
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
   if (!supabaseUrl || !serviceRoleKey) {
     return NextResponse.json({ error: "集計機能は現在利用できません。" }, { status: 503 });
+  }
+
+  const rateLimitResponse = await fetch(`${supabaseUrl}/rest/v1/rpc/check_feedback_rate_limit`, {
+    method: "POST",
+    headers: {
+      apikey: serviceRoleKey,
+      authorization: `Bearer ${serviceRoleKey}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify({
+      p_token: getRateLimitToken(request, serviceRoleKey),
+      p_max_requests: RATE_LIMIT_MAX_REQUESTS,
+    }),
+    cache: "no-store",
+  });
+
+  if (!rateLimitResponse.ok) {
+    return NextResponse.json({ error: "送信回数を確認できませんでした。" }, { status: 503 });
+  }
+
+  const rateLimitAllowed: unknown = await rateLimitResponse.json();
+  if (rateLimitAllowed !== true) {
+    return NextResponse.json(
+      { error: "短時間に送信できる回数を超えました。1分ほど待ってからお試しください。" },
+      { status: 429, headers: { "Retry-After": "60" } },
+    );
   }
 
   const response = await fetch(`${supabaseUrl}/rest/v1/feedback_events`, {

@@ -172,6 +172,12 @@ create table public.feedback_events (
   created_at timestamptz not null default now()
 );
 
+create table public.feedback_rate_limits (
+  token text primary key check (char_length(token) = 64),
+  request_count integer not null default 1 check (request_count > 0),
+  expires_at timestamptz not null
+);
+
 create index municipalities_prefecture_idx on public.municipalities(prefecture_code);
 create index municipalities_public_idx on public.municipalities(status, support_level);
 create index offices_municipality_idx on public.offices(municipality_id);
@@ -184,6 +190,7 @@ create index source_monitor_logs_source_idx on public.source_monitor_logs(source
 create index feedback_events_created_at_idx on public.feedback_events(created_at desc);
 create index feedback_events_page_category_idx
 on public.feedback_events(page_id, category_id, created_at desc);
+create index feedback_rate_limits_expires_at_idx on public.feedback_rate_limits(expires_at);
 
 create or replace function public.set_updated_at()
 returns trigger language plpgsql as $$
@@ -192,6 +199,39 @@ begin
   return new;
 end;
 $$;
+
+create or replace function public.check_feedback_rate_limit(
+  p_token text,
+  p_max_requests integer default 5
+)
+returns boolean
+language plpgsql
+security definer
+set search_path = public
+as $$
+declare
+  affected_rows integer;
+begin
+  if char_length(p_token) <> 64 or p_max_requests < 1 then
+    return false;
+  end if;
+
+  delete from public.feedback_rate_limits where expires_at <= now();
+  delete from public.feedback_events where created_at < now() - interval '12 months';
+
+  insert into public.feedback_rate_limits (token, request_count, expires_at)
+  values (p_token, 1, now() + interval '10 minutes')
+  on conflict (token) do update
+  set request_count = public.feedback_rate_limits.request_count + 1
+  where public.feedback_rate_limits.request_count < p_max_requests;
+
+  get diagnostics affected_rows = row_count;
+  return affected_rows = 1;
+end;
+$$;
+
+revoke all on function public.check_feedback_rate_limit(text, integer) from public;
+grant execute on function public.check_feedback_rate_limit(text, integer) to service_role;
 
 create trigger municipalities_updated_at before update on public.municipalities
 for each row execute function public.set_updated_at();
@@ -224,6 +264,7 @@ alter table public.admin_profiles enable row level security;
 alter table public.verification_logs enable row level security;
 alter table public.source_monitor_logs enable row level security;
 alter table public.feedback_events enable row level security;
+alter table public.feedback_rate_limits enable row level security;
 
 create policy "public read prefectures" on public.prefectures for select using (true);
 create policy "public read categories" on public.categories for select using (true);
