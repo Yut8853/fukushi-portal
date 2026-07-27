@@ -128,30 +128,30 @@ npm run start
 `.env.local` の例:
 
 ```dotenv
-NEXT_PUBLIC_SITE_URL=https://fukushi.junkbranding.com
-NEXT_PUBLIC_SITE_OPERATOR=JUNKBRANDING
-NEXT_PUBLIC_CORRECTION_EMAIL=hello@junkbranding.com
-GOOGLE_SITE_VERIFICATION=LEkZOcAeq4rXooCOsOS3EisHeiHwDTe9Zl7Rka0F0gQ
+NEXT_PUBLIC_SITE_URL=
+NEXT_PUBLIC_SITE_OPERATOR=
+NEXT_PUBLIC_CORRECTION_EMAIL=
+GOOGLE_SITE_VERIFICATION=
 
-ADMIN_BASIC_USER=admin
-ADMIN_BASIC_PASSWORD=十分に長いランダムなパスワード
+ADMIN_BASIC_USER=
+ADMIN_BASIC_PASSWORD=
 # 複数利用者の場合:
-# ADMIN_BASIC_USERS_JSON={"user1":"password1","user2":"password2"}
+# ADMIN_BASIC_USERS_JSON=
 
-CRAWLER_CONTACT=hello@junkbranding.com
-CRAWLER_CONCURRENCY=2
-CRAWLER_DELAY_MS=2000
-CRAWLER_TIMEOUT_MS=15000
-CRAWLER_MAX_RETRIES=3
-CRAWLER_MAX_PAGES=20
+CRAWLER_CONTACT=
+CRAWLER_CONCURRENCY=
+CRAWLER_DELAY_MS=
+CRAWLER_TIMEOUT_MS=
+CRAWLER_MAX_RETRIES=
+CRAWLER_MAX_PAGES=
 ```
 
 Supabaseを使う場合だけ追加します。
 
 ```dotenv
-DATA_BACKEND=supabase
-SUPABASE_URL=https://example.supabase.co
-SUPABASE_SERVICE_ROLE_KEY=server-only-secret
+DATA_BACKEND=
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
 ```
 
 注意:
@@ -240,7 +240,7 @@ npm run municipalities:promote -- --count=10 --verified-at=2026-07-27
 自治体公式URLの解決:
 
 ```bash
-URL_RESOLVER_CODES=08201,08220 npm run municipality-urls:resolve
+URL_RESOLVER_CODES= npm run municipality-urls:resolve
 ```
 
 URLを自動発見しても、自治体名、公式ドメイン、ページ内容を確認するまで正データにしません。
