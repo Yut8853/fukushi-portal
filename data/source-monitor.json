@@ -429,6 +429,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-hokkaido-housing-benefit",
+    "url": "https://www.pref.hokkaido.lg.jp/hf/feg/seikatsukonkyuu.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:27:03.329Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 33363,
+    "contentHash": "c4255359adacb9cad16e3a74d5f800c3dd2e8078cf4d753ce92e61b598e91832",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hokkaido-municipalities",
+    "url": "https://www.pref.hokkaido.lg.jp/link/shichoson/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:27:06.002Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 21034,
+    "contentHash": "a3d15c5cc6f115db8dfb89cfcdacff261b27d2e61bb7c5cb50b37923972f5f6e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hokkaido-public-assistance",
+    "url": "https://www.pref.hokkaido.lg.jp/hf/feg/hog/a0005.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:27:07.616Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 23374,
+    "contentHash": "063ad1a746217c202fcc0a33327c46bf9fd5f2e30fbd96d753f46004ef3fdfbf",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hokkaido-self-reliance",
+    "url": "https://www.pref.hokkaido.lg.jp/hf/feg/seikatsukonkyuu.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:27:09.618Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 33363,
+    "contentHash": "c4255359adacb9cad16e3a74d5f800c3dd2e8078cf4d753ce92e61b598e91832",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-hyogo-pref-municipal-offices",
     "url": "https://web.pref.hyogo.lg.jp/kk25/pa05_000000002.html",
     "status": "ok",
