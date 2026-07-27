@@ -1040,6 +1040,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-tottori-municipal-offices",
+    "url": "https://www.pref.tottori.lg.jp/12510.htm",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:05:43.456Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=utf-8",
+    "contentLength": 42176,
+    "contentHash": "23b98ebe857264de7be5b34f5e931d9cdc3590d0124baebf76830d5193212f0a",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tottori-public-assistance",
+    "url": "https://www.pref.tottori.lg.jp/255464.htm",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:05:49.840Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=utf-8",
+    "contentLength": 44229,
+    "contentHash": "267e7bb1d60a4f416292df22043eb28134d49bfbced4d88d6f88106a45c7c41a",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tottori-self-reliance",
+    "url": "https://www.pref.tottori.lg.jp/251575.htm",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:05:45.791Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=utf-8",
+    "contentLength": 62930,
+    "contentHash": "7f0040d7194723c50d8151d92d94add81f970f838d8c931710d3f2dd84befa46",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-toyama-municipalities",
     "url": "https://www.pref.toyama.jp/documents/18401/shichosonrenrakusaki.pdf",
     "status": "ok",
