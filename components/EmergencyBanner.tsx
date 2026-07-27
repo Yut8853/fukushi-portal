@@ -1,22 +1,36 @@
-import { emergencyContacts } from "@/lib/emergency-contacts";
+import { emergencyContacts } from '@/lib/emergency-contacts';
 
 export default function EmergencyBanner() {
-  const primaryContacts = emergencyContacts.filter((contact) => contact.displayMode === "primary");
-  const detailContacts = emergencyContacts.filter((contact) => contact.displayMode === "detail");
-  const latestVerification = emergencyContacts.map((contact) => contact.lastVerifiedAt).sort().at(0);
+  const primaryContacts = emergencyContacts.filter(
+    contact => contact.displayMode === 'primary'
+  );
+  const detailContacts = emergencyContacts.filter(
+    contact => contact.displayMode === 'detail'
+  );
+  const latestVerification = emergencyContacts
+    .map(contact => contact.lastVerifiedAt)
+    .sort()
+    .at(0);
   return (
     <aside className="emergency-banner" aria-label="緊急時の相談先">
       <div className="emergency-inner">
         <div className="emergency-heading">
-          <strong>いま危険がある</strong>
-          <span>すぐに電話</span>
+          <strong>すぐ電話</strong>
         </div>
         <div className="emergency-actions">
-          {primaryContacts.map((contact) => (
+          {primaryContacts.map(contact => (
             <div className="emergency-contact" key={contact.number}>
-              <a href={contact.phoneHref} aria-label={`${contact.label} ${contact.number}へ電話`}>
+              <a
+                href={contact.phoneHref}
+                aria-label={`${contact.label} ${contact.number}へ電話`}
+              >
                 <strong>{contact.number}</strong>
-                <span>{contact.label}<small>{contact.cost}・{contact.availability}</small></span>
+                <span>
+                  {contact.label}
+                  <small>
+                    {contact.cost}・{contact.availability}
+                  </small>
+                </span>
               </a>
             </div>
           ))}
@@ -24,30 +38,50 @@ export default function EmergencyBanner() {
         <details className="emergency-more">
           <summary>電話できない・こころの相談</summary>
           <div className="emergency-detail">
-            {detailContacts.map((contact) => (
+            {detailContacts.map(contact => (
               <p key={contact.id}>
                 <span>{contact.label}</span>
                 <a href={contact.phoneHref}>{contact.number}</a>
-                <small>{contact.cost}・{contact.availability}</small>
-                <a href={contact.officialUrl} target="_blank" rel="noreferrer">{contact.publisher}</a>
+                <small>
+                  {contact.cost}・{contact.availability}
+                </small>
+                <a href={contact.officialUrl} target="_blank" rel="noreferrer">
+                  {contact.publisher}
+                </a>
               </p>
             ))}
             <div className="non-phone-support">
               <strong>声を出せない・電話できないとき</strong>
-              <a href="https://form.soudanplus.jp/ja" target="_blank" rel="noreferrer">
+              <a
+                href="https://form.soudanplus.jp/ja"
+                target="_blank"
+                rel="noreferrer"
+              >
                 DV相談＋ チャット（12時～22時）
               </a>
-              <a href="https://form.soudanplus.jp/mail" target="_blank" rel="noreferrer">
+              <a
+                href="https://form.soudanplus.jp/mail"
+                target="_blank"
+                rel="noreferrer"
+              >
                 DV相談＋ メール（24時間受付）
               </a>
-              <a href="https://www.mhlw.go.jp/mamorouyokokoro/soudan/sns/" target="_blank" rel="noreferrer">
+              <a
+                href="https://www.mhlw.go.jp/mamorouyokokoro/soudan/sns/"
+                target="_blank"
+                rel="noreferrer"
+              >
                 厚生労働省 SNS・チャット相談一覧
               </a>
             </div>
             <ul>
-              {primaryContacts.map((contact) => (
+              {primaryContacts.map(contact => (
                 <li key={contact.id}>
-                  <a href={contact.officialUrl} target="_blank" rel="noreferrer">
+                  <a
+                    href={contact.officialUrl}
+                    target="_blank"
+                    rel="noreferrer"
+                  >
                     {contact.label}の公式情報
                   </a>
                 </li>
