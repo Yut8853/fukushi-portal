@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
+import AfterHoursGuide from "@/components/AfterHoursGuide";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { seoCategoryContent } from "@/lib/seo-content";
@@ -114,6 +115,19 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         <p>{seo.firstAction}</p>
         <p>名前や住所、詳しい事情をこのサイトへ入力する必要はありません。</p>
       </aside>
+      <AfterHoursGuide categoryId={category.id} />
+
+      {(category.id === "food" || category.id === "housing") && (
+        <aside className="expectation-bridge">
+          <h2>{category.id === "food" ? "食べ物につながるための相談窓口です" : "泊まる場所につながるための相談窓口です"}</h2>
+          <p>
+            {category.id === "food"
+              ? "窓口へ電話すると、利用できる食料支援、フードバンク、緊急の食料提供などを一緒に探してもらえます。"
+              : "窓口へ電話すると、一時的な宿泊や住まいの支援を利用できるか一緒に確認してもらえます。"}
+            支援を必ず受けられるという意味ではありませんが、入口になる窓口です。
+          </p>
+        </aside>
+      )}
 
       {category.id === "utilities" && (
         <aside className="utility-guidance">
@@ -144,6 +158,12 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
               </p>
               <h3>{office.plainName || office.name}</h3>
               {office.phone && <p><a className="phone-button" href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}>電話する　<strong>{office.phone}</strong></a></p>}
+              <dl className="office-details">
+                <dt>受付時間</dt>
+                <dd>{office.openingHours || "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}</dd>
+                {office.closedDays && <><dt>休み</dt><dd>{office.closedDays}</dd></>}
+                {office.address && <><dt>場所</dt><dd>{office.address}</dd></>}
+              </dl>
               {contactType === "representative" ? (
                 <div className="transfer-script">
                   <h4>まず受付の人に</h4>
@@ -165,6 +185,20 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
           );
         })}
       </section>
+
+      {offices.length > 0 && (
+        <aside className="connection-fallback">
+          <h2>電話がつながらないとき</h2>
+          <ol>
+            <li>受付時間を確認し、時間内に少し間をあけてかけ直す</li>
+            {offices.some((office) => office.availableMethods.includes("来所")) && (
+              <li>安全に移動できる場合は、受付時間を確認して窓口へ直接行く</li>
+            )}
+            {category.id !== "violence" && <li>急ぐ場合は自治体の代表電話から担当につないでもらう</li>}
+          </ol>
+          <p>つながらなかったことは、あなたの責任ではありません。</p>
+        </aside>
+      )}
 
       {offices.some((office) => officeContactType(office) === "representative") && (
         <aside className="transfer-tips">

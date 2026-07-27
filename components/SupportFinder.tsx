@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import AfterHoursGuide from "@/components/AfterHoursGuide";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/view-models";
 
@@ -19,6 +20,23 @@ function verificationExpired(value: string): boolean {
   return Date.now() - new Date(`${value}T00:00:00Z`).getTime() > 180 * 86_400_000;
 }
 
+const RELATED_CATEGORIES: Record<string, string[]> = {
+  food: ["money", "housing", "work"],
+  housing: ["money", "rent", "violence"],
+  rent: ["money", "work", "debt"],
+  utilities: ["money", "debt", "food"],
+  money: ["food", "rent", "work"],
+  medical: ["money", "disability", "mental"],
+  work: ["money", "rent", "mental"],
+  debt: ["money", "rent", "mental"],
+  violence: ["housing", "children", "mental"],
+  children: ["money", "housing", "work"],
+  mental: ["money", "work", "medical"],
+  disability: ["medical", "money", "care"],
+  care: ["money", "work", "medical"],
+  unknown: ["food", "housing", "money"],
+};
+
 export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [categoryId, setCategoryId] = useState("");
   const [prefectureCode, setPrefectureCode] = useState("");
@@ -30,6 +48,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [offices, setOffices] = useState<FinderOffice[]>([]);
   const [searching, setSearching] = useState(false);
   const [searchError, setSearchError] = useState("");
+  const [municipalitySearch, setMunicipalitySearch] = useState("");
 
   useEffect(() => {
     const query = new URLSearchParams(window.location.search);
@@ -83,10 +102,25 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     () => data.municipalities.filter((item) => item.prefectureCode === prefectureCode),
     [data.municipalities, prefectureCode],
   );
+  const filteredMunicipalityOptions = useMemo(() => {
+    const normalized = municipalitySearch.trim().toLocaleLowerCase("ja");
+    if (!normalized) return municipalityOptions;
+    return municipalityOptions.filter((item) =>
+      item.name.toLocaleLowerCase("ja").includes(normalized) || item.id === municipalityId);
+  }, [municipalityId, municipalityOptions, municipalitySearch]);
   const municipality = data.municipalities.find((item) => item.id === municipalityId);
   const canSearch = Boolean(categoryId);
   const selectedCategory = data.categories.find((item) => item.id === categoryId);
   const showResults = () => {
+    setSearching(true);
+    setSearchError("");
+    setSearched(true);
+    window.setTimeout(() => {
+      document.getElementById("support-results")?.scrollIntoView({ behavior: "smooth", block: "start" });
+    }, 0);
+  };
+  const moveToCategory = (nextCategoryId: string) => {
+    setCategoryId(nextCategoryId);
     setSearching(true);
     setSearchError("");
     setSearched(true);
@@ -157,6 +191,19 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         </div>
       </fieldset>
 
+      {categoryId === "unknown" && (
+        <aside className="urgent-check">
+          <h3>まず、今日・明日の生活は大丈夫ですか？</h3>
+          <p>近いものがあれば、ここから選び直せます。</p>
+          <div>
+            <button type="button" onClick={() => setCategoryId("food")}>食べるものがない</button>
+            <button type="button" onClick={() => setCategoryId("housing")}>寝る場所がない</button>
+            <button type="button" onClick={() => setCategoryId("money")}>生活費がない</button>
+          </div>
+          <small>どれにも当てはまらなければ、「何を選べばよいか分からない」のままで大丈夫です。</small>
+        </aside>
+      )}
+
       <fieldset className="location-fieldset">
         <legend className="visually-hidden">住んでいる地域</legend>
         <div className="step-heading" aria-hidden="true">
@@ -170,21 +217,30 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         <div className="location-grid">
           <label><span>都道府県 <em>任意</em></span>
             <select value={prefectureCode} onChange={(event) => {
-              setPrefectureCode(event.target.value); setMunicipalityId(""); setSearched(false);
+              setPrefectureCode(event.target.value); setMunicipalityId(""); setMunicipalitySearch(""); setSearched(false);
             }}>
               <option value="">選択しない</option>
               {data.prefectures.map((item) => <option key={item.code} value={item.code}>{item.name}</option>)}
             </select>
           </label>
           <label><span>市区町村 <em>任意</em></span>
+            <input
+              type="search"
+              value={municipalitySearch}
+              disabled={!prefectureCode}
+              placeholder={prefectureCode ? "市区町村名を入力して絞り込む" : "先に都道府県を選択"}
+              aria-label="市区町村名で絞り込む"
+              onChange={(event) => setMunicipalitySearch(event.target.value)}
+            />
             <select value={municipalityId} disabled={!prefectureCode} onChange={(event) => {
               setMunicipalityId(event.target.value); setSearched(false);
             }}>
               <option value="">{prefectureCode
                 ? municipalityOptions.length ? "選択しない" : "公開済み自治体はありません"
                 : "先に都道府県を選択"}</option>
-              {municipalityOptions.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
+              {filteredMunicipalityOptions.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}
             </select>
+            {municipalitySearch && <small>{filteredMunicipalityOptions.length}件に絞り込みました</small>}
           </label>
         </div>
 
@@ -234,6 +290,21 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               {shareStatus && <span role="status">{shareStatus}</span>}
             </div>
           </div>
+          <AfterHoursGuide categoryId={categoryId} />
+          {(categoryId === "food" || categoryId === "housing") && (
+            <aside className="expectation-bridge">
+              <h3>{categoryId === "food" ? "食べ物につながるための相談窓口です" : "泊まる場所につながるための相談窓口です"}</h3>
+              <p>
+                {categoryId === "food"
+                  ? "下の窓口へ電話すると、利用できる食料支援、フードバンク、緊急の食料提供などを一緒に探してもらえます。"
+                  : "下の窓口へ電話すると、一時的な宿泊や住まいの支援を利用できるか一緒に確認してもらえます。"}
+                支援を必ず受けられるという意味ではありませんが、入口になる窓口です。
+              </p>
+              <p>
+                最初に「{categoryId === "food" ? "今日食べるものがなくて困っています" : "今夜泊まる場所がなくて困っています"}」と伝えてください。
+              </p>
+            </aside>
+          )}
           {categoryId === "utilities" && (
             <aside className="utility-guidance">
               <h3>電気・ガスと水道では、連絡先が違います</h3>
@@ -289,7 +360,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                     </div>
                   )}
                   <dl className="office-details">
-                    {office.openingHours && <><dt>受付時間</dt><dd>{office.openingHours}</dd></>}
+                    <dt>受付時間</dt>
+                    <dd>{office.openingHours || "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}</dd>
                     {office.closedDays && <><dt>休み</dt><dd>{office.closedDays}</dd></>}
                     {office.address && <><dt>場所</dt><dd>{office.address}</dd></>}
                     {office.serviceArea && <><dt>管轄地域</dt><dd>{office.serviceArea}</dd></>}
@@ -306,6 +378,21 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 </article>
               ))}
             </section>
+          )}
+          {offices.length > 0 && (
+            <aside className="connection-fallback">
+              <h3>電話がつながらないとき</h3>
+              <ol>
+                <li>受付時間を確認し、時間内に少し間をあけてかけ直す</li>
+                {offices.some((office) => office.availableMethods.includes("来所")) && (
+                  <li>安全に移動できる場合は、受付時間を確認して窓口へ直接行く</li>
+                )}
+                {categoryId !== "violence" && (
+                  <li>急ぐ場合は「代表電話・取り次ぎが必要」の番号へかけ、担当につないでもらう</li>
+                )}
+              </ol>
+              <p>つながらなかったことは、あなたの責任ではありません。</p>
+            </aside>
           )}
           {offices.some((office) => office.contactType === "representative") && (
             <aside className="transfer-tips">
@@ -340,6 +427,20 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
           {!results.length && (
             <p className="no-results">この状況に対応する公開済み情報は、まだ登録されていません。</p>
           )}
+          <nav className="related-needs" aria-label="関連する困りごと">
+            <h3>ほかにも、こんな状況ではありませんか？</h3>
+            <p>困りごとは1つでなくて大丈夫です。続けて別の案内も確認できます。</p>
+            <div>
+              {(RELATED_CATEGORIES[categoryId] ?? RELATED_CATEGORIES.unknown).map((relatedId) => {
+                const related = data.categories.find((item) => item.id === relatedId);
+                return related && (
+                  <button type="button" key={relatedId} onClick={() => moveToCategory(relatedId)}>
+                    {related.label}
+                  </button>
+                );
+              })}
+            </div>
+          </nav>
           <FeedbackPrompt context={`${municipalityId || "national"}:${categoryId}`} />
         </div>
       )}

@@ -36,6 +36,7 @@ export type FinderOffice = {
   officialUrl: string;
   openingHours: string;
   closedDays: string;
+  availableMethods: string;
   address: string;
   serviceArea: string;
   eligibilityConditions: string;

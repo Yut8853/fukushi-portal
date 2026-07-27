@@ -5,6 +5,7 @@ import { toFinderViewModel } from "@/lib/data/view-models";
 
 export default async function HomePage() {
   const data = toFinderViewModel(await getPublicPortalData());
+  const [updatedYear, updatedMonth, updatedDay] = data.latestVerifiedAt.split("-");
   return (
     <main id="main" className="page-shell">
       <header className="hero">
@@ -20,6 +21,11 @@ export default async function HomePage() {
           </p>
           <p className="coverage-proof">
             全国1,741自治体・7,221窓口を収録（公開7,211件）。公式情報をもとに確認しています。
+            <small>
+              サイト全体の最終更新：{updatedYear && updatedMonth && updatedDay
+                ? `${updatedYear}年${Number(updatedMonth)}月${Number(updatedDay)}日`
+                : "未確認"}
+            </small>
           </p>
           <p className="multilingual-link">
             <a href="https://www.moj.go.jp/isa/support/fresc/fresc01.html" target="_blank" rel="noreferrer">
