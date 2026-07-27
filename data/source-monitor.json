@@ -611,6 +611,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-kochi-municipal-offices",
+    "url": "https://www.pref.kochi.lg.jp/doc/2021080200157/",
+    "status": "changed",
+    "checkedAt": "2026-07-27T01:39:30.787Z",
+    "changedAt": "2026-07-27T01:39:30.787Z",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 20060,
+    "contentHash": "06bc07f3de0f84ce896c4561f019c20ef5eedcdbc8c6ea2136915be1a65c39a5",
+    "previousHash": "9bc5d1f73ce0a180caadcf46f630ad1c86b50d32f09f8500fd0c77581989121d",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kochi-public-assistance",
+    "url": "https://www.pref.kochi.lg.jp/doc/seiho-gaiyou/",
+    "status": "changed",
+    "checkedAt": "2026-07-27T01:39:34.866Z",
+    "changedAt": "2026-07-27T01:39:34.866Z",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 30661,
+    "contentHash": "6eaead777564d89ef4866452932e3ebf9190911eece62d8367e3efbba649384f",
+    "previousHash": "d4aefa309034ba54c7d2f2fe497863e76465c108b14c54ff2281ca6b180d31e7",
+    "error": ""
+  },
+  {
+    "sourceId": "source-kochi-self-reliance",
+    "url": "https://www.pref.kochi.lg.jp/doc/2020040900496/",
+    "status": "changed",
+    "checkedAt": "2026-07-27T01:39:32.893Z",
+    "changedAt": "2026-07-27T01:39:32.893Z",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 32195,
+    "contentHash": "7ce86d74520ef3c99c924fb7c05ab70310d5920ff8619a3c57fc3a8e45013c39",
+    "previousHash": "43484cb1f2d09a24cbedfef5179e562218e368d77494aadc9c51494066e7063c",
+    "error": ""
+  },
+  {
     "sourceId": "source-kyoto-city-public-assistance",
     "url": "https://www.city.kyoto.lg.jp/hokenfukushi/page/0000281356.html",
     "status": "ok",
