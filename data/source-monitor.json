@@ -2158,6 +2158,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-yamagata-housing-benefit",
+    "url": "https://www.pref.yamagata.jp/090014/kenfuku/fukushi/seikatsuhogo/jiritsushien.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:49:19.449Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 28798,
+    "contentHash": "b22e062158a582a97d5083bb99213476a76989a95970c01b9a0de34e3eab87d0",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamagata-municipalities",
+    "url": "https://www.pref.yamagata.jp/020026/kensei/information/clink.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:49:15.216Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 22132,
+    "contentHash": "56fde9403f926194a8f04a8dfa9a42371ec6292ce20ef64547fb473875a18bb9",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamagata-public-assistance",
+    "url": "https://www.pref.yamagata.jp/090014/kenfuku/fukushi/seikatsuhogo/seikatuhogo.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:49:21.454Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 21613,
+    "contentHash": "f2a719e0efa625bdafb8c3381cab6cd6e9c6bf1bf0ec5bc25c767002f572d106",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamagata-self-reliance",
+    "url": "https://www.pref.yamagata.jp/documents/4325/kenfukusisabisunotunagisaki.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:49:17.740Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 103119,
+    "contentHash": "d9e17c55cd86938e49a2ccca721e63b6094df71a1e21fac5d22a25143102b138",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-yamaguchi-housing-benefit",
     "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18183.html",
     "status": "ok",
