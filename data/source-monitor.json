@@ -923,6 +923,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-miyazaki-housing-benefit",
+    "url": "https://www.pref.miyazaki.lg.jp/mina-terasu/juukyokakuho.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:08:28.702Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 21527,
+    "contentHash": "8a8eacd101bb5245952795b469a8f5f21912bcc59e0252108b2149b86d220f06",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-miyazaki-municipalities",
+    "url": "https://www.pref.miyazaki.lg.jp/kohosenryaku/kense/shichoson/shichosonmap.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:08:30.837Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 27453,
+    "contentHash": "2e5d62d2ce66f6ac06f1f23c95f24e2fa0545cdf6e6803265c1d0c31088d767e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-miyazaki-public-assistance",
+    "url": "https://www.pref.miyazaki.lg.jp/documents/67248/67248_20260121102239-1.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:08:32.840Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 42767,
+    "contentHash": "3ece548d93459b6d8065f8525fc86b3ab45dd61569c8fb921a019e59e8bdf742",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-miyazaki-self-reliance",
+    "url": "https://www.pref.miyazaki.lg.jp/mina-terasu/index.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:08:34.827Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 17627,
+    "contentHash": "7bd1c2be5acd40d2bb9229140dfa025a380f2c74643f4b7c89f8c5af2b892c7f",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-nagano-housing-benefit",
     "url": "https://www.pref.nagano.lg.jp/chiiki-fukushi/kenko/fukushi/konkyu/puropo.html",
     "status": "ok",
