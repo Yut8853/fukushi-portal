@@ -780,6 +780,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-okayama-housing-benefit",
+    "url": "https://www.pref.okayama.jp/page/detail-54694.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:12:11.641Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 35954,
+    "contentHash": "526c934bd55f8c826f7c558a7934fbdfa5dfec7cb40646d2c784c10b2f0750d1",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-okayama-municipal-offices",
+    "url": "https://www.pref.okayama.jp/uploaded/attachment/396315.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:12:07.287Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 290036,
+    "contentHash": "5be768559017050354b09a1a5701dcb3ef8cc1ab83c879b920147b8748ff971f",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-okayama-public-assistance",
+    "url": "https://www.pref.okayama.jp/page/418224.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:12:13.537Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 93198,
+    "contentHash": "55ca91f896a565e75644001c2cedb791a5d7acfa2eb7ca795b0f3ece7fc80c88",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-okayama-self-reliance",
+    "url": "https://www.pref.okayama.jp/page/689589.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:12:09.685Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 22780,
+    "contentHash": "598eddf820631451c1dec153efa891ac7e352ce53e1161699a07eff073771442",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-osaka-pref-municipality-representatives",
     "url": "https://www.pref.osaka.lg.jp/o120070/kankyohozen/kaitai-chek/index.html",
     "status": "ok",
