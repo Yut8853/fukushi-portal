@@ -68,6 +68,8 @@ export const officeSchema = z.object({
   accessibility: optionalString,
   languages: optionalString,
   emergencyAlternative: optionalString,
+  serviceArea: optionalString,
+  eligibilityConditions: optionalString,
   sourceId: optionalString,
   status: statusSchema,
   lastVerifiedAt: optionalDate,

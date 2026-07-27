@@ -7,6 +7,9 @@ export default function SiteFooter() {
         <div>
           <strong>くらし支援ナビ</strong>
           <p>制度名を知らなくても、生活の困りごとから相談先を探すための案内サイトです。</p>
+          <p className="footer-disclaimer">
+            個人運営の情報案内サイトです。行政機関・支援団体ではなく、相談受付、支援の仲介・保証は行いません。
+          </p>
         </div>
         <nav aria-label="サイト情報">
           <Link href="/about">このサイトについて・免責事項</Link>

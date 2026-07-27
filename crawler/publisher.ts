@@ -143,6 +143,8 @@ export async function previewCandidatePublication(
       accessibility: candidate.accessibility,
       languages: candidate.languages,
       emergencyAlternative: candidate.emergencyAlternative,
+      serviceArea: "",
+      eligibilityConditions: "",
       sourceId,
       status: "published",
       lastVerifiedAt: checkedAt,

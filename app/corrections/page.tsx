@@ -4,6 +4,8 @@ export default function CorrectionsPage() {
   const email = process.env.NEXT_PUBLIC_CORRECTION_EMAIL?.trim();
   const subject = encodeURIComponent("くらし支援ナビ 掲載情報の訂正依頼");
   const body = encodeURIComponent([
+    "※この窓口では個別の生活相談を受け付けていません。",
+    "",
     "訂正が必要なページまたは自治体名:",
     "",
     "訂正が必要な内容:",
@@ -20,6 +22,11 @@ export default function CorrectionsPage() {
 
       <section className="content-section">
         <h2>訂正をお知らせください</h2>
+        <p className="consultation-warning">
+          <strong>この窓口では、個別の生活相談にはお答えできません。</strong><br />
+          お急ぎの場合や生命・身体に危険がある場合は、ページ上部の緊急連絡先または掲載された公的窓口へ
+          直接ご相談ください。
+        </p>
         <p>
           電話番号、受付時間、制度内容、リンク切れなどに誤りがある場合は、対象の自治体名、
           訂正内容、公的な出典URLをお知らせください。確認後、公開情報を修正します。

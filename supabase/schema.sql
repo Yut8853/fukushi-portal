@@ -79,6 +79,8 @@ create table public.offices (
   accessibility text not null default '',
   languages text not null default '',
   emergency_alternative text not null default '',
+  service_area text not null default '',
+  eligibility_conditions text not null default '',
   source_id text references public.sources(id),
   status public.content_status not null default 'draft',
   last_verified_at date,

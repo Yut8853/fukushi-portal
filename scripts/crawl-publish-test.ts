@@ -56,6 +56,8 @@ function officePreview(idSuffix: string): PublishPreview {
       accessibility: "",
       languages: "",
       emergencyAlternative: "",
+      serviceArea: "",
+      eligibilityConditions: "",
       sourceId,
       status: "published",
       lastVerifiedAt: "2026-07-26",

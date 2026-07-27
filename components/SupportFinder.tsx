@@ -13,6 +13,11 @@ function telephoneHref(value: string): string {
   return `tel:${value.replace(/[^\d+]/g, "")}`;
 }
 
+function verificationExpired(value: string): boolean {
+  if (!value) return true;
+  return Date.now() - new Date(`${value}T00:00:00Z`).getTime() > 180 * 86_400_000;
+}
+
 export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [categoryId, setCategoryId] = useState("");
   const [prefectureCode, setPrefectureCode] = useState("");
@@ -57,6 +62,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         <p className="finder-help">
           制度名は分からなくて大丈夫です。入力内容が送信・保存されることはありません。
         </p>
+        {verificationExpired(data.latestVerifiedAt) && (
+          <p className="stale-data-warning" role="alert">
+            掲載情報の最終更新から180日以上経過しています。連絡前に必ず公式サイトで最新情報を確認してください。
+          </p>
+        )}
       </div>
 
       <div className="finder-progress" aria-label="検索の流れ">
@@ -165,6 +175,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 <article key={office.id} className="office-card">
                   <p className="step-label">地域の窓口</p>
                   <h4>{office.plainName || office.name}</h4>
+                  {office.categoryId === "unknown" && categoryId !== "unknown" && (
+                    <p className="fallback-notice">
+                      この困りごとの専用窓口は未登録のため、自治体の代表窓口経由で案内します。
+                    </p>
+                  )}
                   {office.description && <p>{office.description}</p>}
                   {office.phone && (
                     <a className="phone-button" href={telephoneHref(office.phone)}>
@@ -176,6 +191,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                     {office.openingHours && <><dt>受付時間</dt><dd>{office.openingHours}</dd></>}
                     {office.closedDays && <><dt>休み</dt><dd>{office.closedDays}</dd></>}
                     {office.address && <><dt>場所</dt><dd>{office.address}</dd></>}
+                    {office.serviceArea && <><dt>管轄地域</dt><dd>{office.serviceArea}</dd></>}
+                    {office.eligibilityConditions && <><dt>対象条件</dt><dd>{office.eligibilityConditions}</dd></>}
                   </dl>
                   <footer className="source-row">
                     {office.sourceUrl

@@ -37,6 +37,8 @@ export type FinderOffice = {
   openingHours: string;
   closedDays: string;
   address: string;
+  serviceArea: string;
+  eligibilityConditions: string;
   lastVerifiedAt: string;
   sourceTitle: string;
   sourceUrl: string;
@@ -48,6 +50,7 @@ export type FinderViewModel = {
   municipalities: FinderMunicipality[];
   programs: FinderProgram[];
   offices: FinderOffice[];
+  latestVerifiedAt: string;
 };
 
 export function toFinderViewModel(data: PortalData): FinderViewModel {
@@ -87,10 +90,15 @@ export function toFinderViewModel(data: PortalData): FinderViewModel {
       openingHours: office.openingHours,
       closedDays: office.closedDays,
       address: office.address,
+      serviceArea: office.serviceArea,
+      eligibilityConditions: office.eligibilityConditions,
       lastVerifiedAt: office.lastVerifiedAt,
       sourceTitle: sources.get(office.sourceId)?.title ?? "",
       sourceUrl: sources.get(office.sourceId)?.url ?? "",
     })),
+    latestVerifiedAt: [
+      ...data.municipalities, ...data.offices, ...data.programs, ...data.sources,
+    ].map((item) => item.lastVerifiedAt).filter(Boolean).sort().at(-1) ?? "",
   };
 }
 
