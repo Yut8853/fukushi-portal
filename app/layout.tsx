@@ -22,12 +22,26 @@ export const metadata: Metadata = {
     description: "制度名を知らなくても、生活の困りごとから地域の公的な相談先を探せます。",
   },
   twitter: { card: "summary_large_image" },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION?.trim() || undefined,
+  },
+  category: "福祉・生活相談",
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="ja">
       <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "@id": `${siteUrl}/#website`,
+          url: siteUrl,
+          name: "くらし支援ナビ",
+          description: "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
+          inLanguage: "ja",
+          publisher: { "@type": "Organization", name: "JUNKBRANDING" },
+        }) }} />
         <a className="skip-link" href="#main">本文へ移動</a>
         <QuickExit />
         <EmergencyBanner />

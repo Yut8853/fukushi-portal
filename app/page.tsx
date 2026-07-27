@@ -1,3 +1,4 @@
+import Link from "next/link";
 import SupportFinder from "@/components/SupportFinder";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { toFinderViewModel } from "@/lib/data/view-models";
@@ -38,6 +39,12 @@ export default async function HomePage() {
       </header>
 
       <SupportFinder data={data} />
+
+      <section className="content-section directory-cta" aria-labelledby="directory-title">
+        <h2 id="directory-title">地域の相談先一覧から探す</h2>
+        <p>全国47都道府県・1,741自治体のページを、都道府県から選べます。</p>
+        <Link className="official-link" href="/support">地域別の相談先一覧を開く</Link>
+      </section>
 
       <section className="content-section" aria-labelledby="information-policy-title">
         <h2 id="information-policy-title">情報を利用するときに</h2>

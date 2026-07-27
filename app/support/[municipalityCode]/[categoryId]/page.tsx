@@ -4,6 +4,9 @@ import { notFound } from "next/navigation";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
+import { seoCategoryContent } from "@/lib/seo-content";
+
+export const revalidate = 86_400;
 
 type PageProps = {
   params: Promise<{ municipalityCode: string; categoryId: string }>;
@@ -15,6 +18,8 @@ async function getPageData(params: PageProps["params"]) {
   const municipality = data.municipalities.find((item) => item.id === municipalityCode);
   const category = data.categories.find((item) => item.id === categoryId);
   if (!municipality || !category) return null;
+  const prefecture = data.prefectures.find((item) => item.code === municipality.prefectureCode);
+  if (!prefecture) return null;
   const offices = selectOffices(data.offices, municipality.id, category.id);
   const availablePrograms = data.programs.filter((item) =>
     item.scope === "national" || item.municipalityId === municipality.id);
@@ -22,39 +27,93 @@ async function getPageData(params: PageProps["params"]) {
   const programs = directPrograms.length ? directPrograms : availablePrograms.filter((item) =>
     ["public-assistance", "self-reliance"].includes(item.id));
   const sources = new Map(data.sources.map((item) => [item.id, item]));
-  return { municipality, category, offices, programs, sources };
+  const nearbyMunicipalities = data.municipalities
+    .filter((item) => item.prefectureCode === municipality.prefectureCode && item.id !== municipality.id)
+    .slice(0, 8);
+  return { data, municipality, prefecture, category, offices, programs, sources, nearbyMunicipalities };
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const page = await getPageData(params);
   if (!page) return {};
-  const title = `${page.municipality.name}で${page.category.label}ときの相談先`;
-  const description = `${page.municipality.name}で「${page.category.label}」ときに相談できる公的窓口と制度を、公式情報をもとに案内します。`;
+  const seo = seoCategoryContent(page.category.id);
+  const title = `${page.municipality.name}で${seo.searchTitle}ときの相談先`;
+  const firstOffice = page.offices[0]?.plainName || page.offices[0]?.name;
+  const description = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの公的な相談先${firstOffice ? `「${firstOffice}」` : ""}と、電話での伝え方を案内します。`;
   return {
     title,
     description,
+    keywords: [...seo.relatedTerms, page.municipality.name, page.prefecture.name],
     alternates: { canonical: `/support/${page.municipality.id}/${page.category.id}` },
-    openGraph: { title, description },
+    openGraph: {
+      title,
+      description,
+      url: `/support/${page.municipality.id}/${page.category.id}`,
+      type: "article",
+    },
+    robots: {
+      index: page.offices.length > 0,
+      follow: true,
+      googleBot: { index: page.offices.length > 0, follow: true },
+    },
   };
 }
 
 export default async function MunicipalitySupportPage({ params }: PageProps) {
   const page = await getPageData(params);
   if (!page) notFound();
-  const { municipality, category, offices, programs, sources } = page;
+  const { data, municipality, prefecture, category, offices, programs, sources, nearbyMunicipalities } = page;
+  const seo = seoCategoryContent(category.id);
+  const pageUrl = `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/support/${municipality.id}/${category.id}`;
   const jsonLd = {
     "@context": "https://schema.org",
-    "@type": "WebPage",
-    name: `${municipality.name}で${category.label}ときの相談先`,
-    description: category.description,
-    about: { "@type": "GovernmentService", name: category.label },
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": pageUrl,
+        url: pageUrl,
+        name: `${municipality.name}で${seo.searchTitle}ときの相談先`,
+        description: seo.summary,
+        inLanguage: "ja",
+        dateModified: municipality.lastVerifiedAt,
+        isPartOf: { "@id": `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/#website` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "トップ", item: process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com" },
+          { "@type": "ListItem", position: 2, name: "相談先一覧", item: `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/support` },
+          { "@type": "ListItem", position: 3, name: prefecture.name, item: `${process.env.NEXT_PUBLIC_SITE_URL?.trim() || "https://fukushi.junkbranding.com"}/support/${prefecture.code}` },
+          { "@type": "ListItem", position: 4, name: municipality.name },
+        ],
+      },
+      ...(offices.length ? [{
+        "@type": "ItemList",
+        name: `${municipality.name}の相談窓口`,
+        itemListElement: offices.map((office, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          name: office.plainName || office.name,
+          url: sources.get(office.sourceId)?.url || office.officialUrl || pageUrl,
+        })),
+      }] : []),
+    ],
   };
   return (
     <main id="main" className="page-shell content-page support-guide">
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <p className="eyebrow">{municipality.name}の公的な相談先</p>
-      <h1>{municipality.name}で<br />「{category.label}」とき</h1>
-      <p className="lead">{category.description}について、最初に相談できる窓口を案内します。</p>
+      <nav className="breadcrumbs" aria-label="パンくず">
+        <Link href="/">トップ</Link><Link href="/support">相談先一覧</Link>
+        <Link href={`/support/${prefecture.code}`}>{prefecture.name}</Link><span>{municipality.name}</span>
+      </nav>
+      <p className="eyebrow">{prefecture.name}{municipality.name}の公的な相談先</p>
+      <h1>{municipality.name}で<br />{seo.searchTitle}とき</h1>
+      <p className="lead">{seo.summary}</p>
+      <aside className="first-action">
+        <h2>急いでいるとき、最初にすること</h2>
+        <p>{seo.firstAction}</p>
+        <p>名前や住所、詳しい事情をこのサイトへ入力する必要はありません。</p>
+      </aside>
 
       {category.id === "utilities" && (
         <aside className="utility-guidance">
@@ -136,10 +195,33 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         </section>
       )}
 
+      <section className="content-section related-guides">
+        <h2>{municipality.name}のほかの困りごと</h2>
+        <ul>
+          {data.categories.filter((item) => item.id !== category.id).map((item) => (
+            <li key={item.id}><Link href={`/support/${municipality.id}/${item.id}`}>{seoCategoryContent(item.id).searchTitle}</Link></li>
+          ))}
+        </ul>
+      </section>
+
+      {nearbyMunicipalities.length > 0 && (
+        <section className="content-section related-guides">
+          <h2>{prefecture.name}の近隣自治体から探す</h2>
+          <ul>
+            {nearbyMunicipalities.map((item) => (
+              <li key={item.id}><Link href={`/support/${item.id}/${category.id}`}>{item.name}で{seo.searchTitle}とき</Link></li>
+            ))}
+          </ul>
+        </section>
+      )}
+
       <p><a href={municipality.officialUrl} target="_blank" rel="noreferrer">{municipality.name}公式サイトを開く</a></p>
       <p><Link href={`/?need=${category.id}&municipality=${municipality.id}#support-results`}>検索画面でこの案内を見る・共有する</Link></p>
       <FeedbackPrompt context={`${municipality.id}:${category.id}`} />
-      <p className="note">制度や受付時間は変わることがあります。利用前に公式情報または窓口で最新内容を確認してください。</p>
+      <p className="note">
+        情報確認日：{municipality.lastVerifiedAt || "未確認"}。制度や受付時間は変わることがあります。
+        利用前に公式情報または窓口で最新内容を確認してください。
+      </p>
     </main>
   );
 }
