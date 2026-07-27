@@ -702,6 +702,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-nara-pref-municipal-offices-2026",
+    "url": "https://www.pref.nara.lg.jp/n006/9686.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T00:55:51.521Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 28256,
+    "contentHash": "bab3d1251859c48eb0c1508ce103f9c5bd240a2e9a2b4e4da0083e2679e5c447",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-nara-pref-public-assistance-2025",
+    "url": "https://www.pref.nara.lg.jp/documents/5241/tantoitiran.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T00:55:55.707Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 75730,
+    "contentHash": "d0ab4ad163ac78fc90f8714b206c189e45b5e676af80e7fee303a033c698265c",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-nara-pref-self-reliance-2026",
+    "url": "https://www.pref.nara.lg.jp/n063/39628.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T00:55:53.664Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 21555,
+    "contentHash": "4b934d2176ee2fa1a6884100b2ef586dfbbb5f08f2d0570a1fbf8b3a8ccf3ca4",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-niigata-municipalities",
     "url": "https://www.pref.niigata.lg.jp/uploaded/attachment/493935.pdf",
     "status": "ok",
