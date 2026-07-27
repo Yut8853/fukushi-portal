@@ -4,26 +4,57 @@ import { escapeCsv, parseCsv } from "../lib/csv";
 import { getPublicPortalData } from "../lib/data/repository";
 import { officeContactType } from "../lib/support-routing";
 
-function phoneKey(municipalityId: string, phone: string): string {
-  return `${municipalityId}:${phone.replace(/\D/g, "")}`;
+type VerifiedHours = { openingHours: string; closedDays: string };
+
+function phoneKey(phone: string): string {
+  return phone.replace(/\D/g, "");
+}
+
+function addressKey(address: string): string {
+  return address.replace(/[\s　]+/g, "").replace(/[‐－ー]/g, "-");
+}
+
+function addVerified(
+  values: Map<string, VerifiedHours>,
+  conflicts: Set<string>,
+  key: string,
+  hours: VerifiedHours,
+) {
+  if (!key || conflicts.has(key)) return;
+  const current = values.get(key);
+  if (current && (
+    current.openingHours !== hours.openingHours
+    || current.closedDays !== hours.closedDays
+  )) {
+    values.delete(key);
+    conflicts.add(key);
+    return;
+  }
+  values.set(key, hours);
 }
 
 async function main() {
   const apply = process.argv.includes("--apply");
   const data = await getPublicPortalData();
-  const verifiedByPhone = new Map<string, { openingHours: string; closedDays: string }>();
+  const verifiedByPhone = new Map<string, VerifiedHours>();
+  const verifiedByAddress = new Map<string, VerifiedHours>();
+  const phoneConflicts = new Set<string>();
+  const addressConflicts = new Set<string>();
   for (const office of data.offices) {
-    if (!office.phone || !office.openingHours) continue;
-    verifiedByPhone.set(phoneKey(office.municipalityId, office.phone), {
+    if (!office.openingHours) continue;
+    const verified = {
       openingHours: office.openingHours,
       closedDays: office.closedDays,
-    });
+    };
+    if (office.phone) addVerified(verifiedByPhone, phoneConflicts, phoneKey(office.phone), verified);
+    if (office.address) addVerified(verifiedByAddress, addressConflicts, addressKey(office.address), verified);
   }
   const updates = new Map<string, { openingHours: string; closedDays: string }>();
   const byType = new Map<string, number>();
   for (const office of data.offices) {
-    if (!office.phone || office.openingHours) continue;
-    const verified = verifiedByPhone.get(phoneKey(office.municipalityId, office.phone));
+    if (office.openingHours) continue;
+    const verified = (office.phone ? verifiedByPhone.get(phoneKey(office.phone)) : undefined)
+      ?? (office.address ? verifiedByAddress.get(addressKey(office.address)) : undefined);
     if (!verified) continue;
     updates.set(office.id, verified);
     const type = officeContactType(office);
