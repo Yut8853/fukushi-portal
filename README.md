@@ -240,10 +240,10 @@ npm run municipalities:promote -- --count=10 --verified-at=2026-07-27
 自治体公式URLの解決:
 
 ```bash
-URL_RESOLVER_CODES= npm run municipality-urls:resolve
+npm run municipality-urls:resolve
 ```
 
-URLを自動発見しても、自治体名、公式ドメイン、ページ内容を確認するまで正データにしません。
+対象を限定するときは `.env.local` の `URL_RESOLVER_CODES` に自治体コードを設定します。URLを自動発見しても、自治体名、公式ドメイン、ページ内容を確認するまで正データにしません。
 
 ### 3. 窓口を追加する
 
