@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { getPublicPortalData } from "@/lib/data/repository";
 import type { FinderOffice, FinderProgram } from "@/lib/data/view-models";
+import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 
 export async function GET(request: NextRequest) {
   const categoryId = request.nextUrl.searchParams.get("need") ?? "";
@@ -19,11 +20,7 @@ export async function GET(request: NextRequest) {
   const selectedPrograms = directPrograms.length
     ? directPrograms
     : available.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
-  const directOffices = data.offices.filter((item) =>
-    item.municipalityId === municipalityId && item.categoryId === categoryId);
-  const selectedOffices = directOffices.length
-    ? directOffices
-    : data.offices.filter((item) => item.municipalityId === municipalityId && item.categoryId === "unknown");
+  const selectedOffices = selectOffices(data.offices, municipalityId, categoryId);
 
   const programs: FinderProgram[] = selectedPrograms.map((program) => ({
     id: program.id, categoryId: program.categoryId, scope: program.scope,
@@ -43,6 +40,8 @@ export async function GET(request: NextRequest) {
     eligibilityConditions: office.eligibilityConditions, lastVerifiedAt: office.lastVerifiedAt,
     sourceTitle: sources.get(office.sourceId)?.title ?? "",
     sourceUrl: sources.get(office.sourceId)?.url ?? "",
+    contactType: officeContactType(office),
+    transferTarget: transferTarget(categoryId),
   }));
   return NextResponse.json({ programs, offices }, {
     headers: { "Cache-Control": "public, max-age=300, stale-while-revalidate=86400" },

@@ -229,32 +229,60 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               <button type="button" className="secondary-button" onClick={shareResults}>この案内を共有</button>
               {shareStatus && <span role="status">{shareStatus}</span>}
             </div>
-            <div className="result-block call-script">
-              <h3>電話や窓口で、こう伝えて大丈夫です</h3>
-              <p>
-                「{selectedCategory?.label}ことで困っています。
-                使える制度や相談先を教えてください」
-              </p>
-            </div>
           </div>
+          {categoryId === "utilities" && (
+            <aside className="utility-guidance">
+              <h3>電気・ガスと水道では、連絡先が違います</h3>
+              <p>
+                <strong>電気・ガス：</strong>請求書や検針票に書かれた会社へ電話し、
+                「支払いを待ってもらえないか相談したいです」と伝えてください。
+              </p>
+              <p>
+                <strong>水道：</strong>自治体や水道局の料金担当へ相談します。下の窓口から担当につないでもらえます。
+              </p>
+            </aside>
+          )}
+          {categoryId === "violence" && !searching && offices.length === 0 && (
+            <p className="danger-guidance">
+              安全のため、自治体の代表電話は表示していません。ページ上部のDV相談＋の
+              電話・チャット・メールを利用してください。
+            </p>
+          )}
           {offices.length > 0 && (
             <section className="office-results" aria-labelledby="office-results-title">
               <h3 id="office-results-title">電話や来所で相談できる窓口</h3>
               {offices.map((office) => (
                 <article key={office.id} className="office-card">
-                  <p className="step-label">地域の窓口</p>
+                  <p className={`contact-rank ${office.contactType}`}>
+                    {office.contactType === "representative"
+                      ? "代表電話・担当への取り次ぎが必要"
+                      : office.contactType === "self-reliance"
+                        ? "総合相談の直通・このまま話せます"
+                        : "専用窓口の直通・このまま話せます"}
+                  </p>
                   <h4>{office.plainName || office.name}</h4>
-                  {office.categoryId === "unknown" && categoryId !== "unknown" && (
-                    <p className="fallback-notice">
-                      この困りごとの専用窓口は未登録のため、自治体の代表窓口経由で案内します。
-                    </p>
-                  )}
                   {office.description && <p>{office.description}</p>}
                   {office.phone && (
                     <a className="phone-button" href={telephoneHref(office.phone)}>
                       <span>電話する</span>
                       <strong>{office.phone}</strong>
                     </a>
+                  )}
+                  {office.contactType === "representative" ? (
+                    <div className="transfer-script">
+                      <h5>まず受付の人に</h5>
+                      <p>「{office.transferTarget}につないでください」</p>
+                      <small>事情は、まだ話さなくて大丈夫です。</small>
+                      <h5>「どのような用件ですか」と聞かれたら</h5>
+                      <p>「生活のことで相談したいです」</p>
+                      <h5>担当につながったら</h5>
+                      <p>「{selectedCategory?.label}ことで困っています。使える制度や相談先を教えてください」</p>
+                    </div>
+                  ) : (
+                    <div className="direct-script">
+                      <h5>電話で、こう伝えて大丈夫です</h5>
+                      <p>「{selectedCategory?.label}ことで困っています。使える制度や相談先を教えてください」</p>
+                    </div>
                   )}
                   <dl className="office-details">
                     {office.openingHours && <><dt>受付時間</dt><dd>{office.openingHours}</dd></>}
@@ -274,6 +302,17 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 </article>
               ))}
             </section>
+          )}
+          {offices.some((office) => office.contactType === "representative") && (
+            <aside className="transfer-tips">
+              <h3>電話を何度も回されないために</h3>
+              <ol>
+                <li>つないでもらう前に「切れたときのために、直通番号を教えてください」</li>
+                <li>違う担当につながったら「どこにかければよいですか。番号も教えてください」</li>
+                <li>3回回されたら、電話を切って大丈夫です。上にある「総合相談の直通」へかけ直してください。</li>
+              </ol>
+              <p>間違った担当につながっても、謝る必要はありません。</p>
+            </aside>
           )}
           {results.map((result, index) => (
             <article key={result.id} className="result-card">

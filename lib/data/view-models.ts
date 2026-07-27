@@ -42,6 +42,8 @@ export type FinderOffice = {
   lastVerifiedAt: string;
   sourceTitle: string;
   sourceUrl: string;
+  contactType: "direct" | "self-reliance" | "representative";
+  transferTarget: string;
 };
 
 export type FinderViewModel = {
