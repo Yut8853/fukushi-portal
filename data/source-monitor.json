@@ -1326,6 +1326,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-okinawa-housing-benefit",
+    "url": "https://www.pref.okinawa.jp/kyoiku/seikatufukushi/1007920/1007902.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:17:07.440Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 43083,
+    "contentHash": "381d881412939f306acbb4b40a216ff6ee2ba818159272a0edfdefb8d001a852",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-okinawa-municipalities",
+    "url": "https://www.pref.okinawa.jp/about/1018107.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:17:09.650Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 55281,
+    "contentHash": "318505496ab20871a086f1dd695690ba5b23ddf3a32eba8e8302422ff8d89a11",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-okinawa-public-assistance",
+    "url": "https://www.pref.okinawa.jp/kyoiku/seikatufukushi/1007896/1027422.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:17:11.580Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 36191,
+    "contentHash": "7d83afc8a6f7afe40e52b36dde6186e99bac74ad2775dcab4638079b1415fc36",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-okinawa-self-reliance",
+    "url": "https://www.pref.okinawa.jp/kyoiku/seikatufukushi/1007920/1007902.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T02:17:13.595Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 43083,
+    "contentHash": "381d881412939f306acbb4b40a216ff6ee2ba818159272a0edfdefb8d001a852",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-osaka-pref-municipality-representatives",
     "url": "https://www.pref.osaka.lg.jp/o120070/kankyohozen/kaitai-chek/index.html",
     "status": "ok",
