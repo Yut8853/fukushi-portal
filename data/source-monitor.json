@@ -2093,6 +2093,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-tokyo-housing-benefit",
+    "url": "https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsukonnkyuu/jiritsu",
+    "status": "ok",
+    "checkedAt": "2026-07-27T03:03:22.580Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "contentLength": 513554,
+    "contentHash": "fd0657a8c3c334a50a017480c18565bf5c07d364531e22f4b20012f538d7f6b4",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tokyo-municipalities",
+    "url": "https://www.metro.tokyo.lg.jp/sitemap/link/link04",
+    "status": "ok",
+    "checkedAt": "2026-07-27T03:03:17.719Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "contentLength": 523878,
+    "contentHash": "b48893be6e237cac8b6fec892348d4da561995124fd430badf0257d414a82f7d",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tokyo-public-assistance",
+    "url": "https://www.fukushi.metro.tokyo.lg.jp/seikatsu/shisetsu/fukushi",
+    "status": "ok",
+    "checkedAt": "2026-07-27T03:03:24.579Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "contentLength": 535249,
+    "contentHash": "0857b9f78fc7cfd66f766837ef7cd4aa8731729d524fe5476b005d2abd2e9b5e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-tokyo-self-reliance",
+    "url": "https://www.fukushi.metro.tokyo.lg.jp/seikatsu/seikatsukonnkyuu/jiritsu",
+    "status": "ok",
+    "checkedAt": "2026-07-27T03:03:20.199Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html;charset=UTF-8",
+    "contentLength": 512009,
+    "contentHash": "e422a29bbb89d07ae4abf08d62ff15dfcaedda584d0fa7e2fd67bb7c20a127f3",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-tottori-municipal-offices",
     "url": "https://www.pref.tottori.lg.jp/12510.htm",
     "status": "ok",
