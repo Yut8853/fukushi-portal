@@ -8,7 +8,6 @@ import type { CrawlCandidate } from "./types";
 // frequently contain organization codes and form numbers that resemble phone
 // numbers; accepting only visibly separated numbers is safer for public data.
 const phonePattern = /(?:0\d{1,4}[-‐－ー ]\d{1,4}[-‐－ー ]\d{3,4}|#\d{4}|＃\d{4})/;
-const hoursPattern = /(?:受付|開庁|相談|利用)?時間[：:\s]*([^\n。]{3,80})/;
 const addressPattern = /〒?\s*(\d{3}[-‐－]\d{4})?\s*([^\n。]{0,80}(?:都|道|府|県)[^\n。]{2,80})/;
 
 function clean(value: string): string {
@@ -22,6 +21,26 @@ function findPhone(value: string): string {
     const digits = match.replace(/\D/g, "");
     return digits.length === 10 || digits.length === 11;
   })?.replace(/[‐－ー ]/g, "-") ?? "";
+}
+
+export function findOpeningHours(value: string): string {
+  const labels = /(?:受付時間|相談時間|開所時間|利用時間|開庁時間|業務時間)[：:\s・]*([^\n。]{2,120})/g;
+  for (const match of value.matchAll(labels)) {
+    const candidate = clean(match[1])
+      .split(/(?:休業日|休所日|閉庁日|定休日|電話|Tel|TEL|住所)[：:]/, 1)[0]
+      .replace(/^[\s、,）)は]+/, "")
+      .trim();
+    const clockRange = /(?:午前|午後)?\s*\d{1,2}\s*(?:時(?:\d{1,2}分)?|[:：]\d{2})\s*(?:から|～|〜|－|-)\s*(?:午前|午後)?\s*\d{1,2}\s*(?:時(?:\d{1,2}分)?|[:：]\d{2})/;
+    if (clockRange.test(candidate) || /(?:24時間|２４時間)/.test(candidate)) {
+      return candidate.slice(0, 100);
+    }
+  }
+  return "";
+}
+
+export function findClosedDays(value: string): string {
+  const match = value.match(/(?:休業日|休所日|閉庁日|定休日)[：:\s・]*([^\n。]{2,100})/);
+  return match ? clean(match[1]).slice(0, 100) : "";
 }
 
 function candidateId(municipalityId: string, categoryId: string, sourceUrl: string): string {
@@ -46,7 +65,8 @@ export function extractHtml(
   const pageText = `${title}\n${originalText}`;
   const classes = classify(pageText);
   const phone = findPhone(pageText);
-  const hours = pageText.match(hoursPattern)?.[1] ?? "";
+  const hours = findOpeningHours(pageText);
+  const closedDays = findClosedDays(pageText);
   const addressMatch = pageText.match(addressPattern);
   const postalCode = addressMatch?.[1] ?? "";
   const address = addressMatch?.[2]?.trim() ?? "";
@@ -63,7 +83,7 @@ export function extractHtml(
     amountDescription: "", repaymentRequired: null, applicationDeadline: "",
     requiredDocuments: "", documentsOptionalNote: "", applicationFlow: "",
     postalCode, address, phone, phoneOriginal: phone, fax: "", email: "", contactFormUrl: "",
-    openingHours: hours, openingHoursOriginal: hours, closedDays: "",
+    openingHours: hours, openingHoursOriginal: hours, closedDays,
     reservationRequired: null, availableMethods: "", accessibility: "", languages: "",
     emergencyAlternative: "",
     officialUrl, sourceUrl, sourceType: "html", sourcePublishedAt,
@@ -101,8 +121,9 @@ export async function extractPdf(
       amountDescription: "", repaymentRequired: null, applicationDeadline: "",
       requiredDocuments: "", documentsOptionalNote: "", applicationFlow: "", postalCode: "", address: "",
       phone: findPhone(text), phoneOriginal: findPhone(text),
-      fax: "", email: "", contactFormUrl: "", openingHours: "", openingHoursOriginal: "",
-      closedDays: "", reservationRequired: null, availableMethods: "", accessibility: "",
+      fax: "", email: "", contactFormUrl: "",
+      openingHours: findOpeningHours(text), openingHoursOriginal: findOpeningHours(text),
+      closedDays: findClosedDays(text), reservationRequired: null, availableMethods: "", accessibility: "",
       languages: "", emergencyAlternative: "", officialUrl, sourceUrl, sourceType: "pdf", sourcePublishedAt: "",
       extractedAt: new Date().toISOString(), originalText: text, extractionMethod: "pdf_text",
       confidence: Math.min(0.8, 0.4 + score * 0.15), status: "review_required",
