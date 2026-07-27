@@ -273,6 +273,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-hiroshima-housing-benefit",
+    "url": "https://www.pref.hiroshima.lg.jp/site/jutaku-safety-net/kyojuusien.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:18:35.152Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 55124,
+    "contentHash": "3ab79fcaa4ffc4235cc4fbe4a8c0a234bd6a8273a5bb41f45a867d4a6cc5dc88",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hiroshima-municipal-offices",
+    "url": "https://www.pref.hiroshima.lg.jp/uploaded/attachment/634047.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:18:30.957Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 30523,
+    "contentHash": "ff7a4866edca2bd0bc356c95d1f9e0834ccebc7d037cd9608b574380a1a106ac",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hiroshima-public-assistance",
+    "url": "https://www.pref.hiroshima.lg.jp/soshiki/50/hukusi-hokennsyo.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:18:37.117Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 32464,
+    "contentHash": "a275e75c3e2ad99bdacaa3b8199dddb27eeeac2b6a5c0fff41903997c0ab4a46",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-hiroshima-self-reliance",
+    "url": "https://www.pref.hiroshima.lg.jp/soshiki/61/jirityu.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:18:33.084Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 37112,
+    "contentHash": "f907277c11ef6c37905ae6669ae6e3902cf18f6ebccce8a2a87a8c24d28fcb78",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-hyogo-pref-municipal-offices",
     "url": "https://web.pref.hyogo.lg.jp/kk25/pa05_000000002.html",
     "status": "ok",
