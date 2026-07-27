@@ -923,6 +923,45 @@
     "error": ""
   },
   {
+    "sourceId": "source-shimane-municipal-offices",
+    "url": "https://www.pref.shimane.lg.jp/admin/sichoson/sichoson_info/sanko/index.data/yakubajushoR3.7.26.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:08:54.084Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 25492,
+    "contentHash": "2fe165fef18afa3caf56b751543522780eb6691148d5521f8c556dd010d51ec3",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-shimane-public-assistance",
+    "url": "https://www.pref.shimane.lg.jp/medical/fukushi/chiiki/hogo_seido/hogo_aramashi.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:08:58.557Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html; charset=UTF-8",
+    "contentLength": 212709,
+    "contentHash": "03eb6875e1710a74bf8e3dbba1c5622157694cd1372f2769879a9bb8b8a0d507",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-shimane-self-reliance",
+    "url": "https://www1.pref.shimane.lg.jp/medical/fukushi/chiiki/shien/index.data/seikonmadoguti.pdf",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:08:56.327Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "application/pdf",
+    "contentLength": 79972,
+    "contentHash": "e1f28e4296d445a5028409ccab35a6d77e42b2448d7a2ab7a1b58a4e3adf14a8",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-shizuoka-kakegawa-support",
     "url": "https://www.city.kakegawa.shizuoka.jp/gyosei/docs/9173.html",
     "status": "ok",
