@@ -50,6 +50,19 @@ test("DV検索では代表電話を返さない", () => {
   );
 });
 
+test("カテゴリ直通窓口がある場合は同じ自立相談窓口を重ねない", () => {
+  const direct = office({ id: "rent-direct", categoryId: "rent" });
+  const selfReliance = office({
+    id: "self-reliance",
+    categoryId: "housing",
+    contactType: "self-reliance",
+  });
+  assert.deepEqual(
+    selectOffices([direct, selfReliance], "city", "rent").map((item) => item.id),
+    ["rent-direct"],
+  );
+});
+
 test("検索クライアントはカテゴリをAPIへ送信しない", async () => {
   const root = process.cwd();
   const finder = await readFile(path.join(root, "components", "SupportFinder.tsx"), "utf8");

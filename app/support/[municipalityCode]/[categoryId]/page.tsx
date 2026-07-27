@@ -23,13 +23,16 @@ function telephoneAriaLabel(value: string): string {
 }
 
 function officeDisplayName(
-  office: { name: string; plainName: string },
-  offices: { name: string; plainName: string }[],
+  office: { name: string; plainName: string; serviceArea: string },
+  offices: { name: string; plainName: string; serviceArea: string }[],
 ): string {
   if (!office.plainName) return office.name;
-  return offices.filter((item) => item.plainName === office.plainName).length > 1
-    ? office.name
-    : office.plainName;
+  const samePlainName = offices.filter((item) => item.plainName === office.plainName);
+  if (samePlainName.length === 1) return office.plainName;
+  const sameName = samePlainName.filter((item) => item.name === office.name);
+  return sameName.length > 1 && office.serviceArea
+    ? `${office.name}（${office.serviceArea}）`
+    : office.name;
 }
 
 async function getPageData(params: PageProps["params"]) {

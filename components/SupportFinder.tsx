@@ -26,7 +26,11 @@ function telephoneAriaLabel(value: string): string {
 function officeDisplayName(office: FinderOffice, offices: FinderOffice[]): string {
   if (!office.plainName) return office.name;
   const samePlainName = offices.filter((item) => item.plainName === office.plainName);
-  return samePlainName.length > 1 ? office.name : office.plainName;
+  if (samePlainName.length === 1) return office.plainName;
+  const sameName = samePlainName.filter((item) => item.name === office.name);
+  return sameName.length > 1 && office.serviceArea
+    ? `${office.name}（${office.serviceArea}）`
+    : office.name;
 }
 
 function verificationExpired(value: string): boolean {
@@ -116,6 +120,7 @@ function selectFinderOffices(
       (item.categoryId === "unknown" || item.categoryId === categoryId),
   );
   if (categoryId === "violence") return direct;
+  const supplementarySelfReliance = direct.some((item) => item.phone) ? [] : selfReliance;
   const selfRelianceFirst = new Set([
     "food",
     "housing",
@@ -125,8 +130,8 @@ function selectFinderOffices(
     "unknown",
   ]).has(categoryId);
   const ordered = selfRelianceFirst
-    ? [...selfReliance, ...direct, ...representatives]
-    : [...direct, ...selfReliance, ...representatives];
+    ? [...supplementarySelfReliance, ...direct, ...representatives]
+    : [...direct, ...supplementarySelfReliance, ...representatives];
   return [...new Map(ordered.map((item) => [item.id, item])).values()].map((item) => ({
     ...item,
     transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,

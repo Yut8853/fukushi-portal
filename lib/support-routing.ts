@@ -68,8 +68,9 @@ export function selectOffices(
   );
 
   if (categoryId === "violence") return direct;
+  const supplementarySelfReliance = direct.some((item) => item.phone) ? [] : selfReliance;
   const ordered = SELF_RELIANCE_FIRST_CATEGORIES.has(categoryId)
-    ? [...selfReliance, ...direct, ...representatives]
-    : [...direct, ...selfReliance, ...representatives];
+    ? [...supplementarySelfReliance, ...direct, ...representatives]
+    : [...direct, ...supplementarySelfReliance, ...representatives];
   return [...new Map(ordered.map((item) => [item.id, item])).values()];
 }
