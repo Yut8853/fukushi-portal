@@ -1300,6 +1300,58 @@
     "error": ""
   },
   {
+    "sourceId": "source-yamaguchi-housing-benefit",
+    "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18183.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:23:05.360Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 29954,
+    "contentHash": "d9717ac28907b363dd32b440de649bef7ec288a1a54c72d78fbdcb29bfce8109",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamaguchi-municipal-offices",
+    "url": "https://www.pref.yamaguchi.lg.jp/soshiki/31/14948.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:23:01.054Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 75719,
+    "contentHash": "a2f304899294f1a0d716c8464155a1fe786360b2cdcd2472d8b441f7f836943e",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamaguchi-public-assistance",
+    "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18180.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:23:07.536Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 31212,
+    "contentHash": "4c7d71f55cab05bad16f3b1a3235721531570cf74db9951732e7389173ba7fd4",
+    "previousHash": "",
+    "error": ""
+  },
+  {
+    "sourceId": "source-yamaguchi-self-reliance",
+    "url": "https://www.pref.yamaguchi.lg.jp/soshiki/44/18185.html",
+    "status": "ok",
+    "checkedAt": "2026-07-27T01:23:03.460Z",
+    "changedAt": "",
+    "httpStatus": 200,
+    "contentType": "text/html",
+    "contentLength": 37758,
+    "contentHash": "d08468f90ac1ddb7a912c1481cf59c242744048251a9093a061393e6b59fe1ea",
+    "previousHash": "",
+    "error": ""
+  },
+  {
     "sourceId": "source-yamanashi-housing-benefit",
     "url": "https://www.pref.yamanashi.jp/shigaku-kgk/korona/korona.html",
     "status": "ok",
