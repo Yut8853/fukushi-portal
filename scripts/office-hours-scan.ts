@@ -1,5 +1,5 @@
 import path from "node:path";
-import { mkdir, rename, writeFile } from "node:fs/promises";
+import { mkdir, readFile, rename, writeFile } from "node:fs/promises";
 import * as cheerio from "cheerio";
 import { PDFParse } from "pdf-parse";
 import { getCrawlerConfig } from "../crawler/config";
@@ -41,19 +41,38 @@ function phoneContext(text: string, phone: string): { text: string; phoneOffset:
   };
 }
 
-async function responseText(response: Response, url: URL): Promise<string> {
+type PageContent = { text: string; relatedLinks: string[] };
+
+async function responseContent(response: Response, url: URL): Promise<PageContent> {
   const type = response.headers.get("content-type")?.toLowerCase() ?? "";
   if (type.includes("application/pdf") || url.pathname.toLowerCase().endsWith(".pdf")) {
     const parser = new PDFParse({ data: new Uint8Array(await response.arrayBuffer()) });
     try {
-      return (await parser.getText()).text;
+      return { text: (await parser.getText()).text, relatedLinks: [] };
     } finally {
       await parser.destroy();
     }
   }
   const $ = cheerio.load(await response.text());
+  const relatedLinks = $("a[href]").toArray().flatMap((element) => {
+    const label = $(element).text().replace(/\s+/g, "");
+    if (!/(?:開庁|開館|業務時間|受付時間|庁舎案内|市役所案内|役場案内|アクセス|施設案内|所在地)/.test(label)) {
+      return [];
+    }
+    const href = $(element).attr("href");
+    if (!href) return [];
+    try {
+      const linked = new URL(href, url);
+      return linked.origin === url.origin && /^https?:$/.test(linked.protocol) ? [linked.href] : [];
+    } catch {
+      return [];
+    }
+  });
   $("script,style,noscript").remove();
-  return $("body").text().replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n");
+  return {
+    text: $("body").text().replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n"),
+    relatedLinks: [...new Set(relatedLinks)].slice(0, 3),
+  };
 }
 
 async function main() {
@@ -61,6 +80,8 @@ async function main() {
   const data = await getPublicPortalData();
   const typeArgument = process.argv.find((argument) => argument.startsWith("--type="))?.split("=")[1] ?? "all";
   const requestedType = typeArgument === "all" ? null : typeArgument as OfficeContactType;
+  const discoverRelatedPages = process.argv.includes("--discover");
+  const retryReportErrors = process.argv.includes("--retry-errors");
   const limitArgument = process.argv.find((argument) => argument.startsWith("--limit="))?.split("=")[1];
   const sourceLimit = limitArgument ? Number.parseInt(limitArgument, 10) : Number.POSITIVE_INFINITY;
   const offsetArgument = process.argv.find((argument) => argument.startsWith("--offset="))?.split("=")[1];
@@ -83,40 +104,86 @@ async function main() {
   const errors: { sourceUrl: string; message: string }[] = [];
   let processed = 0;
   let nextGroup = 0;
-  const selectedGroups = [...groups].slice(sourceOffset, sourceOffset + sourceLimit);
+  let selectableGroups = discoverRelatedPages
+    ? [...groups].filter(([, offices]) => offices.some(({ office }) => !office.openingHours))
+    : [...groups];
+  if (retryReportErrors) {
+    const previousReportPath = path.join(process.cwd(), "data", "crawl", "office-hours-candidates.json");
+    const previousReport = JSON.parse(await readFile(previousReportPath, "utf8")) as {
+      errors?: { sourceUrl: string }[];
+    };
+    const retryUrls = new Set((previousReport.errors ?? []).map(({ sourceUrl }) => sourceUrl));
+    selectableGroups = selectableGroups.filter(([sourceUrl]) => retryUrls.has(sourceUrl));
+  }
+  const selectedGroups = selectableGroups.slice(sourceOffset, sourceOffset + sourceLimit);
+  function collectCandidates(text: string, url: URL, offices: (typeof targets)) {
+    let found = 0;
+    for (const { office } of offices) {
+      if (office.openingHours) continue;
+      const context = phoneContext(text, office.phone);
+      if (!context) continue;
+      const openingHours = findOpeningHours(context.text);
+      if (!openingHours) continue;
+      const hoursOffset = context.text.indexOf(openingHours);
+      const evidenceDistance = Math.abs(hoursOffset - context.phoneOffset);
+      if (evidenceDistance > 250) continue;
+      candidates.push({
+        officeId: office.id,
+        municipalityId: office.municipalityId,
+        officeName: office.plainName || office.name,
+        phone: office.phone,
+        openingHours,
+        closedDays: findClosedDays(context.text),
+        sourceUrl: url.href,
+        evidenceText: context.text.replace(/\s+/g, " ").trim(),
+        evidenceDistance,
+        confidence: "medium",
+        warnings: ["公式ページ内の近接情報です。窓口固有の受付時間か目視確認してください。"],
+        status: "review_required",
+      });
+      found += 1;
+    }
+    return found;
+  }
   async function worker() {
     while (nextGroup < selectedGroups.length) {
       const [sourceUrl, offices] = selectedGroups[nextGroup];
       nextGroup += 1;
       try {
-        const url = await assertSafeUrl(sourceUrl);
+        let url = await assertSafeUrl(sourceUrl);
         if (!await canCrawl(url.href, config)) {
           errors.push({ sourceUrl, message: "robots.txtで取得不可" });
         } else {
-          const text = await responseText(await fetchWithRetry(url.href, config), url);
-          for (const { office } of offices) {
-            if (office.openingHours) continue;
-            const context = phoneContext(text, office.phone);
-            if (!context) continue;
-            const openingHours = findOpeningHours(context.text);
-            if (!openingHours) continue;
-            const hoursOffset = context.text.indexOf(openingHours);
-            const evidenceDistance = Math.abs(hoursOffset - context.phoneOffset);
-            if (evidenceDistance > 250) continue;
-            candidates.push({
-              officeId: office.id,
-              municipalityId: office.municipalityId,
-              officeName: office.plainName || office.name,
-              phone: office.phone,
-              openingHours,
-              closedDays: findClosedDays(context.text),
-              sourceUrl: url.href,
-              evidenceText: context.text.replace(/\s+/g, " ").trim(),
-              evidenceDistance,
-              confidence: "medium",
-              warnings: ["公式ページ内の近接情報です。窓口固有の受付時間か目視確認してください。"],
-              status: "review_required",
-            });
+          let response: Response;
+          try {
+            response = await fetchWithRetry(url.href, config);
+          } catch (error) {
+            if (url.protocol !== "http:") throw error;
+            const secureUrl = new URL(url);
+            secureUrl.protocol = "https:";
+            url = await assertSafeUrl(secureUrl.href);
+            if (!await canCrawl(url.href, config)) throw error;
+            response = await fetchWithRetry(url.href, config);
+          }
+          const page = await responseContent(response, url);
+          const found = collectCandidates(page.text, url, offices);
+          if (discoverRelatedPages && found === 0) {
+            for (const relatedHref of page.relatedLinks) {
+              try {
+                const relatedUrl = await assertSafeUrl(relatedHref);
+                if (!await canCrawl(relatedUrl.href, config)) continue;
+                const relatedPage = await responseContent(
+                  await fetchWithRetry(relatedUrl.href, config),
+                  relatedUrl,
+                );
+                if (collectCandidates(relatedPage.text, relatedUrl, offices) > 0) break;
+              } catch (error) {
+                errors.push({
+                  sourceUrl: relatedHref,
+                  message: `内部リンク: ${error instanceof Error ? error.message : String(error)}`,
+                });
+              }
+            }
           }
         }
       } catch (error) {
@@ -134,10 +201,12 @@ async function main() {
   const report = {
     generatedAt: new Date().toISOString(),
     targetOffices: targets.filter(({ office }) => !office.openingHours).length,
-    sourceCount: groups.size,
+    sourceCount: selectableGroups.length,
     scannedSourceCount: processed,
     sourceOffset,
     requestedType: requestedType ?? "all",
+    discoverRelatedPages,
+    retryReportErrors,
     candidates,
     errors,
   };
