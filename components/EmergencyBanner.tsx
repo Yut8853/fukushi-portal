@@ -2,8 +2,9 @@ import { emergencyContacts } from "@/lib/emergency-contacts";
 import { telephoneAriaLabel } from "@/lib/telephone";
 
 export default function EmergencyBanner() {
-  const primaryContacts = emergencyContacts.filter((contact) => contact.displayMode === "primary");
-  const detailContacts = emergencyContacts.filter((contact) => contact.displayMode === "detail");
+  const primaryContactIds = new Set(["police-emergency", "fire-ambulance-emergency"]);
+  const primaryContacts = emergencyContacts.filter((contact) => primaryContactIds.has(contact.id));
+  const detailContacts = emergencyContacts.filter((contact) => !primaryContactIds.has(contact.id));
   const latestVerification = emergencyContacts
     .map((contact) => contact.lastVerifiedAt)
     .sort()
@@ -12,9 +13,9 @@ export default function EmergencyBanner() {
     <aside className="emergency-banner" aria-label="緊急時の相談先">
       <div className="emergency-inner">
         <div className="emergency-heading">
-          <strong>緊急時の相談先</strong>
+          <strong>緊急時</strong>
           <a href="https://form.soudanplus.jp/ja" target="_blank" rel="noreferrer">
-            声を出せないとき：DVチャット
+            声を出せない：DVチャット
           </a>
         </div>
         <div className="emergency-actions">
@@ -36,7 +37,7 @@ export default function EmergencyBanner() {
           ))}
         </div>
         <details className="emergency-more">
-          <summary>電話・チャットなどを選ぶ</summary>
+          <summary>DV・虐待・こころなど</summary>
           <div className="emergency-detail">
             {detailContacts.map((contact) => (
               <p key={contact.id}>

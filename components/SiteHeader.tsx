@@ -8,14 +8,10 @@ export default function SiteHeader() {
           <span className="site-brand-mark" aria-hidden="true">
             く
           </span>
-          <span>
-            <strong>くらし支援ナビ</strong>
-            <small>生活の困りごとから相談先を探す</small>
-          </span>
+          <strong>くらし支援ナビ</strong>
         </Link>
         <nav className="site-nav" aria-label="メインメニュー">
           <Link href="/#support-finder">相談先を探す</Link>
-          <Link href="/support">地域別一覧</Link>
           <Link href="/about">このサイトについて</Link>
         </nav>
       </div>

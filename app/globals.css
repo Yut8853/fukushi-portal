@@ -197,9 +197,10 @@ p {
 }
 .emergency-actions {
   display: grid;
-  grid-template-columns: repeat(4, minmax(105px, 1fr));
+  grid-template-columns: repeat(2, minmax(150px, 1fr));
   flex: 1;
   gap: 7px;
+  max-width: 430px;
 }
 .emergency-contact {
   min-width: 0;
@@ -239,7 +240,8 @@ p {
 .emergency-more {
   position: relative;
   flex: 0 0 auto;
-  font-size: 0.75rem;
+  margin-left: auto;
+  font-size: 0.85rem;
 }
 .emergency-more summary {
   border-radius: 8px;
@@ -287,6 +289,15 @@ p {
   gap: 7px;
   border-block: 1px solid rgba(255, 255, 255, 0.18);
   padding: 12px 0;
+}
+.phone-only-note {
+  margin: 12px 0;
+  border-left: 4px solid #b27b1e;
+  padding: 9px 12px;
+  color: #5c4216;
+  background: #fff8e8;
+  font-size: 0.9rem;
+  font-weight: 700;
 }
 .mental-crisis-support {
   margin: 16px 0 24px;
@@ -737,16 +748,8 @@ p {
   font-size: 1.35rem;
   font-weight: 900;
 }
-.site-brand > span:last-child {
-  display: grid;
-  line-height: 1.3;
-}
 .site-brand strong {
   font-size: 1.02rem;
-}
-.site-brand small {
-  color: var(--muted);
-  font-size: 0.7rem;
 }
 .site-nav {
   display: flex;
@@ -1725,7 +1728,7 @@ thead th {
     display: none;
   }
   .emergency-actions {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(2, minmax(140px, 1fr));
   }
   .emergency-contact > a {
     display: grid;
@@ -1781,6 +1784,7 @@ thead th {
     grid-column: 1 / -1;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
+    max-width: none;
   }
   .emergency-contact > a {
     min-height: 54px;
@@ -1804,12 +1808,12 @@ thead th {
     font-size: 0.875rem;
   }
   .emergency-detail {
-    position: fixed;
-    top: 116px;
-    right: 10px;
-    left: 10px;
-    width: auto;
-    max-height: calc(100vh - 132px);
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    left: auto;
+    width: min(440px, calc(100vw - 20px));
+    max-height: calc(100vh - 180px);
     overflow: auto;
   }
   .site-header-inner {
@@ -1829,9 +1833,6 @@ thead th {
     height: 36px;
     border-radius: 11px;
     font-size: 1.1rem;
-  }
-  .site-brand small {
-    display: none;
   }
   .site-nav {
     gap: 0;
@@ -2029,5 +2030,14 @@ thead th,
 .status,
 .finder-progress span,
 .admin-nav a {
+  font-size: 0.85rem;
+}
+
+/* 補足情報も、拡大操作なしで読める最小サイズを下回らない。 */
+small,
+.site-nav a,
+.contact-rank,
+.status,
+thead th {
   font-size: 0.85rem;
 }

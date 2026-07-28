@@ -635,6 +635,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                       )}
                     </div>
                   )}
+                  {office.phone && !office.fax && !office.email && !office.contactFormUrl && (
+                    <p className="phone-only-note">
+                      この窓口で確認できた遠隔の連絡方法は電話のみです。来所できるかは公式ページで確認してください。
+                    </p>
+                  )}
                   {office.phone && (
                     <a
                       className="phone-button"
