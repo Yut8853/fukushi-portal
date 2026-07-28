@@ -9,10 +9,10 @@ export default function EmergencyBanner() {
   ]);
   const primaryContacts = emergencyContacts.filter((contact) => primaryContactIds.has(contact.id));
   const detailContacts = emergencyContacts.filter((contact) => !primaryContactIds.has(contact.id));
-  const latestVerification = emergencyContacts
+  const oldestVerification = emergencyContacts
     .map((contact) => contact.lastVerifiedAt)
     .sort()
-    .at(-1);
+    .at(0);
   return (
     <aside className="emergency-banner" aria-label="緊急時の相談先">
       <div className="emergency-inner">
@@ -88,7 +88,7 @@ export default function EmergencyBanner() {
                 </li>
               ))}
             </ul>
-            <small>情報確認日：{latestVerification}</small>
+            <small>掲載情報のうち最も古い確認日：{oldestVerification}</small>
           </div>
         </details>
       </div>

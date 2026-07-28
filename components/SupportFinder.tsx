@@ -294,8 +294,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         <p className="section-kicker">相談先を探す</p>
         <h2 id="finder-title">いまの状況に近いものを選んでください</h2>
         <p className="finder-help">
-          制度名は分からなくて大丈夫です。選んだ困りごとと地域は案内の取得時にサーバーへ送信されますが、
-          検索条件として保存しません。DV・こころのカテゴリはブラウザのURLや履歴にも残しません。
+          制度名は分からなくて大丈夫です。選んだ都道府県の公開データだけを取得し、
+          市区町村と困りごとの絞り込みは端末内で行います。市区町村や困りごとはサーバーへ送信・
+          保存しません。DV・こころのカテゴリはブラウザのURLや履歴にも残しません。
         </p>
         {verificationExpired(data.latestVerifiedAt) && (
           <p className="stale-data-warning" role="alert">
@@ -748,9 +749,10 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               <h3>電話がつながらないとき</h3>
               <ol>
                 <li>受付時間を確認し、時間内に少し間をあけてかけ直す</li>
-                {offices.some((office) => office.availableMethods.includes("来所")) && (
-                  <li>安全に移動できる場合は、受付時間を確認して窓口へ直接行く</li>
-                )}
+                {offices.some(
+                  (office) =>
+                    office.availableMethods.includes("来所") && Boolean(office.address.trim()),
+                ) && <li>安全に移動できる場合は、受付時間を確認して窓口へ直接行く</li>}
                 {categoryId !== "violence" && (
                   <li>急ぐ場合は「代表電話・取り次ぎが必要」の番号へかけ、担当につないでもらう</li>
                 )}

@@ -64,14 +64,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const page = await getPageData(params);
   if (!page) return {};
   const seo = seoCategoryContent(page.category.id);
-  const title = `${page.municipality.name}で${seo.searchTitle}ときの相談先`;
+  const title = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの相談先`;
   const firstOffice = page.offices[0] ? officeDisplayName(page.offices[0]) : undefined;
   const description = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの公的な相談先${firstOffice ? `「${firstOffice}」` : ""}と、電話での伝え方を案内します。`;
   const indexable = isIndexableSupportPage(page.offices, page.municipality.id, page.category.id);
   return {
     title,
     description,
-    keywords: [...seo.relatedTerms, page.municipality.name, page.prefecture.name],
     alternates: { canonical: `/support/${page.municipality.id}/${page.category.id}` },
     openGraph: {
       title,
@@ -109,7 +108,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": pageUrl,
         url: pageUrl,
-        name: `${municipality.name}で${seo.searchTitle}ときの相談先`,
+        name: `${prefecture.name}${municipality.name}で${seo.searchTitle}ときの相談先`,
         description: seo.summary,
         inLanguage: "ja",
         dateModified:
@@ -131,7 +130,17 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
             name: prefecture.name,
             item: `${SITE_URL}/support/${prefecture.code}`,
           },
-          { "@type": "ListItem", position: 4, name: municipality.name, item: pageUrl },
+          {
+            "@type": "ListItem",
+            position: 4,
+            name: municipality.name,
+          },
+          {
+            "@type": "ListItem",
+            position: 5,
+            name: seo.searchTitle,
+            item: pageUrl,
+          },
         ],
       },
       ...(offices.length
@@ -139,12 +148,32 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
             {
               "@type": "ItemList",
               name: `${municipality.name}の相談窓口`,
-              itemListElement: offices.map((office, index) => ({
-                "@type": "ListItem",
-                position: index + 1,
-                name: officeDisplayName(office),
-                url: sources.get(office.sourceId)?.url || office.officialUrl || pageUrl,
-              })),
+              itemListElement: offices.map((office, index) => {
+                const sourceUrl =
+                  sources.get(office.sourceId)?.url || office.officialUrl || pageUrl;
+                return {
+                  "@type": "ListItem",
+                  position: index + 1,
+                  item: {
+                    "@type": "GovernmentOffice",
+                    name: officeDisplayName(office),
+                    url: sourceUrl,
+                    ...(office.phone ? { telephone: office.phone } : {}),
+                    ...(office.address
+                      ? {
+                          address: {
+                            "@type": "PostalAddress",
+                            streetAddress: office.address,
+                            addressRegion: prefecture.name,
+                            addressCountry: "JP",
+                          },
+                        }
+                      : {}),
+                    ...(office.serviceArea ? { areaServed: office.serviceArea } : {}),
+                    ...(office.languages ? { availableLanguage: office.languages } : {}),
+                  },
+                };
+              }),
             },
           ]
         : []),
@@ -161,6 +190,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         <Link href="/support">相談先一覧</Link>
         <Link href={`/support/${prefecture.code}`}>{prefecture.name}</Link>
         <span>{municipality.name}</span>
+        <span>{seo.searchTitle}</span>
       </nav>
       <p className="eyebrow">
         {prefecture.name}
@@ -359,9 +389,10 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
           <h2>電話がつながらないとき</h2>
           <ol>
             <li>受付時間を確認し、時間内に少し間をあけてかけ直す</li>
-            {offices.some((office) => office.availableMethods.includes("来所")) && (
-              <li>安全に移動できる場合は、受付時間を確認して窓口へ直接行く</li>
-            )}
+            {offices.some(
+              (office) =>
+                office.availableMethods.includes("来所") && Boolean(office.address.trim()),
+            ) && <li>安全に移動できる場合は、受付時間を確認して窓口へ直接行く</li>}
             {category.id !== "violence" && (
               <li>急ぐ場合は自治体の代表電話から担当につないでもらう</li>
             )}

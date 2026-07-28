@@ -21,7 +21,7 @@ function office(overrides: Partial<Office> = {}): Office {
     officialUrl: "https://example.go.jp",
     openingHours: "",
     closedDays: "",
-    reservationRequired: "",
+    reservationRequired: null,
     availableMethods: "電話",
     accessibility: "",
     languages: "",
@@ -39,19 +39,45 @@ function office(overrides: Partial<Office> = {}): Office {
   };
 }
 
-test("窓口3件以上の案内ページをindex対象にする", () => {
+test("全国・都道府県共通窓口が3件あってもnoindexにする", () => {
   assert.equal(
     isIndexableSupportPage(
-      [office({ id: "1" }), office({ id: "2" }), office({ id: "3" })],
+      [
+        office({ id: "1", scope: "national", municipalityId: "" }),
+        office({ id: "2", scope: "prefecture", municipalityId: "" }),
+        office({ id: "3", scope: "prefecture", municipalityId: "" }),
+      ],
       "city",
       "money",
     ),
-    true,
+    false,
   );
 });
 
-test("薄いページでも自治体固有の専門窓口があればindex対象にする", () => {
+test("自治体固有で連絡可能な専門窓口があればindex対象にする", () => {
   assert.equal(isIndexableSupportPage([office()], "city", "money"), true);
+});
+
+test("別カテゴリの自治体固有窓口が表示されてもindex対象にしない", () => {
+  assert.equal(isIndexableSupportPage([office({ categoryId: "rent" })], "city", "money"), false);
+});
+
+test("自治体代表しかないページはnoindexにする", () => {
+  assert.equal(
+    isIndexableSupportPage([office({ contactType: "representative" })], "city", "money"),
+    false,
+  );
+});
+
+test("自治体固有でも連絡手段がなければnoindexにする", () => {
+  assert.equal(
+    isIndexableSupportPage(
+      [office({ phone: "", address: "", contactFormUrl: "", email: "" })],
+      "city",
+      "money",
+    ),
+    false,
+  );
 });
 
 test("都道府県共通窓口だけの薄いページはnoindexにする", () => {

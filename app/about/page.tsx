@@ -129,6 +129,10 @@ export default function AboutPage() {
       </section>
 
       <p>
+        情報の選定、AI・自動処理の利用、検索掲載の基準は
+        <Link href="/editorial-policy">編集・検証方針</Link>で公開しています。
+      </p>
+      <p>
         掲載情報の誤りは、<Link href="/corrections">訂正窓口</Link>からお知らせください。
       </p>
       <p>

@@ -37,24 +37,34 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
-              "@type": "WebSite",
-              "@id": `${SITE_URL}/#website`,
-              url: SITE_URL,
-              name: "くらし支援ナビ",
-              description: "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
-              inLanguage: "ja",
-              publisher: {
-                "@type": "Organization",
-                name: "JUNKBRANDING",
-                url: "https://www.junkbranding.com/",
-                email: "hello@junkbranding.com",
-                address: {
-                  "@type": "PostalAddress",
-                  addressLocality: "美浦村",
-                  addressRegion: "茨城県",
-                  addressCountry: "JP",
+              "@graph": [
+                {
+                  "@type": "WebSite",
+                  "@id": `${SITE_URL}/#website`,
+                  url: SITE_URL,
+                  name: "くらし支援ナビ",
+                  description:
+                    "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
+                  inLanguage: "ja",
+                  publisher: { "@id": `${SITE_URL}/#organization` },
                 },
-              },
+                {
+                  "@type": "Organization",
+                  "@id": `${SITE_URL}/#organization`,
+                  name: "JUNKBRANDING",
+                  url: "https://www.junkbranding.com/",
+                  email: "hello@junkbranding.com",
+                  publishingPrinciples: `${SITE_URL}/editorial-policy`,
+                  correctionsPolicy: `${SITE_URL}/corrections`,
+                  sameAs: ["https://github.com/Yut8853/fukushi-portal"],
+                  address: {
+                    "@type": "PostalAddress",
+                    addressLocality: "美浦村",
+                    addressRegion: "茨城県",
+                    addressCountry: "JP",
+                  },
+                },
+              ],
             }),
           }}
         />

@@ -1,22 +1,16 @@
 import type { MetadataRoute } from "next";
 import { getPublicPortalData } from "@/lib/data/repository";
-import { SITE_URL } from "@/lib/site";
+import { SITE_CONTENT_LAST_MODIFIED, SITE_URL } from "@/lib/site";
 import { selectOffices } from "@/lib/support-routing";
 import { isIndexableSupportPage } from "@/lib/seo-indexing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await getPublicPortalData();
-  const latestVerifiedAt = [
-    ...data.municipalities,
-    ...data.offices,
-    ...data.programs,
-    ...data.sources,
-  ]
-    .map((item) => item.lastVerifiedAt)
-    .filter(Boolean)
-    .sort()
-    .at(-1);
-  const updated = latestVerifiedAt ? new Date(latestVerifiedAt) : undefined;
+  const dateFrom = (...values: string[]) => {
+    const latest = values.filter(Boolean).sort().at(-1);
+    return latest ? new Date(latest) : undefined;
+  };
+  const contentUpdated = new Date(SITE_CONTENT_LAST_MODIFIED);
   const localOffices = new Map<string, typeof data.offices>();
   const prefectureOffices = new Map<string, typeof data.offices>();
   const nationalOffices = data.offices.filter((office) => office.scope === "national");
@@ -32,27 +26,61 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     map.set(key, [...(map.get(key) ?? []), office]);
   }
   return [
-    { url: SITE_URL, lastModified: updated, changeFrequency: "weekly", priority: 1 },
-    { url: `${SITE_URL}/support`, lastModified: updated, changeFrequency: "weekly", priority: 0.9 },
-    { url: `${SITE_URL}/about`, lastModified: updated, changeFrequency: "monthly", priority: 0.4 },
+    { url: SITE_URL, lastModified: contentUpdated, changeFrequency: "weekly", priority: 1 },
+    {
+      url: `${SITE_URL}/support`,
+      lastModified: contentUpdated,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${SITE_URL}/about`,
+      lastModified: contentUpdated,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
     {
       url: `${SITE_URL}/corrections`,
-      lastModified: updated,
+      lastModified: contentUpdated,
       changeFrequency: "monthly",
       priority: 0.3,
     },
+    {
+      url: `${SITE_URL}/editorial-policy`,
+      lastModified: contentUpdated,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
     ...data.prefectures.map((prefecture) => ({
       url: `${SITE_URL}/support/${prefecture.code}`,
-      lastModified: updated,
+      lastModified: dateFrom(
+        SITE_CONTENT_LAST_MODIFIED,
+        ...data.municipalities
+          .filter((item) => item.prefectureCode === prefecture.code)
+          .map((item) => item.lastVerifiedAt),
+      ),
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
     ...data.categories.map((category) => ({
       url: `${SITE_URL}/support/category/${category.id}`,
-      lastModified: updated,
+      lastModified: contentUpdated,
       changeFrequency: "monthly" as const,
       priority: 0.85,
     })),
+    ...data.categories.flatMap((category) =>
+      data.prefectures.map((prefecture) => ({
+        url: `${SITE_URL}/support/category/${category.id}/${prefecture.code}`,
+        lastModified: dateFrom(
+          SITE_CONTENT_LAST_MODIFIED,
+          ...data.municipalities
+            .filter((item) => item.prefectureCode === prefecture.code)
+            .map((item) => item.lastVerifiedAt),
+        ),
+        changeFrequency: "monthly" as const,
+        priority: 0.75,
+      })),
+    ),
     ...data.municipalities.flatMap((municipality) =>
       data.categories
         .filter((category) => {
@@ -72,9 +100,21 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
         })
         .map((category) => ({
           url: `${SITE_URL}/support/${municipality.id}/${category.id}`,
-          lastModified: municipality.lastVerifiedAt
-            ? new Date(municipality.lastVerifiedAt)
-            : updated,
+          lastModified: dateFrom(
+            SITE_CONTENT_LAST_MODIFIED,
+            municipality.lastVerifiedAt,
+            ...selectOffices(
+              [
+                ...(localOffices.get(municipality.id) ?? []),
+                ...(prefectureOffices.get(municipality.prefectureCode) ?? []),
+                ...nationalOffices,
+              ],
+              municipality.id,
+              category.id,
+              municipality.representativePhone,
+              municipality.prefectureCode,
+            ).map((office) => office.lastVerifiedAt),
+          ),
           changeFrequency: "monthly" as const,
           priority: 0.7,
         })),

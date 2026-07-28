@@ -6,12 +6,13 @@ export function isIndexableSupportPage(
   municipalityId: string,
   categoryId: string,
 ): boolean {
-  if (offices.length >= 3) return true;
   return offices.some(
     (office) =>
       office.scope === "municipality" &&
       office.municipalityId === municipalityId &&
       office.categoryId === categoryId &&
-      officeContactType(office) !== "representative",
+      officeContactType(office) !== "representative" &&
+      Boolean(office.sourceId && office.lastVerifiedAt) &&
+      Boolean(office.phone || office.address || office.contactFormUrl || office.email),
   );
 }

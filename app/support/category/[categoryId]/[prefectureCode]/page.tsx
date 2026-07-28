@@ -1,0 +1,96 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { getPublicPortalData } from "@/lib/data/repository";
+import { seoCategoryContent } from "@/lib/seo-content";
+import { SITE_URL } from "@/lib/site";
+
+type PageProps = {
+  params: Promise<{ categoryId: string; prefectureCode: string }>;
+};
+
+async function getPage(params: PageProps["params"]) {
+  const { categoryId, prefectureCode } = await params;
+  const data = await getPublicPortalData();
+  const category = data.categories.find((item) => item.id === categoryId);
+  const prefecture = data.prefectures.find((item) => item.code === prefectureCode);
+  if (!category || !prefecture) return null;
+  return {
+    category,
+    prefecture,
+    seo: seoCategoryContent(category.id),
+    municipalities: data.municipalities.filter((item) => item.prefectureCode === prefecture.code),
+  };
+}
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+  const page = await getPage(params);
+  if (!page) return {};
+  const title = `${page.prefecture.name}で${page.seo.searchTitle}ときの相談先`;
+  return {
+    title,
+    description: `${page.prefecture.name}の市区町村から、${page.seo.searchTitle}ときの公的な相談先を選べます。`,
+    alternates: {
+      canonical: `/support/category/${page.category.id}/${page.prefecture.code}`,
+    },
+  };
+}
+
+export default async function CategoryPrefecturePage({ params }: PageProps) {
+  const page = await getPage(params);
+  if (!page) notFound();
+  const pageUrl = `${SITE_URL}/support/category/${page.category.id}/${page.prefecture.code}`;
+  const categoryUrl = `${SITE_URL}/support/category/${page.category.id}`;
+  return (
+    <main id="main" className="page-shell content-page">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "トップ", item: SITE_URL },
+              { "@type": "ListItem", position: 2, name: "相談先一覧", item: `${SITE_URL}/support` },
+              {
+                "@type": "ListItem",
+                position: 3,
+                name: page.seo.searchTitle,
+                item: categoryUrl,
+              },
+              {
+                "@type": "ListItem",
+                position: 4,
+                name: page.prefecture.name,
+                item: pageUrl,
+              },
+            ],
+          }),
+        }}
+      />
+      <nav className="breadcrumbs" aria-label="パンくず">
+        <Link href="/">トップ</Link>
+        <Link href="/support">相談先一覧</Link>
+        <Link href={`/support/category/${page.category.id}`}>{page.seo.searchTitle}</Link>
+        <span>{page.prefecture.name}</span>
+      </nav>
+      <p className="eyebrow">{page.prefecture.name}</p>
+      <h1>
+        {page.prefecture.name}で{page.seo.searchTitle}ときの相談先
+      </h1>
+      <p className="lead">お住まいの市区町村を選んでください。</p>
+      <section className="content-section">
+        <h2>市区町村から探す</h2>
+        <ul className="directory-grid">
+          {page.municipalities.map((municipality) => (
+            <li key={municipality.id}>
+              <Link href={`/support/${municipality.id}/${page.category.id}`}>
+                {municipality.name}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </section>
+    </main>
+  );
+}

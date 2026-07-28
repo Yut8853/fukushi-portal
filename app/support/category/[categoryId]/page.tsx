@@ -42,7 +42,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   return {
     title,
     description,
-    keywords: page.seo.relatedTerms,
     alternates: { canonical: `/support/category/${page.category.id}` },
     openGraph: {
       title,
@@ -115,31 +114,23 @@ export default async function CategoryDirectoryPage({ params }: PageProps) {
       </section>
 
       <section className="content-section" aria-labelledby="area-directory-title">
-        <h2 id="area-directory-title">市区町村から相談先を探す</h2>
-        <p>都道府県名を開くと、市区町村ごとの案内ページを選べます。</p>
-        <div className="category-prefecture-list">
+        <h2 id="area-directory-title">都道府県から相談先を探す</h2>
+        <p>都道府県を選ぶと、次のページで市区町村を選べます。</p>
+        <ul className="directory-grid">
           {page.data.prefectures.map((prefecture) => {
-            const municipalities = page.data.municipalities.filter(
+            const count = page.data.municipalities.filter(
               (municipality) => municipality.prefectureCode === prefecture.code,
-            );
+            ).length;
             return (
-              <details key={prefecture.code}>
-                <summary>
-                  {prefecture.name}（{municipalities.length}自治体）
-                </summary>
-                <ul>
-                  {municipalities.map((municipality) => (
-                    <li key={municipality.id}>
-                      <Link href={`/support/${municipality.id}/${page.category.id}`}>
-                        {municipality.name}の相談先
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
-              </details>
+              <li key={prefecture.code}>
+                <Link href={`/support/category/${page.category.id}/${prefecture.code}`}>
+                  {prefecture.name}
+                  <small>{count}自治体</small>
+                </Link>
+              </li>
             );
           })}
-        </div>
+        </ul>
       </section>
 
       <section className="content-section">
