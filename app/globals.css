@@ -174,7 +174,7 @@ p {
 }
 .emergency-inner {
   position: relative;
-  width: min(1280px, calc(100% - 32px));
+  width: min(1360px, calc(100% - 32px));
   margin: 0 auto;
   display: flex;
   align-items: center;
@@ -191,16 +191,19 @@ p {
 .emergency-heading strong {
   font-size: 0.92rem;
 }
+.emergency-heading a {
+  white-space: nowrap;
+}
 .emergency-heading span {
   color: #f2cfcf;
   font-size: 0.72rem;
 }
 .emergency-actions {
   display: grid;
-  grid-template-columns: repeat(2, minmax(150px, 1fr));
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
   flex: 1;
   gap: 7px;
-  max-width: 430px;
+  max-width: 720px;
 }
 .emergency-contact {
   min-width: 0;
@@ -1740,6 +1743,7 @@ thead th {
   }
   .emergency-actions {
     grid-template-columns: repeat(2, minmax(140px, 1fr));
+    max-width: 430px;
   }
   .emergency-contact > a {
     display: grid;
