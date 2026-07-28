@@ -81,9 +81,17 @@ export function selectOffices(
   municipalityId: string,
   categoryId: string,
   representativePhone = "",
+  prefectureCode = "",
 ): Office[] {
   if (!municipalityId) return [];
-  const local = offices.filter((item) => item.municipalityId === municipalityId);
+  const local = offices.filter(
+    (item) =>
+      (item.scope === "municipality" && item.municipalityId === municipalityId) ||
+      (item.scope === "prefecture" &&
+        Boolean(prefectureCode) &&
+        item.prefectureCode === prefectureCode) ||
+      item.scope === "national",
+  );
   const direct = local.filter(
     (item) =>
       item.categoryId === categoryId &&

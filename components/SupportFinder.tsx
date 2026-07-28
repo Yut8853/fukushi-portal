@@ -4,7 +4,9 @@ import { useEffect, useMemo, useState } from "react";
 import AfterHoursGuide from "@/components/AfterHoursGuide";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import MentalCrisisSupport from "@/components/MentalCrisisSupport";
+import UnconfirmedHours from "@/components/UnconfirmedHours";
 import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/view-models";
+import { verificationMaxAgeDays } from "@/lib/data/quality";
 
 function displayDate(value: string): string {
   if (!value) return "未確認";
@@ -33,9 +35,20 @@ function officeDisplayName(office: FinderOffice, offices: FinderOffice[]): strin
     : office.name;
 }
 
-function verificationExpired(value: string): boolean {
+function verificationExpired(
+  value: string,
+  level: FinderOffice["verificationLevel"] = "primary_source_import",
+): boolean {
   if (!value) return true;
-  return Date.now() - new Date(`${value}T00:00:00Z`).getTime() > 180 * 86_400_000;
+  return (
+    Date.now() - new Date(`${value}T00:00:00Z`).getTime() >
+    verificationMaxAgeDays(level) * 86_400_000
+  );
+}
+
+function officeSubtitle(office: FinderOffice, offices: FinderOffice[]): string {
+  const displayName = officeDisplayName(office, offices);
+  return office.name !== displayName ? office.name : "";
 }
 
 function verificationLabel(level: FinderOffice["verificationLevel"], date: string): string {
@@ -132,8 +145,14 @@ function selectFinderOffices(
   offices: FinderOffice[],
   categoryId: string,
   municipalityId: string,
+  prefectureCode: string,
 ): FinderOffice[] {
-  const local = offices.filter((item) => item.municipalityId === municipalityId);
+  const local = offices.filter(
+    (item) =>
+      (item.scope === "municipality" && item.municipalityId === municipalityId) ||
+      (item.scope === "prefecture" && item.prefectureCode === prefectureCode) ||
+      item.scope === "national",
+  );
   const direct = local.filter(
     (item) => item.categoryId === categoryId && item.contactType !== "representative",
   );
@@ -212,7 +231,14 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       })
       .then((response) => {
         setResults(selectPrograms(response.programs, categoryId, municipalityId));
-        setOffices(selectFinderOffices(response.offices, categoryId, municipalityId));
+        setOffices(
+          selectFinderOffices(
+            response.offices,
+            categoryId,
+            municipalityId,
+            selectedMunicipality?.prefectureCode ?? "",
+          ),
+        );
       })
       .catch((error) => {
         if (error instanceof DOMException && error.name === "AbortError") return;
@@ -291,7 +317,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         </p>
         {verificationExpired(data.latestVerifiedAt) && (
           <p className="stale-data-warning" role="alert">
-            掲載情報の最終更新から180日以上経過しています。連絡前に必ず公式サイトで最新情報を確認してください。
+            掲載情報の最終更新から1年以上経過しています。連絡前に必ず公式サイトで最新情報を確認してください。
           </p>
         )}
       </div>
@@ -589,6 +615,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                         : "専用窓口の直通・このまま話せます"}
                   </p>
                   <h4>{officeDisplayName(office, offices)}</h4>
+                  {officeSubtitle(office, offices) && (
+                    <p className="office-organization">{officeSubtitle(office, offices)}</p>
+                  )}
                   {office.description && <p>{office.description}</p>}
                   {office.phone && (
                     <a
@@ -599,6 +628,24 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                       <span>電話する</span>
                       <strong>{office.phone}</strong>
                     </a>
+                  )}
+                  {(office.fax || office.email || office.contactFormUrl) && (
+                    <div className="non-phone-contacts">
+                      <h5>電話以外で連絡する</h5>
+                      {office.fax && <p>FAX：{office.fax}</p>}
+                      {office.email && (
+                        <p>
+                          <a href={`mailto:${office.email}`}>メールを送る</a>
+                        </p>
+                      )}
+                      {office.contactFormUrl && (
+                        <p>
+                          <a href={office.contactFormUrl} target="_blank" rel="noreferrer">
+                            問い合わせフォームを開く
+                          </a>
+                        </p>
+                      )}
+                    </div>
                   )}
                   {!office.phone &&
                     municipality?.representativePhone &&
@@ -635,10 +682,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                   )}
                   <dl className="office-details">
                     <dt>受付時間</dt>
-                    <dd>
-                      {office.openingHours ||
-                        "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}
-                    </dd>
+                    <dd>{office.openingHours || <UnconfirmedHours />}</dd>
                     {office.closedDays && (
                       <>
                         <dt>休み</dt>
@@ -679,6 +723,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                     <span>
                       {verificationLabel(office.verificationLevel, office.lastVerifiedAt)}
                     </span>
+                    {verificationExpired(office.lastVerifiedAt, office.verificationLevel) && (
+                      <span className="stale-data-warning">
+                        この窓口は確認期限を過ぎています。公式情報も確認してください。
+                      </span>
+                    )}
                   </footer>
                 </article>
               ))}

@@ -990,6 +990,9 @@ git diff --check
   多くの窓口は国・自治体の公式一覧や公式ページから転記・整理したデータである
 - `offices.contactType`と`offices.verificationLevel`を必ず明示する。Supabaseでは
   `20260727_add_office_metadata.sql`を適用してから全件を再投入する
+- `offices.scope`は`municipality`・`prefecture`・`national`のいずれかを指定する。
+  都道府県窓口には`prefectureCode`・`serviceArea`・`eligibilityConditions`を必須とし、
+  自治体検索では自治体窓口と同じ都道府県・全国の窓口を継承表示する
 - 同一自治体・同一カテゴリに複数の直通窓口がある場合、全件の`serviceArea`を確認できるまで
   管轄未確認の窓口を`review_required`として公開しない
 - 窓口カードは正規化した電話番号でも重複排除する。同一番号ならカテゴリ直通、具体的な

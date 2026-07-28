@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import AfterHoursGuide from "@/components/AfterHoursGuide";
 import MentalCrisisSupport from "@/components/MentalCrisisSupport";
+import UnconfirmedHours from "@/components/UnconfirmedHours";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { seoCategoryContent } from "@/lib/seo-content";
@@ -35,6 +36,14 @@ function officeDisplayName(
     : office.name;
 }
 
+function officeSubtitle(
+  office: { name: string; plainName: string; serviceArea: string },
+  offices: { name: string; plainName: string; serviceArea: string }[],
+): string {
+  const displayName = officeDisplayName(office, offices);
+  return office.name !== displayName ? office.name : "";
+}
+
 async function getPageData(params: PageProps["params"]) {
   const { municipalityCode, categoryId } = await params;
   const data = await getPublicPortalData();
@@ -48,6 +57,7 @@ async function getPageData(params: PageProps["params"]) {
     municipality.id,
     category.id,
     municipality.representativePhone,
+    municipality.prefectureCode,
   );
   const availablePrograms = data.programs.filter(
     (item) => item.scope === "national" || item.municipalityId === municipality.id,
@@ -247,6 +257,9 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                     : "専用窓口の直通・このまま話せます"}
               </p>
               <h3>{officeDisplayName(office, offices)}</h3>
+              {officeSubtitle(office, offices) && (
+                <p className="office-organization">{officeSubtitle(office, offices)}</p>
+              )}
               {office.description && <p>{office.description}</p>}
               {office.phone && (
                 <p>
@@ -258,6 +271,24 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                     電話する　<strong>{office.phone}</strong>
                   </a>
                 </p>
+              )}
+              {(office.fax || office.email || office.contactFormUrl) && (
+                <div className="non-phone-contacts">
+                  <h4>電話以外で連絡する</h4>
+                  {office.fax && <p>FAX：{office.fax}</p>}
+                  {office.email && (
+                    <p>
+                      <a href={`mailto:${office.email}`}>メールを送る</a>
+                    </p>
+                  )}
+                  {office.contactFormUrl && (
+                    <p>
+                      <a href={office.contactFormUrl} target="_blank" rel="noreferrer">
+                        問い合わせフォームを開く
+                      </a>
+                    </p>
+                  )}
+                </div>
               )}
               {!office.phone && municipality.representativePhone && category.id !== "violence" && (
                 <div className="transfer-script">
@@ -275,10 +306,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
               )}
               <dl className="office-details">
                 <dt>受付時間</dt>
-                <dd>
-                  {office.openingHours ||
-                    "未確認です。役所関係の窓口は平日の日中だけの場合が多いため、公式ページで確認してください。"}
-                </dd>
+                <dd>{office.openingHours || <UnconfirmedHours />}</dd>
                 {office.closedDays && (
                   <>
                     <dt>休み</dt>

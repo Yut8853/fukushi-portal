@@ -7,7 +7,12 @@ type DatabaseValue = string | number | boolean | null;
 type DatabaseRow = Record<string, DatabaseValue>;
 
 const nullableKeys = new Set([
-  "lastVerifiedAt", "reservationRequired", "sourceId", "officeId", "municipalityId",
+  "lastVerifiedAt",
+  "reservationRequired",
+  "sourceId",
+  "officeId",
+  "municipalityId",
+  "prefectureCode",
 ]);
 
 function toSnakeCase(value: string): string {
@@ -15,10 +20,12 @@ function toSnakeCase(value: string): string {
 }
 
 function databaseRow(value: object): DatabaseRow {
-  return Object.fromEntries(Object.entries(value).map(([key, item]) => [
-    toSnakeCase(key),
-    nullableKeys.has(key) && item === "" ? null : item as DatabaseValue,
-  ]));
+  return Object.fromEntries(
+    Object.entries(value).map(([key, item]) => [
+      toSnakeCase(key),
+      nullableKeys.has(key) && item === "" ? null : (item as DatabaseValue),
+    ]),
+  );
 }
 
 async function upsert(

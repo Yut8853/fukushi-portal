@@ -8,6 +8,8 @@ import type { Office } from "../lib/data/schemas";
 const office = (values: Partial<Office>): Office => ({
   id: "office",
   municipalityId: "city",
+  scope: "municipality",
+  prefectureCode: "",
   categoryId: "violence",
   name: "窓口",
   plainName: "相談窓口",
@@ -47,6 +49,45 @@ test("DV検索では代表電話を返さない", () => {
   assert.deepEqual(
     selectOffices([representative, direct], "city", "violence").map((item) => item.id),
     ["dv-direct"],
+  );
+});
+
+test("都道府県窓口は同じ都道府県の全自治体へ継承する", () => {
+  const prefectureOffice = office({
+    id: "prefecture-dv",
+    municipalityId: "",
+    scope: "prefecture",
+    prefectureCode: "13",
+    serviceArea: "東京都内",
+    eligibilityConditions: "東京都内に在住・在勤・在学する人",
+  });
+  assert.deepEqual(
+    selectOffices([prefectureOffice], "tokyo-chiyoda", "violence", "", "13").map((item) => item.id),
+    ["prefecture-dv"],
+  );
+  assert.deepEqual(selectOffices([prefectureOffice], "osaka-osaka", "violence", "", "27"), []);
+});
+
+test("全国窓口は全自治体へ継承するがDVの代表電話は返さない", () => {
+  const nationwide = office({
+    id: "national-dv",
+    municipalityId: "",
+    scope: "national",
+    serviceArea: "全国",
+  });
+  const representative = office({
+    id: "national-representative",
+    municipalityId: "",
+    scope: "national",
+    categoryId: "unknown",
+    contactType: "representative",
+    serviceArea: "全国",
+  });
+  assert.deepEqual(
+    selectOffices([representative, nationwide], "city", "violence", "", "01").map(
+      (item) => item.id,
+    ),
+    ["national-dv"],
   );
 });
 

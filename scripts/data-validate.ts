@@ -184,7 +184,36 @@ async function main() {
 
   offices.forEach((item, index) => {
     const row = index + 2;
-    missingRef("offices.csv", row, "自治体ID", item.municipalityId, municipalityIds);
+    if (item.scope === "municipality") {
+      if (!item.municipalityId) {
+        errors.push({ file: "offices.csv", row, message: "自治体窓口には自治体IDが必要です。" });
+      }
+      missingRef("offices.csv", row, "自治体ID", item.municipalityId, municipalityIds);
+    }
+    if (item.scope === "prefecture") {
+      if (!item.prefectureCode) {
+        errors.push({
+          file: "offices.csv",
+          row,
+          message: "都道府県窓口には都道府県コードが必要です。",
+        });
+      }
+      missingRef("offices.csv", row, "都道府県コード", item.prefectureCode, prefectureCodes);
+      if (item.municipalityId) {
+        errors.push({
+          file: "offices.csv",
+          row,
+          message: "都道府県窓口には自治体IDを設定できません。",
+        });
+      }
+    }
+    if (item.scope === "national" && (item.municipalityId || item.prefectureCode)) {
+      errors.push({
+        file: "offices.csv",
+        row,
+        message: "全国窓口には自治体ID・都道府県コードを設定できません。",
+      });
+    }
     missingRef("offices.csv", row, "分類ID", item.categoryId, categoryIds);
     missingRef("offices.csv", row, "出典ID", item.sourceId, sourceIds);
     for (const [label, value] of [
@@ -221,6 +250,40 @@ async function main() {
           message: "公開窓口には少なくとも1つの連絡手段が必要です。",
         });
       }
+      if (item.scope !== "municipality" && !item.serviceArea) {
+        errors.push({
+          file: "offices.csv",
+          row,
+          message: "都道府県・全国窓口には管轄地域が必要です。",
+        });
+      }
+      if (item.scope === "prefecture" && !item.eligibilityConditions) {
+        errors.push({
+          file: "offices.csv",
+          row,
+          message: "都道府県窓口には対象条件が必要です。",
+        });
+      }
+    }
+  });
+
+  const dvPrefectureCodes = new Set(
+    offices
+      .filter(
+        (item) =>
+          item.status === "published" &&
+          item.scope === "prefecture" &&
+          item.categoryId === "violence",
+      )
+      .map((item) => item.prefectureCode),
+  );
+  prefectures.forEach((prefecture) => {
+    if (!dvPrefectureCodes.has(prefecture.code)) {
+      errors.push({
+        file: "offices.csv",
+        row: 1,
+        message: `${prefecture.name}: 公開中の都道府県DV相談窓口がありません。`,
+      });
     }
   });
 
@@ -252,8 +315,8 @@ async function main() {
     .forEach((item) => {
       const key =
         item.contactType === "self-reliance"
-          ? `${item.municipalityId}:self-reliance`
-          : `${item.municipalityId}:direct:${item.categoryId}`;
+          ? `${item.scope}:${item.municipalityId || item.prefectureCode}:self-reliance`
+          : `${item.scope}:${item.municipalityId || item.prefectureCode}:direct:${item.categoryId}`;
       const group = publishedDirectOfficeGroups.get(key) ?? [];
       group.push(item);
       publishedDirectOfficeGroups.set(key, group);

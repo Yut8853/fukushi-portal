@@ -29,11 +29,16 @@ export type FinderProgram = {
 export type FinderOffice = {
   id: string;
   municipalityId: string;
+  scope: "municipality" | "prefecture" | "national";
+  prefectureCode: string;
   categoryId: string;
   name: string;
   plainName: string;
   description: string;
   phone: string;
+  fax: string;
+  email: string;
+  contactFormUrl: string;
   officialUrl: string;
   openingHours: string;
   closedDays: string;
@@ -82,9 +87,12 @@ export function toFinderViewModel(data: PortalData): FinderViewModel {
         supportLevel,
       }),
     ),
-    latestVerifiedAt: [
-      ...data.municipalities, ...data.offices, ...data.programs, ...data.sources,
-    ].map((item) => item.lastVerifiedAt).filter(Boolean).sort().at(-1) ?? "",
+    latestVerifiedAt:
+      [...data.municipalities, ...data.offices, ...data.programs, ...data.sources]
+        .map((item) => item.lastVerifiedAt)
+        .filter(Boolean)
+        .sort()
+        .at(-1) ?? "",
   };
 }
 
@@ -107,11 +115,14 @@ export function toAdminMunicipalities(data: PortalData): AdminMunicipality[] {
   return data.municipalities.map((municipality) => {
     const offices = data.offices.filter((item) => item.municipalityId === municipality.id);
     const directPrograms = data.programs.filter((item) => item.municipalityId === municipality.id);
-    const linkedPrograms = data.municipalityPrograms.filter((item) => item.municipalityId === municipality.id);
+    const linkedPrograms = data.municipalityPrograms.filter(
+      (item) => item.municipalityId === municipality.id,
+    );
     return {
       id: municipality.id,
       prefectureCode: municipality.prefectureCode,
-      prefectureName: prefectureNames.get(municipality.prefectureCode) ?? municipality.prefectureCode,
+      prefectureName:
+        prefectureNames.get(municipality.prefectureCode) ?? municipality.prefectureCode,
       name: municipality.name,
       supportLevel: municipality.supportLevel,
       status: municipality.status,

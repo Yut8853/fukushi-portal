@@ -1,23 +1,37 @@
 import { z } from "zod";
 
 export const statusSchema = z.enum([
-  "draft", "researching", "review_required", "verified", "published", "expired", "suspended",
+  "draft",
+  "researching",
+  "review_required",
+  "verified",
+  "published",
+  "expired",
+  "suspended",
 ]);
 export const municipalityTypeSchema = z.enum(["special_ward", "city", "town", "village"]);
 export const supportLevelSchema = z.enum(["basic", "standard", "detailed"]);
 export const scopeSchema = z.enum(["national", "prefecture", "municipality", "private"]);
 export const supportTypeSchema = z.enum([
-  "benefit", "loan", "reduction", "deferment", "goods", "housing",
-  "consultation", "medical", "employment", "other",
+  "benefit",
+  "loan",
+  "reduction",
+  "deferment",
+  "goods",
+  "housing",
+  "consultation",
+  "medical",
+  "employment",
+  "other",
 ]);
 
 const optionalString = z.string().default("");
 const optionalUrl = z.union([z.literal(""), z.url()]);
 const optionalDate = z.union([z.literal(""), z.iso.date()]);
 const booleanString = z.enum(["true", "false"]).transform((value) => value === "true");
-const optionalBooleanString = z.enum(["", "true", "false"]).transform((value) =>
-  value === "" ? null : value === "true",
-);
+const optionalBooleanString = z
+  .enum(["", "true", "false"])
+  .transform((value) => (value === "" ? null : value === "true"));
 
 export const prefectureSchema = z.object({
   code: z.string().regex(/^\d{2}$/),
@@ -52,7 +66,9 @@ export const municipalitySchema = z.object({
 
 export const officeSchema = z.object({
   id: z.string().min(1),
-  municipalityId: z.string().min(1),
+  municipalityId: optionalString,
+  scope: z.enum(["municipality", "prefecture", "national"]).default("municipality"),
+  prefectureCode: optionalString,
   categoryId: z.string().min(1),
   name: z.string().min(1),
   plainName: optionalString,
@@ -74,9 +90,7 @@ export const officeSchema = z.object({
   emergencyAlternative: optionalString,
   serviceArea: optionalString,
   eligibilityConditions: optionalString,
-  contactType: z
-    .enum(["", "direct", "self-reliance", "representative"])
-    .default(""),
+  contactType: z.enum(["", "direct", "self-reliance", "representative"]).default(""),
   verificationLevel: z
     .enum(["", "primary_source_import", "human_verified", "user_reported"])
     .default(""),

@@ -60,7 +60,11 @@ create table public.sources (
 
 create table public.offices (
   id text primary key,
-  municipality_id text not null references public.municipalities(id) on delete cascade,
+  municipality_id text references public.municipalities(id) on delete cascade,
+  scope text not null default 'municipality' check (
+    scope in ('municipality', 'prefecture', 'national')
+  ),
+  prefecture_code text references public.prefectures(code),
   category_id text not null references public.categories(id),
   name text not null,
   plain_name text not null default '',
@@ -90,7 +94,12 @@ create table public.offices (
   status public.content_status not null default 'draft',
   last_verified_at date,
   created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
+  updated_at timestamptz not null default now(),
+  check (
+    (scope = 'municipality' and municipality_id is not null)
+    or (scope = 'prefecture' and municipality_id is null and prefecture_code is not null)
+    or (scope = 'national' and municipality_id is null and prefecture_code is null)
+  )
 );
 
 create table public.programs (

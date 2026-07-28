@@ -6,6 +6,7 @@ import {
   officeMissingFields,
   standardOfficeRoleLabels,
   verificationAgeDays,
+  verificationMaxAgeDays,
   VERIFICATION_MAX_AGE_DAYS,
   VERIFICATION_WARNING_DAYS,
 } from "../lib/data/quality";
@@ -35,17 +36,24 @@ async function main() {
   }
 
   const dated = [
-    ...data.municipalities.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt })),
-    ...data.offices.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt })),
-    ...data.programs.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt })),
-    ...data.sources.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt })),
+    ...data.municipalities.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt, verificationLevel: "" as const })),
+    ...data.offices.map(({ status, lastVerifiedAt, verificationLevel }) => ({ status, lastVerifiedAt, verificationLevel })),
+    ...data.programs.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt, verificationLevel: "" as const })),
+    ...data.sources.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt, verificationLevel: "" as const })),
   ].filter((item) => item.status === "published");
-  const expired = dated.filter((item) => isVerificationExpired(item.lastVerifiedAt));
+  const expired = dated.filter((item) =>
+    isVerificationExpired(
+      item.lastVerifiedAt,
+      Date.now(),
+      verificationMaxAgeDays(item.verificationLevel),
+    ),
+  );
   const dueSoon = dated.filter((item) => {
     const age = verificationAgeDays(item.lastVerifiedAt);
+    const maxAge = verificationMaxAgeDays(item.verificationLevel);
     return age !== null
-      && age <= VERIFICATION_MAX_AGE_DAYS
-      && age > VERIFICATION_MAX_AGE_DAYS - VERIFICATION_WARNING_DAYS;
+      && age <= maxAge
+      && age > maxAge - VERIFICATION_WARNING_DAYS;
   });
 
   console.log(`standard監査: ${standardMunicipalities.length}自治体`);
@@ -55,7 +63,7 @@ async function main() {
   for (const [field, count] of [...fieldCounts.entries()].sort((a, b) => b[1] - a[1])) {
     console.log(`  ${field}未登録: ${count}件`);
   }
-  console.log(`\n確認期限: ${VERIFICATION_MAX_AGE_DAYS}日`);
+  console.log(`\n確認期限: 公式一括取込365日 / 個別確認・利用者報告${VERIFICATION_MAX_AGE_DAYS}日`);
   console.log(`  期限切れ: ${expired.length}件`);
   console.log(`  30日以内に期限: ${dueSoon.length}件`);
 

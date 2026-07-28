@@ -4,6 +4,7 @@ import test from "node:test";
 import { parseCsv } from "../lib/csv";
 import { getCsvPortalData } from "../lib/data/repository";
 import { categorySchema } from "../lib/data/schemas";
+import { selectOffices } from "../lib/support-routing";
 
 test("CSVの列数不足を拒否する", () => {
   assert.throws(
@@ -50,4 +51,28 @@ test("公開データの電話台本・窓口メタデータ・管轄条件を�
     (group) => group.length > 1 && group.some((office) => !office.serviceArea),
   );
   assert.equal(ambiguous.length, 0);
+});
+
+test("全自治体でDVの地域相談窓口を1件以上表示する", async () => {
+  const data = await getCsvPortalData(path.join(process.cwd(), "data"));
+  const prefectureDvCenters = data.offices.filter(
+    (office) =>
+      office.status === "published" &&
+      office.scope === "prefecture" &&
+      office.categoryId === "violence",
+  );
+  assert.equal(new Set(prefectureDvCenters.map((office) => office.prefectureCode)).size, 47);
+
+  const uncovered = data.municipalities.filter(
+    (municipality) =>
+      municipality.status === "published" &&
+      selectOffices(
+        data.offices,
+        municipality.id,
+        "violence",
+        municipality.representativePhone,
+        municipality.prefectureCode,
+      ).length === 0,
+  );
+  assert.deepEqual(uncovered, []);
 });

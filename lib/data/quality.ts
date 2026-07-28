@@ -1,6 +1,7 @@
 import type { Municipality, Office } from "./schemas";
 
 export const VERIFICATION_MAX_AGE_DAYS = 180;
+export const PRIMARY_SOURCE_VERIFICATION_MAX_AGE_DAYS = 365;
 export const VERIFICATION_WARNING_DAYS = 30;
 
 const millisecondsPerDay = 86_400_000;
@@ -21,9 +22,21 @@ export function verificationAgeDays(date: string, now = Date.now()): number | nu
   return Math.max(0, Math.floor((now - verifiedAt) / millisecondsPerDay));
 }
 
-export function isVerificationExpired(date: string, now = Date.now()): boolean {
+export function verificationMaxAgeDays(
+  level: Office["verificationLevel"] | "" | undefined,
+): number {
+  return level === "primary_source_import"
+    ? PRIMARY_SOURCE_VERIFICATION_MAX_AGE_DAYS
+    : VERIFICATION_MAX_AGE_DAYS;
+}
+
+export function isVerificationExpired(
+  date: string,
+  now = Date.now(),
+  maxAgeDays = VERIFICATION_MAX_AGE_DAYS,
+): boolean {
   const age = verificationAgeDays(date, now);
-  return age === null || age > VERIFICATION_MAX_AGE_DAYS;
+  return age === null || age > maxAgeDays;
 }
 
 export function officeRoles(offices: Office[]): Record<StandardOfficeRole, boolean> {

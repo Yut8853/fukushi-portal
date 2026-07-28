@@ -57,17 +57,27 @@ export async function GET(_request: Request, { params }: RouteProps) {
       lastVerifiedAt: program.lastVerifiedAt,
     }));
   const offices: FinderOffice[] = data.offices
-    .filter((office) => municipalityIds.has(office.municipalityId))
+    .filter(
+      (office) =>
+        (office.scope === "municipality" && municipalityIds.has(office.municipalityId)) ||
+        (office.scope === "prefecture" && office.prefectureCode === prefectureCode) ||
+        office.scope === "national",
+    )
     .map((office) => {
       const municipality = municipalityMap.get(office.municipalityId);
       return {
         id: office.id,
         municipalityId: office.municipalityId,
+        scope: office.scope,
+        prefectureCode: office.prefectureCode,
         categoryId: office.categoryId,
         name: office.name,
         plainName: office.plainName,
         description: office.description,
         phone: office.phone,
+        fax: office.fax,
+        email: office.email,
+        contactFormUrl: office.contactFormUrl,
         officialUrl: office.officialUrl,
         openingHours: office.openingHours,
         closedDays: office.closedDays,
