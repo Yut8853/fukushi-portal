@@ -203,7 +203,11 @@ function EmergencyDirectoryLinks({ ids }: { ids: string[] }) {
         const contact = emergencyContacts.find((item) => item.id === id);
         if (!contact) return null;
         const label =
-          contact.id === "mental-health" ? "こころの健康相談統一ダイヤル" : contact.label;
+          contact.id === "mental-health"
+            ? "こころの健康相談統一ダイヤル"
+            : contact.id === "dv-consultation"
+              ? "DV相談ナビ"
+              : contact.label;
         return (
           <li key={contact.id}>
             <strong>{label}：</strong>{" "}
