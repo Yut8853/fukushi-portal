@@ -3,6 +3,7 @@ import { access, readFile } from "node:fs/promises";
 import path from "node:path";
 import test from "node:test";
 import { selectOffices } from "../lib/support-routing";
+import { shouldEstimateMunicipalHours } from "../lib/office-hours";
 import type { Office } from "../lib/data/schemas";
 
 const office = (values: Partial<Office>): Office => ({
@@ -89,6 +90,23 @@ test("全国窓口は全自治体へ継承するがDVの代表電話は返さな
     ),
     ["national-dv"],
   );
+});
+
+test("受付時間の推定を都道府県・全国・専門直通窓口へ適用しない", () => {
+  assert.equal(
+    shouldEstimateMunicipalHours({ scope: "municipality", contactType: "representative" }),
+    true,
+  );
+  assert.equal(
+    shouldEstimateMunicipalHours({ scope: "municipality", contactType: "self-reliance" }),
+    true,
+  );
+  assert.equal(
+    shouldEstimateMunicipalHours({ scope: "municipality", contactType: "direct" }),
+    false,
+  );
+  assert.equal(shouldEstimateMunicipalHours({ scope: "prefecture", contactType: "direct" }), false);
+  assert.equal(shouldEstimateMunicipalHours({ scope: "national", contactType: "direct" }), false);
 });
 
 test("DV検索で同じ番号ならDV相談カードを児童虐待カードより優先する", () => {

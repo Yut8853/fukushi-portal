@@ -13,7 +13,6 @@ export const metadata: Metadata = {
     template: "%s | くらし支援ナビ",
   },
   description: "生活に困ったとき、今いる地域から相談先と次の行動を探せる福祉ポータル",
-  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     locale: "ja_JP",

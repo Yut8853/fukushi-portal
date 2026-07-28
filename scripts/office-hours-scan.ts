@@ -80,6 +80,12 @@ async function main() {
   const data = await getPublicPortalData();
   const typeArgument = process.argv.find((argument) => argument.startsWith("--type="))?.split("=")[1] ?? "all";
   const requestedType = typeArgument === "all" ? null : typeArgument as OfficeContactType;
+  const categoryArgument = process.argv
+    .find((argument) => argument.startsWith("--category="))
+    ?.split("=")[1];
+  const scopeArgument = process.argv
+    .find((argument) => argument.startsWith("--scope="))
+    ?.split("=")[1];
   const discoverRelatedPages = process.argv.includes("--discover");
   const retryReportErrors = process.argv.includes("--retry-errors");
   const limitArgument = process.argv.find((argument) => argument.startsWith("--limit="))?.split("=")[1];
@@ -91,6 +97,8 @@ async function main() {
     .filter((office) =>
       office.phone
       && (!requestedType || officeContactType(office) === requestedType)
+      && (!categoryArgument || office.categoryId === categoryArgument)
+      && (!scopeArgument || office.scope === scopeArgument)
     )
     .map((office) => ({ office, sourceUrl: office.officialUrl || sources.get(office.sourceId) || "" }))
     .filter((item) => item.sourceUrl);
@@ -101,6 +109,10 @@ async function main() {
     groups.set(target.sourceUrl, list);
   }
   const candidates: HoursCandidate[] = [];
+  const evidenceByOffice = new Map<
+    string,
+    { officeId: string; officeName: string; phone: string; sourceUrl: string; evidenceText: string }
+  >();
   const errors: { sourceUrl: string; message: string }[] = [];
   let processed = 0;
   let nextGroup = 0;
@@ -116,12 +128,24 @@ async function main() {
     selectableGroups = selectableGroups.filter(([sourceUrl]) => retryUrls.has(sourceUrl));
   }
   const selectedGroups = selectableGroups.slice(sourceOffset, sourceOffset + sourceLimit);
+  const selectedOfficeIds = new Set(
+    selectedGroups.flatMap(([, selectedOffices]) =>
+      selectedOffices.map(({ office }) => office.id),
+    ),
+  );
   function collectCandidates(text: string, url: URL, offices: (typeof targets)) {
     let found = 0;
     for (const { office } of offices) {
       if (office.openingHours) continue;
       const context = phoneContext(text, office.phone);
       if (!context) continue;
+      evidenceByOffice.set(office.id, {
+        officeId: office.id,
+        officeName: office.name,
+        phone: office.phone,
+        sourceUrl: url.href,
+        evidenceText: context.text.replace(/\s+/g, " ").trim(),
+      });
       const openingHours = findOpeningHours(context.text);
       if (!openingHours) continue;
       const hoursOffset = context.text.indexOf(openingHours);
@@ -205,9 +229,27 @@ async function main() {
     scannedSourceCount: processed,
     sourceOffset,
     requestedType: requestedType ?? "all",
+    requestedCategory: categoryArgument ?? "all",
+    requestedScope: scopeArgument ?? "all",
     discoverRelatedPages,
     retryReportErrors,
     candidates,
+    unresolved: targets
+      .filter(
+        ({ office }) =>
+          selectedOfficeIds.has(office.id) &&
+          !office.openingHours &&
+          !candidates.some((candidate) => candidate.officeId === office.id),
+      )
+      .map(({ office, sourceUrl }) =>
+        evidenceByOffice.get(office.id) ?? {
+          officeId: office.id,
+          officeName: office.name,
+          phone: office.phone,
+          sourceUrl,
+          evidenceText: "",
+        },
+      ),
     errors,
   };
   const output = path.join(process.cwd(), "data", "crawl", "office-hours-candidates.json");

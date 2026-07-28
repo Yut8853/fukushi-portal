@@ -43,7 +43,11 @@ export default async function SupportDirectoryPage() {
         <h2>困りごとの例</h2>
         <ul className="keyword-list">
           {data.categories.map((category) => (
-            <li key={category.id}>{seoCategoryContent(category.id).searchTitle}</li>
+            <li key={category.id}>
+              <Link href={`/support/category/${category.id}`}>
+                {seoCategoryContent(category.id).searchTitle}
+              </Link>
+            </li>
           ))}
         </ul>
       </section>

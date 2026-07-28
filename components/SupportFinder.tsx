@@ -7,6 +7,8 @@ import MentalCrisisSupport from "@/components/MentalCrisisSupport";
 import UnconfirmedHours from "@/components/UnconfirmedHours";
 import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/view-models";
 import { verificationMaxAgeDays } from "@/lib/data/quality";
+import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
+import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
 
 function displayDate(value: string): string {
   if (!value) return "未確認";
@@ -25,16 +27,6 @@ function telephoneAriaLabel(value: string): string {
     .join(" の ")}へ電話`;
 }
 
-function officeDisplayName(office: FinderOffice, offices: FinderOffice[]): string {
-  if (!office.plainName) return office.name;
-  const samePlainName = offices.filter((item) => item.plainName === office.plainName);
-  if (samePlainName.length === 1) return office.plainName;
-  const sameName = samePlainName.filter((item) => item.name === office.name);
-  return sameName.length > 1 && office.serviceArea
-    ? `${office.name}（${office.serviceArea}）`
-    : office.name;
-}
-
 function verificationExpired(
   value: string,
   level: FinderOffice["verificationLevel"] = "primary_source_import",
@@ -44,11 +36,6 @@ function verificationExpired(
     Date.now() - new Date(`${value}T00:00:00Z`).getTime() >
     verificationMaxAgeDays(level) * 86_400_000
   );
-}
-
-function officeSubtitle(office: FinderOffice, offices: FinderOffice[]): string {
-  const displayName = officeDisplayName(office, offices);
-  return office.name !== displayName ? office.name : "";
 }
 
 function verificationLabel(level: FinderOffice["verificationLevel"], date: string): string {
@@ -614,24 +601,14 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                         ? "総合相談の直通・このまま話せます"
                         : "専用窓口の直通・このまま話せます"}
                   </p>
-                  <h4>{officeDisplayName(office, offices)}</h4>
-                  {officeSubtitle(office, offices) && (
-                    <p className="office-organization">{officeSubtitle(office, offices)}</p>
+                  <h4>{officeDisplayName(office)}</h4>
+                  {officeOrganizationName(office) && (
+                    <p className="office-organization">{officeOrganizationName(office)}</p>
                   )}
                   {office.description && <p>{office.description}</p>}
-                  {office.phone && (
-                    <a
-                      className="phone-button"
-                      href={telephoneHref(office.phone)}
-                      aria-label={telephoneAriaLabel(office.phone)}
-                    >
-                      <span>電話する</span>
-                      <strong>{office.phone}</strong>
-                    </a>
-                  )}
                   {(office.fax || office.email || office.contactFormUrl) && (
                     <div className="non-phone-contacts">
-                      <h5>電話以外で連絡する</h5>
+                      <h5>電話が難しい場合</h5>
                       {office.fax && <p>FAX：{office.fax}</p>}
                       {office.email && (
                         <p>
@@ -646,6 +623,16 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                         </p>
                       )}
                     </div>
+                  )}
+                  {office.phone && (
+                    <a
+                      className="phone-button"
+                      href={telephoneHref(office.phone)}
+                      aria-label={telephoneAriaLabel(office.phone)}
+                    >
+                      <span>電話する</span>
+                      <strong>{office.phone}</strong>
+                    </a>
                   )}
                   {!office.phone &&
                     municipality?.representativePhone &&
@@ -682,7 +669,14 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                   )}
                   <dl className="office-details">
                     <dt>受付時間</dt>
-                    <dd>{office.openingHours || <UnconfirmedHours />}</dd>
+                    <dd>
+                      {office.openingHours ||
+                        (shouldEstimateMunicipalHours(office) ? (
+                          <UnconfirmedHours />
+                        ) : (
+                          "受付時間は未確認です。公式ページで確認してください。"
+                        ))}
+                    </dd>
                     {office.closedDays && (
                       <>
                         <dt>休み</dt>

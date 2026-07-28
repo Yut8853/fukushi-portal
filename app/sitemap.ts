@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { SITE_URL } from "@/lib/site";
-import { officeContactType } from "@/lib/support-routing";
+import { selectOffices } from "@/lib/support-routing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await getPublicPortalData();
@@ -16,11 +16,19 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     .sort()
     .at(-1);
   const updated = latestVerifiedAt ? new Date(latestVerifiedAt) : undefined;
-  const officesByMunicipality = new Map<string, typeof data.offices>();
+  const localOffices = new Map<string, typeof data.offices>();
+  const prefectureOffices = new Map<string, typeof data.offices>();
+  const nationalOffices = data.offices.filter((office) => office.scope === "national");
   for (const office of data.offices) {
-    const current = officesByMunicipality.get(office.municipalityId) ?? [];
-    current.push(office);
-    officesByMunicipality.set(office.municipalityId, current);
+    const map =
+      office.scope === "prefecture"
+        ? prefectureOffices
+        : office.scope === "municipality"
+          ? localOffices
+          : null;
+    const key = office.scope === "prefecture" ? office.prefectureCode : office.municipalityId;
+    if (!map || !key) continue;
+    map.set(key, [...(map.get(key) ?? []), office]);
   }
   return [
     { url: SITE_URL, lastModified: updated, changeFrequency: "weekly", priority: 1 },
@@ -38,14 +46,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
+    ...data.categories.map((category) => ({
+      url: `${SITE_URL}/support/category/${category.id}`,
+      lastModified: updated,
+      changeFrequency: "monthly" as const,
+      priority: 0.85,
+    })),
     ...data.municipalities.flatMap((municipality) =>
       data.categories
         .filter((category) => {
-          const local = officesByMunicipality.get(municipality.id) ?? [];
-          if (category.id !== "violence") return local.length > 0;
-          return local.some(
-            (office) =>
-              office.categoryId === "violence" && officeContactType(office) !== "representative",
+          const scopedOffices = [
+            ...(localOffices.get(municipality.id) ?? []),
+            ...(prefectureOffices.get(municipality.prefectureCode) ?? []),
+            ...nationalOffices,
+          ];
+          return (
+            selectOffices(
+              scopedOffices,
+              municipality.id,
+              category.id,
+              municipality.representativePhone,
+              municipality.prefectureCode,
+            ).length > 0
           );
         })
         .map((category) => ({

@@ -7,6 +7,8 @@ import MentalCrisisSupport from "@/components/MentalCrisisSupport";
 import UnconfirmedHours from "@/components/UnconfirmedHours";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
+import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
+import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
 import { seoCategoryContent } from "@/lib/seo-content";
 import { SITE_URL } from "@/lib/site";
 
@@ -21,27 +23,6 @@ function telephoneAriaLabel(value: string): string {
     .split(/[- ]/)
     .map((part) => [...part].join(" "))
     .join(" の ")}へ電話`;
-}
-
-function officeDisplayName(
-  office: { name: string; plainName: string; serviceArea: string },
-  offices: { name: string; plainName: string; serviceArea: string }[],
-): string {
-  if (!office.plainName) return office.name;
-  const samePlainName = offices.filter((item) => item.plainName === office.plainName);
-  if (samePlainName.length === 1) return office.plainName;
-  const sameName = samePlainName.filter((item) => item.name === office.name);
-  return sameName.length > 1 && office.serviceArea
-    ? `${office.name}（${office.serviceArea}）`
-    : office.name;
-}
-
-function officeSubtitle(
-  office: { name: string; plainName: string; serviceArea: string },
-  offices: { name: string; plainName: string; serviceArea: string }[],
-): string {
-  const displayName = officeDisplayName(office, offices);
-  return office.name !== displayName ? office.name : "";
 }
 
 async function getPageData(params: PageProps["params"]) {
@@ -89,9 +70,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!page) return {};
   const seo = seoCategoryContent(page.category.id);
   const title = `${page.municipality.name}で${seo.searchTitle}ときの相談先`;
-  const firstOffice = page.offices[0]
-    ? officeDisplayName(page.offices[0], page.offices)
-    : undefined;
+  const firstOffice = page.offices[0] ? officeDisplayName(page.offices[0]) : undefined;
   const description = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの公的な相談先${firstOffice ? `「${firstOffice}」` : ""}と、電話での伝え方を案内します。`;
   return {
     title,
@@ -137,7 +116,12 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         name: `${municipality.name}で${seo.searchTitle}ときの相談先`,
         description: seo.summary,
         inLanguage: "ja",
-        dateModified: municipality.lastVerifiedAt,
+        dateModified:
+          offices
+            .map((office) => office.lastVerifiedAt)
+            .filter(Boolean)
+            .sort()
+            .at(-1) || municipality.lastVerifiedAt,
         isPartOf: { "@id": `${SITE_URL}/#website` },
       },
       {
@@ -151,7 +135,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
             name: prefecture.name,
             item: `${SITE_URL}/support/${prefecture.code}`,
           },
-          { "@type": "ListItem", position: 4, name: municipality.name },
+          { "@type": "ListItem", position: 4, name: municipality.name, item: pageUrl },
         ],
       },
       ...(offices.length
@@ -162,7 +146,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
               itemListElement: offices.map((office, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
-                name: officeDisplayName(office, offices),
+                name: officeDisplayName(office),
                 url: sources.get(office.sourceId)?.url || office.officialUrl || pageUrl,
               })),
             },
@@ -256,25 +240,14 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                     ? "総合相談の直通・このまま話せます"
                     : "専用窓口の直通・このまま話せます"}
               </p>
-              <h3>{officeDisplayName(office, offices)}</h3>
-              {officeSubtitle(office, offices) && (
-                <p className="office-organization">{officeSubtitle(office, offices)}</p>
+              <h3>{officeDisplayName(office)}</h3>
+              {officeOrganizationName(office) && (
+                <p className="office-organization">{officeOrganizationName(office)}</p>
               )}
               {office.description && <p>{office.description}</p>}
-              {office.phone && (
-                <p>
-                  <a
-                    className="phone-button"
-                    href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}
-                    aria-label={telephoneAriaLabel(office.phone)}
-                  >
-                    電話する　<strong>{office.phone}</strong>
-                  </a>
-                </p>
-              )}
               {(office.fax || office.email || office.contactFormUrl) && (
                 <div className="non-phone-contacts">
-                  <h4>電話以外で連絡する</h4>
+                  <h4>電話が難しい場合</h4>
                   {office.fax && <p>FAX：{office.fax}</p>}
                   {office.email && (
                     <p>
@@ -289,6 +262,17 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                     </p>
                   )}
                 </div>
+              )}
+              {office.phone && (
+                <p>
+                  <a
+                    className="phone-button"
+                    href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}
+                    aria-label={telephoneAriaLabel(office.phone)}
+                  >
+                    電話する　<strong>{office.phone}</strong>
+                  </a>
+                </p>
               )}
               {!office.phone && municipality.representativePhone && category.id !== "violence" && (
                 <div className="transfer-script">
@@ -306,7 +290,14 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
               )}
               <dl className="office-details">
                 <dt>受付時間</dt>
-                <dd>{office.openingHours || <UnconfirmedHours />}</dd>
+                <dd>
+                  {office.openingHours ||
+                    (shouldEstimateMunicipalHours({ ...office, contactType }) ? (
+                      <UnconfirmedHours />
+                    ) : (
+                      "受付時間は未確認です。公式ページで確認してください。"
+                    ))}
+                </dd>
                 {office.closedDays && (
                   <>
                     <dt>休み</dt>

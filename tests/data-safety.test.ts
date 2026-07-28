@@ -76,3 +76,20 @@ test("全自治体でDVの地域相談窓口を1件以上表示する", async ()
   );
   assert.deepEqual(uncovered, []);
 });
+
+test("全自治体の食料相談で電話以外の連絡先を1件以上表示する", async () => {
+  const data = await getCsvPortalData(path.join(process.cwd(), "data"));
+  const uncovered = data.municipalities.filter((municipality) => {
+    if (municipality.status !== "published") return false;
+    const offices = selectOffices(
+      data.offices,
+      municipality.id,
+      "food",
+      municipality.representativePhone,
+      municipality.prefectureCode,
+    );
+    return !offices.some((office) => office.fax || office.email || office.contactFormUrl);
+  });
+
+  assert.deepEqual(uncovered, []);
+});
