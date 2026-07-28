@@ -1,6 +1,6 @@
 export default function AfterHoursGuide({ categoryId }: { categoryId: string }) {
   return (
-    <aside className="after-hours-guide">
+    <aside className="after-hours-guide" aria-label="受付時間外の相談方法">
       <p className="section-kicker">いま夜・土日で、地域の窓口が閉まっている方へ</p>
       <h3>次に窓口が開くまで、ひとりで抱えなくて大丈夫です</h3>
       <p>

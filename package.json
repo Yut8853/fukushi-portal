@@ -5,12 +5,13 @@
   "scripts": {
     "dev": "next dev",
     "build": "npm run verify && next build",
-    "verify": "npm run data:validate && npm run data:quality && npm run data:audit && npm run seo:audit && npm test && npm run lint && npm run format:check",
+    "verify": "npm run data:validate && npm run data:quality && npm run data:audit && npm run seo:audit && npm run stats:check && npm test && npm run lint && npm run format:check",
     "start": "next start",
     "lint": "eslint app components crawler lib scripts proxy.ts",
     "format": "prettier --write \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx,css}\"",
     "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"components/**/*.{ts,tsx,css}\"",
     "test": "tsx --test tests/*.test.ts",
+    "test:e2e": "playwright test",
     "data:validate": "tsx scripts/data-validate.ts",
     "data:quality": "tsx scripts/data-quality.ts",
     "data:audit": "tsx scripts/nationwide-completion-audit.ts",
@@ -25,6 +26,8 @@
     "data:add-quarantine-fallbacks": "tsx scripts/add-quarantine-fallbacks.ts",
     "data:fix-verified-cities": "tsx scripts/fix-verified-city-offices.ts",
     "seo:audit": "tsx scripts/seo-audit.ts",
+    "stats:generate": "tsx scripts/generate-public-stats.ts",
+    "stats:check": "tsx scripts/generate-public-stats.ts --check",
     "sources:monitor": "tsx scripts/sources-monitor.ts",
     "supabase:seed": "tsx scripts/supabase-seed.ts",
     "supabase:quarantine-ambiguous": "tsx scripts/supabase-quarantine-ambiguous-offices.ts",
@@ -64,6 +67,8 @@
     "zod": "^4.4.3"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.12.1",
+    "@playwright/test": "^1.62.0",
     "@types/node": "^24.13.3",
     "@types/react": "^19.2.17",
     "@types/react-dom": "^19.2.3",

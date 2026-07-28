@@ -16,6 +16,8 @@ out/
 *.log
 npm-debug.log*
 coverage/
+playwright-report/
+test-results/
 
 # TypeScript and OS/editor files
 *.tsbuildinfo

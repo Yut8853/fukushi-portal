@@ -306,13 +306,22 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       </div>
 
       <div className="finder-progress" aria-label="検索の流れ">
-        <span className={activeStep > 1 ? "is-complete" : "is-current"}>
+        <span
+          className={activeStep > 1 ? "is-complete" : "is-current"}
+          aria-current={activeStep === 1 ? "step" : undefined}
+        >
           <b>1</b>困りごと
         </span>
-        <span className={activeStep > 2 ? "is-complete" : activeStep === 2 ? "is-current" : ""}>
+        <span
+          className={activeStep > 2 ? "is-complete" : activeStep === 2 ? "is-current" : ""}
+          aria-current={activeStep === 2 ? "step" : undefined}
+        >
           <b>2</b>地域
         </span>
-        <span className={activeStep === 3 ? "is-current" : ""}>
+        <span
+          className={activeStep === 3 ? "is-current" : ""}
+          aria-current={activeStep === 3 ? "step" : undefined}
+        >
           <b>3</b>案内を見る
         </span>
       </div>
@@ -745,7 +754,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
             </section>
           )}
           {offices.length > 0 && (
-            <aside className="connection-fallback">
+            <aside className="connection-fallback" aria-label="電話がつながらないときの代替手段">
               <h3>電話がつながらないとき</h3>
               <ol>
                 <li>受付時間を確認し、時間内に少し間をあけてかけ直す</li>
@@ -761,7 +770,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
             </aside>
           )}
           {offices.some((office) => office.contactType === "representative") && (
-            <aside className="transfer-tips">
+            <aside className="transfer-tips" aria-label="電話を取り次いでもらうときの注意">
               <h3>電話を何度も回されないために</h3>
               <ol>
                 <li>つないでもらう前に「切れたときのために、直通番号を教えてください」</li>

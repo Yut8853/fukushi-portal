@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublicPortalData } from "@/lib/data/repository";
+import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
 import { seoCategoryContent } from "@/lib/seo-content";
 import { SITE_URL } from "@/lib/site";
 
@@ -15,11 +16,22 @@ async function getPage(params: PageProps["params"]) {
   const category = data.categories.find((item) => item.id === categoryId);
   const prefecture = data.prefectures.find((item) => item.code === prefectureCode);
   if (!category || !prefecture) return null;
+  const index = buildOfficeIndex(data.offices);
+  const municipalities = data.municipalities.filter(
+    (item) => item.prefectureCode === prefecture.code,
+  );
+  const indexableMunicipalities = indexableMunicipalitiesFor(
+    data,
+    index,
+    prefecture.code,
+    category.id,
+  );
   return {
     category,
     prefecture,
     seo: seoCategoryContent(category.id),
-    municipalities: data.municipalities.filter((item) => item.prefectureCode === prefecture.code),
+    municipalities,
+    indexableMunicipalities,
   };
 }
 
@@ -33,6 +45,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/support/category/${page.category.id}/${page.prefecture.code}`,
     },
+    robots: page.indexableMunicipalities.length
+      ? { index: true, follow: true }
+      : { index: false, follow: true },
   };
 }
 
@@ -80,17 +95,43 @@ export default async function CategoryPrefecturePage({ params }: PageProps) {
       </h1>
       <p className="lead">お住まいの市区町村を選んでください。</p>
       <section className="content-section">
-        <h2>市区町村から探す</h2>
-        <ul className="directory-grid">
-          {page.municipalities.map((municipality) => (
-            <li key={municipality.id}>
-              <Link href={`/support/${municipality.id}/${page.category.id}`}>
-                {municipality.name}
-              </Link>
-            </li>
-          ))}
-        </ul>
+        <h2>地域固有の専門窓口が確認できている市区町村</h2>
+        {page.indexableMunicipalities.length ? (
+          <ul className="directory-grid">
+            {page.indexableMunicipalities.map((municipality) => (
+              <li key={municipality.id}>
+                <Link href={`/support/${municipality.id}/${page.category.id}`}>
+                  {municipality.name}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ) : (
+          <p>
+            この困りごとについて、地域固有の専門窓口を安全に確認できている市区町村は
+            まだありません。全国・都道府県共通の相談先はトップの検索機能から確認できます。
+          </p>
+        )}
       </section>
+      {page.indexableMunicipalities.length < page.municipalities.length && (
+        <section className="content-section">
+          <h2>そのほかの市区町村</h2>
+          <p>
+            地域固有の専門窓口が未整備の市区町村でも、全国共通・都道府県共通の相談先や
+            自治体の総合案内を検索できます。
+          </p>
+          <Link
+            className="official-link"
+            href={
+              page.category.id === "violence" || page.category.id === "mental"
+                ? "/#support-finder"
+                : `/?category=${page.category.id}#support-finder`
+            }
+          >
+            トップの検索機能で探す
+          </Link>
+        </section>
+      )}
     </main>
   );
 }

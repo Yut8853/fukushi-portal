@@ -202,7 +202,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
       </h1>
       <p className="lead">{seo.summary}</p>
       {category.id === "mental" && <MentalCrisisSupport />}
-      <aside className="first-action">
+      <aside className="first-action" aria-label="急いでいるときの最初の行動">
         <h2>急いでいるとき、最初にすること</h2>
         <p>{seo.firstAction}</p>
         <p>名前や住所、詳しい事情をこのサイトへ入力する必要はありません。</p>
@@ -385,7 +385,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
       </section>
 
       {offices.length > 0 && (
-        <aside className="connection-fallback">
+        <aside className="connection-fallback" aria-label="電話がつながらないときの代替手段">
           <h2>電話がつながらないとき</h2>
           <ol>
             <li>受付時間を確認し、時間内に少し間をあけてかけ直す</li>
@@ -405,7 +405,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
         (office) =>
           officeContactType(office, municipality.representativePhone) === "representative",
       ) && (
-        <aside className="transfer-tips">
+        <aside className="transfer-tips" aria-label="電話を取り次いでもらうときの注意">
           <h2>電話を何度も回されないために</h2>
           <ol>
             <li>つないでもらう前に「切れたときのために、直通番号を教えてください」</li>

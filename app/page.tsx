@@ -3,6 +3,7 @@ import Link from "next/link";
 import SupportFinder from "@/components/SupportFinder";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { toFinderViewModel } from "@/lib/data/view-models";
+import { getPublicStats } from "@/lib/public-stats";
 
 export const metadata: Metadata = {
   alternates: { canonical: "/" },
@@ -10,6 +11,7 @@ export const metadata: Metadata = {
 
 export default async function HomePage() {
   const data = toFinderViewModel(await getPublicPortalData());
+  const stats = getPublicStats();
   const [updatedYear, updatedMonth, updatedDay] = data.latestVerifiedAt.split("-");
   return (
     <main id="main" className="page-shell">
@@ -29,6 +31,10 @@ export default async function HomePage() {
             介護・障害・DVなど専門分野の地域窓口は、順次整備中です。掲載情報は国・自治体の
             公式一覧や公式ページから転記・整理し、未確認の項目はその旨を表示しています。
             <small>
+              公開窓口：{stats.publishedOffices.toLocaleString("ja-JP")}件 ／
+              地域固有の専門窓口がある検索ページ：
+              {stats.localSpecialistPages.toLocaleString("ja-JP")}件
+              <br />
               サイト全体の最終更新：
               {updatedYear && updatedMonth && updatedDay
                 ? `${updatedYear}年${Number(updatedMonth)}月${Number(updatedDay)}日`

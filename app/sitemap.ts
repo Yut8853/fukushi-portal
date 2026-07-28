@@ -1,7 +1,11 @@
 import type { MetadataRoute } from "next";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { SITE_CONTENT_LAST_MODIFIED, SITE_URL } from "@/lib/site";
-import { selectOffices } from "@/lib/support-routing";
+import {
+  buildOfficeIndex,
+  indexableMunicipalitiesFor,
+  selectedOfficesFor,
+} from "@/lib/seo-analysis";
 import { isIndexableSupportPage } from "@/lib/seo-indexing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -11,20 +15,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     return latest ? new Date(latest) : undefined;
   };
   const contentUpdated = new Date(SITE_CONTENT_LAST_MODIFIED);
-  const localOffices = new Map<string, typeof data.offices>();
-  const prefectureOffices = new Map<string, typeof data.offices>();
-  const nationalOffices = data.offices.filter((office) => office.scope === "national");
-  for (const office of data.offices) {
-    const map =
-      office.scope === "prefecture"
-        ? prefectureOffices
-        : office.scope === "municipality"
-          ? localOffices
-          : null;
-    const key = office.scope === "prefecture" ? office.prefectureCode : office.municipalityId;
-    if (!map || !key) continue;
-    map.set(key, [...(map.get(key) ?? []), office]);
-  }
+  const officeIndex = buildOfficeIndex(data.offices);
   return [
     { url: SITE_URL, lastModified: contentUpdated, changeFrequency: "weekly", priority: 1 },
     {
@@ -69,33 +60,28 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.85,
     })),
     ...data.categories.flatMap((category) =>
-      data.prefectures.map((prefecture) => ({
-        url: `${SITE_URL}/support/category/${category.id}/${prefecture.code}`,
-        lastModified: dateFrom(
-          SITE_CONTENT_LAST_MODIFIED,
-          ...data.municipalities
-            .filter((item) => item.prefectureCode === prefecture.code)
-            .map((item) => item.lastVerifiedAt),
-        ),
-        changeFrequency: "monthly" as const,
-        priority: 0.75,
-      })),
+      data.prefectures.flatMap((prefecture) =>
+        indexableMunicipalitiesFor(data, officeIndex, prefecture.code, category.id).length
+          ? [
+              {
+                url: `${SITE_URL}/support/category/${category.id}/${prefecture.code}`,
+                lastModified: dateFrom(
+                  SITE_CONTENT_LAST_MODIFIED,
+                  ...data.municipalities
+                    .filter((item) => item.prefectureCode === prefecture.code)
+                    .map((item) => item.lastVerifiedAt),
+                ),
+                changeFrequency: "monthly" as const,
+                priority: 0.75,
+              },
+            ]
+          : [],
+      ),
     ),
     ...data.municipalities.flatMap((municipality) =>
       data.categories
         .filter((category) => {
-          const scopedOffices = [
-            ...(localOffices.get(municipality.id) ?? []),
-            ...(prefectureOffices.get(municipality.prefectureCode) ?? []),
-            ...nationalOffices,
-          ];
-          const selected = selectOffices(
-            scopedOffices,
-            municipality.id,
-            category.id,
-            municipality.representativePhone,
-            municipality.prefectureCode,
-          );
+          const selected = selectedOfficesFor(officeIndex, municipality, category.id);
           return isIndexableSupportPage(selected, municipality.id, category.id);
         })
         .map((category) => ({
@@ -103,17 +89,9 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
           lastModified: dateFrom(
             SITE_CONTENT_LAST_MODIFIED,
             municipality.lastVerifiedAt,
-            ...selectOffices(
-              [
-                ...(localOffices.get(municipality.id) ?? []),
-                ...(prefectureOffices.get(municipality.prefectureCode) ?? []),
-                ...nationalOffices,
-              ],
-              municipality.id,
-              category.id,
-              municipality.representativePhone,
-              municipality.prefectureCode,
-            ).map((office) => office.lastVerifiedAt),
+            ...selectedOfficesFor(officeIndex, municipality, category.id).map(
+              (office) => office.lastVerifiedAt,
+            ),
           ),
           changeFrequency: "monthly" as const,
           priority: 0.7,
