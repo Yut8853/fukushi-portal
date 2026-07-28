@@ -3,8 +3,11 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
+import { isSensitiveCategory, sensitiveSupportMetadata } from "@/lib/privacy";
 import { seoCategoryContent } from "@/lib/seo-content";
 import { SITE_URL } from "@/lib/site";
+
+export const dynamic = "force-dynamic";
 
 type PageProps = {
   params: Promise<{ categoryId: string; prefectureCode: string }>;
@@ -38,16 +41,30 @@ async function getPage(params: PageProps["params"]) {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const page = await getPage(params);
   if (!page) return {};
-  const title = `${page.prefecture.name}で${page.seo.searchTitle}ときの相談先`;
+  const sensitive = isSensitiveCategory(page.category.id);
+  const title = sensitive
+    ? sensitiveSupportMetadata.title
+    : `${page.prefecture.name}で${page.seo.searchTitle}ときの相談先`;
   return {
     title,
-    description: `${page.prefecture.name}の市区町村から、${page.seo.searchTitle}ときの公的な相談先を選べます。`,
+    description: sensitive
+      ? sensitiveSupportMetadata.description
+      : `${page.prefecture.name}の市区町村から、${page.seo.searchTitle}ときの公的な相談先を選べます。`,
     alternates: {
       canonical: `/support/category/${page.category.id}/${page.prefecture.code}`,
     },
-    robots: page.indexableMunicipalities.length
-      ? { index: true, follow: true }
-      : { index: false, follow: true },
+    robots: sensitive
+      ? { index: false, follow: true, noarchive: true, nosnippet: true }
+      : page.indexableMunicipalities.length
+        ? { index: true, follow: true }
+        : { index: false, follow: true },
+    twitter: sensitive
+      ? {
+          card: "summary",
+          title: sensitiveSupportMetadata.title,
+          description: sensitiveSupportMetadata.description,
+        }
+      : undefined,
   };
 }
 

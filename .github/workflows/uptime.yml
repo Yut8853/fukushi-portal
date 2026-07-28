@@ -27,6 +27,20 @@ jobs:
               "https://fukushi.junkbranding.com${path}" > /dev/null
           done
 
+      - name: Check emergency contacts on static and dynamic pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          for path in / /about /support /support/16 /support/jp-16321/violence; do
+            page="$(mktemp)"
+            curl --fail --silent --show-error \
+              --location --max-time 20 --retry 2 \
+              "https://fukushi.junkbranding.com${path}" > "$page"
+            for contact in 'tel:110' 'tel:119' 'tel:189' 'tel:%238008'; do
+              grep -Fq "$contact" "$page"
+            done
+          done
+
       - name: Check canonical domain redirect
         shell: bash
         run: |

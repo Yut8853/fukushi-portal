@@ -151,6 +151,29 @@ test("カテゴリ直通窓口と番号が違う自立相談は別の入口と�
   );
 });
 
+test("電話がなくても同じ問い合わせフォームの窓口を統合する", () => {
+  const direct = office({
+    id: "direct-form",
+    categoryId: "money",
+    phone: "",
+    contactFormUrl: "https://example.jp/contact/",
+  });
+  const selfReliance = office({
+    id: "self-reliance-form",
+    categoryId: "housing",
+    phone: "",
+    contactFormUrl: "https://example.jp/contact",
+    plainName: "生活困窮者自立相談",
+    contactType: "self-reliance",
+  });
+  const selected = selectOffices([direct, selfReliance], "city", "money");
+  assert.deepEqual(
+    selected.map((item) => item.id),
+    ["direct-form"],
+  );
+  assert.match(selected[0].description, /生活困窮者自立相談/);
+});
+
 test("同じ電話番号ではカテゴリ別のつなぎ依頼を一般代表より優先する", () => {
   const categoryFallback = office({
     id: "public-assistance-fallback",
@@ -177,4 +200,18 @@ test("検索クライアントはカテゴリをAPIへ送信しない", async ()
   assert.doesNotMatch(finder, /\/api\/support\?/);
   assert.match(finder, /\/data\/support\/\$\{dataFile\}\.json/);
   await assert.rejects(access(path.join(root, "app", "api", "support", "route.ts")));
+});
+
+test("センシティブカテゴリをメタデータや共有タイトルへ露出しない", async () => {
+  const root = process.cwd();
+  const municipalityPage = await readFile(
+    path.join(root, "app", "support", "[municipalityCode]", "[categoryId]", "page.tsx"),
+    "utf8",
+  );
+  const finder = await readFile(path.join(root, "components", "SupportFinder.tsx"), "utf8");
+
+  assert.match(municipalityPage, /sensitiveSupportMetadata\.title/);
+  assert.match(municipalityPage, /index: !sensitive && indexable/);
+  assert.match(finder, /isSensitiveCategory\(categoryId\)/);
+  assert.match(finder, /くらし支援ナビの相談先案内/);
 });

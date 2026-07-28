@@ -5,7 +5,8 @@ export default function EmergencyBanner() {
   const primaryContactIds = new Set([
     "police-emergency",
     "fire-ambulance-emergency",
-    "yorisoi-hotline",
+    "child-abuse",
+    "dv-consultation",
   ]);
   const primaryContacts = emergencyContacts.filter((contact) => primaryContactIds.has(contact.id));
   const detailContacts = emergencyContacts.filter((contact) => !primaryContactIds.has(contact.id));

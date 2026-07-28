@@ -123,6 +123,24 @@ async function main() {
     }
   });
 
+  const municipalitiesByRepresentativePhone = new Map<string, typeof municipalities>();
+  municipalities.forEach((item) => {
+    const phone = normalizePhone(item.representativePhone);
+    if (!phone) return;
+    const group = municipalitiesByRepresentativePhone.get(phone) ?? [];
+    group.push(item);
+    municipalitiesByRepresentativePhone.set(phone, group);
+  });
+  municipalitiesByRepresentativePhone.forEach((group, phone) => {
+    if (group.length < 2) return;
+    const names = group.map((item) => item.name).join("・");
+    errors.push({
+      file: "municipalities.csv",
+      row: 1,
+      message: `代表電話「${phone}」が複数自治体に設定されています（${names}）。自治体公式ページで個別に確認してください。`,
+    });
+  });
+
   if (nationwide.length) {
     duplicate(
       nationwide.map((item, index) => ({ value: item.municipalityCode, row: index + 2 })),
@@ -265,6 +283,31 @@ async function main() {
         });
       }
     }
+  });
+
+  const generalOfficesByPhone = new Map<string, typeof offices>();
+  offices
+    .filter(
+      (item) =>
+        item.status === "published" &&
+        item.scope === "municipality" &&
+        item.id.endsWith("-city-general") &&
+        Boolean(item.phone),
+    )
+    .forEach((item) => {
+      const phone = normalizePhone(item.phone);
+      const group = generalOfficesByPhone.get(phone) ?? [];
+      group.push(item);
+      generalOfficesByPhone.set(phone, group);
+    });
+  generalOfficesByPhone.forEach((group, phone) => {
+    const municipalityCount = new Set(group.map((item) => item.municipalityId)).size;
+    if (municipalityCount < 2) return;
+    errors.push({
+      file: "offices.csv",
+      row: 1,
+      message: `自治体代表窓口の電話「${phone}」が${municipalityCount}自治体で重複しています。広域窓口を代表電話として転用していないか確認してください。`,
+    });
   });
 
   const dvPrefectureCodes = new Set(

@@ -53,6 +53,27 @@ test("公開データの電話台本・窓口メタデータ・管轄条件を�
   assert.equal(ambiguous.length, 0);
 });
 
+test("自治体代表電話を複数自治体へ転用しない", async () => {
+  const data = await getCsvPortalData(path.join(process.cwd(), "data"));
+  const normalized = (value: string) => value.replace(/\D/g, "");
+  const representativePhones = data.municipalities
+    .filter((municipality) => municipality.status === "published")
+    .map((municipality) => normalized(municipality.representativePhone))
+    .filter(Boolean);
+  assert.equal(new Set(representativePhones).size, representativePhones.length);
+
+  const generalPhones = data.offices
+    .filter(
+      (office) =>
+        office.status === "published" &&
+        office.scope === "municipality" &&
+        office.id.endsWith("-city-general") &&
+        Boolean(office.phone),
+    )
+    .map((office) => normalized(office.phone));
+  assert.equal(new Set(generalPhones).size, generalPhones.length);
+});
+
 test("全自治体でDVの地域相談窓口を1件以上表示する", async () => {
   const data = await getCsvPortalData(path.join(process.cwd(), "data"));
   const prefectureDvCenters = data.offices.filter(

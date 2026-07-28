@@ -9,12 +9,13 @@ import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
 import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
+import { isSensitiveCategory, sensitiveSupportMetadata } from "@/lib/privacy";
 import { isIndexableSupportPage } from "@/lib/seo-indexing";
 import { seoCategoryContent } from "@/lib/seo-content";
 import { SITE_URL } from "@/lib/site";
 import { telephoneAriaLabel, telephoneHref } from "@/lib/telephone";
 
-export const revalidate = 86_400;
+export const dynamic = "force-dynamic";
 
 type PageProps = {
   params: Promise<{ municipalityCode: string; categoryId: string }>;
@@ -64,9 +65,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const page = await getPageData(params);
   if (!page) return {};
   const seo = seoCategoryContent(page.category.id);
-  const title = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの相談先`;
+  const sensitive = isSensitiveCategory(page.category.id);
+  const title = sensitive
+    ? sensitiveSupportMetadata.title
+    : `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの相談先`;
   const firstOffice = page.offices[0] ? officeDisplayName(page.offices[0]) : undefined;
-  const description = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの公的な相談先${firstOffice ? `「${firstOffice}」` : ""}と、電話での伝え方を案内します。`;
+  const description = sensitive
+    ? sensitiveSupportMetadata.description
+    : `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの公的な相談先${firstOffice ? `「${firstOffice}」` : ""}と、電話での伝え方を案内します。`;
   const indexable = isIndexableSupportPage(page.offices, page.municipality.id, page.category.id);
   return {
     title,
@@ -79,10 +85,19 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
     },
     robots: {
-      index: indexable,
+      index: !sensitive && indexable,
       follow: true,
-      googleBot: { index: indexable, follow: true },
+      noarchive: sensitive,
+      nosnippet: sensitive,
+      googleBot: { index: !sensitive && indexable, follow: true },
     },
+    twitter: sensitive
+      ? {
+          card: "summary",
+          title: sensitiveSupportMetadata.title,
+          description: sensitiveSupportMetadata.description,
+        }
+      : undefined,
   };
 }
 
@@ -481,7 +496,9 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
           </Link>
         </p>
       )}
-      <FeedbackPrompt pageId={municipality.id} categoryId={category.id} />
+      {!isSensitiveCategory(category.id) && (
+        <FeedbackPrompt pageId={municipality.id} categoryId={category.id} />
+      )}
       <p className="note">
         データ掲載・更新日：{municipality.lastVerifiedAt || "未確認"}
         。制度や受付時間は変わることがあります。

@@ -89,6 +89,7 @@ async function reviewAction(formData: FormData) {
     if (action === "publish") {
       if (role !== "admin") throw new Error("CSV公開はadmin権限の管理者だけが実行できます。");
       const result = await publishCandidate(code, id, actor);
+      revalidatePath("/", "layout");
       message = `CSVへ公開しました: ${result.preview.entityId}`;
     } else {
       const update = reviewUpdate(formData);

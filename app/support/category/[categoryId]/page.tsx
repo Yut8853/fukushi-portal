@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { emergencyContacts } from "@/lib/emergency-contacts";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
+import { isSensitiveCategory, sensitiveSupportMetadata } from "@/lib/privacy";
 import { seoCategoryContent } from "@/lib/seo-content";
 import { SITE_URL } from "@/lib/site";
 import { telephoneAriaLabel } from "@/lib/telephone";
@@ -40,8 +41,13 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const page = await getCategoryPage(params);
   if (!page) return {};
-  const title = `${page.seo.searchTitle}ときの相談窓口を地域から探す`;
-  const description = `${page.seo.summary} 全国1,741市区町村から、お住まいの地域の公的な相談先と電話での伝え方を確認できます。`;
+  const sensitive = isSensitiveCategory(page.category.id);
+  const title = sensitive
+    ? sensitiveSupportMetadata.title
+    : `${page.seo.searchTitle}ときの相談窓口を地域から探す`;
+  const description = sensitive
+    ? sensitiveSupportMetadata.description
+    : `${page.seo.summary} 全国1,741市区町村から、お住まいの地域の公的な相談先と電話での伝え方を確認できます。`;
   return {
     title,
     description,
@@ -52,6 +58,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `/support/category/${page.category.id}`,
       type: "website",
     },
+    robots: sensitive
+      ? { index: false, follow: true, noarchive: true, nosnippet: true }
+      : undefined,
+    twitter: sensitive
+      ? {
+          card: "summary",
+          title: sensitiveSupportMetadata.title,
+          description: sensitiveSupportMetadata.description,
+        }
+      : undefined,
   };
 }
 

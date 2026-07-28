@@ -23,8 +23,16 @@ test("トップページ", async ({ page }) => {
 test("検索ステップ2と現在位置", async ({ page }) => {
   await page.goto("/");
   await page.getByText("生活費がなく生活できない", { exact: true }).click();
+  const selectedRadio = page.getByRole("radio", { name: /生活費がなく生活できない/ });
+  const selectedCard = selectedRadio.locator("..");
+  await selectedRadio.focus();
+  const outlineColor = await selectedCard.evaluate(
+    (element) => getComputedStyle(element).outlineColor,
+  );
+  expect(outlineColor).not.toMatch(/rgba\\([^)]*,\\s*(?:0(?:\\.\\d+)?|\\.\\d+)\\)$/);
   await page.getByRole("button", { name: "地域の選択へ進む" }).click();
   await expect(page.locator('[aria-current="step"]')).toContainText("地域");
+  await expect(page.getByLabel("都道府県 任意")).toBeFocused();
   await expectNoAxeViolations(page);
 });
 
@@ -72,4 +80,13 @@ test("自治体×カテゴリページと200%拡大", async ({ page }) => {
   const viewportWidth = await page.evaluate(() => document.documentElement.clientWidth);
   const contentWidth = await page.evaluate(() => document.documentElement.scrollWidth);
   expect(contentWidth).toBeLessThanOrEqual(viewportWidth + 2);
+});
+
+test("320px幅で横スクロールしない", async ({ page }) => {
+  await page.setViewportSize({ width: 320, height: 720 });
+  await page.goto("/");
+  const viewportWidth = await page.evaluate(() => document.documentElement.clientWidth);
+  const contentWidth = await page.evaluate(() => document.documentElement.scrollWidth);
+  expect(contentWidth).toBeLessThanOrEqual(viewportWidth + 2);
+  await expectNoAxeViolations(page);
 });

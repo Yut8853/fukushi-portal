@@ -5,6 +5,8 @@ import MunicipalityDirectoryPicker from "@/components/MunicipalityDirectoryPicke
 import { getPublicPortalData } from "@/lib/data/repository";
 import { seoCategoryContent } from "@/lib/seo-content";
 
+export const dynamic = "force-dynamic";
+
 type PageProps = { params: Promise<{ municipalityCode: string }> };
 
 async function getPrefecturePage(params: PageProps["params"]) {

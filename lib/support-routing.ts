@@ -1,4 +1,5 @@
 import type { Office } from "@/lib/data/schemas";
+import { mergeOfficesByContact } from "@/lib/office-merge";
 
 export type OfficeContactType = "direct" | "self-reliance" | "representative";
 
@@ -52,30 +53,6 @@ export function transferTarget(categoryId: string): string {
   return TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown;
 }
 
-function mergeByPhone(offices: Office[]): Office[] {
-  const indexes = new Map<string, number>();
-  const merged: Office[] = [];
-  offices.forEach((item) => {
-    const phone = item.phone.replace(/\D/g, "");
-    if (!phone || !indexes.has(phone)) {
-      if (phone) indexes.set(phone, merged.length);
-      merged.push({ ...item });
-      return;
-    }
-    const index = indexes.get(phone)!;
-    const preferred = merged[index];
-    const preferredLabel = preferred.plainName || preferred.name;
-    const alternateLabel = item.plainName || item.name;
-    if (alternateLabel === preferredLabel || preferred.description.includes(alternateLabel)) return;
-    const note = `同じ電話番号で「${alternateLabel}」の案内にも対応しています。`;
-    merged[index] = {
-      ...preferred,
-      description: preferred.description ? `${preferred.description} ${note}` : note,
-    };
-  });
-  return merged;
-}
-
 export function selectOffices(
   offices: Office[],
   municipalityId: string,
@@ -116,10 +93,10 @@ export function selectOffices(
     const violenceSpecificFirst = [...direct].sort(
       (a, b) => Number(/(?:^|-)dv(?:-|$)/i.test(b.id)) - Number(/(?:^|-)dv(?:-|$)/i.test(a.id)),
     );
-    return mergeByPhone(violenceSpecificFirst);
+    return mergeOfficesByContact(violenceSpecificFirst);
   }
   const ordered = SELF_RELIANCE_FIRST_CATEGORIES.has(categoryId)
     ? [...selfReliance, ...direct, ...representatives]
     : [...direct, ...selfReliance, ...representatives];
-  return mergeByPhone(ordered);
+  return mergeOfficesByContact(ordered);
 }

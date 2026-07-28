@@ -8,7 +8,9 @@ import UnconfirmedHours from "@/components/UnconfirmedHours";
 import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/view-models";
 import { verificationMaxAgeDays } from "@/lib/data/quality";
 import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
+import { mergeOfficesByContact } from "@/lib/office-merge";
 import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
+import { isSensitiveCategory } from "@/lib/privacy";
 import { telephoneAriaLabel, telephoneHref } from "@/lib/telephone";
 
 function displayDate(value: string): string {
@@ -94,30 +96,6 @@ function selectPrograms(
     : available.filter((item) => ["public-assistance", "self-reliance"].includes(item.id));
 }
 
-function mergeFinderOfficesByPhone(offices: FinderOffice[]): FinderOffice[] {
-  const indexes = new Map<string, number>();
-  const merged: FinderOffice[] = [];
-  offices.forEach((item) => {
-    const phone = item.phone.replace(/\D/g, "");
-    if (!phone || !indexes.has(phone)) {
-      if (phone) indexes.set(phone, merged.length);
-      merged.push({ ...item });
-      return;
-    }
-    const index = indexes.get(phone)!;
-    const preferred = merged[index];
-    const preferredLabel = preferred.plainName || preferred.name;
-    const alternateLabel = item.plainName || item.name;
-    if (alternateLabel === preferredLabel || preferred.description.includes(alternateLabel)) return;
-    const note = `同じ電話番号で「${alternateLabel}」の案内にも対応しています。`;
-    merged[index] = {
-      ...preferred,
-      description: preferred.description ? `${preferred.description} ${note}` : note,
-    };
-  });
-  return merged;
-}
-
 function selectFinderOffices(
   offices: FinderOffice[],
   categoryId: string,
@@ -142,7 +120,7 @@ function selectFinderOffices(
   );
   const representatives = [...categoryRepresentatives, ...generalRepresentatives];
   if (categoryId === "violence") {
-    return mergeFinderOfficesByPhone(
+    return mergeOfficesByContact(
       [...direct].sort(
         (a, b) => Number(/(?:^|-)dv(?:-|$)/i.test(b.id)) - Number(/(?:^|-)dv(?:-|$)/i.test(a.id)),
       ),
@@ -159,7 +137,7 @@ function selectFinderOffices(
   const ordered = selfRelianceFirst
     ? [...selfReliance, ...direct, ...representatives]
     : [...direct, ...selfReliance, ...representatives];
-  return mergeFinderOfficesByPhone(ordered).map((item) => ({
+  return mergeOfficesByContact(ordered).map((item) => ({
     ...item,
     transferTarget: TRANSFER_TARGETS[categoryId] ?? TRANSFER_TARGETS.unknown,
   }));
@@ -167,6 +145,7 @@ function selectFinderOffices(
 
 export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const resultsHeadingRef = useRef<HTMLHeadingElement>(null);
+  const locationSelectRef = useRef<HTMLSelectElement>(null);
   const [categoryId, setCategoryId] = useState("");
   const [activeStep, setActiveStep] = useState<1 | 2 | 3>(1);
   const [prefectureCode, setPrefectureCode] = useState("");
@@ -231,6 +210,10 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   }, [activeStep, searched, searching]);
 
   useEffect(() => {
+    if (activeStep === 2) locationSelectRef.current?.focus();
+  }, [activeStep]);
+
+  useEffect(() => {
     if (!urlReady) return;
     if (SENSITIVE_CATEGORIES.has(categoryId)) {
       const nextUrl = `${window.location.pathname}${searched ? "#support-results" : ""}`;
@@ -269,8 +252,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     setActiveStep(3);
   };
   const shareResults = async () => {
+    const sensitive = isSensitiveCategory(categoryId);
     const shareData = {
-      title: `${municipality?.name ?? "全国共通"}の「${selectedCategory?.label ?? "生活の困りごと"}」相談先`,
+      title: sensitive
+        ? "くらし支援ナビの相談先案内"
+        : `${municipality?.name ?? "全国共通"}の「${selectedCategory?.label ?? "生活の困りごと"}」相談先`,
       text: "くらし支援ナビの相談先案内",
       url: window.location.href,
     };
@@ -295,8 +281,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
         <h2 id="finder-title">いまの状況に近いものを選んでください</h2>
         <p className="finder-help">
           制度名は分からなくて大丈夫です。選んだ都道府県の公開データだけを取得し、
-          市区町村と困りごとの絞り込みは端末内で行います。市区町村や困りごとはサーバーへ送信・
-          保存しません。DV・こころのカテゴリはブラウザのURLや履歴にも残しません。
+          市区町村と困りごとの検索操作は端末内で行います。検索条件はサーバーへ送信せず、
+          検索履歴として保存しません。任意のフィードバックを送る場合だけ、ページID・カテゴリ・
+          回答を匿名で12か月保存します。DV・こころの検索条件はブラウザのURLや履歴にも残しません。
         </p>
         {verificationExpired(data.latestVerifiedAt) && (
           <p className="stale-data-warning" role="alert">
@@ -410,6 +397,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 都道府県 <em>任意</em>
               </span>
               <select
+                ref={locationSelectRef}
                 value={prefectureCode}
                 onChange={(event) => {
                   setPrefectureCode(event.target.value);
@@ -831,7 +819,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               })}
             </div>
           </nav>
-          <FeedbackPrompt pageId={municipalityId || "national"} categoryId={categoryId} />
+          {!isSensitiveCategory(categoryId) && (
+            <FeedbackPrompt pageId={municipalityId || "national"} categoryId={categoryId} />
+          )}
         </div>
       )}
     </section>
