@@ -1111,6 +1111,17 @@ select:focus {
 .search-action strong {
   color: var(--text);
 }
+.step-continue-action {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: var(--space-6);
+  border-top: 0;
+  padding: 0;
+  background: transparent;
+}
+.step-continue-action .primary-button {
+  width: min(100%, 380px);
+}
 .text-button {
   margin-left: 10px;
   border: 0;
@@ -1932,6 +1943,13 @@ thead th {
     grid-template-columns: 1fr;
     gap: var(--space-3);
     padding: var(--space-5);
+  }
+  .step-continue-action {
+    margin-top: var(--space-5);
+    padding: 0;
+  }
+  .step-continue-action .primary-button {
+    width: 100%;
   }
   .results {
     scroll-margin-top: 142px;

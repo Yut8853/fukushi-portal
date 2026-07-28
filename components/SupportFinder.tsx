@@ -350,7 +350,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               </label>
             ))}
           </div>
-          <div className="search-action">
+          <div className="search-action step-continue-action">
             <button
               type="button"
               className="primary-button"
