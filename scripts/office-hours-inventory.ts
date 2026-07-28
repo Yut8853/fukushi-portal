@@ -34,7 +34,9 @@ async function main() {
     console.log(`  ${type}: ${count}件`);
   }
   console.log("\n情報源ドメイン（上位30件）:");
-  for (const [domain, value] of [...byDomain].sort((a, b) => b[1].offices - a[1].offices).slice(0, 30)) {
+  for (const [domain, value] of [...byDomain]
+    .sort((a, b) => b[1].offices - a[1].offices)
+    .slice(0, 30)) {
     console.log(`  ${domain}: ${value.offices}窓口 / ${value.urls.size} URL`);
   }
 }

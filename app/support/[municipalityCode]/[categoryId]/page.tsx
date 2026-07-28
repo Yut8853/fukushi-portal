@@ -9,21 +9,16 @@ import { getPublicPortalData } from "@/lib/data/repository";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
 import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
+import { isIndexableSupportPage } from "@/lib/seo-indexing";
 import { seoCategoryContent } from "@/lib/seo-content";
 import { SITE_URL } from "@/lib/site";
+import { telephoneAriaLabel, telephoneHref } from "@/lib/telephone";
 
 export const revalidate = 86_400;
 
 type PageProps = {
   params: Promise<{ municipalityCode: string; categoryId: string }>;
 };
-
-function telephoneAriaLabel(value: string): string {
-  return `${value
-    .split(/[- ]/)
-    .map((part) => [...part].join(" "))
-    .join(" の ")}へ電話`;
-}
 
 async function getPageData(params: PageProps["params"]) {
   const { municipalityCode, categoryId } = await params;
@@ -72,6 +67,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${page.municipality.name}で${seo.searchTitle}ときの相談先`;
   const firstOffice = page.offices[0] ? officeDisplayName(page.offices[0]) : undefined;
   const description = `${page.prefecture.name}${page.municipality.name}で${seo.searchTitle}ときの公的な相談先${firstOffice ? `「${firstOffice}」` : ""}と、電話での伝え方を案内します。`;
+  const indexable = isIndexableSupportPage(page.offices, page.municipality.id, page.category.id);
   return {
     title,
     description,
@@ -84,9 +80,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
     },
     robots: {
-      index: page.offices.length > 0,
+      index: indexable,
       follow: true,
-      googleBot: { index: page.offices.length > 0, follow: true },
+      googleBot: { index: indexable, follow: true },
     },
   };
 }
@@ -257,7 +253,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                   {office.contactFormUrl && (
                     <p>
                       <a href={office.contactFormUrl} target="_blank" rel="noreferrer">
-                        問い合わせフォームを開く
+                        オンライン相談・フォームを開く
                       </a>
                     </p>
                   )}
@@ -267,7 +263,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                 <p>
                   <a
                     className="phone-button"
-                    href={`tel:${office.phone.replace(/[^\d+]/g, "")}`}
+                    href={telephoneHref(office.phone)}
                     aria-label={telephoneAriaLabel(office.phone)}
                   >
                     電話する　<strong>{office.phone}</strong>
@@ -281,7 +277,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
                   </p>
                   <a
                     className="phone-button"
-                    href={`tel:${municipality.representativePhone.replace(/[^\d+]/g, "")}`}
+                    href={telephoneHref(municipality.representativePhone)}
                     aria-label={telephoneAriaLabel(municipality.representativePhone)}
                   >
                     代表電話へ電話する　<strong>{municipality.representativePhone}</strong>

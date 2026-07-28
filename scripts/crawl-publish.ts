@@ -1,10 +1,13 @@
 import { previewCandidatePublication, publishCandidate } from "../crawler/publisher";
 
 function argument(name: string): string {
-  return process.argv.slice(2)
-    .find((item) => item.startsWith(`--${name}=`))
-    ?.slice(name.length + 3)
-    .trim() ?? "";
+  return (
+    process.argv
+      .slice(2)
+      .find((item) => item.startsWith(`--${name}=`))
+      ?.slice(name.length + 3)
+      .trim() ?? ""
+  );
 }
 
 async function main() {
@@ -19,7 +22,9 @@ async function main() {
   const preview = await previewCandidatePublication(municipalityCode, candidateId);
   console.log(JSON.stringify(preview, null, 2));
   if (!confirmed) {
-    console.log("\n差分確認のみです。公開する場合は --actor=確認者名 --confirm を追加してください。");
+    console.log(
+      "\n差分確認のみです。公開する場合は --actor=確認者名 --confirm を追加してください。",
+    );
     return;
   }
   if (!actor) throw new Error("--confirm使用時は--actor=確認者名が必要です。");

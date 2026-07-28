@@ -19,6 +19,8 @@
     "data:dv-centers": "tsx scripts/dv-centers-import.ts",
     "data:dv-center-hours": "tsx scripts/dv-center-hours-apply.ts",
     "data:prefecture-welfare-loans": "tsx scripts/prefecture-welfare-loan-offices-import.ts",
+    "data:dv-non-phone": "tsx scripts/dv-non-phone-apply.ts",
+    "data:prefecture-specialists": "tsx scripts/prefecture-specialist-offices-import.ts",
     "data:quarantine-ambiguous": "tsx scripts/quarantine-ambiguous-offices.ts",
     "data:add-quarantine-fallbacks": "tsx scripts/add-quarantine-fallbacks.ts",
     "data:fix-verified-cities": "tsx scripts/fix-verified-city-offices.ts",
@@ -45,7 +47,8 @@
     "crawl:hours:propagate": "tsx scripts/office-hours-propagate.ts",
     "crawl:hours:closed-days": "tsx scripts/office-hours-closed-days.ts",
     "crawl:hours:reprocess": "tsx scripts/crawl-hours-reprocess.ts",
-    "crawl:hours:scan": "tsx scripts/office-hours-scan.ts"
+    "crawl:hours:scan": "tsx scripts/office-hours-scan.ts",
+    "crawl:dv-non-phone": "tsx scripts/dv-non-phone-scan.ts"
   },
   "dependencies": {
     "cheerio": "^1.2.0",

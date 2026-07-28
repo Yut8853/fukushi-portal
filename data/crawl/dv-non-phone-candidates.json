@@ -1,0 +1,3991 @@
+{
+  "generatedAt": "2026-07-28T02:54:11.070Z",
+  "scannedOffices": 47,
+  "officesWithCandidates": 44,
+  "candidates": [
+    {
+      "officeId": "prefecture-dv-center-01",
+      "officeName": "北海道立女性相談支援センター",
+      "sourcePage": "https://www.pref.hokkaido.lg.jp/hf/jsc/index.html",
+      "kind": "form-or-sns",
+      "label": "メール相談はこちら（入力フォーム）",
+      "value": "https://www.harp.lg.jp/SksJuminWeb/EntryForm?id=lbJlxGHP"
+    },
+    {
+      "officeId": "prefecture-dv-center-01",
+      "officeName": "北海道立女性相談支援センター",
+      "sourcePage": "https://www.pref.hokkaido.lg.jp/hf/jsc/213988.html",
+      "kind": "form-or-sns",
+      "label": "お問合せ・相談窓口",
+      "value": "https://www.pref.hokkaido.lg.jp/site-info/contact.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-01",
+      "officeName": "北海道立女性相談支援センター",
+      "sourcePage": "https://www.pref.hokkaido.lg.jp/hf/jsc/213988.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.hokkaido.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.pref.aomori.lg.jp/soshiki/kodomo/ao-shien/",
+      "kind": "form-or-sns",
+      "label": "県内のDV相談窓口",
+      "value": "https://www.pref.aomori.lg.jp/soshiki/kodomo/ao-shien/soudan-madoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://joseisoudan-annai.pref.aomori.jp/",
+      "kind": "form-or-sns",
+      "label": "あおもり女性相談窓口案内サイト",
+      "value": "https://joseisoudan-annai.pref.aomori.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.pref.aomori.lg.jp/soshiki/kodomo/ao-shien/jososetsumei.html",
+      "kind": "form-or-sns",
+      "label": "【DV相談＋（プラス）】",
+      "value": "http://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.pref.aomori.lg.jp/soshiki/kodomo/ao-shien/soudan-madoguchi.html",
+      "kind": "email",
+      "label": "お問い合わせ",
+      "value": "JSODAN@pref.aomori.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.pref.aomori.lg.jp/soshiki/kodomo/ao-shien/soudan-madoguchi.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://line.me/ja"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://joseisoudan-annai.pref.aomori.jp/",
+      "kind": "form-or-sns",
+      "label": "各種相談",
+      "value": "https://joseisoudan-annai.pref.aomori.jp/soudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://joseisoudan-annai.pref.aomori.jp/",
+      "kind": "form-or-sns",
+      "label": "DV、ストーカー、セクハラ",
+      "value": "https://joseisoudan-annai.pref.aomori.jp/soudan/?parent_sectionid=0027"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://anata-no-mikata.mhlw.go.jp/",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://anata-no-mikata.mhlw.go.jp/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口",
+      "value": "https://www.gender.go.jp/policy/no_violence/index.html#soudan"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "性犯罪・性暴力被害者のためのワンストップ支援センター（全国共通番号） #8891",
+      "value": "https://www.gender.go.jp/policy/no_violence/seibouryoku/consult.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口一覧",
+      "value": "https://www.gender.go.jp/policy/no_violence/vaw/consult.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-02",
+      "officeName": "青森県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://nsearch.cao.go.jp/cao/search.x"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "岩手県福祉総合相談センター",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "女性相談",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1015938.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://line.me/R/msg/text/?%E5%A5%B3%E6%80%A7%E7%9B%B8%E8%AB%87%E3%81%AE%E6%A1%88%E5%86%85%ef%bd%9c%E5%B2%A9%E6%89%8B%E7%9C%8C%0d%0ahttps%3A%2F%2Fwww.pref.iwate.jp%2Ffukushisoudan%2Fjosei%2F1015938.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015942.html",
+      "kind": "form-or-sns",
+      "label": "配偶者暴力相談支援センターのご紹介",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015941.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015941.html",
+      "kind": "form-or-sns",
+      "label": "配偶者暴力相談支援センター以外の相談機関",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015942.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "令和7年度女性支援事業啓発セミナーを開催します（一般の方も参加できます）",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "配偶者暴力相談支援センター",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口",
+      "value": "https://www.pref.iwate.jp/soudan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "生活相談",
+      "value": "https://www.pref.iwate.jp/shinsaifukkou/saiken/soudan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "教育相談窓口一覧",
+      "value": "https://www.pref.iwate.jp/soudan/1002080.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "消費生活相談窓口・問い合わせ先",
+      "value": "https://www.pref.iwate.jp/soudan/1002085.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.iwate.jp/search/site.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/index.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://line.me/R/msg/text/?%E5%B2%A9%E6%89%8B%E7%9C%8C%E7%A6%8F%E7%A5%89%E7%B7%8F%E5%90%88%E7%9B%B8%E8%AB%87%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%ef%bd%9c%E5%B2%A9%E6%89%8B%E7%9C%8C%0d%0ahttps%3A%2F%2Fwww.pref.iwate.jp%2Ffukushisoudan%2Findex.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "岩手県福祉総合相談センター",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/1027192.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "岩手県福祉総合相談センター（矢巾町駐在）",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/1048333.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "岩手県福祉総合相談センター（県北駐在）",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/1048341.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "福祉総合相談センターの適正利用にご協力をお願いします",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/1047903.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "ご相談の窓口",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/1048340.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "岩手県福祉総合相談センターからのお知らせ",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/oshirase/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "児童相談",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/jidou/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "障がい相談",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/shougai/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "精神保健福祉相談（精神保健福祉センターのページへ）",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/link/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "岩手県福祉総合相談センター よくある質問",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/1025097/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/index.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://line.me/R/msg/text/?%E5%A5%B3%E6%80%A7%E7%9B%B8%E8%AB%87%ef%bd%9c%E5%B2%A9%E6%89%8B%E7%9C%8C%0d%0ahttps%3A%2F%2Fwww.pref.iwate.jp%2Ffukushisoudan%2Fjosei%2Findex.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "女性相談の案内",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/josei/1015938.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015941.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://line.me/R/msg/text/?%E9%85%8D%E5%81%B6%E8%80%85%E6%9A%B4%E5%8A%9B%E7%9B%B8%E8%AB%87%E6%94%AF%E6%8F%B4%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E3%81%AE%E3%81%94%E7%B4%B9%E4%BB%8B%ef%bd%9c%E5%B2%A9%E6%89%8B%E7%9C%8C%0d%0ahttps%3A%2F%2Fwww.pref.iwate.jp%2Ffukushisoudan%2Fjosei%2Fshien%2F1015941.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015942.html",
+      "kind": "form-or-sns",
+      "label": "配偶者からの暴力の防止及び被害者の保護に関する法律の一部改正",
+      "value": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015940.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/shien/1015942.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://line.me/R/msg/text/?%E9%85%8D%E5%81%B6%E8%80%85%E6%9A%B4%E5%8A%9B%E7%9B%B8%E8%AB%87%E6%94%AF%E6%8F%B4%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%E4%BB%A5%E5%A4%96%E3%81%AE%E7%9B%B8%E8%AB%87%E6%A9%9F%E9%96%A2%ef%bd%9c%E5%B2%A9%E6%89%8B%E7%9C%8C%0d%0ahttps%3A%2F%2Fwww.pref.iwate.jp%2Ffukushisoudan%2Fjosei%2Fshien%2F1015942.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-03",
+      "officeName": "岩手県福祉総合相談センター",
+      "sourcePage": "https://www.pref.iwate.jp/fukushisoudan/josei/1094586.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.iwate.jp/cgi-evt/i-callendar.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/cr-jisou/index.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口",
+      "value": "https://www.pref.miyagi.jp/site/gyoseisabisu/soudan-index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/dv.html",
+      "kind": "form-or-sns",
+      "label": "女性のための相談窓口",
+      "value": "https://www.pref.miyagi.jp/soshiki/jyoseict/soudandenwa.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/dv.html",
+      "kind": "form-or-sns",
+      "label": "福祉相談窓口",
+      "value": "https://www.pref.miyagi.jp/soshiki/jyoseict/fukusisoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/dv.html",
+      "kind": "form-or-sns",
+      "label": "各種相談窓口",
+      "value": "https://www.pref.miyagi.jp/soshiki/jyoseict/kakushusoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/dv.html",
+      "kind": "form-or-sns",
+      "label": "無料法律相談窓口",
+      "value": "https://www.pref.miyagi.jp/soshiki/jyoseict/muryousoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/cr-jisou/index.html",
+      "kind": "form-or-sns",
+      "label": "キーワードから探す",
+      "value": "https://www.pref.miyagi.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/cr-jisou/index.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "https://www.pref.miyagi.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/site/gyoseisabisu/soudan-index.html",
+      "kind": "form-or-sns",
+      "label": "総務省行政相談センター「きくみみ宮城」行政苦情110番（外部サイトへリンク）",
+      "value": "https://www.soumu.go.jp/main_sosiki/hyouka/soudan_n/kyokusyo_madoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/site/gyoseisabisu/soudan-index.html",
+      "kind": "form-or-sns",
+      "label": "行政困りごと相談所（外部サイトへリンク）",
+      "value": "https://www.soumu.go.jp/kanku/tohoku/gyouseisoudanuketuke.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/cr-jisou/index.html",
+      "kind": "form-or-sns",
+      "label": "保健福祉部中央児童相談所 宮城県名取市美田園二丁目1番地の4",
+      "value": "https://www.pref.miyagi.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/dv.html",
+      "kind": "form-or-sns",
+      "label": "宮城県婦人相談件数について",
+      "value": "https://www.pref.miyagi.jp/soshiki/kodomo/miyagifujinsoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/dv.html",
+      "kind": "form-or-sns",
+      "label": "配偶者からの暴力（DV）被害に関する相談",
+      "value": "https://www.pref.miyagi.jp/soshiki/et-tmhwfz/bouryokusoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/kakushusoudan.html",
+      "kind": "form-or-sns",
+      "label": "仙台市児童相談所（外部サイトへリンク）",
+      "value": "http://www.city.sendai.jp/jido-hogoshien/kurashi/kenkotofukushi/kosodate/sodan/kyoiku/sodanjo.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/muryousoudan.html",
+      "kind": "form-or-sns",
+      "label": "みやぎ男女共同参画相談室",
+      "value": "https://www.pref.miyagi.jp/soshiki/kyosha/jigyou-soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/kakushusoudan.html",
+      "kind": "form-or-sns",
+      "label": "宮城県労働委員会事務局（宮城県労働相談窓口）",
+      "value": "https://www.pref.miyagi.jp/soshiki/tiroui/rodosodan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/jyoseict/muryousoudan.html",
+      "kind": "form-or-sns",
+      "label": "エル・ソーラ仙台 相談支援係（女性限定）（外部サイトへリンク）",
+      "value": "https://www.sendai-l.jp/soudan/conference/"
+    },
+    {
+      "officeId": "prefecture-dv-center-04",
+      "officeName": "宮城県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyagi.jp/soshiki/cr-jisou/index.html",
+      "kind": "form-or-sns",
+      "label": "数字でみる児童相談所（平成30年度実績）",
+      "value": "https://www.pref.miyagi.jp/soshiki/cr-jisou/jidousoudannogaiyou.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-05",
+      "officeName": "秋田県子ども・女性・障害者相談センター",
+      "sourcePage": "https://www.pref.akita.lg.jp/pages/archive/81180",
+      "kind": "form-or-sns",
+      "label": "秋田県公式LINE",
+      "value": "https://www.pref.akita.lg.jp/pages/archive/81180"
+    },
+    {
+      "officeId": "prefecture-dv-center-05",
+      "officeName": "秋田県子ども・女性・障害者相談センター",
+      "sourcePage": "https://www.pref.akita.lg.jp/pages/genre/13187",
+      "kind": "email",
+      "label": "soudan-center@pref.akita.lg.jp",
+      "value": "soudan-center@pref.akita.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-05",
+      "officeName": "秋田県子ども・女性・障害者相談センター",
+      "sourcePage": "https://www.pref.akita.lg.jp/pages/archive/81180",
+      "kind": "form-or-sns",
+      "label": "キーワードで検索 検索",
+      "value": "https://www.pref.akita.lg.jp/front/search"
+    },
+    {
+      "officeId": "prefecture-dv-center-05",
+      "officeName": "秋田県子ども・女性・障害者相談センター",
+      "sourcePage": "https://www.pref.akita.lg.jp/pages/genre/11654",
+      "kind": "form-or-sns",
+      "label": "男女共同参画相談室「ハーモニー相談室」",
+      "value": "http://akitawmc.com/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-05",
+      "officeName": "秋田県子ども・女性・障害者相談センター",
+      "sourcePage": "https://www.pref.akita.lg.jp/pages/genre/78307",
+      "kind": "email",
+      "label": "kna@akita-c.ed.jp",
+      "value": "kna@akita-c.ed.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-05",
+      "officeName": "秋田県子ども・女性・障害者相談センター",
+      "sourcePage": "https://www.pref.akita.lg.jp/pages/archive/81180",
+      "kind": "email",
+      "label": "marketing@pref.akita.lg.jp",
+      "value": "marketing@pref.akita.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-06",
+      "officeName": "山形県女性相談支援センター（山形県中央配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "申請・届出",
+      "value": "https://www.pref.yamagata.jp/020051/kensei/online_ymg/shinseitodokede/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-06",
+      "officeName": "山形県女性相談支援センター（山形県中央配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "配偶者やパートナーからの暴力に悩んでいませんか？",
+      "value": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-06",
+      "officeName": "山形県女性相談支援センター（山形県中央配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "DV（配偶者暴力）相談先一覧",
+      "value": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudansaki.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-06",
+      "officeName": "山形県女性相談支援センター（山形県中央配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "https://www.pref.yamagata.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-06",
+      "officeName": "山形県女性相談支援センター（山形県中央配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "しあわせ子育て応援部こども家庭・母子保健課 住所：〒990-8570 山形市松波二丁目8番1号 電話番号：023-630-2008 ファックス番号：023-632-8238",
+      "value": "https://www.pref.yamagata.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-06",
+      "officeName": "山形県女性相談支援センター（山形県中央配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.yamagata.jp/kensei/soudammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "オンライン県庁",
+      "value": "https://www.pref.yamagata.jp/kensei/online_ymg/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-06",
+      "officeName": "山形県女性相談支援センター（山形県中央配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.yamagata.jp/010002/kurashi/jinken/dv/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "政府広報オンライン（外部サイトへリンク）",
+      "value": "https://www.gov-online.go.jp/article/202402/entry-5667.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-07",
+      "officeName": "女性のための相談支援センター",
+      "sourcePage": "http://www.pref.fukushima.lg.jp/sec/21820a/",
+      "kind": "form-or-sns",
+      "label": "福島県警の相談窓口（福島県警のページへリンク）",
+      "value": "https://www.police.pref.fukushima.jp/08.soudan/soudan_madoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-07",
+      "officeName": "女性のための相談支援センター",
+      "sourcePage": "http://www.pref.fukushima.lg.jp/sec/21820a/",
+      "kind": "form-or-sns",
+      "label": "Googleカスタム検索",
+      "value": "https://www.pref.fukushima.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-07",
+      "officeName": "女性のための相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口",
+      "value": "https://www.gender.go.jp/policy/no_violence/index.html#soudan"
+    },
+    {
+      "officeId": "prefecture-dv-center-07",
+      "officeName": "女性のための相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "性犯罪・性暴力被害者のためのワンストップ支援センター（全国共通番号） #8891",
+      "value": "https://www.gender.go.jp/policy/no_violence/seibouryoku/consult.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-07",
+      "officeName": "女性のための相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口一覧",
+      "value": "https://www.gender.go.jp/policy/no_violence/vaw/consult.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-07",
+      "officeName": "女性のための相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://nsearch.cao.go.jp/cao/search.x"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "DV相談プラスについて",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/hokenfukushi/fukusise/fujin/fukuso/hujinpage.html",
+      "kind": "form-or-sns",
+      "label": "水戸市配偶者暴力相談支援センター（外部サイトへリンク）",
+      "value": "http://www.city.mito.lg.jp/site/kurashisodan/1621.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "つくばみらい市女性相談・ＤＶ相談支援センター〜みらサポ〜（配偶者暴力相談支援センター）",
+      "value": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/soshiki/hokenfukushi/fukusise/fukushiseindex.html",
+      "kind": "form-or-sns",
+      "label": "語句で検索",
+      "value": "https://www.pref.ibaraki.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/hokenfukushi/fukusise/fujin/fukuso/hujinpage.html",
+      "kind": "form-or-sns",
+      "label": "福祉部福祉相談センター女性相談支援課 〒310-0011 茨城県水戸市三の丸1-5-38 三の丸庁舎2階 電話番号：029-221-4992 FAX番号：029-221-6098 お問い合わせフォーム",
+      "value": "https://www.pref.ibaraki.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/hokenfukushi/fukusise/fujin/fukuso/hujinpage.html",
+      "kind": "form-or-sns",
+      "label": "質問：このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった 質問：このページは見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "https://www.pref.ibaraki.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/soshiki/hokenfukushi/fukusise/fukushiseindex.html",
+      "kind": "form-or-sns",
+      "label": "中央児童相談所",
+      "value": "https://www.pref.ibaraki.jp/hokenfukushi/fukusise/sodan/fukuso/jisotop.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/kenkouiryou/chiikikenkofukushi/index.html",
+      "kind": "form-or-sns",
+      "label": "検査・相談カレンダー",
+      "value": "https://www.pref.ibaraki.jp/hokenfukushi/ryuho/kenko/ryuhc/kensa-sodan-calendar/h26.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/kenkouiryou/chiikikenkofukushi/index.html",
+      "kind": "form-or-sns",
+      "label": "ひきこもり相談について",
+      "value": "https://www.pref.ibaraki.jp/hokenfukushi/ryuho/hoken/ryuhc/shido/hikikomori/hikikomori-sodan/sodan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/kenkouiryou/chiikikenkofukushi/index.html",
+      "kind": "form-or-sns",
+      "label": "精神保健相談",
+      "value": "https://www.pref.ibaraki.jp/hokenfukushi/ryuho/hoken/ryuhc/shido/seishin-hoken-sodan/seishin-hoken-sodan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.pref.ibaraki.jp/kenkouiryou/chiikikenkofukushi/index.html",
+      "kind": "form-or-sns",
+      "label": "心の相談",
+      "value": "https://www.pref.ibaraki.jp/hokenfukushi/tsuho/hoken/seisin/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.mito.lg.jp/site/kurashisodan/1621.html",
+      "kind": "form-or-sns",
+      "label": "各種相談窓口のご案内",
+      "value": "https://www.city.mito.lg.jp/site/kurashisodan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.mito.lg.jp/site/kurashisodan/1621.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口の一覧",
+      "value": "https://www.city.mito.lg.jp/site/kurashisodan/list79.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.mito.lg.jp/site/kurashisodan/1621.html",
+      "kind": "form-or-sns",
+      "label": "Googleカスタム検索",
+      "value": "https://www.city.mito.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.ibaraki-koga.lg.jp/soshiki/kosodatehoukatusien/5/2074.html",
+      "kind": "form-or-sns",
+      "label": "政府広報オンライン",
+      "value": "https://www.gov-online.go.jp/article/202402/entry-5667.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.kasumigaura.lg.jp/page/page017567.html",
+      "kind": "form-or-sns",
+      "label": "Q.このページはお役に立ちましたか？ 非常に役に立った 役に立った どちらともいえない 役に立たなかった ご意見・ご感想等がございましたら下記をご入力し送信ください。",
+      "value": "https://www.city.kasumigaura.lg.jp/enq.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "相談・サービス",
+      "value": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "茨城県警察女性相談電話（外部リンク）",
+      "value": "https://www.pref.ibaraki.jp/kenkei/a07_toiawase/josei_partner.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "就労に悩む若者の相談支援 地域若者サポートステーション",
+      "value": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007569.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "つくばみらい市LINE公式アカウントを開設しました",
+      "value": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page006178.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "相談・サービスに関するお知らせ",
+      "value": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/news/"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "お探しの情報は何でしょうか？",
+      "value": "https://www.city.tsukubamirai.lg.jp/search.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.city.tsukubamirai.lg.jp/jyumin/soudan-service/page007073.html",
+      "kind": "form-or-sns",
+      "label": "Q.このページはお役に立ちましたか？ 非常に役に立った 役に立った どちらともいえない 役に立たなかった ご意見・ご感想等がございましたら下記をご入力し送信ください。",
+      "value": "https://www.city.tsukubamirai.lg.jp/enq.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-08",
+      "officeName": "茨城県女性相談センター",
+      "sourcePage": "https://www.houterasu.or.jp/site/higaishashien/hanzaihigai-seido-2.html",
+      "kind": "form-or-sns",
+      "label": "Googleカスタム検索",
+      "value": "https://www.houterasu.or.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-09",
+      "officeName": "とちぎ男女共同参画センター",
+      "sourcePage": "https://www.parti.jp/soudan/01.html",
+      "kind": "form-or-sns",
+      "label": "https://www.pref.tochigi.lg.jp/c07/joseishien/linesoudan.html",
+      "value": "https://www.pref.tochigi.lg.jp/c07/joseishien/linesoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-09",
+      "officeName": "とちぎ男女共同参画センター",
+      "sourcePage": "https://www.parti.jp/soudan/05.html",
+      "kind": "form-or-sns",
+      "label": "パンフレットのダウンロードはこちらから",
+      "value": "https://www.parti.jp/soudan/data/%E3%83%87%E3%83%BC%E3%83%88DV%E3%81%93%E3%82%8C%E3%81%A3%E3%81%A6%E3%81%BB%E3%82%93%E3%81%A8%E3%81%AB%E6%81%8B%E6%84%9B%EF%BC%9F.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-09",
+      "officeName": "とちぎ男女共同参画センター",
+      "sourcePage": "https://www.parti.jp/soudan/index.html",
+      "kind": "form-or-sns",
+      "label": "▶相談ルーム年間カレンダーはこちら",
+      "value": "https://www.parti.jp/soudan/data/R8_soudanroom_calendar.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-09",
+      "officeName": "とちぎ男女共同参画センター",
+      "sourcePage": "https://www.parti.jp/soudan/index.html",
+      "kind": "form-or-sns",
+      "label": "相談種別相談窓口一覧（栃木県公式ホームページ）",
+      "value": "http://www.pref.tochigi.lg.jp/e05/jisatutaisaku_soudansyubetu.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-10",
+      "officeName": "群馬県女性相談支援センター",
+      "sourcePage": "https://www.pref.gunma.jp/page/5984.html",
+      "kind": "form-or-sns",
+      "label": "プラス相談箱（24時間受付）",
+      "value": "https://form.soudanplus.jp/box"
+    },
+    {
+      "officeId": "prefecture-dv-center-10",
+      "officeName": "群馬県女性相談支援センター",
+      "sourcePage": "https://www.pref.gunma.jp/page/5984.html",
+      "kind": "form-or-sns",
+      "label": "チャット（受付12時から22時）",
+      "value": "https://form.soudanplus.jp/ja"
+    },
+    {
+      "officeId": "prefecture-dv-center-10",
+      "officeName": "群馬県女性相談支援センター",
+      "sourcePage": "https://www.pref.gunma.jp/page/5984.html",
+      "kind": "form-or-sns",
+      "label": "ＤＶ相談＋（内閣府）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-10",
+      "officeName": "群馬県女性相談支援センター",
+      "sourcePage": "https://www.pref.gunma.jp/page/5984.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.gunma.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-10",
+      "officeName": "群馬県女性相談支援センター",
+      "sourcePage": "https://www.kgsm.jp/",
+      "kind": "form-or-sns",
+      "label": "法律相談",
+      "value": "https://www.kgsm.jp/consult.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-10",
+      "officeName": "群馬県女性相談支援センター",
+      "sourcePage": "https://www.kgsm.jp/",
+      "kind": "form-or-sns",
+      "label": "連絡先 予約の申し込み、お問い合わせは、メールまたは電話で。 (メール･電話での法律相談はお受けしておりません。) 詳しくはこちら",
+      "value": "https://www.kgsm.jp/contact.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-10",
+      "officeName": "群馬県女性相談支援センター",
+      "sourcePage": "https://jns-web.co.jp/forsupport/",
+      "kind": "email",
+      "label": "",
+      "value": "soudan@jns-web.co.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/mens.html",
+      "kind": "form-or-sns",
+      "label": "埼玉県内相談窓口",
+      "value": "https://www.pref.saitama.lg.jp/withyou/counsel/contact/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "埼玉県女性・DVチャット相談「たまチャ」（別ウィンドウで開きます）",
+      "value": "https://www.pref.saitama.lg.jp/a0309/dv-soudan/dv_soudan_webchat.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/mens.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.saitama.lg.jp/search/search.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/mens.html",
+      "kind": "form-or-sns",
+      "label": "県民生活部 男女共同参画推進センター 相談担当 郵便番号330-0081 埼玉県さいたま市中央区新都心2‐2 ホテルブリランテ武蔵野3階 電話：048-601-3111 ファックス：048-600-3802 お問い合わせフォーム",
+      "value": "https://www.pref.saitama.lg.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/mens.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった 送信",
+      "value": "https://www.pref.saitama.lg.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "http://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/start/jp/https://www.pref.saitama.lg.jp/withyou/counsel/dv.html",
+      "kind": "form-or-sns",
+      "label": "埼玉県内相談窓口",
+      "value": "https://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/goto/jp/https://www.pref.saitama.lg.jp/withyou/counsel/contact/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "http://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/start/jp/https://www.pref.saitama.lg.jp/withyou/counsel/dv.html",
+      "kind": "form-or-sns",
+      "label": "詳細はこちら（別ウィンドウで開きます）",
+      "value": "https://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/goto/jp/https://www.pref.saitama.lg.jp/a0309/dv-soudan/dv_soudan_webchat.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "http://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/start/jp/https://www.pref.saitama.lg.jp/withyou/counsel/dv.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "http://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/gotolink/jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "http://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/start/jp/https://www.pref.saitama.lg.jp/withyou/counsel/dv.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/goto/jp/https://www.pref.saitama.lg.jp/search/search.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "http://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/start/jp/https://www.pref.saitama.lg.jp/withyou/counsel/dv.html",
+      "kind": "form-or-sns",
+      "label": "県民生活部 男女共同参画推進センター 相談担当 郵便番号330-0081 埼玉県さいたま市中央区新都心2‐2 ホテルブリランテ武蔵野3階 電話：048-601-3111 ファックス：048-600-3802 お問い合わせフォーム",
+      "value": "https://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/goto/jp/https://www.pref.saitama.lg.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "http://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/start/jp/https://www.pref.saitama.lg.jp/withyou/counsel/dv.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった 送信",
+      "value": "https://speechpanel.readspeaker.com/cgi-bin/rssp/1568a255fa7cd02dca96fb56/goto/jp/https://www.pref.saitama.lg.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "電話相談チラシ（PDF：278KB）",
+      "value": "https://www.pref.saitama.lg.jp/documents/29165/denwasoudan.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "インターネット相談チラシ（PDF：386KB）",
+      "value": "https://www.pref.saitama.lg.jp/documents/29165/internetsoudan.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "インターネット相談よくある質問と回答（PDF：203KB）",
+      "value": "https://www.pref.saitama.lg.jp/documents/29165/internetsoudanfaq.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "男性電話相談チラシ（PDF：378KB）",
+      "value": "https://www.pref.saitama.lg.jp/documents/29165/danseidenwasoudan.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "女性のための専門相談チラシ（PDF：488KB）",
+      "value": "https://www.pref.saitama.lg.jp/documents/29165/zyoseisenmonsoudan.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "男性のための専門相談チラシ（PDF：491KB）",
+      "value": "https://www.pref.saitama.lg.jp/documents/29165/danseisenmonsoudan.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "女性と女の子の「あばたー広場」（別ウィンドウで開きます）",
+      "value": "https://www.pref.saitama.lg.jp/withyou/event/list/metasoudann.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html",
+      "kind": "form-or-sns",
+      "label": "にじいろ県民相談（埼玉県性的マイノリティ県民相談）（別ウィンドウで開きます）",
+      "value": "https://www.pref.saitama.lg.jp/a0303/lgbtq/kenmin-soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/mens.html",
+      "kind": "form-or-sns",
+      "label": "法律相談やカウンセリングはこちら（別ウィンドウで開きます）",
+      "value": "https://www.pref.saitama.lg.jp/withyou/counsel/guide.html#senmonsoudan_top"
+    },
+    {
+      "officeId": "prefecture-dv-center-11",
+      "officeName": "埼玉県男女共同参画推進センター",
+      "sourcePage": "https://www.pref.saitama.lg.jp/withyou/counsel/mens.html",
+      "kind": "form-or-sns",
+      "label": "男性電話相談チラシ（PDF：378KB）",
+      "value": "https://www.pref.saitama.lg.jp/documents/29171/danseidenwasoudan.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/jsc/",
+      "kind": "form-or-sns",
+      "label": "交通・ライフライン",
+      "value": "http://www.pref.chiba.lg.jp/cate/baa/lifeline/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/jsc/",
+      "kind": "form-or-sns",
+      "label": "男性のための総合相談（千葉県男女共同参画センター）",
+      "value": "http://www.pref.chiba.lg.jp/kyousei/soudan/dansei.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/jsc/",
+      "kind": "form-or-sns",
+      "label": "⇒千葉県内のDV相談窓口（配偶者暴力相談支援センター、市町村、警察 等）",
+      "value": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/jsc/",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "http://www.pref.chiba.lg.jp/search/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/jsc/",
+      "kind": "form-or-sns",
+      "label": "所属課室：健康福祉部女性サポートセンター相談支援課 電話番号：043-206-8001 ファックス番号：043-206-8820",
+      "value": "http://www.pref.chiba.lg.jp/forms/faq.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "相談・問い合わせ窓口",
+      "value": "http://www.pref.chiba.lg.jp/soudan-toiawase/soudan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/cate/baa/lifeline/index.html",
+      "kind": "form-or-sns",
+      "label": "県管理以外の交通・ライフライン規制情報",
+      "value": "http://www.pref.chiba.lg.jp/cate/baa/lifeline/sonota/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/cate/baa/lifeline/index.html",
+      "kind": "form-or-sns",
+      "label": "県管理道路通行規制情報",
+      "value": "http://www.pref.chiba.lg.jp/cate/baa/lifeline/kendou/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/cate/baa/lifeline/index.html",
+      "kind": "form-or-sns",
+      "label": "上下水道の制限",
+      "value": "http://www.pref.chiba.lg.jp/cate/baa/lifeline/suidou/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "女性のための総合相談",
+      "value": "http://www.pref.chiba.lg.jp/kyousei/soudan/josei.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "相談・問い合わせ",
+      "value": "http://www.pref.chiba.lg.jp/soudan-toiawase/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "SNS相談",
+      "value": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html#snssoudantou"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "DV相談プラス",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "むすびめ@千葉女性相談",
+      "value": "http://www.pref.chiba.lg.jp/jika/konnanjosei/joseisoudansns/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "子どもの虐待通告・相談は『189（いちはやく）』へ",
+      "value": "http://www.pref.chiba.lg.jp/jika/soudan/jidou/gyakutai.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-12",
+      "officeName": "千葉県女性サポートセンター",
+      "sourcePage": "http://www.pref.chiba.lg.jp/dankyou/dv/soudan.html",
+      "kind": "form-or-sns",
+      "label": "内閣府男女共同参画局：配偶者からの暴力被害者支援情報相談機関一覧",
+      "value": "https://www.gender.go.jp/policy/no_violence/e-vaw/soudankikan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/danjo/dv",
+      "kind": "form-or-sns",
+      "label": "情報発信・相談",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/chiiki_tabunka/tabunka/jyouhou_hasin_soudan"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/danjo/dv",
+      "kind": "form-or-sns",
+      "label": "行政相談月間",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/chiiki_tabunka/gyouseisoudangekkan"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "相談する",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/consult"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "東京ウィメンズプラザとは",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/outline"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "東京ウィメンズプラザってどんなところ",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/outline/information"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "令和８年度東京ウィメンズプラザ配偶者暴力防止等民間活動助成事業",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/information/2025/20260331"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "パートナーからの暴力にお悩みの方",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/consult/partner"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "開館時間・休館日",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/outline/open-close"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "交通アクセス",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/outline/access"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "聴覚などに障害があり、音声電話による相談が困難な方",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/consult/ears"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "外国人相談窓口情報",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/consult/foreigner"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "性自認及び性的指向に関する専門電話相談窓口情報",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/consult/gender"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "配偶者やパートナーからの暴力被害に関するLINE相談「ささえるライン＠東京」",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp/consult/line"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/twp",
+      "kind": "form-or-sns",
+      "label": "キーワード検索 すべて 政策企画局 子供政策連携室 総務局 財務局 デジタルサービス局 主税局 生活文化局 都民安全総合対策本部 スポーツ推進本部 都市整備局 住宅政策本部 環境局 福祉局 保健医療局 産業労働局 中央卸売市場 スタートアップ戦略推進本部 建設局 港湾局 会計管理局 東京消防庁 交通局 水道局 下水道局",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/twp"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/search?keyword=&category=163881",
+      "kind": "form-or-sns",
+      "label": "意見・相談・都政への参加",
+      "value": "https://www.metro.tokyo.lg.jp/tosei/iken-sodan"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "思春期・青年期相談 令和8年度 第3回公開講座のお知らせ",
+      "value": "https://www.fukushi.metro.tokyo.lg.jp/shisetsu/jigyosyo/tamasou/information/2026/koukakouza_goannnai"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "児童・生徒を教職員等による性暴力から守るための第三者相談窓口",
+      "value": "https://www.kyoiku.metro.tokyo.lg.jp/consulting/students_parents/no_sexual_violence"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "都庁の相談・窓口案内（各局の窓口案内）",
+      "value": "https://www.metro.tokyo.lg.jp/tosei/iken-sodan/sodan"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "小学生・中学・高校生向け相談窓口一覧 東京都こどもホームページ",
+      "value": "https://tokyo-kodomo-hp.metro.tokyo.lg.jp/soudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "福祉の基盤づくりに関する相談・助成制度",
+      "value": "https://www.fukushi.metro.tokyo.lg.jp/kiban/sodan"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "障害者に関する相談窓口",
+      "value": "https://www.fukushi.metro.tokyo.lg.jp/shougai/sodan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "就学相談",
+      "value": "https://www.kyoiku.metro.tokyo.lg.jp/consulting/students_parents/special_needs_consultation"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "相談窓口（東京くらしWEB）",
+      "value": "https://www.shouhiseikatu.metro.tokyo.lg.jp/sodan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "犯罪お悩みなんでも相談",
+      "value": "https://www.restanet-tokyo.metro.tokyo.lg.jp/soudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "労働相談",
+      "value": "https://www.kenkou-hataraku.metro.tokyo.lg.jp/soudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "創業・起業に関する一般相談",
+      "value": "https://www.tokyo-sogyo-net.metro.tokyo.lg.jp/soudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "キーワード検索 すべて 政策企画局 子供政策連携室 総務局 財務局 デジタルサービス局 主税局 生活文化局 都民安全総合対策本部 スポーツ推進本部 都市整備局 住宅政策本部 環境局 福祉局 保健医療局 産業労働局 中央卸売市場 スタートアップ戦略推進本部 建設局 港湾局 会計管理局 東京消防庁 交通局 水道局 下水道局",
+      "value": "https://www.metro.tokyo.lg.jp/purpose/support?utm_source=search&utm_medium=internal&utm_id=sidebar"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.metro.tokyo.lg.jp/search?keyword=&category=163881",
+      "kind": "form-or-sns",
+      "label": "検索 絞り込み すべてリセット タグ タグで絞り込む すべてを解除する この内容で絞り込み直す カテゴリ 支援・相談 カテゴリで絞り込む すべてを解除する この内容で絞り込み直す 目的 目的で絞り込む すべてを解除する この内容で絞り込み直す 組織 組織で絞り込む すべてを解除する この内容で絞り込み直す 日付 日付で",
+      "value": "https://www.metro.tokyo.lg.jp/search?keyword=&category=163881"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.my.metro.tokyo.lg.jp/business/search/?category=188502&utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "各種相談窓口",
+      "value": "https://www.metro.tokyo.lg.jp/tosei/iken-sodan/sodan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.my.metro.tokyo.lg.jp/business/search/?category=188502&utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://www.my.metro.tokyo.lg.jp/line/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.my.metro.tokyo.lg.jp/business/search/?category=188502&utm_source=search&utm_medium=internal&utm_id=sidebar",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.my.metro.tokyo.lg.jp/business/search/"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/danjo/jokatsu",
+      "kind": "form-or-sns",
+      "label": "キーワード検索 すべて 政策企画局 子供政策連携室 総務局 財務局 デジタルサービス局 主税局 生活文化局 都民安全総合対策本部 スポーツ推進本部 都市整備局 住宅政策本部 環境局 福祉局 保健医療局 産業労働局 中央卸売市場 スタートアップ戦略推進本部 建設局 港湾局 会計管理局 東京消防庁 交通局 水道局 下水道局",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/danjo/jokatsu"
+    },
+    {
+      "officeId": "prefecture-dv-center-13",
+      "officeName": "東京ウィメンズプラザ",
+      "sourcePage": "https://www.seikatubunka.metro.tokyo.lg.jp/danjo/dv",
+      "kind": "form-or-sns",
+      "label": "キーワード検索 すべて 政策企画局 子供政策連携室 総務局 財務局 デジタルサービス局 主税局 生活文化局 都民安全総合対策本部 スポーツ推進本部 都市整備局 住宅政策本部 環境局 福祉局 保健医療局 産業労働局 中央卸売市場 スタートアップ戦略推進本部 建設局 港湾局 会計管理局 東京消防庁 交通局 水道局 下水道局",
+      "value": "https://www.seikatubunka.metro.tokyo.lg.jp/danjo/dv"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "Translate",
+      "value": "https://www.pref.kanagawa.jp/translate.html?p=/docs/x2t/dv_soudan_01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "読み上げ / ふりがな",
+      "value": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/m8u/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "配偶者暴力相談支援センター DV相談窓口のご案内",
+      "value": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_02.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_02.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_04.html",
+      "kind": "form-or-sns",
+      "label": "相談（そうだん）はこちらから",
+      "value": "https://www.pref.kanagawa.jp/docs/m8u/joseisoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "DV相談（そうだん）のページ（やさしい日本語（にほんご））",
+      "value": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_04.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "県内の相談窓口一覧のページ",
+      "value": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_03.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_04.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "https://www.pref.kanagawa.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "Translate",
+      "value": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.ui.=prefkanagawahp___-1780009915&.h0.=*OjE1NTMx*&.ro.=nr&.st.=rb&.vo.=vf&.vl.=ja_JP&.hp.=8qQp2cyC2mROxGEhE45bw6xUUs0fLmKHo4CVJOkNvRAL1tdv9E9bUfbe4kulMMIu&p=/docs/x2t/dv_soudan_01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "読み上げ / ふりがな",
+      "value": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.wa.=wo&.st.=rb&.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "ウェブアクセスサービス解除",
+      "value": "http://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.wa.=wo&.st.=rb&.h0.=fp&fm=AKP&.ui.=prefkanagawahp&.ro.=fo&.np.=docs/x2t/dv_soudan_01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_01.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.ui.=prefkanagawahp___-1780009915&.h0.=*OjE1NTMx*&.ro.=nr&.st.=rb&.vo.=vf&.vl.=ja_JP&.cs.=UTF8&.hp.=uMGkh/UCy5lR7pwfdA9yhOtXXd7bog8W9aG2o80s0wrjTNqTT/iENeZXqHzB82if"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_02.html",
+      "kind": "form-or-sns",
+      "label": "Translate",
+      "value": "https://www.pref.kanagawa.jp/translate.html?p=/docs/x2t/dv_soudan_02.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_02.html",
+      "kind": "form-or-sns",
+      "label": "読み上げ / ふりがな",
+      "value": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_02.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/m8u/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "「かながわDV相談」ソーシャルメディアアカウント運用ポリシー（PDF：193KB）",
+      "value": "https://www.pref.kanagawa.jp/documents/53001/line.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/m8u/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "神奈川県警総合相談室（#9110又は045-664-9110）",
+      "value": "https://www.police.pref.kanagawa.jp/sodan/sodan_kujo_joho/mesa4031.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_04.html",
+      "kind": "form-or-sns",
+      "label": "Translate",
+      "value": "https://www.pref.kanagawa.jp/translate.html?p=/docs/x2t/dv_soudan_04.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-14",
+      "officeName": "神奈川県立かながわ男女共同参画センター",
+      "sourcePage": "https://www.pref.kanagawa.jp/docs/x2t/dv_soudan_04.html",
+      "kind": "form-or-sns",
+      "label": "読み上げ / ふりがな",
+      "value": "https://mt.adaptive-techs.com/httpadaptor/servlet/HttpAdaptor?.h0.=fp&.ui.=prefkanagawahp&.ro.=nr&.vo.=vf&.np.=/docs/x2t/dv_soudan_04.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/sec/chuofukushi/1191429036057.html",
+      "kind": "form-or-sns",
+      "label": "メールでのお問い合わせはこちら",
+      "value": "https://www.pref.niigata.lg.jp/form/detail.php?sec_sec1=49&lif_id=839645"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/sec/kodomokatei/1356853888093.html",
+      "kind": "form-or-sns",
+      "label": "Googleカスタム検索",
+      "value": "https://www.pref.niigata.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/site/chuofukushi/",
+      "kind": "form-or-sns",
+      "label": "・親子のための相談LINEについて",
+      "value": "https://www.pref.niigata.lg.jp/sec/chuofukushi/0750761.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/life/sub/9/",
+      "kind": "form-or-sns",
+      "label": "【津川】今夏の高温・渇水及び大雨に伴う林産物等に関する相談窓口の設置",
+      "value": "https://www.pref.niigata.lg.jp/site/niigata-tsugawashinko/soudanmadoguti.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/site/chuofukushi/",
+      "kind": "form-or-sns",
+      "label": "・新潟県相談支援従事者研修",
+      "value": "https://www.pref.niigata.lg.jp/site/chuofukushi/soudanshien-jujisha-kenshu.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/site/chuofukushi/",
+      "kind": "form-or-sns",
+      "label": "メールでのお問い合わせはこちら",
+      "value": "https://www.pref.niigata.lg.jp/form/detail.php?sec_sec1=49&lif_id=750747"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/sec/kodomokatei/1356853888093.html",
+      "kind": "form-or-sns",
+      "label": "DV相談プラス（内閣府）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/sec/kodomokatei/1356853888093.html",
+      "kind": "form-or-sns",
+      "label": "警察の相談窓口一覧（新潟県警察）",
+      "value": "https://www.pref.niigata.lg.jp/site/kenkei/soudan-madoguchi-madoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-15",
+      "officeName": "新潟県女性相談支援センター",
+      "sourcePage": "https://www.pref.niigata.lg.jp/sec/kodomokatei/1356853888093.html",
+      "kind": "form-or-sns",
+      "label": "メールでのお問い合わせはこちら",
+      "value": "https://www.pref.niigata.lg.jp/form/detail.php?sec_sec1=40&inq=02&lif_id=801350"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1257/kensei/kenseiunei/kensei/soshiki/12/1257.html",
+      "kind": "form-or-sns",
+      "label": "https://page.line.me/toyama_zyosei（外部サイトへリンク）",
+      "value": "http://page.line.me/toyama_zyosei"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1246/kensei/kenseiunei/kensei/soshiki/12/1246.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "https://www.pref.toyama.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1246/kensei/kenseiunei/kensei/soshiki/12/1246.html",
+      "kind": "form-or-sns",
+      "label": "所属課室 厚生部高岡児童相談所 所在地 〒933-0806 高岡市赤祖父172番1 電話番号 0766-21-2124 ファックス番号 0766-22-1392",
+      "value": "https://www.pref.toyama.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1246/kensei/kenseiunei/kensei/soshiki/12/1246.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "https://www.pref.toyama.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "日常的に医療的ケアが必要なお子さんのご相談について",
+      "value": "https://www.pref.toyama.jp/1209/kurashi/soudanshisetsu/madoguchi/iroutekikea.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "砂利採取に関する相談は",
+      "value": "https://www.pref.toyama.jp/1503/kurashi/soudanshisetsu/madoguchi/jigyousha/kj00003375.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "海岸に関する相談は",
+      "value": "https://www.pref.toyama.jp/1503/kurashi/soudanshisetsu/madoguchi/jigyousha/kj00003376.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "河川に関する相談は",
+      "value": "https://www.pref.toyama.jp/1503/kurashi/soudanshisetsu/madoguchi/jigyousha/kj00003377.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "性暴力被害ワンストップ支援センターとやま",
+      "value": "https://www.pref.toyama.jp/1711/kurashi/soudanshisetsu/madoguchi/joseisoudan/kj00018675.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "富山県女性健康相談センター・不妊専門相談センターのご案内",
+      "value": "https://www.pref.toyama.jp/120101/kurashi/soudanshisetsu/madoguchi/joseisoudan/kj00001138/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "相談受付（富山児童相談所）",
+      "value": "https://www.pref.toyama.jp/1245/kurashi/soudanshisetsu/madoguchi/kosodate/kj00017078.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "県民相談",
+      "value": "https://www.pref.toyama.jp/1021/kurashi/soudanshisetsu/madoguchi/seikatsu/kj00001618.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "相談受付（高岡児童相談所）",
+      "value": "https://www.pref.toyama.jp/1246/kurashi/soudanshisetsu/madoguchi/kosodate/kj00017326/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "農林漁業に関する就業相談窓口・就業相談会",
+      "value": "https://www.pref.toyama.jp/1611/sangyou/nourinsuisan/nougyou/keieitaisien/syuugyousoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "下請相談窓口等のご案内",
+      "value": "https://www.pref.toyama.jp/1300/kurashi/soudanshisetsu/madoguchi/jigyousha/kj00030000.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/mokutekibetsu/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "農業経営についての相談窓口（法人化するには）",
+      "value": "https://www.pref.toyama.jp/1611/sangyou/nourinsuisan/nougyou/keieitaisien/keieisoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1245/kensei/kenseiunei/kensei/soshiki/12/1245.html",
+      "kind": "form-or-sns",
+      "label": "R6年度事業概要_児童相談のひろば（PDF：1,064KB）",
+      "value": "https://www.pref.toyama.jp/documents/15598/r6nenndojidousoudannnohiroba.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1245/kensei/kenseiunei/kensei/soshiki/12/1245.html",
+      "kind": "form-or-sns",
+      "label": "R4年度事業概要_児童相談のひろば（PDF：2,222KB）",
+      "value": "https://www.pref.toyama.jp/documents/15598/r4nenndozidousoudannnohiroba.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1245/kensei/kenseiunei/kensei/soshiki/12/1245.html",
+      "kind": "form-or-sns",
+      "label": "R3年度事業概要_児童相談のひろば（PDF：2,117KB）",
+      "value": "https://www.pref.toyama.jp/documents/15598/r3nenndozidousoudannnohiroba.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1246/kensei/kenseiunei/kensei/soshiki/12/1246.html",
+      "kind": "form-or-sns",
+      "label": "R6年度事業概要 児童相談のひろば（PDF：1,064KB）",
+      "value": "https://www.pref.toyama.jp/documents/15599/r6nenndojidousoudannnohiroba.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1246/kensei/kenseiunei/kensei/soshiki/12/1246.html",
+      "kind": "form-or-sns",
+      "label": "R5年度事業概要 児童相談のひろば（PDF：1,078KB）",
+      "value": "https://www.pref.toyama.jp/documents/15599/r5nenndozidousoudannnohiroba.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1246/kensei/kenseiunei/kensei/soshiki/12/1246.html",
+      "kind": "form-or-sns",
+      "label": "R4年度事業概要 児童相談のひろば（PDF：2,222KB）",
+      "value": "https://www.pref.toyama.jp/documents/15599/r4nenndozidousoudannnohiroba.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-16",
+      "officeName": "富山県女性相談支援センター",
+      "sourcePage": "https://www.pref.toyama.jp/1246/kensei/kenseiunei/kensei/soshiki/12/1246.html",
+      "kind": "form-or-sns",
+      "label": "R3年度事業概要_児童相談のひろば（PDF：2,117KB）",
+      "value": "https://www.pref.toyama.jp/documents/15599/r3nenndojidousoudannnohiroba.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "DV相談窓口一覧",
+      "value": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html#madoguchi"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "「DV相談＋（プラス）」（外部リンク）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "石川県 女性相談支援センター",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "ダウンロード（PDF：3,281KB）",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/soudansien/documents/dvnayamanaide_2026.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "石川県 配偶者暴力相談支援センター",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/soudansien/dvsoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "ひとりで悩まないで相談を",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/soudansien/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.ishikawa.lg.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報はお役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "https://www.pref.ishikawa.lg.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/sodammadoguchi/index.html",
+      "kind": "form-or-sns",
+      "label": "メールでのご相談",
+      "value": "https://www.pref.ishikawa.lg.jp/kenmin/koe/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "こころの相談ダイヤル",
+      "value": "https://www.pref.ishikawa.lg.jp/fukusi/kokoro-home/kokoro/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "女性の権利110番（外部リンク）",
+      "value": "https://kanazawa-bengo.com/consult/content-05.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "犯罪被害者支援無料法律相談（外部リンク）",
+      "value": "https://kanazawa-bengo.com/consult/content-04.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "女性なんでも相談（外部リンク）",
+      "value": "https://www.city.nanao.lg.jp/koho/shise/koho/sodanmadoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "女性相談（外部リンク）",
+      "value": "https://www.city.nanao.lg.jp/kosodate/kurashi/kosodate/sodan/madoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "小松市パープルほっとライン （外部リンク）",
+      "value": "https://www.city.komatsu.lg.jp/soshiki/1063/kmarigotogaarujyoseinosoudan/17943.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "DV（配偶者・パートナーからの暴力）に関する相談窓口",
+      "value": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/kenmin/danjo/dvsoudan.html",
+      "kind": "form-or-sns",
+      "label": "避難生活での性被害・性暴力・DVなどの相談について",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/purplesupport.html",
+      "kind": "form-or-sns",
+      "label": "相談専用フォーム",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/purple_mail.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "SNS（LINE）相談はこちらをクリック",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html#SNS"
+    },
+    {
+      "officeId": "prefecture-dv-center-17",
+      "officeName": "石川県女性相談支援センター",
+      "sourcePage": "https://www.pref.ishikawa.lg.jp/josou/soudansien/joseisoudan.html",
+      "kind": "form-or-sns",
+      "label": "LINE公式アカウント運用ポリシー（PDF：109KB）",
+      "value": "https://www.pref.ishikawa.lg.jp/josou/soudansien/documents/policy_joseisoudanshitsu.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html",
+      "kind": "form-or-sns",
+      "label": "福井県内のＤＶ相談機関一覧",
+      "value": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/jijosou/jyosei.html",
+      "kind": "form-or-sns",
+      "label": "県内のDV相談窓口",
+      "value": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html#5.others"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/jijosou/jyosei.html",
+      "kind": "form-or-sns",
+      "label": "配偶者・恋人などのパートナーからの暴力（DV）にお悩みの方に",
+      "value": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/jijosou/index.html",
+      "kind": "email",
+      "label": "jijosou@pref.fukui.lg.jp",
+      "value": "jijosou@pref.fukui.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/jijosou/index.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "https://www.pref.fukui.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html",
+      "kind": "form-or-sns",
+      "label": "ウェブサイトの品質向上のため、このページのご感想をお聞かせください。 分かりやすかった 探しにくかった 知りたい内容が書かれていなかった 聞き慣れない用語があった",
+      "value": "https://www.pref.fukui.lg.jp/cgi-bin/web/rating/rating.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/kenko/fukushio/cat1203/index.html",
+      "kind": "form-or-sns",
+      "label": "健康・福祉相談のご案内",
+      "value": "https://www.pref.fukui.lg.jp/doc/tannan-hwc/kenzou/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/kenko/fukushio/cat1203/index.html",
+      "kind": "form-or-sns",
+      "label": "働き世代の男性のための「男性電話相談窓口」",
+      "value": "https://www.pref.fukui.lg.jp/doc/shougai/jisatutaisakukeikaku/danseidenwasoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/kenko/fukushio/cat1203/index.html",
+      "kind": "form-or-sns",
+      "label": "福井県障がい福祉・精神保健相談所 事業概要 | 福井県ホームページ",
+      "value": "https://www.pref.fukui.lg.jp/doc/soudansyo/jigyougaiyou/jigyougaiyou.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/kenko/fukushio/cat1203/index.html",
+      "kind": "form-or-sns",
+      "label": "女性相談について（奥越健康福祉センター）",
+      "value": "https://www.pref.fukui.lg.jp/doc/okuetu-hwc/jyoseisoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "English",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=en&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "中文(繁)",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=zhb&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "中文(簡)",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=zh&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "한국",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=ko&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "Português",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=pt&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "français",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=fr&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "Deutsche",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=de&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "Español",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=es&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "italiano",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=it&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "ไทย",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=th&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "Tiếng Việt",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=vi&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "русский",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=ru&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "हिन्दी",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=hi&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "Bahasa Melayu",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=ms&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "عربى",
+      "value": "https://translation2.j-server.com/LUCPFUKUI/ns/tl_ex.cgi?SURL=https://translation2.j-server.com/LUCPFUKUI/ns/warning_mess.cgi%3furl=https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html%26target=_top&SLANG=ja&TLANG=ar&XMODE=0"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/dv_soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "詳しくはこちらをご覧ください。（DV相談プラスのページが開きます。）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html",
+      "kind": "email",
+      "label": "jidou@pref.fukui.lg.jp",
+      "value": "jidou@pref.fukui.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/tsuruga-jidou/",
+      "kind": "form-or-sns",
+      "label": "こども家庭庁HP「親子のための相談LINE」",
+      "value": "https://www.cfa.go.jp/policies/jidougyakutai/oyako-line"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/tsuruga-jidou/",
+      "kind": "email",
+      "label": "turujido@pref.fukui.lg.jp",
+      "value": "turujido@pref.fukui.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html",
+      "kind": "form-or-sns",
+      "label": "福井県ＤＶ防止啓発リーフレット『配偶者やパートナーからの暴力に悩んでいませんか？』（ＰＤＦ形式：1,479ＫＢ",
+      "value": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html_ver_2026.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html",
+      "kind": "form-or-sns",
+      "label": "デートＤＶパンフレット『よりよい関係をつくるために』(小容量版)（ＰＤＦ形式 1,786キロバイト）",
+      "value": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan_d/fil/dateDV_S.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html",
+      "kind": "form-or-sns",
+      "label": "デートＤＶパンフレット『よりよい関係をつくるために』(大容量版)（ＰＤＦ形式 4,877キロバイト）",
+      "value": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan_d/fil/dateDV_L.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-18",
+      "officeName": "福井県児童・女性相談所",
+      "sourcePage": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan.html",
+      "kind": "form-or-sns",
+      "label": "ＤＶ防止リーフレット_両面 2026改訂版（ＰＤＦ形式 1,600キロバイト）",
+      "value": "https://www.pref.fukui.lg.jp/doc/016407/kateifukusi/soudan_d/fil/DVleaflet_ver2026.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/josei/joseisiencenterhp/haibouhou.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口",
+      "value": "https://www.pref.yamanashi.jp/kurashi/sodan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/josei/joseisiencenterhp/haibouhou.html",
+      "kind": "form-or-sns",
+      "label": "女性・児童・DV",
+      "value": "https://www.pref.yamanashi.jp/kurashi/sodan/josei_jido/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/josei/adviser.html",
+      "kind": "form-or-sns",
+      "label": "山梨県内の女性からの相談を受ける機関",
+      "value": "https://www.pref.yamanashi.jp/josei/soudan-madoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/josei/",
+      "kind": "form-or-sns",
+      "label": "地域デザイン・リニア推進グループ",
+      "value": "https://www.pref.yamanashi.jp/linear-dsn/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/josei/",
+      "kind": "form-or-sns",
+      "label": "リニア整備推進室",
+      "value": "https://www.pref.yamanashi.jp/linear-ss/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/josei/joseisiencenterhp/haibouhou.html",
+      "kind": "form-or-sns",
+      "label": "山梨県福祉保健部女性相談支援センター 住所：〒400-0005 甲府市北新1-2-12福祉プラザ2階 電話番号：055(254)8633 ファクス番号：055(254)8636",
+      "value": "https://www.pref.yamanashi.jp/cgi-bin/faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/kurashi/sodan/josei_jido/index.html",
+      "kind": "form-or-sns",
+      "label": "生活支援相談窓口",
+      "value": "https://www.pref.yamanashi.jp/kurashi/sodan/seikatsu/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/kurashi/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "交通事故相談の窓口",
+      "value": "https://www.pref.yamanashi.jp/kenminskt-c/kotsujikosoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/josei/joseisiencenterhp/haibouhou.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "https://www.pref.yamanashi.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/kodomo-fukushi/konnanj/konnanjyotop.html",
+      "kind": "form-or-sns",
+      "label": "令和7年度山梨県児童相談所夜間・休日電話相談受付業務委託に係る公募型プロポーザルの実施について",
+      "value": "https://www.pref.yamanashi.jp/kodomo-fukushi/gyakutaisoudan/r7/denwa.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/kodomo-fukushi/konnanj/konnanjyotop.html",
+      "kind": "form-or-sns",
+      "label": "令和7年度児童相談所SNS相談受付運営業務委託に係る公募型プロポーザルの実施について",
+      "value": "https://www.pref.yamanashi.jp/kodomo-fukushi/gyakutaisoudan/r7/sns.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-19",
+      "officeName": "山梨県女性相談支援センター",
+      "sourcePage": "https://www.pref.yamanashi.jp/kodomo-fukushi/konnanj/konnanjyotop.html",
+      "kind": "form-or-sns",
+      "label": "児童相談所虐待対応ダイヤル相談受付業務委託に係る公募型プロポーザルの実施について",
+      "value": "https://www.pref.yamanashi.jp/kodomo-fukushi/soudann-189.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "女性相談支援センターとは",
+      "value": "https://www.pref.nagano.lg.jp/joseisodan/jigyo/sodancenter.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "相談内容・相談方法",
+      "value": "https://www.pref.nagano.lg.jp/joseisodan/sodan/sodan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "最寄りの女性相談窓口",
+      "value": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.nagano.lg.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "女性相談支援センター",
+      "value": "https://www.pref.nagano.lg.jp/joseisodan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "リニア整備推進事務所",
+      "value": "https://www.pref.nagano.lg.jp/linear-jimu/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "「くらしと健康の相談会」令和3年12月開催のお知らせ",
+      "value": "https://www.pref.nagano.lg.jp/omachiho/sodan/kurasitokenko.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "form-or-sns",
+      "label": "相談案内",
+      "value": "https://www.pref.nagano.lg.jp/toshinkyo/sodan/soudanannai.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/sodan.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "https://www.pref.nagano.lg.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/index.html",
+      "kind": "email",
+      "label": "w-shien@pref.nagano.lg.jp",
+      "value": "w-shien@pref.nagano.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-20",
+      "officeName": "長野県女性相談支援センター",
+      "sourcePage": "https://www.pref.nagano.lg.jp/joseisodan/sodan/sodan.html",
+      "kind": "form-or-sns",
+      "label": "女性のための相談窓口",
+      "value": "https://www.pref.nagano.lg.jp/jinken-danjo/kurashi/jinkendanjo/sodan/jose/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.pref.gifu.lg.jp/page/14971.html",
+      "kind": "form-or-sns",
+      "label": "Googleカスタム検索",
+      "value": "https://www.pref.gifu.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "http://www.onestop-gifu.org/",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "http://www.onestop-gifu.org/#line"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "http://www.onestop-gifu.org/",
+      "kind": "form-or-sns",
+      "label": "性暴力被害者のためのLINE相談をはじめます",
+      "value": "http://www.onestop-gifu.org/file/line_soudan_chirashi.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/no_violence_act/index.html",
+      "kind": "form-or-sns",
+      "label": "性犯罪・性暴力被害者のためのワンストップ支援センター ＃8891（はやくワンストップ）",
+      "value": "https://www.gender.go.jp/policy/no_violence/seibouryoku/consult.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "http://www.onestop-gifu.org/",
+      "kind": "form-or-sns",
+      "label": "LINE相談のご利用にあたって",
+      "value": "http://www.onestop-gifu.org/kiyaku.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "http://www.onestop-gifu.org/",
+      "kind": "form-or-sns",
+      "label": "相談のご利用にあたって",
+      "value": "http://www.onestop-gifu.org/file/tel_soudan_kiyaku.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.pref.gifu.lg.jp/page/14971.html",
+      "kind": "email",
+      "label": "メールでのお問い合わせはこちら",
+      "value": "c11234@pref.gifu.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/no_violence_act/index.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口一覧",
+      "value": "https://www.gender.go.jp/policy/no_violence/no_violence_act/index.html#consult"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/no_violence_act/index.html",
+      "kind": "form-or-sns",
+      "label": "令和7年度「女性に対する暴力をなくす運動」実施要綱［PDF形式：130KB］",
+      "value": "https://www.gender.go.jp/policy/no_violence/no_violence_act/pdf/outline_r07.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/no_violence_act/index.html",
+      "kind": "form-or-sns",
+      "label": "性暴力に関するチャット相談 Cure time（キュアタイム）",
+      "value": "https://www.gender.go.jp/policy/no_violence/malehotline/link/olink_230922_02.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/no_violence_act/index.html",
+      "kind": "form-or-sns",
+      "label": "性犯罪被害相談電話（警察） ＃810３（ハートさん）",
+      "value": "https://www.gender.go.jp/policy/no_violence/malehotline/link/olink_230922_03.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-21",
+      "officeName": "岐阜県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/no_violence_act/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://nsearch.cao.go.jp/cao/search.x"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.shizuoka.jp/kodomokyoiku/kodomokosodate/dv/1004159/index.html",
+      "kind": "form-or-sns",
+      "label": "電子申請",
+      "value": "https://www.pref.shizuoka.jp/kensei/onlineservice/denshishinsei/1041985.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.shizuoka.jp/kodomokyoiku/kodomokosodate/dv/1004159/index.html",
+      "kind": "form-or-sns",
+      "label": "オンラインサービス",
+      "value": "https://www.pref.shizuoka.jp/kensei/onlineservice/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.shizuoka.jp/kodomokyoiku/kodomokosodate/dv/1004159/index.html",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://line.me/R/msg/text/?DV%EF%BC%88%E5%A5%B3%E6%80%A7%E7%9B%B8%E8%AB%87%E6%94%AF%E6%8F%B4%E3%82%BB%E3%83%B3%E3%82%BF%E3%83%BC%EF%BC%89%ef%bd%9c%E9%9D%99%E5%B2%A1%E7%9C%8C%E5%85%AC%E5%BC%8F%E3%83%9B%E3%83%BC%E3%83%A0%E3%83%9A%E3%83%BC%E3%82%B8%0d%0ahttps%3A%2F%2Fwww.pref.shizuoka.jp%2Fkodomokyoiku%2Fkodomokosodate%2Fdv%2F1004159%2Findex.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=zh-TW&_x_tr_hl=zh-TW",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.shizuoka.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en",
+      "kind": "form-or-sns",
+      "label": "電子申請",
+      "value": "https://www-pref-shizuoka-jp.translate.goog/kensei/onlineservice/denshishinsei/1041985.html?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en",
+      "kind": "form-or-sns",
+      "label": "オンラインサービス",
+      "value": "https://www-pref-shizuoka-jp.translate.goog/kensei/onlineservice/index.html?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=en&_x_tr_hl=en",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://translate.google.com/website?sl=ja&tl=en&hl=en&u=https://line.me/R/msg/text/?DV%25EF%25BC%2588%25E5%25A5%25B3%25E6%2580%25A7%25E7%259B%25B8%25E8%25AB%2587%25E6%2594%25AF%25E6%258F%25B4%25E3%2582%25BB%25E3%2583%25B3%25E3%2582%25BF%25E3%2583%25BC%25EF%25BC%2589%25ef%25bd%259c%25E9%259D%2599%25E5%25B2%25A1%25E7%259C%258C%25E5%2585%25AC%25E5%25BC%258F%25E3%2583%259B%25E3%2583%25BC%25E3%2583%25A0%25E3%2583%259A%25E3%2583%25BC%25E3%2582%25B8%250d%250ahttps%253A%252F%252Fwww.pref.shizuoka.jp%252Fkodomokyoiku%252Fkodomokosodate%252Fdv%252F1004159%252Findex.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=zh-CN&_x_tr_hl=zh-CN",
+      "kind": "form-or-sns",
+      "label": "電子申請",
+      "value": "https://www-pref-shizuoka-jp.translate.goog/kensei/onlineservice/denshishinsei/1041985.html?_x_tr_sl=ja&_x_tr_tl=zh-CN&_x_tr_hl=zh-CN"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=zh-CN&_x_tr_hl=zh-CN",
+      "kind": "form-or-sns",
+      "label": "オンラインサービス",
+      "value": "https://www-pref-shizuoka-jp.translate.goog/kensei/onlineservice/index.html?_x_tr_sl=ja&_x_tr_tl=zh-CN&_x_tr_hl=zh-CN"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=zh-CN&_x_tr_hl=zh-CN",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://translate.google.com/website?sl=ja&tl=zh-CN&hl=zh-CN&u=https://line.me/R/msg/text/?DV%25EF%25BC%2588%25E5%25A5%25B3%25E6%2580%25A7%25E7%259B%25B8%25E8%25AB%2587%25E6%2594%25AF%25E6%258F%25B4%25E3%2582%25BB%25E3%2583%25B3%25E3%2582%25BF%25E3%2583%25BC%25EF%25BC%2589%25ef%25bd%259c%25E9%259D%2599%25E5%25B2%25A1%25E7%259C%258C%25E5%2585%25AC%25E5%25BC%258F%25E3%2583%259B%25E3%2583%25BC%25E3%2583%25A0%25E3%2583%259A%25E3%2583%25BC%25E3%2582%25B8%250d%250ahttps%253A%252F%252Fwww.pref.shizuoka.jp%252Fkodomokyoiku%252Fkodomokosodate%252Fdv%252F1004159%252Findex.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=zh-TW&_x_tr_hl=zh-TW",
+      "kind": "form-or-sns",
+      "label": "電子申請",
+      "value": "https://www-pref-shizuoka-jp.translate.goog/kensei/onlineservice/denshishinsei/1041985.html?_x_tr_sl=ja&_x_tr_tl=zh-TW&_x_tr_hl=zh-TW"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=zh-TW&_x_tr_hl=zh-TW",
+      "kind": "form-or-sns",
+      "label": "オンラインサービス",
+      "value": "https://www-pref-shizuoka-jp.translate.goog/kensei/onlineservice/index.html?_x_tr_sl=ja&_x_tr_tl=zh-TW&_x_tr_hl=zh-TW"
+    },
+    {
+      "officeId": "prefecture-dv-center-22",
+      "officeName": "静岡県女性相談支援センター",
+      "sourcePage": "https://www-pref-shizuoka-jp.translate.goog/kodomokyoiku/kodomokosodate/dv/1004159/index.html?_x_tr_sl=ja&_x_tr_tl=zh-TW&_x_tr_hl=zh-TW",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://translate.google.com/website?sl=ja&tl=zh-TW&hl=zh-TW&u=https://line.me/R/msg/text/?DV%25EF%25BC%2588%25E5%25A5%25B3%25E6%2580%25A7%25E7%259B%25B8%25E8%25AB%2587%25E6%2594%25AF%25E6%258F%25B4%25E3%2582%25BB%25E3%2583%25B3%25E3%2582%25BF%25E3%2583%25BC%25EF%25BC%2589%25ef%25bd%259c%25E9%259D%2599%25E5%25B2%25A1%25E7%259C%258C%25E5%2585%25AC%25E5%25BC%258F%25E3%2583%259B%25E3%2583%25BC%25E3%2583%25A0%25E3%2583%259A%25E3%2583%25BC%25E3%2582%25B8%250d%250ahttps%253A%252F%252Fwww.pref.shizuoka.jp%252Fkodomokyoiku%252Fkodomokosodate%252Fdv%252F1004159%252Findex.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "行政機関の相談窓口",
+      "value": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html#gyousei-soudan"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "ＤＶ相談＋（プラス）（内閣府Webページ）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "女性のための法律相談（面接相談、予約制）のページ",
+      "value": "https://www.pref.aichi.jp/soshiki/chiikifukushi/josei-houritsusoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "弁護士によるＤＶ専門電話相談のページ",
+      "value": "https://www.pref.aichi.jp/soshiki/chiikifukushi/dv-houritsusoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "男性ＤＶ被害者ホットラインのページ",
+      "value": "https://www.pref.aichi.jp/soshiki/chiikifukushi/dansei-hotline.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "ハートフルライン（犯罪被害者のためのこころの悩み相談）",
+      "value": "https://www.pref.aichi.jp/police/soudan/dial/jumin/heart.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "警察安全相談",
+      "value": "https://www.pref.aichi.jp/police/soudan/dial/jumin/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "女性に対する暴力専門法律相談（電話相談）",
+      "value": "https://www.aiben.jp/soudan/soudannaiyou/josei/"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "メールでの問合せはこちら",
+      "value": "https://www.pref.aichi.jp/form/detail.php?sec_sec1=72&inq=03&lif_id=655685"
+    },
+    {
+      "officeId": "prefecture-dv-center-23",
+      "officeName": "愛知県女性相談支援センター",
+      "sourcePage": "https://www.pref.aichi.jp/soshiki/chiikifukushi/0000012699.html",
+      "kind": "form-or-sns",
+      "label": "Googleカスタム検索",
+      "value": "https://www.pref.aichi.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "相談室のご案内",
+      "value": "https://www.center-mie.or.jp/frente/consult"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.pref.mie.lg.jp/JOSOU/HP/22626023058.htm",
+      "kind": "email",
+      "label": "josou@pref.mie.lg.jp",
+      "value": "josou@pref.mie.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "http://www.pref.mie.lg.jp/TOPICS/m03630000010007.htm",
+      "kind": "email",
+      "label": "サイトに関するご意見・お問い合わせ",
+      "value": "koho@pref.mie.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "http://www.pref.mie.lg.jp/TOPICS/m03630000010007.htm",
+      "kind": "form-or-sns",
+      "label": "サイト内検索 検索キーワードを入力",
+      "value": "https://www.pref.mie.lg.jp/SEARCH/prefmie/result.htm"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "http://www.pref.mie.lg.jp/TOPICS/m03630000010007.htm",
+      "kind": "form-or-sns",
+      "label": "より良いウェブサイトにするためにみなさまのご意見をお聞かせください お求めの情報は充分掲載されていましたか？ 充分だった ふつう 足りなかった このページの内容や表現は分かりやすかったですか？ 分かりやすかった ふつう 分かりにくかった この情報はすぐに見つけられましたか？ すぐに見つかった ふつう 時間がかかった",
+      "value": "https://www.pref.mie.lg.jp/app/qu/kijiindex/"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.pref.mie.lg.jp/D1KODOMO/000117533.htm",
+      "kind": "form-or-sns",
+      "label": "ＤＶ相談+（プラス）[内閣府]（外部サイトへのリンク）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.pref.mie.lg.jp/KODOMOK/HP/m0330400033_00012.htm",
+      "kind": "email",
+      "label": "sodachi@pref.mie.lg.jp",
+      "value": "sodachi@pref.mie.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "http://www.pref.mie.lg.jp/TOPICS/m03630000010007.htm",
+      "kind": "email",
+      "label": "kodomok@pref.mie.lg.jp",
+      "value": "kodomok@pref.mie.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.pref.mie.lg.jp/KODOMOK/HP/m0330400033_00012.htm",
+      "kind": "email",
+      "label": "anzen@pref.mie.lg.jp",
+      "value": "anzen@pref.mie.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.pref.mie.lg.jp/D1KODOMO/000117533.htm",
+      "kind": "form-or-sns",
+      "label": "チャット相談１２：００～２２：００（外部サイトへのリンク）",
+      "value": "https://form.soudanplus.jp/ja"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://anata-no-mikata.mhlw.go.jp/",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://anata-no-mikata.mhlw.go.jp/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "メールマガジン",
+      "value": "https://www.center-mie.or.jp/mailmagazine"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "女性のための総合相談",
+      "value": "https://www.center-mie.or.jp/frente/consult/phone.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "男性のための電話相談",
+      "value": "https://www.center-mie.or.jp/frente/consult/phone_men.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "みえにじいろ相談 性の多様性に関する相談",
+      "value": "https://www.center-mie.or.jp/frente/consult/lgbt"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "DV相談機関一覧",
+      "value": "https://www.center-mie.or.jp/frente/consult/dv_list.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "県内等の男性相談機関",
+      "value": "https://www.center-mie.or.jp/frente/consult/men_list.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-24",
+      "officeName": "三重県女性相談支援センター",
+      "sourcePage": "https://www.center-mie.or.jp/frente/consult",
+      "kind": "form-or-sns",
+      "label": "児童相談センター ～お子さんのことでの悩みなら～",
+      "value": "https://www.center-mie.or.jp/frente/jidou-soudan"
+    },
+    {
+      "officeId": "prefecture-dv-center-25",
+      "officeName": "滋賀県中央子ども家庭相談センター",
+      "sourcePage": "https://www.pref.shiga.lg.jp/kodomokatei/",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.shiga.lg.jp/result/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-27",
+      "officeName": "大阪府女性相談センター",
+      "sourcePage": "https://www.pref.osaka.lg.jp/soshikikarasagasu/joseisodan/index.html",
+      "kind": "form-or-sns",
+      "label": "女性相談センター",
+      "value": "https://www.pref.osaka.lg.jp/soshikikarasagasu/joseisodan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-27",
+      "officeName": "大阪府女性相談センター",
+      "sourcePage": "https://www.pref.osaka.lg.jp/o090130/kateishien/jyoseihogobukai/index.html",
+      "kind": "form-or-sns",
+      "label": "大阪府内の配偶者暴力相談支援センター",
+      "value": "https://www.pref.osaka.lg.jp/o090170/joseisodan/dvc/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-27",
+      "officeName": "大阪府女性相談センター",
+      "sourcePage": "https://www.pref.osaka.lg.jp/o090130/kateishien/jyoseihogobukai/index.html",
+      "kind": "form-or-sns",
+      "label": "キーワード検索 ページの探し方",
+      "value": "https://www.pref.osaka.lg.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-27",
+      "officeName": "大阪府女性相談センター",
+      "sourcePage": "https://www.pref.osaka.lg.jp/o090130/kateishien/jyoseihogobukai/index.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "https://www.pref.osaka.lg.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-27",
+      "officeName": "大阪府女性相談センター",
+      "sourcePage": "https://www.pref.osaka.lg.jp/soshikikarasagasu/joseisodan/index.html",
+      "kind": "form-or-sns",
+      "label": "障がい者自立相談支援センター",
+      "value": "https://www.pref.osaka.lg.jp/soshikikarasagasu/jiritsusodan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-27",
+      "officeName": "大阪府女性相談センター",
+      "sourcePage": "https://www.pref.osaka.lg.jp/kurashi/jinkendanjo/dv/bouryoku/index.html",
+      "kind": "form-or-sns",
+      "label": "デートDV相談窓口",
+      "value": "https://www.pref.osaka.lg.jp/o070040/danjo/dv/detodv_soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000033.html",
+      "kind": "form-or-sns",
+      "label": "キーワードから探す",
+      "value": "https://web.pref.hyogo.lg.jp/search/results.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/inquiry/inquiry.html",
+      "kind": "form-or-sns",
+      "label": "【いのち支える兵庫県】周りに言えない悩みを抱えている方へ（困りごとに応じた相談窓口）",
+      "value": "https://web.pref.hyogo.lg.jp/kf09/soudanmadoguti.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/inquiry/inquiry.html",
+      "kind": "form-or-sns",
+      "label": "ひょうご地域安全SOSキャッチ電話相談",
+      "value": "https://web.pref.hyogo.lg.jp/kk14/soskyattidenwasoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/e-vaw/index.html",
+      "kind": "form-or-sns",
+      "label": "相談機関一覧",
+      "value": "https://www.gender.go.jp/policy/no_violence/e-vaw/soudankikan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/e-vaw/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://nsearch.cao.go.jp/cao/search.x"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf23/gaikokujin.html",
+      "kind": "form-or-sns",
+      "label": "DV相談＋ 【チャット相談：10か国語対応】（内閣府）（外部サイトへリンク）（別ウィンドウで開きます）",
+      "value": "http://soudanplus.jp/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000033.html",
+      "kind": "email",
+      "label": "jidokatei@pref.hyogo.lg.jp",
+      "value": "jidokatei@pref.hyogo.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000034.html",
+      "kind": "form-or-sns",
+      "label": "市町におけるDV相談窓口一覧（令和7年度）（PDF：82KB）",
+      "value": "https://web.pref.hyogo.lg.jp/kf12/documents/r7dvsoudantaisei.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000034.html",
+      "kind": "form-or-sns",
+      "label": "兵庫県内市町別DV相談件数（令和3年～令和6年度）（PDF：40KB）",
+      "value": "https://web.pref.hyogo.lg.jp/kf12/documents/r6dvsoudankensuu.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000033.html",
+      "kind": "form-or-sns",
+      "label": "DV相談プラス（内閣府）（外部サイトへリンク）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000033.html",
+      "kind": "form-or-sns",
+      "label": "チャット（10か国語対応）（外部サイトへリンク）",
+      "value": "https://form.soudanplus.jp/ja"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000033.html",
+      "kind": "form-or-sns",
+      "label": "プラス相談箱（外部サイトへリンク）",
+      "value": "https://form.soudanplus.jp/box"
+    },
+    {
+      "officeId": "prefecture-dv-center-28",
+      "officeName": "兵庫県女性家庭センター",
+      "sourcePage": "https://web.pref.hyogo.lg.jp/kf12/hw10_000000033.html",
+      "kind": "form-or-sns",
+      "label": "DV相談窓口（PDF：66KB）",
+      "value": "https://web.pref.hyogo.lg.jp/kf12/documents/r8dvsoudanmadoguti2.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-29",
+      "officeName": "奈良県中央こども家庭相談センター",
+      "sourcePage": "https://www.pref.nara.lg.jp/n059/13183.html",
+      "kind": "form-or-sns",
+      "label": "児童相談",
+      "value": "https://www.pref.nara.lg.jp/kenkou/jidou/soudan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-29",
+      "officeName": "奈良県中央こども家庭相談センター",
+      "sourcePage": "https://www.pref.nara.lg.jp/n059/13183.html",
+      "kind": "form-or-sns",
+      "label": "キーワードから探す",
+      "value": "https://www.pref.nara.lg.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-29",
+      "officeName": "奈良県中央こども家庭相談センター",
+      "sourcePage": "https://www.pref.nara.lg.jp/n059/12427.html",
+      "kind": "form-or-sns",
+      "label": "中央こども家庭相談センター",
+      "value": "https://www.pref.nara.lg.jp/kenkou/jidou/soudan/kateisoudancenter/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-29",
+      "officeName": "奈良県中央こども家庭相談センター",
+      "sourcePage": "https://www.pref.nara.lg.jp/n059/12427.html",
+      "kind": "form-or-sns",
+      "label": "「親子のための相談LINE」を実施中です",
+      "value": "https://www.pref.nara.lg.jp/n055/62757.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-29",
+      "officeName": "奈良県中央こども家庭相談センター",
+      "sourcePage": "https://www.pref.nara.lg.jp/n059/p090000.html",
+      "kind": "form-or-sns",
+      "label": "地域創造部 こども・女性局高田こども家庭相談センター",
+      "value": "https://www.pref.nara.lg.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-30",
+      "officeName": "和歌山県DV相談支援センター",
+      "sourcePage": "https://www.pref.wakayama.lg.jp/prefg/110502/index.html",
+      "kind": "email",
+      "label": "e1105021@pref.wakayama.lg.jp",
+      "value": "e1105021@pref.wakayama.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-30",
+      "officeName": "和歌山県DV相談支援センター",
+      "sourcePage": "https://www.pref.wakayama.lg.jp/prefg/110502/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.google.com/cse"
+    },
+    {
+      "officeId": "prefecture-dv-center-30",
+      "officeName": "和歌山県DV相談支援センター",
+      "sourcePage": "https://www.pref.wakayama.lg.jp/prefg/110502/index.html",
+      "kind": "form-or-sns",
+      "label": "困難な問題を抱えている女性の相談・ＤＶ被害者の相談",
+      "value": "https://www.pref.wakayama.lg.jp/prefg/110502/soudan/d00216619.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/34870.htm",
+      "kind": "form-or-sns",
+      "label": "DV相談件数(pdf:47KB)",
+      "value": "https://www.pref.tottori.lg.jp/secure/1092271/r06dvsoudan.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/82779.htm",
+      "kind": "email",
+      "label": "kateishien@pref.tottori.lg.jp",
+      "value": "kateishien@pref.tottori.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/34870.htm",
+      "kind": "form-or-sns",
+      "label": "<div class=\"Error\"> <img src=\"/css/cm/js_alert.gif\" alt=\"当サイトではJavaScriptを使用しているコンテンツがありますので、ブラウザ設定でJavaScriptを有効にしてご利用ください。 Please Enable JavaScript in your We",
+      "value": "https://www.pref.tottori.lg.jp/34870.htm"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/35051.htm",
+      "kind": "form-or-sns",
+      "label": "<div class=\"Error\"> <img src=\"/css/cm/js_alert.gif\" alt=\"当サイトではJavaScriptを使用しているコンテンツがありますので、ブラウザ設定でJavaScriptを有効にしてご利用ください。 Please Enable JavaScript in your We",
+      "value": "https://www.pref.tottori.lg.jp/35051.htm"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/82779.htm",
+      "kind": "form-or-sns",
+      "label": "<div class=\"Error\"> <img src=\"/css/cm/js_alert.gif\" alt=\"当サイトではJavaScriptを使用しているコンテンツがありますので、ブラウザ設定でJavaScriptを有効にしてご利用ください。 Please Enable JavaScript in your We",
+      "value": "https://www.pref.tottori.lg.jp/82779.htm"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/221918.htm",
+      "kind": "form-or-sns",
+      "label": "福祉相談センター",
+      "value": "https://www.pref.tottori.lg.jp/fukushisoudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/221918.htm",
+      "kind": "email",
+      "label": "fukushisodan@pref.tottori.lg.jp",
+      "value": "fukushisodan@pref.tottori.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-31",
+      "officeName": "鳥取県福祉相談センター",
+      "sourcePage": "https://www.pref.tottori.lg.jp/221918.htm",
+      "kind": "form-or-sns",
+      "label": "<div class=\"Error\"> <img src=\"/css/cm/js_alert.gif\" alt=\"当サイトではJavaScriptを使用しているコンテンツがありますので、ブラウザ設定でJavaScriptを有効にしてご利用ください。 Please Enable JavaScript in your We",
+      "value": "https://www.pref.tottori.lg.jp/221918.htm"
+    },
+    {
+      "officeId": "prefecture-dv-center-33",
+      "officeName": "岡山県女性相談支援センター",
+      "sourcePage": "https://okayama-stopdv.com/",
+      "kind": "form-or-sns",
+      "label": "今すぐご相談を！窓口はコチラ→",
+      "value": "https://okayama-stopdv.com/#help-line"
+    },
+    {
+      "officeId": "prefecture-dv-center-33",
+      "officeName": "岡山県女性相談支援センター",
+      "sourcePage": "https://www.pref.okayama.jp/soshiki/188/",
+      "kind": "form-or-sns",
+      "label": "キーワードで探す",
+      "value": "https://www.pref.okayama.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-33",
+      "officeName": "岡山県女性相談支援センター",
+      "sourcePage": "https://okayama-stopdv.com/",
+      "kind": "form-or-sns",
+      "label": "内閣府男女共同参画局の相談サービスです。 365日24時間受け付けています。 □ 専門の相談員が対応 □ 365日相談対応 □ 24時間電話対応 □ 10か国語対応（チャット）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-33",
+      "officeName": "岡山県女性相談支援センター",
+      "sourcePage": "https://okayama-stopdv.com/",
+      "kind": "form-or-sns",
+      "label": "子ども・福祉部 地域福祉課",
+      "value": "https://www.pref.okayama.jp/soshiki/363/#ka_headline_2"
+    },
+    {
+      "officeId": "prefecture-dv-center-34",
+      "officeName": "広島県西部こども家庭センター女性支援課",
+      "sourcePage": "https://www.pref.hiroshima.lg.jp/soshiki/51/about-dv.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索 検索対象 すべて PDFを除く PDFのみ",
+      "value": "https://www.pref.hiroshima.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-34",
+      "officeName": "広島県西部こども家庭センター女性支援課",
+      "sourcePage": "https://www.pref.hiroshima.lg.jp/soshiki/51/1169615351928.html",
+      "kind": "form-or-sns",
+      "label": "満足度 この記事の内容に満足はできましたか？ はい どちらでもない いいえ 容易度 この記事は容易に見つけられましたか？ はい どちらでもない いいえ",
+      "value": "https://www.pref.hiroshima.lg.jp/ques/confirm_quest.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-34",
+      "officeName": "広島県西部こども家庭センター女性支援課",
+      "sourcePage": "https://www.pref.hiroshima.lg.jp/soshiki/51/dvtaisaku.html",
+      "kind": "form-or-sns",
+      "label": "■ＤＶ相談＋（プラス）（内閣府）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-34",
+      "officeName": "広島県西部こども家庭センター女性支援課",
+      "sourcePage": "https://www.pref.hiroshima.lg.jp/soshiki/51/dvtaisaku.html",
+      "kind": "form-or-sns",
+      "label": "■ＤＶ男性相談窓口",
+      "value": "https://www.pref.hiroshima.lg.jp/soshiki/51/dv-danseisoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-34",
+      "officeName": "広島県西部こども家庭センター女性支援課",
+      "sourcePage": "https://www.pref.hiroshima.lg.jp/soshiki/51/dvtaisaku.html",
+      "kind": "form-or-sns",
+      "label": "エソール広島電話相談",
+      "value": "http://www.essor.or.jp/soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-35",
+      "officeName": "山口県男女共同参画相談センター",
+      "sourcePage": "https://www.pref.yamaguchi.lg.jp/soshiki/37/17184.html",
+      "kind": "form-or-sns",
+      "label": "メールでのお問い合わせはこちら",
+      "value": "https://www.pref.yamaguchi.lg.jp/form/detail.php?sec_sec1=37&lif_id=17184"
+    },
+    {
+      "officeId": "prefecture-dv-center-35",
+      "officeName": "山口県男女共同参画相談センター",
+      "sourcePage": "https://www.pref.yamaguchi.lg.jp/soshiki/21/13700.html",
+      "kind": "form-or-sns",
+      "label": "Googleカスタム検索",
+      "value": "https://www.pref.yamaguchi.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.pref.tokushima.lg.jp/ippannokata/kurashi/jinken/5008218/",
+      "kind": "form-or-sns",
+      "label": "DV相談＋（プラス）(外部サイト)",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.pref.tokushima.lg.jp/ippannokata/kurashi/jinken/5008218/",
+      "kind": "form-or-sns",
+      "label": "お問い合わせ 電話（すだちくんコール）、メールでのお問い合わせはこちらから。",
+      "value": "https://www.pref.tokushima.lg.jp/otoiawase/"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.pref.tokushima.lg.jp/ippannokata/kurashi/jinken/5008218/",
+      "kind": "form-or-sns",
+      "label": "お問い合わせ 電話（すだちくんコール）、メールでのお問い合わせはこちらから。",
+      "value": "https://www.pref.tokushima.lg.jp/otoiawase"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/dv_navi/index.html",
+      "kind": "form-or-sns",
+      "label": "配偶者暴力相談支援センターとは",
+      "value": "https://www.gender.go.jp/policy/no_violence/e-vaw/soudankikan/01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/dv_navi/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://nsearch.cao.go.jp/cao/search.x"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.city.naruto.lg.jp/docs/2024042501200/",
+      "kind": "form-or-sns",
+      "label": "子育ての相談と総合サポート",
+      "value": "https://www.city.naruto.lg.jp/category/bunya/kosodatesodan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.city.naruto.lg.jp/docs/2024042501200/",
+      "kind": "form-or-sns",
+      "label": "人権相談・支援",
+      "value": "https://www.city.naruto.lg.jp/category/bunya/jinken/sodan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.city.naruto.lg.jp/docs/2024042501200/",
+      "kind": "email",
+      "label": "partner@city.naruto.i-tokushima.jp",
+      "value": "%20partner@city.naruto.i-tokushima.jp%0D%0A"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.city.naruto.lg.jp/docs/2024042501200/",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.city.naruto.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.city.anan.tokushima.jp/docs/2022110800088/",
+      "kind": "form-or-sns",
+      "label": "相談・窓口",
+      "value": "https://www.city.anan.tokushima.jp/category/bunya/gyoseimachizukuri/soudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-36",
+      "officeName": "徳島県中央こども女性相談センター",
+      "sourcePage": "https://www.city.anan.tokushima.jp/docs/2022110800088/",
+      "kind": "email",
+      "label": "jinken@anan.i-tokushima.jp",
+      "value": "jinken@anan.i-tokushima.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-37",
+      "officeName": "香川県子ども女性相談センター",
+      "sourcePage": "https://www.pref.kagawa.lg.jp/kenmin/sankaku/madoguchi/madoguchi.html",
+      "kind": "email",
+      "label": "e-josei@pref.kagawa.lg.jp",
+      "value": "e-josei@pref.kagawa.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-37",
+      "officeName": "香川県子ども女性相談センター",
+      "sourcePage": "https://www.pref.kagawa.lg.jp/kenmin/sankaku/madoguchi/madoguchi.html",
+      "kind": "form-or-sns",
+      "label": "DV相談＋のページ（外部サイトへリンク）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-37",
+      "officeName": "香川県子ども女性相談センター",
+      "sourcePage": "https://www.pref.kagawa.lg.jp/kenmin/sankaku/madoguchi/plaza.html",
+      "kind": "form-or-sns",
+      "label": "キーワードから探す",
+      "value": "https://www.pref.kagawa.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-37",
+      "officeName": "香川県子ども女性相談センター",
+      "sourcePage": "https://www.pref.kagawa.lg.jp/kenmin/sankaku/madoguchi/plaza.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.kagawa.lg.jp/cgi-bin/simple_faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-37",
+      "officeName": "香川県子ども女性相談センター",
+      "sourcePage": "https://sien-kagawa.sakura.ne.jp/olive_kagawa/",
+      "kind": "email",
+      "label": "メールはこちら",
+      "value": "olive-support@ace.ocn.ne.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-37",
+      "officeName": "香川県子ども女性相談センター",
+      "sourcePage": "https://sien-kagawa.sakura.ne.jp/olive_kagawa/",
+      "kind": "form-or-sns",
+      "label": "今すぐ相談する",
+      "value": "https://sien-kagawa.sakura.ne.jp/olive_kagawa/#contact"
+    },
+    {
+      "officeId": "prefecture-dv-center-37",
+      "officeName": "香川県子ども女性相談センター",
+      "sourcePage": "https://sien-kagawa.sakura.ne.jp/olive_kagawa/",
+      "kind": "form-or-sns",
+      "label": "香川県子ども女性相談センター",
+      "value": "https://www.pref.kagawa.lg.jp/kodomo/kj-soudan/kfvn.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-38",
+      "officeName": "愛媛県福祉総合支援センター",
+      "sourcePage": "https://www.pref.ehime.jp/page/7029.html",
+      "kind": "form-or-sns",
+      "label": "DV相談プラス",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-38",
+      "officeName": "愛媛県福祉総合支援センター",
+      "sourcePage": "https://www.pref.ehime.jp/page/7029.html",
+      "kind": "form-or-sns",
+      "label": "メールでのお問い合わせはこちら",
+      "value": "https://www.pref.ehime.jp/form/detail.php?sec_sec1=273&lif_id=149206"
+    },
+    {
+      "officeId": "prefecture-dv-center-38",
+      "officeName": "愛媛県福祉総合支援センター",
+      "sourcePage": "https://www.pref.ehime.jp/page/7029.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.ehime.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://www.pref.kochi.lg.jp/doc/dvbousi/",
+      "kind": "form-or-sns",
+      "label": "",
+      "value": "https://page.line.me/kochi_kouhou"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/dv/index_00023.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口等",
+      "value": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/koyou_roudou/soudanmadogutitou/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kodomo/kodomo_kosodate/dv/index_00023.html",
+      "kind": "form-or-sns",
+      "label": "検索",
+      "value": "https://www.mhlw.go.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://www.pref.kochi.lg.jp/doc/dvbousi/",
+      "kind": "email",
+      "label": "060901@ken.pref.kochi.lg.jp",
+      "value": "060901@ken.pref.kochi.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/date_dv/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://nsearch.cao.go.jp/cao/search.x"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "Posts",
+      "value": "https://line.me/R/home/public/main?id=948flhxu&utm_source=businessprofile&utm_medium=action_btn"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "See more",
+      "value": "https://liff.line.me/1654867680-wGKa63aV/?utm_source=oaprofile&utm_medium=recommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "WAON POINT5,301,896 friends",
+      "value": "https://page.line.me/051oqaht?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "セブン‐イレブン・ジャパン20,751,772 friends",
+      "value": "https://page.line.me/458hwoxs?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "H&M22,377,721 friends",
+      "value": "https://page.line.me/642qwmgp?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "あべのキューズモール117,538 friendsCouponsReward card",
+      "value": "https://page.line.me/cxo6845k?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "アサヒ飲料37,652,143 friends",
+      "value": "https://page.line.me/247udaao?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "食べログ8,859,465 friends",
+      "value": "https://page.line.me/588crmpy?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "ジャパネット15,243,860 friends",
+      "value": "https://page.line.me/350nfkhe?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "LINE MUSIC42,125,147 friendsCouponsReward card",
+      "value": "https://page.line.me/164byksh?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "Yahoo!ショッピング20,459,975 friends",
+      "value": "https://page.line.me/nid1195r?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "chocoZAP20,551,368 friends",
+      "value": "https://page.line.me/847zitjn?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "ゴンチャ5,281,366 friends",
+      "value": "https://page.line.me/dpb7717b?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "出前館51,999,504 friends",
+      "value": "https://page.line.me/042nfbsk?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "ピクトリンク10,689,480 friends",
+      "value": "https://page.line.me/366uyupj?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "Yahoo!ニュース13,131,007 friends",
+      "value": "https://page.line.me/889rblkm?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "and ST / アンドエスティ13,458,682 friends",
+      "value": "https://page.line.me/563cevti?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "メルカリ13,471,873 friends",
+      "value": "https://page.line.me/694bedmr?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "matoca｜順番待ち6,208,424 friends",
+      "value": "https://page.line.me/bfo5940j?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "焼肉きんぐ3,210,232 friends",
+      "value": "https://page.line.me/646bytem?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "ゾゾタウン21,771,377 friends",
+      "value": "https://page.line.me/889dfofu?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "カウシェ1,933,158 friends",
+      "value": "https://page.line.me/956kjets?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "Yahoo!オークション6,525,174 friends",
+      "value": "https://page.line.me/ztq7919p?openerPlatform=liff&openerKey=profileRecommend"
+    },
+    {
+      "officeId": "prefecture-dv-center-39",
+      "officeName": "高知県女性相談支援センター",
+      "sourcePage": "https://page.line.me/kochi_kouhou",
+      "kind": "form-or-sns",
+      "label": "Other official accounts",
+      "value": "https://liff.line.me/1654867680-wGKa63aV/?utm_source=LINE&utm_medium=referral&utm_campaign=oa_profile_footer"
+    },
+    {
+      "officeId": "prefecture-dv-center-40",
+      "officeName": "福岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.fukuoka.lg.jp/life/1/10/39/",
+      "kind": "form-or-sns",
+      "label": "総合相談窓口",
+      "value": "https://www.pref.fukuoka.lg.jp/contents/soudanmadogutiitiran01.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-40",
+      "officeName": "福岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.fukuoka.lg.jp/contents/dv20091112.html",
+      "kind": "form-or-sns",
+      "label": "詳細はDV相談＋（プラス）ホームページへ",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-40",
+      "officeName": "福岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.fukuoka.lg.jp/contents/dv20091112.html",
+      "kind": "email",
+      "label": "メールでのお問い合わせはこちら",
+      "value": "danjo@pref.fukuoka.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-40",
+      "officeName": "福岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.fukuoka.lg.jp/life/1/10/39/",
+      "kind": "email",
+      "label": "ホームページに関するお問い合わせ",
+      "value": "hpkanri@pref.fukuoka.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-40",
+      "officeName": "福岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.fukuoka.lg.jp/life/1/10/39/",
+      "kind": "form-or-sns",
+      "label": "生成AIで検索 検索・質問 ※Foreign Languages Available",
+      "value": "https://www.pref.fukuoka.lg.jp/contents/ai-sarch.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-40",
+      "officeName": "福岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.fukuoka.lg.jp/life/1/10/39/",
+      "kind": "form-or-sns",
+      "label": "キーワード検索",
+      "value": "https://www.pref.fukuoka.lg.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-40",
+      "officeName": "福岡県女性相談支援センター",
+      "sourcePage": "https://www.pref.fukuoka.lg.jp/contents/dv20091112.html",
+      "kind": "form-or-sns",
+      "label": "お求めの情報が十分掲載されていましたか？ 十分だった 普通 情報が足りなかった ページの構成や内容、表現は分かりやすかったですか？ 分かりやすかった 普通 分かりにくかった このページについてご要望がありましたら、下の投稿欄に入力してください。 ※個人情報を含む内容は記入しないでください。 ※お答えが必要なお問い合わせ",
+      "value": "https://www.pref.fukuoka.lg.jp/ques/confirm_quest.php"
+    },
+    {
+      "officeId": "prefecture-dv-center-42",
+      "officeName": "長崎県長崎こども・女性・障害者支援センター",
+      "sourcePage": "https://www.pref.nagasaki.jp/organization/kenhoku-s/na-rodo-c-2/",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.nagasaki.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-42",
+      "officeName": "長崎県長崎こども・女性・障害者支援センター",
+      "sourcePage": "https://www.pref.nagasaki.jp/organization/fukushihokenbu/na-shien-c/",
+      "kind": "form-or-sns",
+      "label": "女性支援に関すること",
+      "value": "https://www.pref.nagasaki.jp/bunrui/hukushi-hoken/fukushi/joseishien/josei-gosodanmadoguchi/"
+    },
+    {
+      "officeId": "prefecture-dv-center-42",
+      "officeName": "長崎県長崎こども・女性・障害者支援センター",
+      "sourcePage": "https://www.pref.nagasaki.jp/organization/kenhoku-s/na-rodo-c-2/",
+      "kind": "email",
+      "label": "こちらから",
+      "value": "roudou-s@pref.nagasaki.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-43",
+      "officeName": "熊本県女性相談センター",
+      "sourcePage": "https://www.pref.kumamoto.jp/life/sub/8/",
+      "kind": "form-or-sns",
+      "label": "キーワードでさがす",
+      "value": "https://www.pref.kumamoto.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-43",
+      "officeName": "熊本県女性相談センター",
+      "sourcePage": "https://www.pref.kumamoto.jp/soshiki/28/390.html",
+      "kind": "form-or-sns",
+      "label": "相談機関一覧（内閣府男女共同参画局）のページ",
+      "value": "http://www.gender.go.jp/policy/no_violence/e-vaw/soudankikan/index.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/site/kodomojosei/",
+      "kind": "form-or-sns",
+      "label": "相談窓口",
+      "value": "https://www.pref.oita.jp/soshiki/10400/soudanmadoguchi.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/site/kodomojosei/",
+      "kind": "email",
+      "label": "お問い合わせはこちらから",
+      "value": "a12403@pref.oita.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/site/kodomojosei/",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "https://www.pref.oita.jp/search.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/soshiki/10400/soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "こころ、いのちの相談窓口一覧（大分県）",
+      "value": "https://www.pref.oita.jp/site/kokoroinotisoudan/"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/soshiki/10400/soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "いつでも子育てホットライン",
+      "value": "https://www.pref.oita.jp/soshiki/12530/hotline.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/soshiki/10400/soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "ＤＶ（ドメスティック・バイオレンス）に関すること",
+      "value": "https://www.pref.oita.jp/soshiki/13040/dvsoudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/soshiki/10400/soudanmadoguchi.html",
+      "kind": "form-or-sns",
+      "label": "ヤングケアラー相談窓口",
+      "value": "https://www.pref.oita.jp/soshiki/12480/surveyoftheyoungcarer-sodann.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-44",
+      "officeName": "大分県女性相談支援センター",
+      "sourcePage": "https://www.pref.oita.jp/soshiki/10400/soudanmadoguchi.html",
+      "kind": "email",
+      "label": "お問い合わせはこちらから",
+      "value": "a10400@pref.oita.lg.jp"
+    },
+    {
+      "officeId": "prefecture-dv-center-45",
+      "officeName": "宮崎県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyazaki.lg.jp/joseikatsuyaku/kurashi/jinken/20251006143904.html",
+      "kind": "form-or-sns",
+      "label": "女性相談支援センター＜配偶者暴力相談支援センター＞について",
+      "value": "https://www.pref.miyazaki.lg.jp/desaki/kurashi/jinken/josei-soudan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-45",
+      "officeName": "宮崎県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyazaki.lg.jp/joseikatsuyaku/kurashi/jinken/20251006143904.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "https://www.pref.miyazaki.lg.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-45",
+      "officeName": "宮崎県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyazaki.lg.jp/joseikatsuyaku/kurashi/jinken/page00366.html",
+      "kind": "form-or-sns",
+      "label": "「DV相談+（プラス）」（外部サイトへリンク）",
+      "value": "https://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-45",
+      "officeName": "宮崎県女性相談支援センター",
+      "sourcePage": "https://www.pref.miyazaki.lg.jp/joseikatsuyaku/kurashi/jinken/page00361.html",
+      "kind": "form-or-sns",
+      "label": "宮崎県男女共同参画センター（相談室のご案内）（外部サイトへリンク）",
+      "value": "https://www.mdanjo.or.jp/consultation/all/"
+    },
+    {
+      "officeId": "prefecture-dv-center-46",
+      "officeName": "鹿児島県女性相談支援センター",
+      "sourcePage": "http://www.pref.kagoshima.jp/ab15/kurashi-kankyo/jinken/dv/shiencenter2.html",
+      "kind": "form-or-sns",
+      "label": "内閣府男女共同参画局DV相談＋（外部サイトへリンク）",
+      "value": "http://soudanplus.jp/"
+    },
+    {
+      "officeId": "prefecture-dv-center-46",
+      "officeName": "鹿児島県女性相談支援センター",
+      "sourcePage": "http://www.pref.kagoshima.jp/ab15/shientyousei.html",
+      "kind": "form-or-sns",
+      "label": "サイト内検索",
+      "value": "http://www.pref.kagoshima.jp/search/result.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-46",
+      "officeName": "鹿児島県女性相談支援センター",
+      "sourcePage": "http://www.pref.kagoshima.jp/ab15/shientyousei.html",
+      "kind": "form-or-sns",
+      "label": "総務部男女共同参画局青少年男女共同参画課男女共同参画室 電話番号：099-286-2634",
+      "value": "https://www.pref.kagoshima.jp/cgi-bin/faq/form.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-46",
+      "officeName": "鹿児島県女性相談支援センター",
+      "sourcePage": "http://www.pref.kagoshima.jp/ab15/shientyousei.html",
+      "kind": "form-or-sns",
+      "label": "このページの情報は役に立ちましたか？ 1：役に立った 2：ふつう 3：役に立たなかった このページの情報は見つけやすかったですか？ 1：見つけやすかった 2：ふつう 3：見つけにくかった",
+      "value": "http://www.pref.kagoshima.jp/cgi-bin/feedback/feedback.cgi"
+    },
+    {
+      "officeId": "prefecture-dv-center-46",
+      "officeName": "鹿児島県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/e-vaw/index.html",
+      "kind": "form-or-sns",
+      "label": "相談機関一覧",
+      "value": "https://www.gender.go.jp/policy/no_violence/e-vaw/soudankikan.html"
+    },
+    {
+      "officeId": "prefecture-dv-center-46",
+      "officeName": "鹿児島県女性相談支援センター",
+      "sourcePage": "https://www.gender.go.jp/policy/no_violence/e-vaw/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://nsearch.cao.go.jp/cao/search.x"
+    },
+    {
+      "officeId": "prefecture-dv-center-47",
+      "officeName": "沖縄県女性相談支援センター（沖縄県配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.okinawa.lg.jp/kurashikankyo/danjo/1005154/1017867.html",
+      "kind": "form-or-sns",
+      "label": "相談窓口のリスト （PDF 42.2KB）",
+      "value": "https://www.pref.okinawa.lg.jp/_res/projects/default_project/_page_/001/017/867/soudanmdgti.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-47",
+      "officeName": "沖縄県女性相談支援センター（沖縄県配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.okinawa.lg.jp/kurashikankyo/danjo/1005154/1017867.html",
+      "kind": "form-or-sns",
+      "label": "令和6年度女性支援事業のあらまし（令和5年度実績） （PDF 2.9MB）",
+      "value": "https://www.pref.okinawa.lg.jp/_res/projects/default_project/_page_/001/017/867/r6jyoseisoudan-aramasi.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-47",
+      "officeName": "沖縄県女性相談支援センター（沖縄県配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.okinawa.lg.jp/kurashikankyo/danjo/1005154/1017867.html",
+      "kind": "form-or-sns",
+      "label": "令和5年度女性保護事業のあらまし（令和4年度実績） （PDF 1.4MB）",
+      "value": "https://www.pref.okinawa.lg.jp/_res/projects/default_project/_page_/001/017/867/r5jyoseisoudan-aramasi.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-47",
+      "officeName": "沖縄県女性相談支援センター（沖縄県配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.okinawa.lg.jp/kurashikankyo/danjo/1005154/1017867.html",
+      "kind": "form-or-sns",
+      "label": "令和4年度女性保護事業のあらまし（令和3年度実績） （PDF 1.4MB）",
+      "value": "https://www.pref.okinawa.lg.jp/_res/projects/default_project/_page_/001/017/867/r4jyoseisoudan-aramasi.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-47",
+      "officeName": "沖縄県女性相談支援センター（沖縄県配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.okinawa.lg.jp/kurashikankyo/danjo/1005154/1017867.html",
+      "kind": "form-or-sns",
+      "label": "令和3年度女性保護事業のあらまし(令和2年度実績） （PDF 1.4MB）",
+      "value": "https://www.pref.okinawa.lg.jp/_res/projects/default_project/_page_/001/017/867/r3joseisodan-aramashi.pdf"
+    },
+    {
+      "officeId": "prefecture-dv-center-47",
+      "officeName": "沖縄県女性相談支援センター（沖縄県配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.okinawa.lg.jp/kurashikankyo/danjo/1005154/index.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.okinawa.lg.jp/kurashikankyo/danjo/1005154/idform"
+    },
+    {
+      "officeId": "prefecture-dv-center-47",
+      "officeName": "沖縄県女性相談支援センター（沖縄県配偶者暴力相談支援センター）",
+      "sourcePage": "https://www.pref.okinawa.lg.jp/kensei/kencho/1000011/1028670/1017647.html",
+      "kind": "form-or-sns",
+      "label": "相談入力フォーム",
+      "value": "https://www.pref.okinawa.lg.jp/kensei/kencho/1000011/1028670/idform"
+    }
+  ]
+}

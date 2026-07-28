@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import AfterHoursGuide from "@/components/AfterHoursGuide";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import MentalCrisisSupport from "@/components/MentalCrisisSupport";
@@ -9,22 +9,12 @@ import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/vi
 import { verificationMaxAgeDays } from "@/lib/data/quality";
 import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
 import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
+import { telephoneAriaLabel, telephoneHref } from "@/lib/telephone";
 
 function displayDate(value: string): string {
   if (!value) return "未確認";
   const [year, month, day] = value.split("-");
   return `${year}年${Number(month)}月${Number(day)}日`;
-}
-
-function telephoneHref(value: string): string {
-  return `tel:${value.replace(/[^\d+]/g, "")}`;
-}
-
-function telephoneAriaLabel(value: string): string {
-  return `${value
-    .split(/[- ]/)
-    .map((part) => [...part].join(" "))
-    .join(" の ")}へ電話`;
 }
 
 function verificationExpired(
@@ -176,6 +166,7 @@ function selectFinderOffices(
 }
 
 export default function SupportFinder({ data }: { data: FinderViewModel }) {
+  const resultsHeadingRef = useRef<HTMLHeadingElement>(null);
   const [categoryId, setCategoryId] = useState("");
   const [activeStep, setActiveStep] = useState<1 | 2 | 3>(1);
   const [prefectureCode, setPrefectureCode] = useState("");
@@ -234,6 +225,10 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       .finally(() => setSearching(false));
     return () => controller.abort();
   }, [categoryId, data.municipalities, municipalityId, searched]);
+
+  useEffect(() => {
+    if (activeStep === 3 && searched && !searching) resultsHeadingRef.current?.focus();
+  }, [activeStep, searched, searching]);
 
   useEffect(() => {
     if (!urlReady) return;
@@ -345,7 +340,6 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                   onChange={() => {
                     setCategoryId(category.id);
                     setSearched(false);
-                    setActiveStep(2);
                   }}
                 />
                 <span className="need-radio" aria-hidden="true" />
@@ -355,6 +349,16 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 </span>
               </label>
             ))}
+          </div>
+          <div className="search-action">
+            <button
+              type="button"
+              className="primary-button"
+              disabled={!categoryId}
+              onClick={() => setActiveStep(2)}
+            >
+              地域の選択へ進む
+            </button>
           </div>
         </fieldset>
       )}
@@ -438,6 +442,11 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               </select>
             </label>
           </div>
+          <p className="visually-hidden" role="status" aria-live="polite" aria-atomic="true">
+            {prefectureCode
+              ? `${data.prefectures.find((item) => item.code === prefectureCode)?.name ?? "選択した都道府県"}の市区町村を${municipalityOptions.length}件表示しました。`
+              : "都道府県は選択されていません。"}
+          </p>
 
           {prefectureCode && !municipalityOptions.length && (
             <p className="preparing-message">
@@ -491,7 +500,9 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
           )}
           <div className="results-head">
             <p className="section-kicker">{municipality?.name ?? "全国共通"}の案内</p>
-            <h2>まず、ここから相談できます</h2>
+            <h2 ref={resultsHeadingRef} tabIndex={-1}>
+              まず、ここから相談できます
+            </h2>
             <p>
               「{selectedCategory?.label}」について、
               {offices.length + results.length}件の公開情報があります。
@@ -618,7 +629,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                       {office.contactFormUrl && (
                         <p>
                           <a href={office.contactFormUrl} target="_blank" rel="noreferrer">
-                            問い合わせフォームを開く
+                            オンライン相談・フォームを開く
                           </a>
                         </p>
                       )}

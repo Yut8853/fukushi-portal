@@ -69,7 +69,9 @@ async function main() {
   const temporary = await mkdtemp(path.join(tmpdir(), "fukushi-publish-test-"));
   const projectData = path.join(process.cwd(), "data");
   try {
-    await Promise.all(dataFiles.map((file) => copyFile(path.join(projectData, file), path.join(temporary, file))));
+    await Promise.all(
+      dataFiles.map((file) => copyFile(path.join(projectData, file), path.join(temporary, file))),
+    );
     const successful = officePreview("success");
     await applyPublicationPreview(successful, temporary);
     const data = await getPortalData(temporary);

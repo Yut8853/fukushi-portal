@@ -59,85 +59,86 @@ const contacts: Contact[] = [
 ];
 
 async function main(): Promise<void> {
-const root = path.resolve(process.cwd());
-const officesPath = path.join(root, "data/offices.csv");
-const sourcesPath = path.join(root, "data/sources.csv");
-const prefecturesPath = path.join(root, "data/prefectures.csv");
-const verifiedAt = "2026-07-28";
-const sourceId = "source-prefecture-shakyo-welfare-loan-contacts";
-const officialUrl =
-  "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatsu-fukushi-shikin1/index.html";
+  const root = path.resolve(process.cwd());
+  const officesPath = path.join(root, "data/offices.csv");
+  const sourcesPath = path.join(root, "data/sources.csv");
+  const prefecturesPath = path.join(root, "data/prefectures.csv");
+  const verifiedAt = "2026-07-28";
+  const sourceId = "source-prefecture-shakyo-welfare-loan-contacts";
+  const officialUrl =
+    "https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/hukushi_kaigo/seikatsuhogo/seikatsu-fukushi-shikin1/index.html";
 
-const officeText = await readFile(officesPath, "utf8");
-const existingOfficeIds = new Set(parseCsv(officeText).map((row) => row.id));
-const prefectures = new Map(
-  parseCsv(await readFile(prefecturesPath, "utf8")).map((row) => [row.code, row.name]),
-);
-const header = officeText.slice(0, officeText.indexOf("\n")).split(",");
-
-const additions = contacts
-  .filter(({ code }) => !existingOfficeIds.has(`prefecture-welfare-loan-${code}`))
-  .map(({ code, phone, fax }) => {
-    const prefecture = prefectures.get(code);
-    if (!prefecture) throw new Error(`都道府県コードが見つかりません: ${code}`);
-    const row: Record<string, string> = {
-      id: `prefecture-welfare-loan-${code}`,
-      municipalityId: "",
-      categoryId: "food",
-      name: `${prefecture}社会福祉協議会`,
-      plainName: "食料や当面の生活費について相談する",
-      department: "生活福祉資金担当",
-      description:
-        "生活福祉資金や、お住まいの地域の社会福祉協議会について問い合わせられる都道府県窓口です。FAXには、相談内容、返信可能な連絡方法、連絡してよい時間帯を書いてください。",
-      postalCode: "",
-      address: "",
-      phone,
-      fax,
-      email: "",
-      contactFormUrl: "",
-      officialUrl,
-      openingHours: "",
-      closedDays: "",
-      reservationRequired: "",
-      availableMethods: "電話・FAX",
-      accessibility: "",
-      languages: "",
-      emergencyAlternative: "今日の食事がない場合は、市区町村の自立相談支援窓口にも連絡してください。",
-      serviceArea: `${prefecture}全域`,
-      eligibilityConditions:
-        "低所得世帯など生活福祉資金の対象となる可能性がある人。貸付には審査があります。",
-      sourceId,
-      status: "published",
-      lastVerifiedAt: verifiedAt,
-      contactType: "direct",
-      verificationLevel: "primary_source_import",
-      scope: "prefecture",
-      prefectureCode: code,
-    };
-    return header.map((column) => escapeCsv(row[column] ?? "")).join(",");
-  });
-
-if (additions.length) await appendFile(officesPath, additions.join("\n") + "\n");
-
-const sourceText = await readFile(sourcesPath, "utf8");
-if (!parseCsv(sourceText).some((row) => row.id === sourceId)) {
-  await appendFile(
-    sourcesPath,
-    [
-      sourceId,
-      "都道府県社会福祉協議会の生活福祉資金窓口（厚生労働省・全国社会福祉協議会・公式FAX一覧）",
-      "https://www.fukushimakenshakyo.or.jp/files/libs/1171/202204141741029748.pdf",
-      "厚生労働省・全国社会福祉協議会",
-      "official",
-      "published",
-      verifiedAt,
-    ]
-      .map(escapeCsv)
-      .join(",") + "\n",
+  const officeText = await readFile(officesPath, "utf8");
+  const existingOfficeIds = new Set(parseCsv(officeText).map((row) => row.id));
+  const prefectures = new Map(
+    parseCsv(await readFile(prefecturesPath, "utf8")).map((row) => [row.code, row.name]),
   );
-}
+  const header = officeText.slice(0, officeText.indexOf("\n")).split(",");
 
-console.log(`都道府県社会福祉協議会を追加: ${additions.length}件`);
+  const additions = contacts
+    .filter(({ code }) => !existingOfficeIds.has(`prefecture-welfare-loan-${code}`))
+    .map(({ code, phone, fax }) => {
+      const prefecture = prefectures.get(code);
+      if (!prefecture) throw new Error(`都道府県コードが見つかりません: ${code}`);
+      const row: Record<string, string> = {
+        id: `prefecture-welfare-loan-${code}`,
+        municipalityId: "",
+        categoryId: "food",
+        name: `${prefecture}社会福祉協議会`,
+        plainName: "食料や当面の生活費について相談する",
+        department: "生活福祉資金担当",
+        description:
+          "生活福祉資金や、お住まいの地域の社会福祉協議会について問い合わせられる都道府県窓口です。FAXには、相談内容、返信可能な連絡方法、連絡してよい時間帯を書いてください。",
+        postalCode: "",
+        address: "",
+        phone,
+        fax,
+        email: "",
+        contactFormUrl: "",
+        officialUrl,
+        openingHours: "",
+        closedDays: "",
+        reservationRequired: "",
+        availableMethods: "電話・FAX",
+        accessibility: "",
+        languages: "",
+        emergencyAlternative:
+          "今日の食事がない場合は、市区町村の自立相談支援窓口にも連絡してください。",
+        serviceArea: `${prefecture}全域`,
+        eligibilityConditions:
+          "低所得世帯など生活福祉資金の対象となる可能性がある人。貸付には審査があります。",
+        sourceId,
+        status: "published",
+        lastVerifiedAt: verifiedAt,
+        contactType: "direct",
+        verificationLevel: "primary_source_import",
+        scope: "prefecture",
+        prefectureCode: code,
+      };
+      return header.map((column) => escapeCsv(row[column] ?? "")).join(",");
+    });
+
+  if (additions.length) await appendFile(officesPath, additions.join("\n") + "\n");
+
+  const sourceText = await readFile(sourcesPath, "utf8");
+  if (!parseCsv(sourceText).some((row) => row.id === sourceId)) {
+    await appendFile(
+      sourcesPath,
+      [
+        sourceId,
+        "都道府県社会福祉協議会の生活福祉資金窓口（厚生労働省・全国社会福祉協議会・公式FAX一覧）",
+        "https://www.fukushimakenshakyo.or.jp/files/libs/1171/202204141741029748.pdf",
+        "厚生労働省・全国社会福祉協議会",
+        "official",
+        "published",
+        verifiedAt,
+      ]
+        .map(escapeCsv)
+        .join(",") + "\n",
+    );
+  }
+
+  console.log(`都道府県社会福祉協議会を追加: ${additions.length}件`);
 }
 
 main().catch((error: unknown) => {

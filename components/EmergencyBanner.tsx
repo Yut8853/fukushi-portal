@@ -1,4 +1,5 @@
 import { emergencyContacts } from "@/lib/emergency-contacts";
+import { telephoneAriaLabel } from "@/lib/telephone";
 
 export default function EmergencyBanner() {
   const primaryContacts = emergencyContacts.filter((contact) => contact.displayMode === "primary");
@@ -11,12 +12,18 @@ export default function EmergencyBanner() {
     <aside className="emergency-banner" aria-label="緊急時の相談先">
       <div className="emergency-inner">
         <div className="emergency-heading">
-          <strong>すぐ電話</strong>
+          <strong>緊急時の相談先</strong>
+          <a href="https://form.soudanplus.jp/ja" target="_blank" rel="noreferrer">
+            声を出せないとき：DVチャット
+          </a>
         </div>
         <div className="emergency-actions">
           {primaryContacts.map((contact) => (
             <div className="emergency-contact" key={contact.number}>
-              <a href={contact.phoneHref} aria-label={`${contact.label} ${contact.number}へ電話`}>
+              <a
+                href={contact.phoneHref}
+                aria-label={telephoneAriaLabel(contact.number, contact.label)}
+              >
                 <strong>{contact.number}</strong>
                 <span>
                   {contact.label}
@@ -29,12 +36,17 @@ export default function EmergencyBanner() {
           ))}
         </div>
         <details className="emergency-more">
-          <summary>電話できない・こころの相談</summary>
+          <summary>電話・チャットなどを選ぶ</summary>
           <div className="emergency-detail">
             {detailContacts.map((contact) => (
               <p key={contact.id}>
                 <span>{contact.label}</span>
-                <a href={contact.phoneHref}>{contact.number}</a>
+                <a
+                  href={contact.phoneHref}
+                  aria-label={telephoneAriaLabel(contact.number, contact.label)}
+                >
+                  {contact.number}
+                </a>
                 <small>
                   {contact.cost}・{contact.availability}
                 </small>

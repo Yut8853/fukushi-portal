@@ -23,7 +23,9 @@ async function main() {
     }
     if (resultChanged) await writeResult(result);
   }
-  console.log(`受付時間候補を再解析: ${results.length}自治体 / 更新${updated}件 / 新規${populated}件 / 誤候補除外${cleared}件`);
+  console.log(
+    `受付時間候補を再解析: ${results.length}自治体 / 更新${updated}件 / 新規${populated}件 / 誤候補除外${cleared}件`,
+  );
 }
 
 void main();

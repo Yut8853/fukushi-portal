@@ -6,12 +6,26 @@ const dataDir = path.join(process.cwd(), "data");
 
 const yokohamaWards = [
   ["tsurumi", "鶴見区", "045-510-1782", "045-510-1899", "230-0051", "横浜市鶴見区鶴見中央3-20-1"],
-  ["kanagawa", "神奈川区", "045-411-7103", "045-411-0361", "221-0824", "横浜市神奈川区広台太田町3-8"],
+  [
+    "kanagawa",
+    "神奈川区",
+    "045-411-7103",
+    "045-411-0361",
+    "221-0824",
+    "横浜市神奈川区広台太田町3-8",
+  ],
   ["nishi", "西区", "045-320-8407", "045-322-9877", "220-0051", "横浜市西区中央1-5-10"],
   ["naka", "中区", "045-224-8241", "045-224-8239", "231-0021", "横浜市中区日本大通35"],
   ["minami", "南区", "045-341-1203", "045-341-1219", "232-0024", "横浜市南区浦舟町2-33"],
   ["konan", "港南区", "045-847-8404", "045-847-0378", "233-0003", "横浜市港南区港南4-2-10"],
-  ["hodogaya", "保土ケ谷区", "045-334-6314", "045-334-6030", "240-0001", "横浜市保土ケ谷区川辺町2-9"],
+  [
+    "hodogaya",
+    "保土ケ谷区",
+    "045-334-6314",
+    "045-334-6030",
+    "240-0001",
+    "横浜市保土ケ谷区川辺町2-9",
+  ],
   ["asahi", "旭区", "045-954-6104", "045-951-5831", "241-0022", "横浜市旭区鶴ケ峰1-4-12"],
   ["isogo", "磯子区", "045-750-2405", "045-750-2542", "235-0016", "横浜市磯子区磯子3-5-1"],
   ["kanazawa", "金沢区", "045-788-7814", "045-788-7883", "236-0021", "横浜市金沢区泥亀2-9-1"],
@@ -57,15 +71,15 @@ async function main() {
 
   for (const office of offices) {
     if (
-      office.id === "osaka-osaka-housing-benefit-fallback"
-      || office.id === "osaka-osaka-self-reliance-fallback"
+      office.id === "osaka-osaka-housing-benefit-fallback" ||
+      office.id === "osaka-osaka-self-reliance-fallback"
     ) {
       office.status = "review_required";
       continue;
     }
     if (
-      office.municipalityId !== "osaka-osaka"
-      || !/^osaka-osaka-(?:housing|self-reliance)-\d+$/.test(office.id)
+      office.municipalityId !== "osaka-osaka" ||
+      !/^osaka-osaka-(?:housing|self-reliance)-\d+$/.test(office.id)
     ) {
       continue;
     }
@@ -88,7 +102,8 @@ async function main() {
       name: `${ward}役所生活支援課生活支援係`,
       plainName: `${ward}の仕事・生活・住まいの相談窓口`,
       department: `${ward}役所生活支援課生活支援係`,
-      description: "生活に困っている方の状況を整理し、就労・家計・住まいなど必要な支援につなぐ相談窓口です。",
+      description:
+        "生活に困っている方の状況を整理し、就労・家計・住まいなど必要な支援につなぐ相談窓口です。",
       postalCode,
       address,
       phone,

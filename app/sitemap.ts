@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { SITE_URL } from "@/lib/site";
 import { selectOffices } from "@/lib/support-routing";
+import { isIndexableSupportPage } from "@/lib/seo-indexing";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await getPublicPortalData();
@@ -60,15 +61,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
             ...(prefectureOffices.get(municipality.prefectureCode) ?? []),
             ...nationalOffices,
           ];
-          return (
-            selectOffices(
-              scopedOffices,
-              municipality.id,
-              category.id,
-              municipality.representativePhone,
-              municipality.prefectureCode,
-            ).length > 0
+          const selected = selectOffices(
+            scopedOffices,
+            municipality.id,
+            category.id,
+            municipality.representativePhone,
+            municipality.prefectureCode,
           );
+          return isIndexableSupportPage(selected, municipality.id, category.id);
         })
         .map((category) => ({
           url: `${SITE_URL}/support/${municipality.id}/${category.id}`,

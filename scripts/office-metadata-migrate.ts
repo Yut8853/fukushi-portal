@@ -29,13 +29,12 @@ async function main() {
     const sameAsRepresentative =
       Boolean(office.phone) &&
       normalizePhone(office.phone) === representativePhones.get(office.municipalityId);
-    const contactType = sameAsRepresentative ||
-      office.categoryId === "unknown" ||
-      office.id.includes("city-general")
-      ? "representative"
-      : office.id.includes("self-reliance") || office.plainName.includes("自立相談")
-        ? "self-reliance"
-        : "direct";
+    const contactType =
+      sameAsRepresentative || office.categoryId === "unknown" || office.id.includes("city-general")
+        ? "representative"
+        : office.id.includes("self-reliance") || office.plainName.includes("自立相談")
+          ? "self-reliance"
+          : "direct";
     return nextHeaders
       .map((header) =>
         escapeCsv(
@@ -43,7 +42,7 @@ async function main() {
             ? contactType
             : header === "verificationLevel"
               ? "primary_source_import"
-              : office[header] ?? "",
+              : (office[header] ?? ""),
         ),
       )
       .join(",");

@@ -22,10 +22,10 @@ function addVerified(
 ) {
   if (!key || conflicts.has(key)) return;
   const current = values.get(key);
-  if (current && (
-    current.openingHours !== hours.openingHours
-    || current.closedDays !== hours.closedDays
-  )) {
+  if (
+    current &&
+    (current.openingHours !== hours.openingHours || current.closedDays !== hours.closedDays)
+  ) {
     values.delete(key);
     conflicts.add(key);
     return;
@@ -46,15 +46,18 @@ async function main() {
       openingHours: office.openingHours,
       closedDays: office.closedDays,
     };
-    if (office.phone) addVerified(verifiedByPhone, phoneConflicts, phoneKey(office.phone), verified);
-    if (office.address) addVerified(verifiedByAddress, addressConflicts, addressKey(office.address), verified);
+    if (office.phone)
+      addVerified(verifiedByPhone, phoneConflicts, phoneKey(office.phone), verified);
+    if (office.address)
+      addVerified(verifiedByAddress, addressConflicts, addressKey(office.address), verified);
   }
   const updates = new Map<string, { openingHours: string; closedDays: string }>();
   const byType = new Map<string, number>();
   for (const office of data.offices) {
     if (office.openingHours) continue;
-    const verified = (office.phone ? verifiedByPhone.get(phoneKey(office.phone)) : undefined)
-      ?? (office.address ? verifiedByAddress.get(addressKey(office.address)) : undefined);
+    const verified =
+      (office.phone ? verifiedByPhone.get(phoneKey(office.phone)) : undefined) ??
+      (office.address ? verifiedByAddress.get(addressKey(office.address)) : undefined);
     if (!verified) continue;
     updates.set(office.id, verified);
     const type = officeContactType(office);

@@ -50,7 +50,9 @@ async function main() {
   });
 
   await writeFile(officesPath, `${headers.join(",")}\n${lines.join("\n")}\n`, "utf8");
-  console.log(`${ambiguousKeys.size}組の管轄未確認窓口${quarantined}件をreview_requiredへ変更しました。`);
+  console.log(
+    `${ambiguousKeys.size}組の管轄未確認窓口${quarantined}件をreview_requiredへ変更しました。`,
+  );
 }
 
 main().catch((error: unknown) => {

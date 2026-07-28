@@ -40,13 +40,13 @@ export function parseCsv(text: string): CsvRow[] {
   if (!headers) return [];
   values.forEach((valuesRow, index) => {
     if (valuesRow.length !== headers.length) {
-      throw new Error(
-        `${index + 2}行目: 列数が${headers.length}ではなく${valuesRow.length}です。`,
-      );
+      throw new Error(`${index + 2}行目: 列数が${headers.length}ではなく${valuesRow.length}です。`);
     }
   });
   return values.map((valuesRow) =>
-    Object.fromEntries(headers.map((header, index) => [header.trim(), (valuesRow[index] ?? "").trim()])),
+    Object.fromEntries(
+      headers.map((header, index) => [header.trim(), (valuesRow[index] ?? "").trim()]),
+    ),
   );
 }
 

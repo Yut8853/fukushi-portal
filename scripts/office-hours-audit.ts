@@ -40,18 +40,20 @@ async function main() {
   const scan = JSON.parse(await readFile(scanPath, "utf8")) as ScanReport;
 
   if (
-    scan.sourceOffset !== 0
-    || scan.requestedType !== "all"
-    || scan.discoverRelatedPages
-    || scan.retryReportErrors
-    || scan.sourceCount !== scan.scannedSourceCount
+    scan.sourceOffset !== 0 ||
+    scan.requestedType !== "all" ||
+    scan.discoverRelatedPages ||
+    scan.retryReportErrors ||
+    scan.sourceCount !== scan.scannedSourceCount
   ) {
     throw new Error("監査レポートには offset=0 / type=all の完了済み通常走査が必要です。");
   }
 
   const sourceUrls = new Map(data.sources.map((source) => [source.id, source.url]));
   const errors = new Map(scan.errors.map((error) => [error.sourceUrl, error.message]));
-  const candidates = new Map(scan.candidates.map((candidate) => [candidate.officeId, candidate.sourceUrl]));
+  const candidates = new Map(
+    scan.candidates.map((candidate) => [candidate.officeId, candidate.sourceUrl]),
+  );
   const counts: Record<AuditReason, number> = {
     verified_full: 0,
     verified_hours_only: 0,

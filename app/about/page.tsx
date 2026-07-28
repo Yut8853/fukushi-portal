@@ -88,6 +88,23 @@ export default function AboutPage() {
           個々の窓口へ電話をかけて現在の受付状況を確認した日ではありません。
           受付時間や担当区域などを安全に確認できない項目は、未確認として表示します。
         </p>
+        <ul>
+          <li>国・都道府県・市区町村などの公式情報を優先します。</li>
+          <li>確認できない情報を推測で補わず、未確認または要確認として扱います。</li>
+          <li>危険につながる電話番号・受付条件・対象地域の誤りを優先して訂正します。</li>
+          <li>一次情報の一括取込は原則365日、個別確認・利用者報告は原則180日で再確認します。</li>
+        </ul>
+        <p>
+          サイトのデータ構造、検証コード、修正履歴は
+          <a
+            href="https://github.com/Yut8853/fukushi-portal"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            GitHubの公開リポジトリ
+          </a>
+          で確認できます。
+        </p>
       </section>
 
       <section className="content-section">
@@ -96,6 +113,18 @@ export default function AboutPage() {
           <a href="https://junkbranding.com" rel="noopener noreferrer">
             運営: JUNKBRANDING
           </a>
+        </p>
+        <dl>
+          <dt>所在地</dt>
+          <dd>茨城県稲敷郡美浦村</dd>
+          <dt>掲載情報に関する連絡先</dt>
+          <dd>
+            <a href="mailto:hello@junkbranding.com">hello@junkbranding.com</a>
+          </dd>
+        </dl>
+        <p>
+          本サイトは個人運営です。福祉・医療・法律上の個別相談や、掲載窓口への取り次ぎは
+          受け付けていません。
         </p>
       </section>
 

@@ -13,8 +13,8 @@ import {
 
 async function main() {
   const data = await getPortalData(path.join(process.cwd(), "data"));
-  const standardMunicipalities = data.municipalities.filter((item) =>
-    item.status === "published" && item.supportLevel !== "basic",
+  const standardMunicipalities = data.municipalities.filter(
+    (item) => item.status === "published" && item.supportLevel !== "basic",
   );
   const roleErrors: string[] = [];
   for (const municipality of standardMunicipalities) {
@@ -36,10 +36,26 @@ async function main() {
   }
 
   const dated = [
-    ...data.municipalities.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt, verificationLevel: "" as const })),
-    ...data.offices.map(({ status, lastVerifiedAt, verificationLevel }) => ({ status, lastVerifiedAt, verificationLevel })),
-    ...data.programs.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt, verificationLevel: "" as const })),
-    ...data.sources.map(({ status, lastVerifiedAt }) => ({ status, lastVerifiedAt, verificationLevel: "" as const })),
+    ...data.municipalities.map(({ status, lastVerifiedAt }) => ({
+      status,
+      lastVerifiedAt,
+      verificationLevel: "" as const,
+    })),
+    ...data.offices.map(({ status, lastVerifiedAt, verificationLevel }) => ({
+      status,
+      lastVerifiedAt,
+      verificationLevel,
+    })),
+    ...data.programs.map(({ status, lastVerifiedAt }) => ({
+      status,
+      lastVerifiedAt,
+      verificationLevel: "" as const,
+    })),
+    ...data.sources.map(({ status, lastVerifiedAt }) => ({
+      status,
+      lastVerifiedAt,
+      verificationLevel: "" as const,
+    })),
   ].filter((item) => item.status === "published");
   const expired = dated.filter((item) =>
     isVerificationExpired(
@@ -51,9 +67,7 @@ async function main() {
   const dueSoon = dated.filter((item) => {
     const age = verificationAgeDays(item.lastVerifiedAt);
     const maxAge = verificationMaxAgeDays(item.verificationLevel);
-    return age !== null
-      && age <= maxAge
-      && age > maxAge - VERIFICATION_WARNING_DAYS;
+    return age !== null && age <= maxAge && age > maxAge - VERIFICATION_WARNING_DAYS;
   });
 
   console.log(`standard監査: ${standardMunicipalities.length}自治体`);

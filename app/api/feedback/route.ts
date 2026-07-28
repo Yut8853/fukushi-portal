@@ -23,6 +23,15 @@ function getRateLimitToken(request: Request, secret: string) {
 }
 
 export async function POST(request: Request) {
+  const origin = request.headers.get("origin");
+  const fetchSite = request.headers.get("sec-fetch-site");
+  if (
+    (origin && origin !== new URL(request.url).origin) ||
+    (fetchSite && fetchSite !== "same-origin")
+  ) {
+    return NextResponse.json({ error: "このサイト以外からは送信できません。" }, { status: 403 });
+  }
+
   const contentLength = Number(request.headers.get("content-length") ?? "0");
   if (contentLength > 1_024) {
     return NextResponse.json({ error: "送信内容が大きすぎます。" }, { status: 413 });
@@ -30,7 +39,11 @@ export async function POST(request: Request) {
 
   let body: unknown;
   try {
-    body = await request.json();
+    const rawBody = await request.text();
+    if (Buffer.byteLength(rawBody, "utf8") > 1_024) {
+      return NextResponse.json({ error: "送信内容が大きすぎます。" }, { status: 413 });
+    }
+    body = JSON.parse(rawBody);
   } catch {
     return NextResponse.json({ error: "送信内容を確認できません。" }, { status: 400 });
   }

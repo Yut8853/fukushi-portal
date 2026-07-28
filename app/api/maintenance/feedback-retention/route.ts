@@ -39,5 +39,28 @@ export async function GET(request: Request) {
   if (!response.ok) {
     return NextResponse.json({ error: "定期削除を実行できませんでした。" }, { status: 502 });
   }
-  return NextResponse.json({ ok: true });
+  const rateLimitAllowed: unknown = await response.json();
+  if (rateLimitAllowed !== true) return NextResponse.json({ ok: true, skipped: true });
+
+  const cutoff = new Date();
+  cutoff.setUTCFullYear(cutoff.getUTCFullYear() - 1);
+  const deleteResponse = await fetch(
+    `${supabaseUrl}/rest/v1/feedback_events?created_at=lt.${encodeURIComponent(cutoff.toISOString())}`,
+    {
+      method: "DELETE",
+      headers: {
+        apikey: serviceRoleKey,
+        authorization: `Bearer ${serviceRoleKey}`,
+        prefer: "return=minimal",
+      },
+      cache: "no-store",
+    },
+  );
+  if (!deleteResponse.ok) {
+    return NextResponse.json(
+      { error: "保存期限を過ぎた回答を削除できませんでした。" },
+      { status: 502 },
+    );
+  }
+  return NextResponse.json({ ok: true, cutoff: cutoff.toISOString() });
 }

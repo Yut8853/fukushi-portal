@@ -54,23 +54,34 @@ async function responseContent(response: Response, url: URL): Promise<PageConten
     }
   }
   const $ = cheerio.load(await response.text());
-  const relatedLinks = $("a[href]").toArray().flatMap((element) => {
-    const label = $(element).text().replace(/\s+/g, "");
-    if (!/(?:開庁|開館|業務時間|受付時間|庁舎案内|市役所案内|役場案内|アクセス|施設案内|所在地)/.test(label)) {
-      return [];
-    }
-    const href = $(element).attr("href");
-    if (!href) return [];
-    try {
-      const linked = new URL(href, url);
-      return linked.origin === url.origin && /^https?:$/.test(linked.protocol) ? [linked.href] : [];
-    } catch {
-      return [];
-    }
-  });
+  const relatedLinks = $("a[href]")
+    .toArray()
+    .flatMap((element) => {
+      const label = $(element).text().replace(/\s+/g, "");
+      if (
+        !/(?:開庁|開館|業務時間|受付時間|庁舎案内|市役所案内|役場案内|アクセス|施設案内|所在地)/.test(
+          label,
+        )
+      ) {
+        return [];
+      }
+      const href = $(element).attr("href");
+      if (!href) return [];
+      try {
+        const linked = new URL(href, url);
+        return linked.origin === url.origin && /^https?:$/.test(linked.protocol)
+          ? [linked.href]
+          : [];
+      } catch {
+        return [];
+      }
+    });
   $("script,style,noscript").remove();
   return {
-    text: $("body").text().replace(/[ \t]+/g, " ").replace(/\n{3,}/g, "\n\n"),
+    text: $("body")
+      .text()
+      .replace(/[ \t]+/g, " ")
+      .replace(/\n{3,}/g, "\n\n"),
     relatedLinks: [...new Set(relatedLinks)].slice(0, 3),
   };
 }
@@ -78,8 +89,9 @@ async function responseContent(response: Response, url: URL): Promise<PageConten
 async function main() {
   const config = getCrawlerConfig();
   const data = await getPublicPortalData();
-  const typeArgument = process.argv.find((argument) => argument.startsWith("--type="))?.split("=")[1] ?? "all";
-  const requestedType = typeArgument === "all" ? null : typeArgument as OfficeContactType;
+  const typeArgument =
+    process.argv.find((argument) => argument.startsWith("--type="))?.split("=")[1] ?? "all";
+  const requestedType = typeArgument === "all" ? null : (typeArgument as OfficeContactType);
   const categoryArgument = process.argv
     .find((argument) => argument.startsWith("--category="))
     ?.split("=")[1];
@@ -88,19 +100,27 @@ async function main() {
     ?.split("=")[1];
   const discoverRelatedPages = process.argv.includes("--discover");
   const retryReportErrors = process.argv.includes("--retry-errors");
-  const limitArgument = process.argv.find((argument) => argument.startsWith("--limit="))?.split("=")[1];
+  const limitArgument = process.argv
+    .find((argument) => argument.startsWith("--limit="))
+    ?.split("=")[1];
   const sourceLimit = limitArgument ? Number.parseInt(limitArgument, 10) : Number.POSITIVE_INFINITY;
-  const offsetArgument = process.argv.find((argument) => argument.startsWith("--offset="))?.split("=")[1];
+  const offsetArgument = process.argv
+    .find((argument) => argument.startsWith("--offset="))
+    ?.split("=")[1];
   const sourceOffset = offsetArgument ? Number.parseInt(offsetArgument, 10) : 0;
   const sources = new Map(data.sources.map((source) => [source.id, source.url]));
   const targets = data.offices
-    .filter((office) =>
-      office.phone
-      && (!requestedType || officeContactType(office) === requestedType)
-      && (!categoryArgument || office.categoryId === categoryArgument)
-      && (!scopeArgument || office.scope === scopeArgument)
+    .filter(
+      (office) =>
+        office.phone &&
+        (!requestedType || officeContactType(office) === requestedType) &&
+        (!categoryArgument || office.categoryId === categoryArgument) &&
+        (!scopeArgument || office.scope === scopeArgument),
     )
-    .map((office) => ({ office, sourceUrl: office.officialUrl || sources.get(office.sourceId) || "" }))
+    .map((office) => ({
+      office,
+      sourceUrl: office.officialUrl || sources.get(office.sourceId) || "",
+    }))
     .filter((item) => item.sourceUrl);
   const groups = new Map<string, typeof targets>();
   for (const target of targets) {
@@ -120,7 +140,12 @@ async function main() {
     ? [...groups].filter(([, offices]) => offices.some(({ office }) => !office.openingHours))
     : [...groups];
   if (retryReportErrors) {
-    const previousReportPath = path.join(process.cwd(), "data", "crawl", "office-hours-candidates.json");
+    const previousReportPath = path.join(
+      process.cwd(),
+      "data",
+      "crawl",
+      "office-hours-candidates.json",
+    );
     const previousReport = JSON.parse(await readFile(previousReportPath, "utf8")) as {
       errors?: { sourceUrl: string }[];
     };
@@ -129,11 +154,9 @@ async function main() {
   }
   const selectedGroups = selectableGroups.slice(sourceOffset, sourceOffset + sourceLimit);
   const selectedOfficeIds = new Set(
-    selectedGroups.flatMap(([, selectedOffices]) =>
-      selectedOffices.map(({ office }) => office.id),
-    ),
+    selectedGroups.flatMap(([, selectedOffices]) => selectedOffices.map(({ office }) => office.id)),
   );
-  function collectCandidates(text: string, url: URL, offices: (typeof targets)) {
+  function collectCandidates(text: string, url: URL, offices: typeof targets) {
     let found = 0;
     for (const { office } of offices) {
       if (office.openingHours) continue;
@@ -175,7 +198,7 @@ async function main() {
       nextGroup += 1;
       try {
         let url = await assertSafeUrl(sourceUrl);
-        if (!await canCrawl(url.href, config)) {
+        if (!(await canCrawl(url.href, config))) {
           errors.push({ sourceUrl, message: "robots.txtで取得不可" });
         } else {
           let response: Response;
@@ -186,7 +209,7 @@ async function main() {
             const secureUrl = new URL(url);
             secureUrl.protocol = "https:";
             url = await assertSafeUrl(secureUrl.href);
-            if (!await canCrawl(url.href, config)) throw error;
+            if (!(await canCrawl(url.href, config))) throw error;
             response = await fetchWithRetry(url.href, config);
           }
           const page = await responseContent(response, url);
@@ -195,7 +218,7 @@ async function main() {
             for (const relatedHref of page.relatedLinks) {
               try {
                 const relatedUrl = await assertSafeUrl(relatedHref);
-                if (!await canCrawl(relatedUrl.href, config)) continue;
+                if (!(await canCrawl(relatedUrl.href, config))) continue;
                 const relatedPage = await responseContent(
                   await fetchWithRetry(relatedUrl.href, config),
                   relatedUrl,
@@ -214,14 +237,15 @@ async function main() {
         errors.push({ sourceUrl, message: error instanceof Error ? error.message : String(error) });
       } finally {
         processed += 1;
-        console.log(`進捗 ${processed}/${selectedGroups.length} / 候補 ${candidates.length}件 / 取得失敗 ${errors.length}件`);
+        console.log(
+          `進捗 ${processed}/${selectedGroups.length} / 候補 ${candidates.length}件 / 取得失敗 ${errors.length}件`,
+        );
       }
     }
   }
-  await Promise.all(Array.from(
-    { length: Math.min(config.concurrency, selectedGroups.length) },
-    () => worker(),
-  ));
+  await Promise.all(
+    Array.from({ length: Math.min(config.concurrency, selectedGroups.length) }, () => worker()),
+  );
   const report = {
     generatedAt: new Date().toISOString(),
     targetOffices: targets.filter(({ office }) => !office.openingHours).length,
@@ -241,14 +265,15 @@ async function main() {
           !office.openingHours &&
           !candidates.some((candidate) => candidate.officeId === office.id),
       )
-      .map(({ office, sourceUrl }) =>
-        evidenceByOffice.get(office.id) ?? {
-          officeId: office.id,
-          officeName: office.name,
-          phone: office.phone,
-          sourceUrl,
-          evidenceText: "",
-        },
+      .map(
+        ({ office, sourceUrl }) =>
+          evidenceByOffice.get(office.id) ?? {
+            officeId: office.id,
+            officeName: office.name,
+            phone: office.phone,
+            sourceUrl,
+            evidenceText: "",
+          },
       ),
     errors,
   };

@@ -42,23 +42,23 @@ export function isVerificationExpired(
 export function officeRoles(offices: Office[]): Record<StandardOfficeRole, boolean> {
   const published = offices.filter((office) => office.status === "published");
   return {
-    general: published.some((office) =>
-      office.id.endsWith("city-general")
-      || office.plainName.includes("代表窓口")
-      || office.plainName.includes("市役所・区役所"),
+    general: published.some(
+      (office) =>
+        office.id.endsWith("city-general") ||
+        office.plainName.includes("代表窓口") ||
+        office.plainName.includes("市役所・区役所"),
     ),
-    selfReliance: published.some((office) =>
-      office.id.includes("self-reliance")
-      || office.name.includes("自立相談")
-      || office.plainName.includes("生活や仕事"),
+    selfReliance: published.some(
+      (office) =>
+        office.id.includes("self-reliance") ||
+        office.name.includes("自立相談") ||
+        office.plainName.includes("生活や仕事"),
     ),
-    housingBenefit: published.some((office) =>
-      office.id.includes("housing-benefit")
-      || office.categoryId === "rent",
+    housingBenefit: published.some(
+      (office) => office.id.includes("housing-benefit") || office.categoryId === "rent",
     ),
-    publicAssistance: published.some((office) =>
-      office.id.includes("public-assistance")
-      || office.plainName.includes("生活保護"),
+    publicAssistance: published.some(
+      (office) => office.id.includes("public-assistance") || office.plainName.includes("生活保護"),
     ),
   };
 }
@@ -92,8 +92,7 @@ export function municipalityMissingCount(municipality: Municipality, offices: Of
   const officeMissing = offices
     .filter((office) => office.status === "published")
     .reduce((count, office) => count + officeMissingFields(office).length, 0);
-  const roleMissing = municipality.supportLevel === "basic"
-    ? 0
-    : missingStandardOfficeRoles(offices).length;
+  const roleMissing =
+    municipality.supportLevel === "basic" ? 0 : missingStandardOfficeRoles(offices).length;
   return baseMissing + officeMissing + roleMissing;
 }

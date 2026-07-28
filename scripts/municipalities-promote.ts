@@ -5,9 +5,17 @@ import { escapeCsv, readCsvFile, type CsvRow } from "../lib/csv";
 import { municipalitySchema } from "../lib/data/schemas";
 
 const headers = [
-  "id", "prefectureCode", "municipalityCode", "name", "nameKana",
-  "municipalityType", "officialUrl", "representativePhone",
-  "supportLevel", "status", "lastVerifiedAt",
+  "id",
+  "prefectureCode",
+  "municipalityCode",
+  "name",
+  "nameKana",
+  "municipalityType",
+  "officialUrl",
+  "representativePhone",
+  "supportLevel",
+  "status",
+  "lastVerifiedAt",
 ];
 
 type VerifiedCandidate = {
@@ -29,7 +37,9 @@ function decodeEntities(value: string): string {
     .replace(/&quot;/gi, '"')
     .replace(/&#(?:39|x27);/gi, "'")
     .replace(/&nbsp;/gi, " ")
-    .replace(/&#x([0-9a-f]+);/gi, (_, code: string) => String.fromCodePoint(Number.parseInt(code, 16)))
+    .replace(/&#x([0-9a-f]+);/gi, (_, code: string) =>
+      String.fromCodePoint(Number.parseInt(code, 16)),
+    )
     .replace(/&#([0-9]+);/g, (_, code: string) => String.fromCodePoint(Number.parseInt(code, 10)));
 }
 
@@ -59,16 +69,20 @@ async function fetchOfficialIdentity(item: CsvRow): Promise<VerifiedCandidate | 
       current = await assertSafeUrl(new URL(location, current).href);
       continue;
     }
-    if (!response.ok || !(response.headers.get("content-type") ?? "").toLowerCase().includes("html")) {
+    if (
+      !response.ok ||
+      !(response.headers.get("content-type") ?? "").toLowerCase().includes("html")
+    ) {
       return null;
     }
     const html = (await response.text()).slice(0, 600_000);
     const text = visibleText(html);
     const title = visibleText(html.match(/<title[^>]*>([\s\S]*?)<\/title>/i)?.[1] ?? "");
     const identifiesMunicipality = title.includes(item.name) || text.includes(item.name);
-    const identifiesGovernment = /公式|ホームページ|市役所|区役所|町役場|村役場|自治体/.test(text)
-      || current.hostname === "lg.jp"
-      || current.hostname.endsWith(".lg.jp");
+    const identifiesGovernment =
+      /公式|ホームページ|市役所|区役所|町役場|村役場|自治体/.test(text) ||
+      current.hostname === "lg.jp" ||
+      current.hostname.endsWith(".lg.jp");
     if (!identifiesMunicipality || !identifiesGovernment) return null;
     return { source: item, finalUrl: current.href };
   }
@@ -113,13 +127,14 @@ async function main() {
   const existingCodes = new Set(existing.map((item) => baseCode(item.municipalityCode)));
   const existingIds = new Set(existing.map((item) => item.id));
   const eligible = nationwide
-    .filter((item) =>
-      item.entityType === "municipality"
-      && item.lifecycleStatus === "current"
-      && ["special_ward", "city", "town", "village"].includes(item.municipalityType)
-      && Boolean(item.officialUrl)
-      && !existingCodes.has(baseCode(item.municipalityCode))
-      && !existingIds.has(item.id),
+    .filter(
+      (item) =>
+        item.entityType === "municipality" &&
+        item.lifecycleStatus === "current" &&
+        ["special_ward", "city", "town", "village"].includes(item.municipalityType) &&
+        Boolean(item.officialUrl) &&
+        !existingCodes.has(baseCode(item.municipalityCode)) &&
+        !existingIds.has(item.id),
     )
     .sort((left, right) => left.municipalityCode.localeCompare(right.municipalityCode));
   const ordered = roundRobin(eligible);
@@ -138,22 +153,30 @@ async function main() {
         if (result && verified.length < count) verified.push(result);
         else if (!result) failures.push(`${candidate.municipalityCode}:${candidate.name}`);
       } catch (error) {
-        failures.push(`${candidate.municipalityCode}:${candidate.name}:${error instanceof Error ? error.message : String(error)}`);
+        failures.push(
+          `${candidate.municipalityCode}:${candidate.name}:${error instanceof Error ? error.message : String(error)}`,
+        );
       }
       const checked = Math.min(cursor, ordered.length);
       if (checked % 50 === 0) {
-        console.log(`到達確認 ${checked}/${ordered.length} / 採用 ${verified.length}/${count} / 除外 ${failures.length}`);
+        console.log(
+          `到達確認 ${checked}/${ordered.length} / 採用 ${verified.length}/${count} / 除外 ${failures.length}`,
+        );
       }
     }
   }
   await Promise.all(Array.from({ length: concurrency }, () => runner()));
   if (verified.length !== count) {
-    throw new Error(`公式サイトを確認できた自治体が${verified.length}件のため、要求された${count}件を追加しませんでした。`);
+    throw new Error(
+      `公式サイトを確認できた自治体が${verified.length}件のため、要求された${count}件を追加しませんでした。`,
+    );
   }
 
   const selected: CsvRow[] = verified
     .slice(0, count)
-    .sort((left, right) => left.source.municipalityCode.localeCompare(right.source.municipalityCode))
+    .sort((left, right) =>
+      left.source.municipalityCode.localeCompare(right.source.municipalityCode),
+    )
     .map(({ source }) => ({
       id: source.id,
       prefectureCode: source.prefectureCode,
@@ -173,9 +196,13 @@ async function main() {
   const duplicateCodes = all
     .map((item) => baseCode(item.municipalityCode))
     .filter((code, index, values) => values.indexOf(code) !== index);
-  const duplicateIds = all.map((item) => item.id).filter((id, index, values) => values.indexOf(id) !== index);
+  const duplicateIds = all
+    .map((item) => item.id)
+    .filter((id, index, values) => values.indexOf(id) !== index);
   if (duplicateCodes.length || duplicateIds.length) {
-    throw new Error(`重複を検出したため書き込みません（コード${duplicateCodes.length}件、ID${duplicateIds.length}件）。`);
+    throw new Error(
+      `重複を検出したため書き込みません（コード${duplicateCodes.length}件、ID${duplicateIds.length}件）。`,
+    );
   }
 
   const lines = [
@@ -185,9 +212,15 @@ async function main() {
   await writeFile(municipalitiesPath, `${lines.join("\n")}\n`, "utf8");
 
   const byPrefecture = new Map<string, number>();
-  selected.forEach((item) => byPrefecture.set(item.prefectureCode, (byPrefecture.get(item.prefectureCode) ?? 0) + 1));
-  console.log(`追加完了: ${selected.length}自治体 / 合計: ${all.length}自治体 / URL確認除外: ${failures.length}件`);
-  console.log(`都道府県別追加数: ${[...byPrefecture.entries()].map(([code, value]) => `${code}:${value}`).join(" ")}`);
+  selected.forEach((item) =>
+    byPrefecture.set(item.prefectureCode, (byPrefecture.get(item.prefectureCode) ?? 0) + 1),
+  );
+  console.log(
+    `追加完了: ${selected.length}自治体 / 合計: ${all.length}自治体 / URL確認除外: ${failures.length}件`,
+  );
+  console.log(
+    `都道府県別追加数: ${[...byPrefecture.entries()].map(([code, value]) => `${code}:${value}`).join(" ")}`,
+  );
 }
 
 main().catch((error: unknown) => {

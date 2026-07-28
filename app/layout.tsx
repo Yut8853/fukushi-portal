@@ -43,7 +43,18 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
               name: "くらし支援ナビ",
               description: "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
               inLanguage: "ja",
-              publisher: { "@type": "Organization", name: "JUNKBRANDING" },
+              publisher: {
+                "@type": "Organization",
+                name: "JUNKBRANDING",
+                url: "https://www.junkbranding.com/",
+                email: "hello@junkbranding.com",
+                address: {
+                  "@type": "PostalAddress",
+                  addressLocality: "美浦村",
+                  addressRegion: "茨城県",
+                  addressCountry: "JP",
+                },
+              },
             }),
           }}
         />

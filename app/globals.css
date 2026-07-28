@@ -225,16 +225,16 @@ p {
   letter-spacing: 0.02em;
 }
 .emergency-contact span {
-  overflow: hidden;
+  overflow: visible;
   color: #f4dddd;
-  font-size: 0.68rem;
-  text-overflow: ellipsis;
+  font-size: 0.85rem;
+  overflow-wrap: anywhere;
 }
 .emergency-contact span small {
   display: block;
   margin-top: 3px;
   color: #ffdca8;
-  font-size: 0.6rem;
+  font-size: 0.85rem;
 }
 .emergency-more {
   position: relative;
@@ -1736,7 +1736,8 @@ thead th {
   }
   .emergency-contact span {
     max-width: 100%;
-    font-size: 0.6rem;
+    font-size: 0.85rem;
+    line-height: 1.25;
   }
   .hero {
     grid-template-columns: 1fr;

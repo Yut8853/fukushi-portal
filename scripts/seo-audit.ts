@@ -1,6 +1,7 @@
 import { getPublicPortalData } from "@/lib/data/repository";
 import { selectOffices } from "@/lib/support-routing";
 import { seoCategoryContent } from "@/lib/seo-content";
+import { isIndexableSupportPage } from "@/lib/seo-indexing";
 
 async function main() {
   const data = await getPublicPortalData();
@@ -26,6 +27,7 @@ async function main() {
     map.set(key, [...(map.get(key) ?? []), office]);
   }
   let indexablePages = 0;
+  let noindexPages = 0;
   for (const municipality of data.municipalities) {
     const scopedOffices = [
       ...(localOffices.get(municipality.id) ?? []),
@@ -33,24 +35,25 @@ async function main() {
       ...nationalOffices,
     ];
     for (const category of data.categories) {
-      const indexable =
-        selectOffices(
-          scopedOffices,
-          municipality.id,
-          category.id,
-          municipality.representativePhone,
-          municipality.prefectureCode,
-        ).length > 0;
+      const selected = selectOffices(
+        scopedOffices,
+        municipality.id,
+        category.id,
+        municipality.representativePhone,
+        municipality.prefectureCode,
+      );
+      if (!selected.length) {
+        errors.push(`検索着地ページに窓口なし: ${municipality.id}/${category.id}`);
+        continue;
+      }
+      const indexable = isIndexableSupportPage(selected, municipality.id, category.id);
       if (indexable) indexablePages += 1;
-      else errors.push(`検索着地ページに窓口なし: ${municipality.id}/${category.id}`);
+      else noindexPages += 1;
     }
-  }
-  const expectedPages = data.municipalities.length * data.categories.length;
-  if (indexablePages !== expectedPages) {
-    errors.push(`検索着地ページ不足: ${indexablePages}/${expectedPages}`);
   }
   console.log(`SEO監査: ${data.prefectures.length}都道府県 / ${data.municipalities.length}自治体`);
   console.log(`インデックス対象: ${indexablePages}ページ`);
+  console.log(`noindex・follow: ${noindexPages}ページ`);
   console.log(`カテゴリーハブ: ${data.categories.length}ページ`);
   console.log(`エラー: ${errors.length}件`);
   for (const error of errors) console.error(`- ${error}`);

@@ -93,3 +93,66 @@ test("全自治体の食料相談で電話以外の連絡先を1件以上表示�
 
   assert.deepEqual(uncovered, []);
 });
+
+test("確認済みの都道府県DV窓口で地域の非通話相談経路を表示する", async () => {
+  const data = await getCsvPortalData(path.join(process.cwd(), "data"));
+  const alternatives = data.offices.filter(
+    (office) =>
+      office.status === "published" &&
+      office.scope === "prefecture" &&
+      office.categoryId === "violence" &&
+      Boolean(office.email || office.fax || office.contactFormUrl),
+  );
+
+  assert.equal(alternatives.length >= 11, true);
+  assert.equal(
+    alternatives.every((office) => office.verificationLevel === "human_verified"),
+    true,
+  );
+});
+
+test("全都道府県で児童相談所・消費生活センター・法テラスを表示する", async () => {
+  const data = await getCsvPortalData(path.join(process.cwd(), "data"));
+  const expectedIds = [
+    "prefecture-child-guidance-center-",
+    "prefecture-consumer-center-",
+    "prefecture-legal-aid-",
+  ];
+
+  for (const idPrefix of expectedIds) {
+    const offices = data.offices.filter(
+      (office) => office.status === "published" && office.id.startsWith(idPrefix),
+    );
+    assert.equal(offices.length, 47, `${idPrefix}の件数`);
+    assert.equal(new Set(offices.map((office) => office.prefectureCode)).size, 47);
+    assert.equal(
+      offices.every((office) => office.scope === "prefecture"),
+      true,
+    );
+    assert.equal(
+      offices.every((office) => Boolean(office.serviceArea)),
+      true,
+    );
+    assert.equal(
+      offices.every((office) => Boolean(office.eligibilityConditions)),
+      true,
+    );
+  }
+});
+
+test("都道府県の借金相談に電話以外の相談経路を含める", async () => {
+  const data = await getCsvPortalData(path.join(process.cwd(), "data"));
+  const uncovered = data.municipalities.filter((municipality) => {
+    if (municipality.status !== "published") return false;
+    const offices = selectOffices(
+      data.offices,
+      municipality.id,
+      "debt",
+      municipality.representativePhone,
+      municipality.prefectureCode,
+    );
+    return !offices.some((office) => office.email || office.fax || office.contactFormUrl);
+  });
+
+  assert.deepEqual(uncovered, []);
+});
