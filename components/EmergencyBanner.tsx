@@ -2,7 +2,11 @@ import { emergencyContacts } from "@/lib/emergency-contacts";
 import { telephoneAriaLabel } from "@/lib/telephone";
 
 export default function EmergencyBanner() {
-  const primaryContactIds = new Set(["police-emergency", "fire-ambulance-emergency"]);
+  const primaryContactIds = new Set([
+    "police-emergency",
+    "fire-ambulance-emergency",
+    "yorisoi-hotline",
+  ]);
   const primaryContacts = emergencyContacts.filter((contact) => primaryContactIds.has(contact.id));
   const detailContacts = emergencyContacts.filter((contact) => !primaryContactIds.has(contact.id));
   const latestVerification = emergencyContacts
@@ -23,11 +27,14 @@ export default function EmergencyBanner() {
             <div className="emergency-contact" key={contact.number}>
               <a
                 href={contact.phoneHref}
-                aria-label={telephoneAriaLabel(contact.number, contact.label)}
+                aria-label={telephoneAriaLabel(
+                  contact.number,
+                  contact.id === "yorisoi-hotline" ? "24時間無料の相談窓口" : contact.label,
+                )}
               >
                 <strong>{contact.number}</strong>
                 <span>
-                  {contact.label}
+                  {contact.id === "yorisoi-hotline" ? "24時間・無料の相談" : contact.label}
                   <small>
                     {contact.cost}・{contact.availability}
                   </small>
