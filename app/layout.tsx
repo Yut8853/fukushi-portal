@@ -9,16 +9,18 @@ import "./globals.css";
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "くらし支援ナビ",
+    default: "生活保護・福祉の相談先を地域から探す | くらし支援ナビ",
     template: "%s | くらし支援ナビ",
   },
-  description: "生活に困ったとき、今いる地域から相談先と次の行動を探せる福祉ポータル",
+  description:
+    "生活費、住まい、仕事、介護、障害、DVなどで困ったときに、全国の自治体にある生活保護・生活困窮・福祉の相談窓口を地域から探せます。",
   openGraph: {
     type: "website",
     locale: "ja_JP",
     siteName: "くらし支援ナビ",
-    title: "くらし支援ナビ",
-    description: "制度名を知らなくても、生活の困りごとから地域の公的な相談先を探せます。",
+    title: "生活保護・福祉の相談先を地域から探す | くらし支援ナビ",
+    description:
+      "制度名を知らなくても、生活の困りごとから全国の自治体にある公的な相談先を探せます。",
   },
   twitter: { card: "summary_large_image" },
   verification: {
@@ -43,8 +45,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
                   "@id": `${SITE_URL}/#website`,
                   url: SITE_URL,
                   name: "くらし支援ナビ",
+                  alternateName: "全国の生活保護・福祉相談窓口検索",
                   description:
-                    "生活の困りごとから全国の公的な相談先を探せる個人運営の情報案内サイト",
+                    "生活費、住まい、仕事、介護、障害、DVなどの困りごとから、全国の生活保護・生活困窮・福祉相談窓口を探せる情報案内サイト",
                   inLanguage: "ja",
                   publisher: { "@id": `${SITE_URL}/#organization` },
                 },

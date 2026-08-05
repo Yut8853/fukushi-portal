@@ -6,6 +6,9 @@ import { toFinderViewModel } from "@/lib/data/view-models";
 import { getPublicStats } from "@/lib/public-stats";
 
 export const metadata: Metadata = {
+  title: "生活保護・福祉の相談先を地域から探す",
+  description:
+    "生活費、住まい、仕事、介護、障害、DVなどで困ったときに、全国1,741市区町村の生活保護・生活困窮・福祉相談窓口を地域から探せます。",
   alternates: { canonical: "/" },
 };
 
