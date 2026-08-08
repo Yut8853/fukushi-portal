@@ -26,6 +26,10 @@ export const supportTypeSchema = z.enum([
 ]);
 
 const optionalString = z.string().default("");
+const safeName = z
+  .string()
+  .min(1)
+  .regex(/^[^<>]+$/, "< と > は使用できません。");
 const optionalUrl = z.union([z.literal(""), z.url()]);
 const optionalDate = z.union([z.literal(""), z.iso.date()]);
 const booleanString = z.enum(["true", "false"]).transform((value) => value === "true");
@@ -35,13 +39,13 @@ const optionalBooleanString = z
 
 export const prefectureSchema = z.object({
   code: z.string().regex(/^\d{2}$/),
-  name: z.string().min(1),
+  name: safeName,
   nameKana: optionalString,
 });
 
 export const categorySchema = z.object({
   id: z.string().min(1),
-  label: z.string().min(1),
+  label: safeName,
   description: optionalString,
   consultationScript: z
     .string()
@@ -54,7 +58,7 @@ export const municipalitySchema = z.object({
   id: z.string().min(1),
   prefectureCode: z.string().regex(/^\d{2}$/),
   municipalityCode: z.string().regex(/^\d{5,6}$/),
-  name: z.string().min(1),
+  name: safeName,
   nameKana: optionalString,
   municipalityType: municipalityTypeSchema,
   officialUrl: optionalUrl,
@@ -70,7 +74,7 @@ export const officeSchema = z.object({
   scope: z.enum(["municipality", "prefecture", "national"]).default("municipality"),
   prefectureCode: optionalString,
   categoryId: z.string().min(1),
-  name: z.string().min(1),
+  name: safeName,
   plainName: optionalString,
   department: optionalString,
   description: optionalString,
@@ -101,8 +105,8 @@ export const officeSchema = z.object({
 
 export const programSchema = z.object({
   id: z.string().min(1),
-  name: z.string().min(1),
-  plainName: z.string().min(1),
+  name: safeName,
+  plainName: safeName,
   categoryId: z.string().min(1),
   scope: scopeSchema,
   description: z.string().min(1),
@@ -135,7 +139,7 @@ export const municipalityProgramSchema = z.object({
 
 export const sourceSchema = z.object({
   id: z.string().min(1),
-  title: z.string().min(1),
+  title: safeName,
   url: z.url(),
   publisher: optionalString,
   sourceType: z.enum(["official", "law", "other"]),

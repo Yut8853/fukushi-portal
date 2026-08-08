@@ -10,6 +10,12 @@ export default function SiteFooter() {
           <p className="footer-disclaimer">
             個人運営の情報案内サイトです。行政機関・支援団体ではなく、相談受付、支援の仲介・保証は行いません。
           </p>
+          <p className="footer-copyright">
+            © 2026{" "}
+            <a href="https://junkbranding.com/" target="_blank" rel="noreferrer">
+              junkbranding.com
+            </a>
+          </p>
         </div>
         <nav aria-label="サイト情報">
           <Link href="/guide">制度ガイド</Link>

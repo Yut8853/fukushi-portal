@@ -1544,6 +1544,10 @@ select:focus {
   margin-top: 10px;
   font-size: 0.86rem;
 }
+.site-footer .footer-copyright {
+  margin-top: 16px;
+  font-size: 0.86rem;
+}
 .site-footer nav {
   display: flex;
   flex-direction: column;

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublicPortalData } from "@/lib/data/repository";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
 import { isSensitiveCategory, sensitiveSupportMetadata } from "@/lib/privacy";
 import { seoCategoryContent } from "@/lib/seo-content";
@@ -78,7 +79,7 @@ export default async function CategoryPrefecturePage({ params }: PageProps) {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             "@context": "https://schema.org",
             "@graph": [
               {

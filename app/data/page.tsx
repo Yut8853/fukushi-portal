@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { getPublicStats } from "@/lib/public-stats";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { SITE_URL } from "@/lib/site";
 
 const REPOSITORY_URL = "https://github.com/Yut8853/fukushi-portal";
@@ -89,7 +90,7 @@ export default async function DataPage() {
     <main id="main" className="page-shell content-page">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <nav className="breadcrumbs" aria-label="パンくず">
         <Link href="/">トップ</Link>

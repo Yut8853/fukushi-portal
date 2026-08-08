@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getPublicPortalData } from "@/lib/data/repository";
-import type { FinderOffice, FinderProgram } from "@/lib/data/view-models";
+import type { FinderMunicipality, FinderOffice, FinderProgram } from "@/lib/data/view-models";
 import { officeContactType, transferTarget } from "@/lib/support-routing";
 
 export const dynamicParams = false;
@@ -33,6 +33,16 @@ export async function GET(_request: Request, { params }: RouteProps) {
     : data.municipalities.filter((item) => item.prefectureCode === prefectureCode);
   const municipalityIds = new Set(municipalities.map((item) => item.id));
   const municipalityMap = new Map(municipalities.map((item) => [item.id, item]));
+  const finderMunicipalities: FinderMunicipality[] = municipalities.map(
+    ({ id, prefectureCode, name, officialUrl, representativePhone, supportLevel }) => ({
+      id,
+      prefectureCode,
+      name,
+      officialUrl,
+      representativePhone,
+      supportLevel,
+    }),
+  );
   const sources = new Map(data.sources.map((source) => [source.id, source]));
 
   const programs: FinderProgram[] = data.programs
@@ -95,7 +105,7 @@ export async function GET(_request: Request, { params }: RouteProps) {
     });
 
   return NextResponse.json(
-    { programs, offices },
+    { municipalities: finderMunicipalities, programs, offices },
     {
       headers: {
         "Cache-Control": "public, max-age=86400, stale-while-revalidate=604800",

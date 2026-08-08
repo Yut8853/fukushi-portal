@@ -5,7 +5,12 @@ import AfterHoursGuide from "@/components/AfterHoursGuide";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import MentalCrisisSupport from "@/components/MentalCrisisSupport";
 import UnconfirmedHours from "@/components/UnconfirmedHours";
-import type { FinderOffice, FinderProgram, FinderViewModel } from "@/lib/data/view-models";
+import type {
+  FinderMunicipality,
+  FinderOffice,
+  FinderProgram,
+  FinderViewModel,
+} from "@/lib/data/view-models";
 import { verificationMaxAgeDays } from "@/lib/data/quality";
 import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
 import { mergeOfficesByContact } from "@/lib/office-merge";
@@ -150,6 +155,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   const [activeStep, setActiveStep] = useState<1 | 2 | 3>(1);
   const [prefectureCode, setPrefectureCode] = useState("");
   const [municipalityId, setMunicipalityId] = useState("");
+  const [municipalities, setMunicipalities] = useState(data.municipalities);
+  const [municipalitiesLoading, setMunicipalitiesLoading] = useState(false);
   const [searched, setSearched] = useState(false);
   const [urlReady, setUrlReady] = useState(false);
   const [shareStatus, setShareStatus] = useState("");
@@ -163,23 +170,44 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
     const need = query.get("need") ?? "";
     const municipalityQuery = query.get("municipality") ?? "";
     const validCategory = data.categories.some((item) => item.id === need) ? need : "";
-    const validMunicipality = data.municipalities.find((item) => item.id === municipalityQuery);
+    const inferredPrefecture = municipalityQuery.slice(0, 2);
+    const validPrefecture = data.prefectures.some((item) => item.code === inferredPrefecture)
+      ? inferredPrefecture
+      : "";
     const timer = window.setTimeout(() => {
       setCategoryId(validCategory);
-      setMunicipalityId(validMunicipality?.id ?? "");
-      setPrefectureCode(validMunicipality?.prefectureCode ?? "");
+      setMunicipalityId(validPrefecture ? municipalityQuery : "");
+      setPrefectureCode(validPrefecture);
+      setMunicipalitiesLoading(Boolean(validPrefecture));
       setSearched(Boolean(validCategory));
       setSearching(Boolean(validCategory));
       setActiveStep(validCategory ? 3 : 1);
       setUrlReady(true);
     }, 0);
     return () => window.clearTimeout(timer);
-  }, [data.categories, data.municipalities]);
+  }, [data.categories, data.prefectures]);
+
+  useEffect(() => {
+    if (!prefectureCode) return;
+    const controller = new AbortController();
+    fetch(`/data/support/${prefectureCode}.json`, { signal: controller.signal })
+      .then(async (response) => {
+        if (!response.ok) throw new Error("自治体一覧を読み込めませんでした。");
+        return response.json() as Promise<{ municipalities: FinderMunicipality[] }>;
+      })
+      .then((response) => setMunicipalities(response.municipalities))
+      .catch((error) => {
+        if (error instanceof DOMException && error.name === "AbortError") return;
+        setMunicipalities([]);
+      })
+      .finally(() => setMunicipalitiesLoading(false));
+    return () => controller.abort();
+  }, [prefectureCode]);
 
   useEffect(() => {
     if (!searched || !categoryId) return;
     const controller = new AbortController();
-    const selectedMunicipality = data.municipalities.find((item) => item.id === municipalityId);
+    const selectedMunicipality = municipalities.find((item) => item.id === municipalityId);
     const dataFile = selectedMunicipality?.prefectureCode || "national";
     fetch(`/data/support/${dataFile}.json`, { signal: controller.signal })
       .then(async (response) => {
@@ -203,7 +231,7 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
       })
       .finally(() => setSearching(false));
     return () => controller.abort();
-  }, [categoryId, data.municipalities, municipalityId, searched]);
+  }, [categoryId, municipalities, municipalityId, searched]);
 
   useEffect(() => {
     if (activeStep === 3 && searched && !searching) resultsHeadingRef.current?.focus();
@@ -232,10 +260,10 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
   }, [categoryId]);
 
   const municipalityOptions = useMemo(
-    () => data.municipalities.filter((item) => item.prefectureCode === prefectureCode),
-    [data.municipalities, prefectureCode],
+    () => municipalities.filter((item) => item.prefectureCode === prefectureCode),
+    [municipalities, prefectureCode],
   );
-  const municipality = data.municipalities.find((item) => item.id === municipalityId);
+  const municipality = municipalities.find((item) => item.id === municipalityId);
   const canSearch = Boolean(categoryId);
   const selectedCategory = data.categories.find((item) => item.id === categoryId);
   const showResults = () => {
@@ -402,6 +430,8 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
                 onChange={(event) => {
                   setPrefectureCode(event.target.value);
                   setMunicipalityId("");
+                  setMunicipalities([]);
+                  setMunicipalitiesLoading(Boolean(event.target.value));
                   setSearched(false);
                 }}
               >
@@ -419,18 +449,20 @@ export default function SupportFinder({ data }: { data: FinderViewModel }) {
               </span>
               <select
                 value={municipalityId}
-                disabled={!prefectureCode}
+                disabled={!prefectureCode || municipalitiesLoading}
                 onChange={(event) => {
                   setMunicipalityId(event.target.value);
                   setSearched(false);
                 }}
               >
                 <option value="">
-                  {prefectureCode
-                    ? municipalityOptions.length
-                      ? "選択しない"
-                      : "公開済み自治体はありません"
-                    : "先に都道府県を選択"}
+                  {municipalitiesLoading
+                    ? "読み込み中…"
+                    : prefectureCode
+                      ? municipalityOptions.length
+                        ? "選択しない"
+                        : "公開済み自治体はありません"
+                      : "先に都道府県を選択"}
                 </option>
                 {municipalityOptions.map((item) => (
                   <option key={item.id} value={item.id}>

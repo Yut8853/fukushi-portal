@@ -6,6 +6,7 @@ import AfterHoursGuide from "@/components/AfterHoursGuide";
 import MentalCrisisSupport from "@/components/MentalCrisisSupport";
 import UnconfirmedHours from "@/components/UnconfirmedHours";
 import { getPublicPortalData } from "@/lib/data/repository";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
 import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
@@ -198,7 +199,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
     <main id="main" className="page-shell content-page support-guide">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <nav className="breadcrumbs" aria-label="パンくず">
         <Link href="/">トップ</Link>

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { GUIDE_CONTENT, guideContent } from "@/lib/guide-content";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { seoCategoryContent } from "@/lib/seo-content";
 import { SITE_URL } from "@/lib/site";
 
@@ -80,7 +81,7 @@ export default async function GuidePage({ params }: PageProps) {
     <main id="main" className="page-shell content-page">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <nav className="breadcrumbs" aria-label="パンくず">
         <Link href="/">トップ</Link>

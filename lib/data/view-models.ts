@@ -66,7 +66,7 @@ export type FinderViewModel = {
   latestVerifiedAt: string;
 };
 
-export function toFinderViewModel(data: PortalData): FinderViewModel {
+export function toFinderViewModel(data: PortalData, includeMunicipalities = true): FinderViewModel {
   return {
     prefectures: data.prefectures.map(({ code, name }) => ({ code, name })),
     categories: [...data.categories]
@@ -77,7 +77,7 @@ export function toFinderViewModel(data: PortalData): FinderViewModel {
         description,
         consultationScript,
       })),
-    municipalities: data.municipalities.map(
+    municipalities: (includeMunicipalities ? data.municipalities : []).map(
       ({ id, prefectureCode, name, officialUrl, representativePhone, supportLevel }) => ({
         id,
         prefectureCode,

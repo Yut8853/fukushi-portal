@@ -4,6 +4,7 @@ import SupportFinder from "@/components/SupportFinder";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { toFinderViewModel } from "@/lib/data/view-models";
 import { getPublicStats } from "@/lib/public-stats";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
 };
 
 export default async function HomePage() {
-  const data = toFinderViewModel(await getPublicPortalData());
+  const data = toFinderViewModel(await getPublicPortalData(), false);
   const stats = getPublicStats();
   const [updatedYear, updatedMonth, updatedDay] = data.latestVerifiedAt.split("-");
   return (
@@ -29,7 +30,7 @@ export default async function HomePage() {
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
+          __html: serializeJsonLd({
             "@context": "https://schema.org",
             "@type": "WebPage",
             "@id": `${SITE_URL}/#webpage`,

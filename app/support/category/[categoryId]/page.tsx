@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { emergencyContacts } from "@/lib/emergency-contacts";
 import { getPublicPortalData } from "@/lib/data/repository";
+import { serializeJsonLd } from "@/lib/json-ld";
 import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
 import { isSensitiveCategory, sensitiveSupportMetadata } from "@/lib/privacy";
 import { seoCategoryContent } from "@/lib/seo-content";
@@ -120,7 +121,7 @@ export default async function CategoryDirectoryPage({ params }: PageProps) {
     <main id="main" className="page-shell content-page">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
       />
       <nav className="breadcrumbs" aria-label="パンくず">
         <Link href="/">トップ</Link>
