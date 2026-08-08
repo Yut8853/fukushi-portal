@@ -56,7 +56,7 @@
     "publisher": "厚生労働省",
     "cost": "通話料あり",
     "availability": "地域により異なる",
-    "displayMode": "primary",
+    "displayMode": "detail",
     "lastVerifiedAt": "2026-07-27"
   },
   {
@@ -80,7 +80,7 @@
     "publisher": "厚生労働省",
     "cost": "無料",
     "availability": "24時間",
-    "displayMode": "primary",
+    "displayMode": "detail",
     "lastVerifiedAt": "2026-07-27"
   },
   {
@@ -92,7 +92,7 @@
     "publisher": "内閣府男女共同参画局",
     "cost": "無料",
     "availability": "最寄りの支援センターへ接続",
-    "displayMode": "primary",
+    "displayMode": "detail",
     "lastVerifiedAt": "2026-07-27"
   },
   {

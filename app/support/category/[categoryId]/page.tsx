@@ -131,6 +131,20 @@ export default async function CategoryDirectoryPage({ params }: PageProps) {
       <h1>{page.seo.searchTitle}ときの相談窓口</h1>
       <p className="lead">{page.seo.summary}</p>
 
+      {page.seo.firstSteps && (
+        <section className="content-section category-answer" aria-labelledby="first-steps-title">
+          <h2 id="first-steps-title">まず、次の順番で動いてください</h2>
+          <ol>
+            {page.seo.firstSteps.map((step) => (
+              <li key={step}>{step}</li>
+            ))}
+          </ol>
+          <p>
+            すべてできなくても大丈夫です。いちばん急いでいることを、相談先へそのまま伝えてください。
+          </p>
+        </section>
+      )}
+
       {page.category.id === "violence" && (
         <section className="content-section urgent-directory" aria-labelledby="urgent-dv-title">
           <h2 id="urgent-dv-title">いま、この場で使える相談先</h2>
@@ -183,6 +197,41 @@ export default async function CategoryDirectoryPage({ params }: PageProps) {
         </p>
       </section>
 
+      {page.seo.supportOptions && (
+        <section className="content-section" aria-labelledby="support-options-title">
+          <h2 id="support-options-title">利用できる可能性がある制度・相談</h2>
+          <p>対象や支援内容は、収入、世帯、地域などによって異なります。窓口で確認してください。</p>
+          <dl className="category-option-list">
+            {page.seo.supportOptions.map((option) => (
+              <div key={option.title}>
+                <dt>
+                  {option.guideSlug ? (
+                    <Link href={`/guide/${option.guideSlug}`}>{option.title}</Link>
+                  ) : (
+                    option.title
+                  )}
+                </dt>
+                <dd>{option.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </section>
+      )}
+
+      {page.seo.whatToPrepare && (
+        <section className="content-section" aria-labelledby="prepare-title">
+          <h2 id="prepare-title">相談前に用意できるもの</h2>
+          <ul>
+            {page.seo.whatToPrepare.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+          <p>
+            そろっていなくても、相談を後回しにする必要はありません。手元にあるものだけで相談できます。
+          </p>
+        </section>
+      )}
+
       <section className="content-section" aria-labelledby="area-directory-title">
         <h2 id="area-directory-title">都道府県から相談先を探す</h2>
         <p>都道府県を選ぶと、次のページで市区町村を選べます。</p>
@@ -204,10 +253,26 @@ export default async function CategoryDirectoryPage({ params }: PageProps) {
         )}
       </section>
 
-      <section className="content-section">
-        <h2>関連する検索語</h2>
-        <p>{page.seo.relatedTerms.join("、")}</p>
-      </section>
+      {page.seo.relatedCases ? (
+        <section className="content-section related-guides" aria-labelledby="related-cases-title">
+          <h2 id="related-cases-title">あわせて困っていることから探す</h2>
+          <ul>
+            {page.seo.relatedCases.map((related) => (
+              <li key={related.categoryId}>
+                <Link href={`/support/category/${related.categoryId}`}>
+                  <strong>{related.label}</strong>
+                  <span>{related.description}</span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ) : (
+        <section className="content-section">
+          <h2>関連する検索語</h2>
+          <p>{page.seo.relatedTerms.join("、")}</p>
+        </section>
+      )}
     </main>
   );
 }

@@ -2,14 +2,8 @@ import { emergencyContacts } from "@/lib/emergency-contacts";
 import { telephoneAriaLabel } from "@/lib/telephone";
 
 export default function EmergencyBanner() {
-  const primaryContactIds = new Set([
-    "police-emergency",
-    "fire-ambulance-emergency",
-    "child-abuse",
-    "dv-consultation",
-  ]);
-  const primaryContacts = emergencyContacts.filter((contact) => primaryContactIds.has(contact.id));
-  const detailContacts = emergencyContacts.filter((contact) => !primaryContactIds.has(contact.id));
+  const primaryContacts = emergencyContacts.filter((contact) => contact.displayMode === "primary");
+  const detailContacts = emergencyContacts.filter((contact) => contact.displayMode === "detail");
   const oldestVerification = emergencyContacts
     .map((contact) => contact.lastVerifiedAt)
     .sort()

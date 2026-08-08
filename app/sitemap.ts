@@ -7,6 +7,7 @@ import {
   selectedOfficesFor,
 } from "@/lib/seo-analysis";
 import { isIndexableSupportPage } from "@/lib/seo-indexing";
+import { GUIDE_CONTENT } from "@/lib/guide-content";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const data = await getPublicPortalData();
@@ -25,6 +26,24 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.9,
     },
     {
+      url: `${SITE_URL}/guide`,
+      lastModified: contentUpdated,
+      changeFrequency: "monthly",
+      priority: 0.85,
+    },
+    {
+      url: `${SITE_URL}/data`,
+      lastModified: contentUpdated,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    },
+    ...GUIDE_CONTENT.map((guide) => ({
+      url: `${SITE_URL}/guide/${guide.slug}`,
+      lastModified: contentUpdated,
+      changeFrequency: "monthly" as const,
+      priority: 0.8,
+    })),
+    {
       url: `${SITE_URL}/about`,
       lastModified: contentUpdated,
       changeFrequency: "monthly",
@@ -38,6 +57,12 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     },
     {
       url: `${SITE_URL}/editorial-policy`,
+      lastModified: contentUpdated,
+      changeFrequency: "monthly",
+      priority: 0.4,
+    },
+    {
+      url: `${SITE_URL}/accessibility`,
       lastModified: contentUpdated,
       changeFrequency: "monthly",
       priority: 0.4,

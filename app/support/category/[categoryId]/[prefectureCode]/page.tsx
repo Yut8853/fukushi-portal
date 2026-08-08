@@ -80,21 +80,39 @@ export default async function CategoryPrefecturePage({ params }: PageProps) {
         dangerouslySetInnerHTML={{
           __html: JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "BreadcrumbList",
-            itemListElement: [
-              { "@type": "ListItem", position: 1, name: "トップ", item: SITE_URL },
-              { "@type": "ListItem", position: 2, name: "相談先一覧", item: `${SITE_URL}/support` },
+            "@graph": [
               {
-                "@type": "ListItem",
-                position: 3,
-                name: page.seo.searchTitle,
-                item: categoryUrl,
+                "@type": "CollectionPage",
+                "@id": pageUrl,
+                url: pageUrl,
+                name: `${page.prefecture.name}で${page.seo.searchTitle}ときの相談先`,
+                description: `${page.prefecture.name}の市区町村から、${page.seo.searchTitle}ときの公的な相談先を選べます。`,
+                inLanguage: "ja",
+                isPartOf: { "@id": `${SITE_URL}/#website` },
               },
               {
-                "@type": "ListItem",
-                position: 4,
-                name: page.prefecture.name,
-                item: pageUrl,
+                "@type": "BreadcrumbList",
+                itemListElement: [
+                  { "@type": "ListItem", position: 1, name: "トップ", item: SITE_URL },
+                  {
+                    "@type": "ListItem",
+                    position: 2,
+                    name: "相談先一覧",
+                    item: `${SITE_URL}/support`,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 3,
+                    name: page.seo.searchTitle,
+                    item: categoryUrl,
+                  },
+                  {
+                    "@type": "ListItem",
+                    position: 4,
+                    name: page.prefecture.name,
+                    item: pageUrl,
+                  },
+                ],
               },
             ],
           }),

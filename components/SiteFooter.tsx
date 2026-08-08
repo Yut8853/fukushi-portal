@@ -12,8 +12,11 @@ export default function SiteFooter() {
           </p>
         </div>
         <nav aria-label="サイト情報">
+          <Link href="/guide">制度ガイド</Link>
+          <Link href="/data">公開データ</Link>
           <Link href="/about">このサイトについて・免責事項</Link>
           <Link href="/editorial-policy">編集・検証方針</Link>
+          <Link href="/accessibility">アクセシビリティ</Link>
           <Link href="/corrections">情報の訂正・お問い合わせ</Link>
         </nav>
       </div>

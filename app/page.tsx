@@ -4,12 +4,20 @@ import SupportFinder from "@/components/SupportFinder";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { toFinderViewModel } from "@/lib/data/view-models";
 import { getPublicStats } from "@/lib/public-stats";
+import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "生活保護・福祉の相談先を地域から探す",
   description:
     "生活費、住まい、仕事、介護、障害、DVなどで困ったときに、全国1,741市区町村の生活保護・生活困窮・福祉相談窓口を地域から探せます。",
   alternates: { canonical: "/" },
+  openGraph: {
+    title: "生活保護・福祉の相談先を地域から探す",
+    description:
+      "制度名を知らなくても、生活の困りごとから全国1,741市区町村の公的な相談先を探せます。",
+    url: "/",
+    type: "website",
+  },
 };
 
 export default async function HomePage() {
@@ -18,6 +26,23 @@ export default async function HomePage() {
   const [updatedYear, updatedMonth, updatedDay] = data.latestVerifiedAt.split("-");
   return (
     <main id="main" className="page-shell">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "@id": `${SITE_URL}/#webpage`,
+            url: SITE_URL,
+            name: "生活保護・福祉の相談先を地域から探す",
+            description:
+              "生活費、住まい、仕事、介護、障害、DVなどの困りごとから、全国の公的な相談先を探せます。",
+            inLanguage: "ja",
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/data#dataset` },
+          }),
+        }}
+      />
       <header className="hero">
         <div className="hero-copy">
           <p className="eyebrow">制度名を知らなくても大丈夫です</p>

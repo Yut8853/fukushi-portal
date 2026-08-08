@@ -90,3 +90,17 @@ test("320px幅で横スクロールしない", async ({ page }) => {
   expect(contentWidth).toBeLessThanOrEqual(viewportWidth + 2);
   await expectNoAxeViolations(page);
 });
+
+test("制度ガイド", async ({ page }) => {
+  await page.goto("/guide/seikatsu-hogo");
+  await expect(page.getByRole("heading", { level: 1 })).toContainText("生活保護");
+  await expectNoAxeViolations(page);
+});
+
+test("アクセシビリティ方針", async ({ page }) => {
+  await page.goto("/accessibility");
+  await expect(page.getByRole("heading", { level: 1 })).toHaveText(
+    "アクセシビリティ方針と対応状況",
+  );
+  await expectNoAxeViolations(page);
+});

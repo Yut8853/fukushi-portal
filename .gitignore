@@ -19,6 +19,9 @@ coverage/
 playwright-report/
 test-results/
 
+# Search Console exports may contain private query data
+*-Performance-on-Search-*.zip
+
 # TypeScript and OS/editor files
 *.tsbuildinfo
 .DS_Store

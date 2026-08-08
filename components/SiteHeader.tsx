@@ -12,6 +12,7 @@ export default function SiteHeader() {
         </Link>
         <nav className="site-nav" aria-label="メインメニュー">
           <Link href="/#support-finder">相談先を探す</Link>
+          <Link href="/guide">制度を調べる</Link>
           <Link href="/about">このサイトについて</Link>
         </nav>
       </div>
