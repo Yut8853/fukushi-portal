@@ -32,7 +32,7 @@ jobs:
         run: npm run sources:monitor -- --all
       - name: Upload monitor results
         if: always()
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: source-monitor-results
           path: data/source-monitor.json
