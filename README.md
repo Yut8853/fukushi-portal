@@ -49,9 +49,9 @@
 | 対象自治体                |          1,741 |
 | 公開窓口                  |          7,279 |
 | 支援制度                  |             25 |
-| インデックス対象ページ    |          3,316 |
-| noindex・followページ     |         21,058 |
-| 地域固有専門窓口ページ    |          3,316 |
+| インデックス対象ページ    |          3,313 |
+| noindex・followページ     |         21,061 |
+| 地域固有専門窓口ページ    |          3,313 |
 | 自治体固有情報が代表のみ  |         20,931 |
 | 主要4導線の不足           |        0自治体 |
 | 電話番号が1件もない自治体 |        0自治体 |
@@ -94,7 +94,7 @@ URLは次の形式です。
 /support/{自治体ID}/{カテゴリID}
 ```
 
-例えば、水戸市の「今日食べるものがない」ページへアクセスすると、[`app/support/[municipalityCode]/[categoryId]/page.tsx`](app/support/[municipalityCode]/[categoryId]/page.tsx) が次のデータを組み合わせます。
+例えば、水戸市の「今日食べるものがない」ページへアクセスすると、[`app/support/[prefectureCode]/[categoryId]/page.tsx`](app/support/[prefectureCode]/[categoryId]/page.tsx) が次のデータを組み合わせます。
 
 - `data/municipalities.csv`：自治体名、自治体コード、公式URL
 - `data/categories.csv`：困りごとの表示名、人が確認した電話台本
@@ -310,8 +310,8 @@ supabase/            任意のDBスキーマとマイグレーション
 ```text
 /                                      3STEP検索
 /support                               都道府県一覧
-/support/[municipalityCode]            自治体一覧
-/support/[municipalityCode]/[category] 困りごと×自治体のSEOページ
+/support/[prefectureCode]              都道府県内の自治体一覧
+/support/[prefectureCode]/[category]   困りごと×自治体のSEOページ（先頭セグメントは自治体ID）
 /about                                 運営者・免責
 /corrections                           情報訂正
 /admin/*                               管理・候補審査
@@ -475,6 +475,7 @@ Supabaseを使う場合だけ追加します。
 DATA_BACKEND=
 SUPABASE_URL=
 SUPABASE_SERVICE_ROLE_KEY=
+FEEDBACK_RATE_LIMIT_SECRET=
 CRON_SECRET=
 ```
 
@@ -482,6 +483,7 @@ CRON_SECRET=
 
 - canonical、sitemap、構造化データの本番URLは `https://fukushi.junkbranding.com` に固定
 - `SUPABASE_SERVICE_ROLE_KEY` に `NEXT_PUBLIC_` を付けない
+- `FEEDBACK_RATE_LIMIT_SECRET`はレート制限トークン専用の十分に長いランダム値にし、ほかの鍵を流用しない
 - `CRON_SECRET`はVercel Cronの定期削除エンドポイント認証に使用し、十分に長いランダム値にする
 - `.env.local` をGitへ追加しない
 - 管理画面を公開する場合はBasic認証を必ず設定する
@@ -913,7 +915,7 @@ SEOのために内容の薄いページ、自治体名だけを差し替えた�
 npm run seo:audit
 ```
 
-2026-08-08時点では、3,316ページが`index`、21,058ページが`noindex, follow`です。
+2026-08-08時点では、3,313ページが`index`、21,061ページが`noindex, follow`です。
 
 ### sitemap・robots.txt
 

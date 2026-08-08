@@ -44,7 +44,7 @@ export default function AccessibilityPage() {
         <ul>
           <li>Playwrightとaxeによる主要9画面のアクセシビリティ検査</li>
           <li>キーボードフォーカスの可視性と検索ステップ移動後のフォーカス位置</li>
-          <li>320px幅および200％相当での横スクロールの有無</li>
+          <li>320px幅、および1280px相当を200％拡大した場合を想定した640px幅でのリフロー</li>
           <li>DVページのEscキーによる緊急退出</li>
           <li>見出し、フォームラベル、リンク名などの機械的な検査</li>
         </ul>
@@ -76,7 +76,9 @@ export default function AccessibilityPage() {
           </div>
           <div>
             <dt>拡大・リフロー</dt>
-            <dd>320px幅・200％相当を自動確認。400％相当は人による確認が未完了</dd>
+            <dd>
+              320px幅・640px幅のリフローを自動確認。実ブラウザー200％・400％は人による確認が未完了
+            </dd>
           </div>
           <div>
             <dt>最終更新</dt>

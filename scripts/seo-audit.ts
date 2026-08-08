@@ -1,7 +1,12 @@
 import { getPublicPortalData } from "@/lib/data/repository";
 import { selectOffices } from "@/lib/support-routing";
 import { seoCategoryContent } from "@/lib/seo-content";
-import { isIndexableSupportPage } from "@/lib/seo-indexing";
+import {
+  isIndexableCategoryPage,
+  isIndexableCategoryPrefecturePage,
+  isIndexableSupportPage,
+} from "@/lib/seo-indexing";
+import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
 
 async function main() {
   const data = await getPublicPortalData();
@@ -51,10 +56,26 @@ async function main() {
       else noindexPages += 1;
     }
   }
+  const officeIndex = buildOfficeIndex(data.offices);
+  const indexableCategoryPages = data.categories.filter((category) =>
+    isIndexableCategoryPage(category.id),
+  ).length;
+  const indexableCategoryPrefecturePages = data.categories.reduce(
+    (total, category) =>
+      total +
+      data.prefectures.filter((prefecture) =>
+        isIndexableCategoryPrefecturePage(
+          category.id,
+          indexableMunicipalitiesFor(data, officeIndex, prefecture.code, category.id).length,
+        ),
+      ).length,
+    0,
+  );
   console.log(`SEO監査: ${data.prefectures.length}都道府県 / ${data.municipalities.length}自治体`);
   console.log(`インデックス対象: ${indexablePages}ページ`);
   console.log(`noindex・follow: ${noindexPages}ページ`);
-  console.log(`カテゴリーハブ: ${data.categories.length}ページ`);
+  console.log(`index対象カテゴリーハブ: ${indexableCategoryPages}ページ`);
+  console.log(`index対象カテゴリー×都道府県: ${indexableCategoryPrefecturePages}ページ`);
   console.log(`エラー: ${errors.length}件`);
   for (const error of errors) console.error(`- ${error}`);
   if (errors.length) process.exitCode = 1;

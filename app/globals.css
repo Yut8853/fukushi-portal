@@ -1993,7 +1993,7 @@ thead th {
   .finder-progress span {
     min-height: 47px;
     gap: 4px;
-    font-size: 0.65rem;
+    font-size: 0.75rem;
   }
   .finder-progress b {
     width: 21px;

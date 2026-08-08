@@ -21,9 +21,43 @@ function response(status: number, message: string, authenticate = false): NextRe
     headers: {
       "cache-control": "no-store",
       "content-type": "text/plain; charset=utf-8",
-      ...(authenticate ? { "www-authenticate": 'Basic realm="Fukushi Portal Admin", charset="UTF-8"' } : {}),
+      ...(authenticate
+        ? { "www-authenticate": 'Basic realm="Fukushi Portal Admin", charset="UTF-8"' }
+        : {}),
     },
   });
+}
+
+function decodeBasicCredentials(encoded: string): string {
+  const binary = atob(encoded);
+  const bytes = Uint8Array.from(binary, (character) => character.charCodeAt(0));
+  return new TextDecoder("utf-8", { fatal: true }).decode(bytes);
+}
+
+function requestNonce(): string {
+  const bytes = crypto.getRandomValues(new Uint8Array(16));
+  return btoa(String.fromCharCode(...bytes));
+}
+
+function contentSecurityPolicy(nonce: string): string {
+  return [
+    "default-src 'self'",
+    "base-uri 'self'",
+    "form-action 'self'",
+    "frame-ancestors 'none'",
+    "object-src 'none'",
+    `script-src 'self' 'nonce-${nonce}' 'strict-dynamic'`,
+    "style-src 'self' 'unsafe-inline'",
+    "img-src 'self' data:",
+    "font-src 'self'",
+    "connect-src 'self'",
+    "upgrade-insecure-requests",
+  ].join("; ");
+}
+
+function secureResponse(result: NextResponse, nonce: string): NextResponse {
+  result.headers.set("Content-Security-Policy", contentSecurityPolicy(nonce));
+  return result;
 }
 
 function configuredCredentials(): AdminCredential[] {
@@ -51,41 +85,48 @@ function configuredCredentials(): AdminCredential[] {
 }
 
 export async function proxy(request: NextRequest) {
-  const hostname = (request.headers.get("x-forwarded-host")
-    || request.headers.get("host")
-    || request.nextUrl.hostname)
+  const nonce = requestNonce();
+  const requestHeaders = new Headers(request.headers);
+  requestHeaders.set("x-nonce", nonce);
+  const hostname = (
+    request.headers.get("x-forwarded-host") ||
+    request.headers.get("host") ||
+    request.nextUrl.hostname
+  )
     .split(":")[0]
     .toLowerCase();
   if (VERCEL_FALLBACK_HOSTS.has(hostname)) {
-    const destination = new URL(
-      `${request.nextUrl.pathname}${request.nextUrl.search}`,
-      SITE_URL,
-    );
-    return NextResponse.redirect(destination, 301);
+    const destination = new URL(`${request.nextUrl.pathname}${request.nextUrl.search}`, SITE_URL);
+    return secureResponse(NextResponse.redirect(destination, 301), nonce);
   }
 
   if (!request.nextUrl.pathname.startsWith("/admin")) {
-    return NextResponse.next();
+    return secureResponse(NextResponse.next({ request: { headers: requestHeaders } }), nonce);
   }
 
   const configured = configuredCredentials();
   if (!configured.length) {
-    return response(503, "管理画面は無効です。管理者認証を設定してください。");
+    return secureResponse(
+      response(503, "管理画面は無効です。管理者認証を設定してください。"),
+      nonce,
+    );
   }
 
   const authorization = request.headers.get("authorization");
   if (!authorization?.startsWith("Basic ")) {
-    return response(401, "認証が必要です。", true);
+    return secureResponse(response(401, "認証が必要です。", true), nonce);
   }
 
   let credentials = "";
   try {
-    credentials = atob(authorization.slice(6));
+    credentials = decodeBasicCredentials(authorization.slice(6));
   } catch {
-    return response(401, "認証情報を確認できません。", true);
+    return secureResponse(response(401, "認証情報を確認できません。", true), nonce);
   }
   const separator = credentials.indexOf(":");
-  if (separator < 0) return response(401, "認証情報を確認できません。", true);
+  if (separator < 0) {
+    return secureResponse(response(401, "認証情報を確認できません。", true), nonce);
+  }
   const user = credentials.slice(0, separator);
   const password = credentials.slice(separator + 1);
 
@@ -97,12 +138,13 @@ export async function proxy(request: NextRequest) {
     ]);
     if (validUser && validPassword) authenticated = candidate;
   }
-  if (!authenticated) return response(401, "認証情報が正しくありません。", true);
+  if (!authenticated) {
+    return secureResponse(response(401, "認証情報が正しくありません。", true), nonce);
+  }
 
-  const requestHeaders = new Headers(request.headers);
   requestHeaders.set("x-admin-user", authenticated.username);
   requestHeaders.set("x-admin-role", authenticated.role);
-  return NextResponse.next({ request: { headers: requestHeaders } });
+  return secureResponse(NextResponse.next({ request: { headers: requestHeaders } }), nonce);
 }
 
 export const config = {

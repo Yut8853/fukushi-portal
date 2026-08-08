@@ -1,7 +1,11 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import type { Office } from "../lib/data/schemas";
-import { isIndexableSupportPage } from "../lib/seo-indexing";
+import {
+  isIndexableCategoryPage,
+  isIndexableCategoryPrefecturePage,
+  isIndexableSupportPage,
+} from "../lib/seo-indexing";
 
 function office(overrides: Partial<Office> = {}): Office {
   return {
@@ -89,4 +93,19 @@ test("都道府県共通窓口だけの薄いページはnoindexにする", () =
     ),
     false,
   );
+});
+
+test("センシティブカテゴリーは全階層でnoindexにする", () => {
+  assert.equal(isIndexableCategoryPage("violence"), false);
+  assert.equal(isIndexableCategoryPrefecturePage("violence", 10), false);
+  assert.equal(
+    isIndexableSupportPage([office({ categoryId: "violence" })], "city", "violence"),
+    false,
+  );
+});
+
+test("通常カテゴリーは掲載価値のある階層だけindex対象にする", () => {
+  assert.equal(isIndexableCategoryPage("money"), true);
+  assert.equal(isIndexableCategoryPrefecturePage("money", 1), true);
+  assert.equal(isIndexableCategoryPrefecturePage("money", 0), false);
 });

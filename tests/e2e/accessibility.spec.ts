@@ -72,7 +72,7 @@ test("こころカテゴリーハブ", async ({ page }) => {
   await expectNoAxeViolations(page);
 });
 
-test("自治体×カテゴリページと200%拡大", async ({ page }) => {
+test("自治体×カテゴリページを1280px相当から200%拡大した場合の640pxリフロー", async ({ page }) => {
   await page.setViewportSize({ width: 640, height: 720 });
   await page.goto("/support/ibaraki-mito/money");
   await expectNoAxeViolations(page);

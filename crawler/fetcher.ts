@@ -6,11 +6,16 @@ import { assertSafeUrl, resolveSafeUrl, type SafeUrl } from "./security";
 const lastRequest = new Map<string, number>();
 const robotsCache = new Map<string, ReturnType<typeof robotsParser>>();
 const dispatchers = new Map<string, Agent>();
+const MAX_DISPATCHERS = 100;
 
 function pinnedDispatcher(target: SafeUrl): Agent {
   const key = `${target.url.hostname}:${target.addresses.map(({ address }) => address).join(",")}`;
   const cached = dispatchers.get(key);
-  if (cached) return cached;
+  if (cached) {
+    dispatchers.delete(key);
+    dispatchers.set(key, cached);
+    return cached;
+  }
   let nextAddress = 0;
   const dispatcher = new Agent({
     connect: {
@@ -22,6 +27,14 @@ function pinnedDispatcher(target: SafeUrl): Agent {
     },
   });
   dispatchers.set(key, dispatcher);
+  if (dispatchers.size > MAX_DISPATCHERS) {
+    const oldestKey = dispatchers.keys().next().value;
+    if (oldestKey) {
+      const oldest = dispatchers.get(oldestKey);
+      dispatchers.delete(oldestKey);
+      void oldest?.close();
+    }
+  }
   return dispatcher;
 }
 
@@ -82,7 +95,7 @@ export async function canCrawl(rawUrl: string, config: CrawlerConfig): Promise<b
       const text = response.ok ? await response.text() : "";
       rules = robotsParser(robotsUrl, text);
     } catch {
-      rules = robotsParser(robotsUrl, "");
+      return false;
     }
     robotsCache.set(origin, rules);
   }

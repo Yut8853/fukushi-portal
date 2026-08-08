@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/JsonLd";
 import { emergencyContacts } from "@/lib/emergency-contacts";
 import { getPublicPortalData } from "@/lib/data/repository";
-import { serializeJsonLd } from "@/lib/json-ld";
 import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
-import { isSensitiveCategory, sensitiveSupportMetadata } from "@/lib/privacy";
+import { sensitiveSupportMetadata } from "@/lib/privacy";
 import { seoCategoryContent } from "@/lib/seo-content";
+import { isIndexableCategoryPage } from "@/lib/seo-indexing";
 import { SITE_URL } from "@/lib/site";
 import { telephoneAriaLabel } from "@/lib/telephone";
 
@@ -42,7 +43,8 @@ export function generateStaticParams() {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const page = await getCategoryPage(params);
   if (!page) return {};
-  const sensitive = isSensitiveCategory(page.category.id);
+  const indexable = isIndexableCategoryPage(page.category.id);
+  const sensitive = !indexable;
   const title = sensitive
     ? sensitiveSupportMetadata.title
     : `${page.seo.searchTitle}ときの相談窓口を地域から探す`;
@@ -59,9 +61,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       url: `/support/category/${page.category.id}`,
       type: "website",
     },
-    robots: sensitive
-      ? { index: false, follow: true, noarchive: true, nosnippet: true }
-      : undefined,
+    robots: indexable
+      ? undefined
+      : { index: false, follow: true, noarchive: true, nosnippet: true },
     twitter: sensitive
       ? {
           card: "summary",
@@ -119,10 +121,7 @@ export default async function CategoryDirectoryPage({ params }: PageProps) {
 
   return (
     <main id="main" className="page-shell content-page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <nav className="breadcrumbs" aria-label="パンくず">
         <Link href="/">トップ</Link>
         <Link href="/support">相談先一覧</Link>
@@ -269,9 +268,22 @@ export default async function CategoryDirectoryPage({ params }: PageProps) {
           </ul>
         </section>
       ) : (
-        <section className="content-section">
-          <h2>関連する検索語</h2>
-          <p>{page.seo.relatedTerms.join("、")}</p>
+        <section className="content-section related-guides">
+          <h2>次の相談先を探す</h2>
+          <ul>
+            <li>
+              <Link href="/support">
+                <strong>別の困りごとや地域から探す</strong>
+                <span>状況とお住まいの地域を選び直せます。</span>
+              </Link>
+            </li>
+            <li>
+              <Link href="/guide">
+                <strong>利用できる制度を知る</strong>
+                <span>生活や福祉に関する制度の概要と相談手順を確認できます。</span>
+              </Link>
+            </li>
+          </ul>
         </section>
       )}
     </main>

@@ -55,7 +55,8 @@ export async function POST(request: Request) {
 
   const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/+$/, "") ?? "";
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
-  if (!supabaseUrl || !serviceRoleKey) {
+  const rateLimitSecret = process.env.FEEDBACK_RATE_LIMIT_SECRET ?? "";
+  if (!supabaseUrl || !serviceRoleKey || !rateLimitSecret) {
     return NextResponse.json({ error: "集計機能は現在利用できません。" }, { status: 503 });
   }
 
@@ -67,7 +68,7 @@ export async function POST(request: Request) {
       "content-type": "application/json",
     },
     body: JSON.stringify({
-      p_token: getRateLimitToken(request, serviceRoleKey),
+      p_token: getRateLimitToken(request, rateLimitSecret),
       p_max_requests: RATE_LIMIT_MAX_REQUESTS,
     }),
     cache: "no-store",

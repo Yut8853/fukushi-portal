@@ -6,7 +6,11 @@ import {
   indexableMunicipalitiesFor,
   selectedOfficesFor,
 } from "@/lib/seo-analysis";
-import { isIndexableSupportPage } from "@/lib/seo-indexing";
+import {
+  isIndexableCategoryPage,
+  isIndexableCategoryPrefecturePage,
+  isIndexableSupportPage,
+} from "@/lib/seo-indexing";
 import { GUIDE_CONTENT } from "@/lib/guide-content";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
@@ -78,15 +82,20 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       changeFrequency: "monthly" as const,
       priority: 0.8,
     })),
-    ...data.categories.map((category) => ({
-      url: `${SITE_URL}/support/category/${category.id}`,
-      lastModified: contentUpdated,
-      changeFrequency: "monthly" as const,
-      priority: 0.85,
-    })),
+    ...data.categories
+      .filter((category) => isIndexableCategoryPage(category.id))
+      .map((category) => ({
+        url: `${SITE_URL}/support/category/${category.id}`,
+        lastModified: contentUpdated,
+        changeFrequency: "monthly" as const,
+        priority: 0.85,
+      })),
     ...data.categories.flatMap((category) =>
       data.prefectures.flatMap((prefecture) =>
-        indexableMunicipalitiesFor(data, officeIndex, prefecture.code, category.id).length
+        isIndexableCategoryPrefecturePage(
+          category.id,
+          indexableMunicipalitiesFor(data, officeIndex, prefecture.code, category.id).length,
+        )
           ? [
               {
                 url: `${SITE_URL}/support/category/${category.id}/${prefecture.code}`,

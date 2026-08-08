@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/JsonLd";
 import { getPublicPortalData } from "@/lib/data/repository";
-import { serializeJsonLd } from "@/lib/json-ld";
 import { buildOfficeIndex, indexableMunicipalitiesFor } from "@/lib/seo-analysis";
-import { isSensitiveCategory, sensitiveSupportMetadata } from "@/lib/privacy";
+import { sensitiveSupportMetadata } from "@/lib/privacy";
 import { seoCategoryContent } from "@/lib/seo-content";
+import { isIndexableCategoryPage, isIndexableCategoryPrefecturePage } from "@/lib/seo-indexing";
 import { SITE_URL } from "@/lib/site";
 
 export const dynamic = "force-dynamic";
@@ -42,7 +43,11 @@ async function getPage(params: PageProps["params"]) {
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const page = await getPage(params);
   if (!page) return {};
-  const sensitive = isSensitiveCategory(page.category.id);
+  const indexable = isIndexableCategoryPrefecturePage(
+    page.category.id,
+    page.indexableMunicipalities.length,
+  );
+  const sensitive = !isIndexableCategoryPage(page.category.id);
   const title = sensitive
     ? sensitiveSupportMetadata.title
     : `${page.prefecture.name}で${page.seo.searchTitle}ときの相談先`;
@@ -54,10 +59,10 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/support/category/${page.category.id}/${page.prefecture.code}`,
     },
-    robots: sensitive
-      ? { index: false, follow: true, noarchive: true, nosnippet: true }
-      : page.indexableMunicipalities.length
-        ? { index: true, follow: true }
+    robots: indexable
+      ? { index: true, follow: true }
+      : sensitive
+        ? { index: false, follow: true, noarchive: true, nosnippet: true }
         : { index: false, follow: true },
     twitter: sensitive
       ? {
@@ -76,47 +81,56 @@ export default async function CategoryPrefecturePage({ params }: PageProps) {
   const categoryUrl = `${SITE_URL}/support/category/${page.category.id}`;
   return (
     <main id="main" className="page-shell content-page">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeJsonLd({
-            "@context": "https://schema.org",
-            "@graph": [
-              {
-                "@type": "CollectionPage",
-                "@id": pageUrl,
-                url: pageUrl,
-                name: `${page.prefecture.name}で${page.seo.searchTitle}ときの相談先`,
-                description: `${page.prefecture.name}の市区町村から、${page.seo.searchTitle}ときの公的な相談先を選べます。`,
-                inLanguage: "ja",
-                isPartOf: { "@id": `${SITE_URL}/#website` },
-              },
-              {
-                "@type": "BreadcrumbList",
-                itemListElement: [
-                  { "@type": "ListItem", position: 1, name: "トップ", item: SITE_URL },
-                  {
-                    "@type": "ListItem",
-                    position: 2,
-                    name: "相談先一覧",
-                    item: `${SITE_URL}/support`,
-                  },
-                  {
-                    "@type": "ListItem",
-                    position: 3,
-                    name: page.seo.searchTitle,
-                    item: categoryUrl,
-                  },
-                  {
-                    "@type": "ListItem",
-                    position: 4,
-                    name: page.prefecture.name,
-                    item: pageUrl,
-                  },
-                ],
-              },
-            ],
-          }),
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [
+            {
+              "@type": "CollectionPage",
+              "@id": pageUrl,
+              url: pageUrl,
+              name: `${page.prefecture.name}で${page.seo.searchTitle}ときの相談先`,
+              description: `${page.prefecture.name}の市区町村から、${page.seo.searchTitle}ときの公的な相談先を選べます。`,
+              inLanguage: "ja",
+              isPartOf: { "@id": `${SITE_URL}/#website` },
+            },
+            {
+              "@type": "ItemList",
+              "@id": `${pageUrl}#municipalities`,
+              name: `${page.prefecture.name}の相談先が確認できている市区町村`,
+              numberOfItems: page.indexableMunicipalities.length,
+              itemListElement: page.indexableMunicipalities.map((municipality, index) => ({
+                "@type": "ListItem",
+                position: index + 1,
+                name: municipality.name,
+                url: `${SITE_URL}/support/${municipality.id}/${page.category.id}`,
+              })),
+            },
+            {
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "トップ", item: SITE_URL },
+                {
+                  "@type": "ListItem",
+                  position: 2,
+                  name: "相談先一覧",
+                  item: `${SITE_URL}/support`,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 3,
+                  name: page.seo.searchTitle,
+                  item: categoryUrl,
+                },
+                {
+                  "@type": "ListItem",
+                  position: 4,
+                  name: page.prefecture.name,
+                  item: pageUrl,
+                },
+              ],
+            },
+          ],
         }}
       />
       <nav className="breadcrumbs" aria-label="パンくず">

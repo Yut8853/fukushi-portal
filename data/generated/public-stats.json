@@ -1,10 +1,10 @@
 {
   "schemaVersion": 1,
   "publishedOffices": 7279,
-  "indexablePages": 3316,
-  "noindexPages": 21058,
-  "localSpecialistPages": 3316,
+  "indexablePages": 3313,
+  "noindexPages": 21061,
+  "localSpecialistPages": 3313,
   "representativeOnlyPages": 20931,
-  "sourceCommit": "b7bdb161c805",
+  "sourceCommit": "32c410640753",
   "dataGeneratedAt": "2026-08-08"
 }

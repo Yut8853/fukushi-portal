@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
 import Link from "next/link";
 import SupportFinder from "@/components/SupportFinder";
 import { getPublicPortalData } from "@/lib/data/repository";
 import { toFinderViewModel } from "@/lib/data/view-models";
 import { getPublicStats } from "@/lib/public-stats";
-import { serializeJsonLd } from "@/lib/json-ld";
 import { SITE_URL } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -27,21 +27,18 @@ export default async function HomePage() {
   const [updatedYear, updatedMonth, updatedDay] = data.latestVerifiedAt.split("-");
   return (
     <main id="main" className="page-shell">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: serializeJsonLd({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "@id": `${SITE_URL}/#webpage`,
-            url: SITE_URL,
-            name: "生活保護・福祉の相談先を地域から探す",
-            description:
-              "生活費、住まい、仕事、介護、障害、DVなどの困りごとから、全国の公的な相談先を探せます。",
-            inLanguage: "ja",
-            isPartOf: { "@id": `${SITE_URL}/#website` },
-            about: { "@id": `${SITE_URL}/data#dataset` },
-          }),
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          "@id": `${SITE_URL}/#webpage`,
+          url: SITE_URL,
+          name: "生活保護・福祉の相談先を地域から探す",
+          description:
+            "生活費、住まい、仕事、介護、障害、DVなどの困りごとから、全国の公的な相談先を探せます。",
+          inLanguage: "ja",
+          isPartOf: { "@id": `${SITE_URL}/#website` },
+          about: { "@id": `${SITE_URL}/data#dataset` },
         }}
       />
       <header className="hero">

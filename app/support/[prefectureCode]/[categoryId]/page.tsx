@@ -1,12 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
+import JsonLd from "@/components/JsonLd";
 import FeedbackPrompt from "@/components/FeedbackPrompt";
 import AfterHoursGuide from "@/components/AfterHoursGuide";
 import MentalCrisisSupport from "@/components/MentalCrisisSupport";
 import UnconfirmedHours from "@/components/UnconfirmedHours";
 import { getPublicPortalData } from "@/lib/data/repository";
-import { serializeJsonLd } from "@/lib/json-ld";
 import { officeContactType, selectOffices, transferTarget } from "@/lib/support-routing";
 import { shouldEstimateMunicipalHours } from "@/lib/office-hours";
 import { officeDisplayName, officeOrganizationName } from "@/lib/office-label";
@@ -19,13 +19,13 @@ import { telephoneAriaLabel, telephoneHref } from "@/lib/telephone";
 export const dynamic = "force-dynamic";
 
 type PageProps = {
-  params: Promise<{ municipalityCode: string; categoryId: string }>;
+  params: Promise<{ prefectureCode: string; categoryId: string }>;
 };
 
 async function getPageData(params: PageProps["params"]) {
-  const { municipalityCode, categoryId } = await params;
+  const { prefectureCode: municipalityId, categoryId } = await params;
   const data = await getPublicPortalData();
-  const municipality = data.municipalities.find((item) => item.id === municipalityCode);
+  const municipality = data.municipalities.find((item) => item.id === municipalityId);
   const category = data.categories.find((item) => item.id === categoryId);
   if (!municipality || !category) return null;
   const prefecture = data.prefectures.find((item) => item.code === municipality.prefectureCode);
@@ -197,10 +197,7 @@ export default async function MunicipalitySupportPage({ params }: PageProps) {
   };
   return (
     <main id="main" className="page-shell content-page support-guide">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: serializeJsonLd(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
       <nav className="breadcrumbs" aria-label="パンくず">
         <Link href="/">トップ</Link>
         <Link href="/support">相談先一覧</Link>

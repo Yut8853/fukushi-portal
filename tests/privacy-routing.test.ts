@@ -205,7 +205,7 @@ test("検索クライアントはカテゴリをAPIへ送信しない", async ()
 test("センシティブカテゴリをメタデータや共有タイトルへ露出しない", async () => {
   const root = process.cwd();
   const municipalityPage = await readFile(
-    path.join(root, "app", "support", "[municipalityCode]", "[categoryId]", "page.tsx"),
+    path.join(root, "app", "support", "[prefectureCode]", "[categoryId]", "page.tsx"),
     "utf8",
   );
   const finder = await readFile(path.join(root, "components", "SupportFinder.tsx"), "utf8");

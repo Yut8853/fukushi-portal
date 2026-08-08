@@ -15,7 +15,8 @@ export async function GET(request: Request) {
   const cronSecret = process.env.CRON_SECRET ?? "";
   const supabaseUrl = process.env.SUPABASE_URL?.replace(/\/+$/, "") ?? "";
   const serviceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY ?? "";
-  if (!cronSecret || !supabaseUrl || !serviceRoleKey) {
+  const rateLimitSecret = process.env.FEEDBACK_RATE_LIMIT_SECRET ?? "";
+  if (!cronSecret || !supabaseUrl || !serviceRoleKey || !rateLimitSecret) {
     return NextResponse.json({ error: "定期削除の設定がありません。" }, { status: 503 });
   }
   if (!authorized(request, cronSecret)) {
@@ -23,7 +24,7 @@ export async function GET(request: Request) {
   }
 
   const date = new Date().toISOString().slice(0, 10);
-  const token = createHmac("sha256", serviceRoleKey)
+  const token = createHmac("sha256", rateLimitSecret)
     .update(`feedback-retention:${date}`)
     .digest("hex");
   const response = await fetch(`${supabaseUrl}/rest/v1/rpc/check_feedback_rate_limit`, {
